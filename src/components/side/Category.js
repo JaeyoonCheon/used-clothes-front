@@ -5,7 +5,7 @@ import colors from "../../lib/styles/colors";
 
 const CategoryContainer = styled.div`
   width: 180px;
-  padding: 10px;
+  margin-right: 20px;
 
   .category-header {
     display: flex;
@@ -87,11 +87,11 @@ const Category = () => {
         <div>카테고리</div>
         <span>Arrow</span>
       </div>
-      {categoryData.map((large) => (
-        <CategorySubList>
+      {categoryData.map((large, largeIdx) => (
+        <CategorySubList key={largeIdx}>
           <CategoryItem>{large.name}</CategoryItem>
-          {large.child.map((medium) => (
-            <CategorySubList>
+          {large.child.map((medium, mediumIdx) => (
+            <CategorySubList key={mediumIdx}>
               <CategoryItem>{medium}</CategoryItem>
             </CategorySubList>
           ))}

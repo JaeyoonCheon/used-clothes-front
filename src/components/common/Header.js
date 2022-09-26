@@ -29,7 +29,7 @@ const NavMenu = styled.div`
   .menu {
     font-weight: 100;
     font-size: 16px;
-    margin-right: 18px;
+    margin-left: 18px;
     color: ${colors.mono[0]};
   }
 `;
