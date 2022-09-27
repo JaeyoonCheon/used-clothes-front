@@ -4,7 +4,7 @@ import styled from "styled-components";
 import colors from "../lib/styles/colors";
 
 import Header from "../components/common/Header";
-import Category from "../components/side/Category";
+import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
 import Pagenation from "../components/common/Pagenation";
 import Footer from "../components/common/Footer";
@@ -60,7 +60,7 @@ const HomePage = () => {
       <Header></Header>
       <HeaderSpacer></HeaderSpacer>
       <HomePageContainer>
-        <Category></Category>
+        <Aside></Aside>
         <ContentContainer>
           <NavBar>
             <span>{location}</span>

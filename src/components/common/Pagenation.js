@@ -39,9 +39,6 @@ const Pagenation = (props) => {
     (v, i) => i + 1 + pageUnitNum * pageCount
   );
 
-  console.log(pageUnitNum);
-  console.log(end);
-
   return (
     <PagenationContainer>
       <PagenationButtonContainer>

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+
 import colors from "../../lib/styles/colors";
+import Searchbar from "./Searchbar";
 
 const HeaderBox = styled.div`
   position: fixed;
@@ -11,11 +13,19 @@ const HeaderBox = styled.div`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   margin: 0 auto;
   width: 1180px;
   height: 84px;
   align-items: center;
+  justify-content: space-between;
+
+  .searchbar {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 `;
 
 const Logo = styled.div`
@@ -25,7 +35,6 @@ const Logo = styled.div`
 `;
 
 const NavMenu = styled.div`
-  margin-left: auto;
   .menu {
     font-weight: 100;
     font-size: 16px;
@@ -44,6 +53,7 @@ const Header = () => {
       <HeaderBox>
         <Wrapper>
           <Logo>Title</Logo>
+          <Searchbar></Searchbar>
           <NavMenu>
             <span className="menu">로그인</span>
             <span className="menu">상품등록</span>
