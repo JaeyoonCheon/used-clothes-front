@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
+
 import Header from "../components/common/Header";
 import Category from "../components/side/Category";
 import CardList from "../components/card/CardList";
 import Pagenation from "../components/common/Pagenation";
+import Footer from "../components/common/Footer";
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -73,6 +75,7 @@ const HomePage = () => {
           <Pagenation currentPage={27} pageCount={10} limit={40}></Pagenation>
         </ContentContainer>
       </HomePageContainer>
+      <Footer></Footer>
     </>
   );
 };

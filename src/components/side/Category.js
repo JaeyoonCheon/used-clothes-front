@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
@@ -81,6 +81,10 @@ const categoryData = [
 ];
 
 const Category = () => {
+  const [largeToggle, setLargeToggle] = useState(false);
+
+  const toggleCategory = () => {};
+
   return (
     <CategoryContainer>
       <div className="category-header">
