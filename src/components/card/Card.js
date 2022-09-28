@@ -17,7 +17,7 @@ const CardContainer = styled.div`
 `;
 
 const Card = (props) => {
-  const { itemname = "item", itemprice = "20000원" } = props;
+  const { itemname = "itemname", itemprice = "10000원" } = props;
   return (
     <CardContainer>
       <img src="180x180.png" alt="item"></img>
