@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Category from "./Category";
@@ -32,11 +32,19 @@ const filterDatas = [
 ];
 
 const Aside = () => {
+  const [modalState, setModalState] = useState({ index: -1 });
+
   return (
     <AsideContainer>
       <Category></Category>
-      {filterDatas.map((filterData, idx) => (
-        <Filter key={idx} filteringData={filterData}></Filter>
+      {filterDatas.map((filterData, i) => (
+        <Filter
+          key={i}
+          idx={i}
+          filteringData={filterData}
+          modalState={modalState}
+          setModalState={setModalState}
+        ></Filter>
       ))}
     </AsideContainer>
   );

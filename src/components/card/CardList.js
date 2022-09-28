@@ -27,7 +27,6 @@ const renderCards = () => {
 
 const CardList = () => {
   const cards = renderCards();
-  console.log(cards);
   return <Wrapper>{cards}</Wrapper>;
 };
 

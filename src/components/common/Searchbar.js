@@ -4,7 +4,7 @@ import { RiSearchLine } from "react-icons/ri";
 
 import colors from "../../lib/styles/colors";
 
-const Label = styled.label`
+const FormContainer = styled.form`
   position: relative;
   width: 580px;
   height: 40px;
@@ -43,19 +43,24 @@ const Searchbar = () => {
   );
   const onSubmit = (e) => {
     e.preventDefault();
+    setKeyword("");
   };
 
   return (
     <div className="searchbar">
-      <Label>
+      <FormContainer>
         <SearchbarInput
           type="text"
           value={keyword}
           placeholder="찾으시는 상품명,판매자를 입력해 주세요."
           onChange={onChange}
         ></SearchbarInput>
-        <RiSearchLine className="button" form="submit"></RiSearchLine>
-      </Label>
+        <RiSearchLine
+          className="button"
+          type="submit"
+          onClick={onSubmit}
+        ></RiSearchLine>
+      </FormContainer>
     </div>
   );
 };

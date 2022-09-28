@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { BsPlusSquare } from "react-icons/bs";
 
 import colors from "../../lib/styles/colors";
+import Checkbox from "../common/Checkbox";
+import FilterModal from "../modal/FilterModal";
 
 const FilterContainer = styled.div`
   width: 180px;
@@ -12,8 +15,12 @@ const FilterContainer = styled.div`
 
   .filter-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+  }
+  div[class$="modelCheckbox"] {
+    margin: 5px;
   }
 `;
 
@@ -23,22 +30,23 @@ const CheckboxList = styled.div`
   justify-content: space-between;
 `;
 
-const Checkbox = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin: 1px 0 1px 0;
-`;
-
 const Filter = (props) => {
-  const { filteringData } = props;
+  const { idx, filteringData, modalState, setModalState } = props;
   const { name, options } = filteringData;
   const preOptions = [...options].splice(0, 4);
+  const [currentPos, setCurrentPos] = useState([]);
 
   return (
     <FilterContainer>
       <div className="filter-header">
         <div>{name}</div>
-        <div>+</div>
+        <BsPlusSquare
+          onClick={(e) => {
+            const pos = [e.pageX, e.pageY];
+            setCurrentPos(pos);
+            setModalState({ ...modalState, index: idx });
+          }}
+        ></BsPlusSquare>
       </div>
       <CheckboxList>
         {preOptions.map((preOption, idx) => (
@@ -48,6 +56,13 @@ const Filter = (props) => {
           </Checkbox>
         ))}
       </CheckboxList>
+      {modalState.index === idx && (
+        <FilterModal
+          options={options}
+          position={currentPos}
+          setModalState={setModalState}
+        ></FilterModal>
+      )}
     </FilterContainer>
   );
 };
