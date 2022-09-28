@@ -16,12 +16,13 @@ const CardContainer = styled.div`
   }
 `;
 
-const Card = () => {
+const Card = (props) => {
+  const { itemname = "item", itemprice = "20000원" } = props;
   return (
     <CardContainer>
       <img src="180x180.png" alt="item"></img>
-      <div className="itemname">item</div>
-      <div className="itemprice">10000원</div>
+      <div className="itemname">{itemname}</div>
+      <div className="itemprice">{itemprice}</div>
     </CardContainer>
   );
 };
