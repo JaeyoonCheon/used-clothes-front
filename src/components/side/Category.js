@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 
 import colors from "../../lib/styles/colors";
 
@@ -9,6 +10,7 @@ const CategoryContainer = styled.div`
 
   .category-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
   }
@@ -152,7 +154,10 @@ const Category = () => {
     <CategoryContainer>
       <div className="category-header">
         <div>카테고리</div>
-        <span onClick={() => setFold(!fold)}>+</span>
+        {!fold && (
+          <AiOutlineDown onClick={() => setFold(!fold)}></AiOutlineDown>
+        )}
+        {fold && <AiOutlineUp onClick={() => setFold(!fold)}></AiOutlineUp>}
       </div>
       {fold &&
         categoryData.map((large) => (

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
+import { RiSearchLine } from "react-icons/ri";
 
 import colors from "../../lib/styles/colors";
 
@@ -16,7 +17,7 @@ const Label = styled.label`
 
   .button {
     position: absolute;
-    right: 10px;
+    right: 20px;
   }
 `;
 
@@ -53,9 +54,7 @@ const Searchbar = () => {
           placeholder="찾으시는 상품명,판매자를 입력해 주세요."
           onChange={onChange}
         ></SearchbarInput>
-        <button className="button" form="submit">
-          검색
-        </button>
+        <RiSearchLine className="button" form="submit"></RiSearchLine>
       </Label>
     </div>
   );
