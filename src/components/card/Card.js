@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const CardContainer = styled.div`
   height: 240px;
+  margin-bottom: 40px;
 
   .itemname {
     font-family: "Noto Sans KR";
@@ -17,12 +18,18 @@ const CardContainer = styled.div`
 `;
 
 const Card = (props) => {
-  const { itemname = "itemname", itemprice = "10000원" } = props;
+  const { itemData } = props;
+  const {
+    itemimage = "180x180.png",
+    itemname = "itemname",
+    itemprice = "10000",
+  } = itemData;
+
   return (
     <CardContainer>
-      <img src="180x180.png" alt="item"></img>
+      <img src={itemimage} alt="item"></img>
       <div className="itemname">{itemname}</div>
-      <div className="itemprice">{itemprice}</div>
+      <div className="itemprice">{`${itemprice}원`}</div>
     </CardContainer>
   );
 };

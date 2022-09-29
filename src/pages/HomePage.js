@@ -9,6 +9,8 @@ import CardList from "../components/card/CardList";
 import Pagenation from "../components/common/Pagenation";
 import Footer from "../components/common/Footer";
 
+import { itemDatas } from "../lib/dummydata/dummydata";
+
 const HomePageContainer = styled.div`
   display: flex;
   margin: 0 auto;
@@ -70,7 +72,7 @@ const HomePage = () => {
               ))}
             </div>
           </NavBar>
-          <CardList></CardList>
+          <CardList itemDatas={itemDatas}></CardList>
           <hr></hr>
           <Pagenation currentPage={27} pageCount={10} limit={40}></Pagenation>
         </ContentContainer>

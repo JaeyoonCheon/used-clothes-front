@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
 
 import colors from "../../lib/styles/colors";
-import { categoryData } from "../../lib/styles/dummydata/dummydata";
+import { categoryData } from "../../lib/dummydata/dummydata";
 
 const CategoryContainer = styled.div`
   width: 180px;

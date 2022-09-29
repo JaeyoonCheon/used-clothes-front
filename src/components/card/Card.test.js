@@ -5,7 +5,7 @@ import Card from "./Card";
 
 describe("<Card />", () => {
   it("Card rendering test", () => {
-    render(<Card></Card>);
+    render(<Card itemData={{ id: 1 }}></Card>);
 
     const itemImage = screen.getByAltText("item");
     expect(itemImage).toBeInTheDocument();
@@ -18,16 +18,17 @@ describe("<Card />", () => {
   });
   it("Card name test", () => {
     const fakeName = faker.commerce.productName();
-    render(<Card itemname={fakeName}></Card>);
+    render(<Card itemData={{ itemname: fakeName }}></Card>);
 
     const itemName = screen.getByText(fakeName);
     expect(itemName).toHaveTextContent(fakeName);
   });
   it("Card item price test", () => {
-    const fakePrice = `${faker.commerce.price()}원`;
-    render(<Card itemprice={fakePrice}></Card>);
+    const fakePrice = faker.commerce.price();
+    const props = { itemprice: fakePrice };
+    render(<Card itemData={props}></Card>);
 
-    const itemPrice = screen.getByText(fakePrice);
-    expect(itemPrice).toHaveTextContent(fakePrice);
+    const itemPrice = screen.getByText(`${fakePrice}원`);
+    expect(itemPrice).toHaveTextContent(`${fakePrice}원`);
   });
 });

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Category from "./Category";
 import Filter from "./Filter";
 
-import { filterDatas } from "../../lib/styles/dummydata/dummydata";
+import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const AsideContainer = styled.div`
   width: 180px;
