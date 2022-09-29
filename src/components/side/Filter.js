@@ -34,7 +34,22 @@ const Filter = (props) => {
   const { idx, filteringData, modalState, setModalState } = props;
   const { name, options } = filteringData;
   const preOptions = [...options].splice(0, 4);
+
   const [currentPos, setCurrentPos] = useState([]);
+  const [checkedOptions, setCheckedOptions] = useState(new Set());
+
+  const toggleCheckbox = (option) => {
+    console.log(checkedOptions);
+    if (checkedOptions.has(option)) {
+      const newCheckedOptions = new Set(checkedOptions);
+      newCheckedOptions.delete(option);
+      setCheckedOptions(newCheckedOptions);
+    } else {
+      const newCheckedOptions = new Set(checkedOptions);
+      newCheckedOptions.add(option);
+      setCheckedOptions(newCheckedOptions);
+    }
+  };
 
   return (
     <FilterContainer>
@@ -50,10 +65,12 @@ const Filter = (props) => {
       </div>
       <CheckboxList>
         {preOptions.map((preOption, idx) => (
-          <Checkbox key={idx}>
-            <input type="checkbox" name="option"></input>
-            <label>{preOption}</label>
-          </Checkbox>
+          <Checkbox
+            key={idx}
+            checkboxLabel={preOption}
+            checkedOptions={checkedOptions}
+            toggleCheckbox={toggleCheckbox}
+          ></Checkbox>
         ))}
       </CheckboxList>
       {modalState.index === idx && (
@@ -61,6 +78,8 @@ const Filter = (props) => {
           options={options}
           position={currentPos}
           setModalState={setModalState}
+          checkedOptions={checkedOptions}
+          toggleCheckbox={toggleCheckbox}
         ></FilterModal>
       )}
     </FilterContainer>

@@ -3,7 +3,11 @@ export const categoryData = [
     largeId: 1,
     name: "상의",
     child: [
-      { mediumId: 1, name: "티셔츠", child: [] },
+      {
+        mediumId: 1,
+        name: "티셔츠",
+        child: [{ smallId: 1, name: "라운드넥", child: [] }],
+      },
       { mediumId: 2, name: "셔츠/블라우스", child: [] },
       { mediumId: 3, name: "맨투맨", child: [] },
       { mediumId: 4, name: "후드티", child: [] },
@@ -13,7 +17,13 @@ export const categoryData = [
   {
     largeId: 2,
     name: "아우터",
-    child: [],
+    child: [
+      {
+        mediumId: 1,
+        name: "코트",
+        child: [],
+      },
+    ],
   },
   {
     largeId: 3,

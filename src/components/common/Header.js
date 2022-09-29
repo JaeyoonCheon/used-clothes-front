@@ -10,6 +10,7 @@ const HeaderBox = styled.div`
   background-color: white;
   font-family: "Noto Serif";
   border-bottom: 0.3px solid ${colors.mono[1]};
+  z-index: 99;
 `;
 
 const Wrapper = styled.div`

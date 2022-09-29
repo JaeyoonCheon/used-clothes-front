@@ -72,6 +72,19 @@ const Category = () => {
     }
   };
 
+  const onClickSmall = (key) => {
+    console.log(
+      `large:${largeSelected} / medium:${mediumSelected} / small:${smallSelected}`
+    );
+    console.log(`key:${key}`);
+    if (smallSelected === key) {
+      setSmallSelected(false);
+    }
+    if (smallSelected === false) {
+      setSmallSelected(key);
+    }
+  };
+
   return (
     <CategoryContainer>
       <div className="category-header">
@@ -96,7 +109,12 @@ const Category = () => {
               large.child.map((medium) => (
                 <CategorySubList key={medium.mediumId}>
                   <CategoryItem
-                    className="mediumItem"
+                    className={`mediumItem ${
+                      largeSelected === large.largeId &&
+                      mediumSelected === medium.mediumId
+                        ? "active"
+                        : ""
+                    }`}
                     onClick={() => onClickMedium(medium.mediumId)}
                   >
                     {medium.name}
@@ -104,7 +122,12 @@ const Category = () => {
                   {mediumSelected &&
                     medium.child.map((small) => (
                       <CategorySubList key={small.smallId}>
-                        <CategoryItem className="smallItem">
+                        <CategoryItem
+                          className={`smallItem ${
+                            smallSelected === small.smallId ? "active" : ""
+                          }`}
+                          onClick={() => onClickSmall(small.smallId)}
+                        >
                           {small.name}
                         </CategoryItem>
                       </CategorySubList>
