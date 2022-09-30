@@ -6,7 +6,7 @@ import colors from "../lib/styles/colors";
 import Header from "../components/common/Header";
 import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
-import Pagenation from "../components/common/Pagenation";
+import Pagination from "../components/common/Pagination";
 import Footer from "../components/common/Footer";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
@@ -87,12 +87,12 @@ const HomePage = () => {
           </NavBar>
           <CardList itemDatas={itemDatas}></CardList>
           <hr></hr>
-          <Pagenation
+          <Pagination
             currentPage={currentPage}
             pageCount={10}
             limit={40}
             setCurrentPage={setCurrentPage}
-          ></Pagenation>
+          ></Pagination>
         </ContentContainer>
       </HomePageContainer>
       <Footer></Footer>

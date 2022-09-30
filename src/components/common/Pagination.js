@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
 
-const PagenationContainer = styled.div`
+const PaginationContainer = styled.div`
   width: 100%;
 `;
 
-const PagenationButtonContainer = styled.li`
+const PaginationButtonContainer = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ const PagenationButtonContainer = styled.li`
   }
 `;
 
-const Pagenation = (props) => {
+const Pagination = (props) => {
   const { currentPage, pageCount, limit, setCurrentPage } = props;
 
   const pageUnitNum = Math.floor((currentPage - 1) / pageCount);
@@ -46,8 +46,8 @@ const Pagenation = (props) => {
   );
 
   return (
-    <PagenationContainer>
-      <PagenationButtonContainer>
+    <PaginationContainer>
+      <PaginationButtonContainer>
         {currentPage > pageCount && (
           <ul
             className="button"
@@ -92,9 +92,9 @@ const Pagenation = (props) => {
             &raquo;
           </ul>
         )}
-      </PagenationButtonContainer>
-    </PagenationContainer>
+      </PaginationButtonContainer>
+    </PaginationContainer>
   );
 };
 
-export default Pagenation;
+export default Pagination;
