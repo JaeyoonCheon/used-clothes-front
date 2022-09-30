@@ -13,10 +13,14 @@ const CheckboxContainer = styled.div`
   .checkbox {
     width: 15px;
     height: 15px;
+
+    cursor: pointer;
   }
   .optionName {
     margin-left: 5px;
     color: ${colors.mono[0]};
+
+    cursor: pointer;
   }
 `;
 

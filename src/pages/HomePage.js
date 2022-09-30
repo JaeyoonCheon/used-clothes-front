@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
@@ -36,7 +36,7 @@ const NavBar = styled.div`
     font-weight: 100;
     font-size: 20px;
   }
-  .sortorder {
+  .sortorders {
     display: flex;
 
     span {
@@ -44,6 +44,12 @@ const NavBar = styled.div`
       font-family: "Noto Serif";
       font-weight: 100;
       font-size: 14px;
+
+      cursor: pointer;
+
+      &.active {
+        color: ${colors.blue[0]};
+      }
     }
     span:nth-child(n + 2)::before {
       content: "|";
@@ -54,9 +60,12 @@ const NavBar = styled.div`
 
 const location = "산격동";
 
-const sortOrder = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
+const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
 
 const HomePage = () => {
+  const [sortOption, setSortOption] = useState("최신 순");
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <>
       <Header></Header>
@@ -66,15 +75,24 @@ const HomePage = () => {
         <ContentContainer>
           <NavBar>
             <span>{location}</span>
-            <div className="sortorder">
-              {sortOrder.map((order, i) => (
-                <span key={i}>{`${order}`}</span>
+            <div className="sortorders">
+              {sortOrders.map((order, i) => (
+                <span
+                  className={sortOption === order ? "active" : ""}
+                  key={i}
+                  onClick={() => setSortOption(order)}
+                >{`${order}`}</span>
               ))}
             </div>
           </NavBar>
           <CardList itemDatas={itemDatas}></CardList>
           <hr></hr>
-          <Pagenation currentPage={27} pageCount={10} limit={40}></Pagenation>
+          <Pagenation
+            currentPage={currentPage}
+            pageCount={10}
+            limit={40}
+            setCurrentPage={setCurrentPage}
+          ></Pagenation>
         </ContentContainer>
       </HomePageContainer>
       <Footer></Footer>

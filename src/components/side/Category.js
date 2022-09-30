@@ -42,6 +42,8 @@ const CategoryItem = styled.div`
   font-weight: 200;
   font-size: 14px;
   margin: 5px 0 10px 0;
+
+  cursor: pointer;
 `;
 
 const Category = () => {
@@ -49,10 +51,6 @@ const Category = () => {
   const [largeSelected, setLargeSelected] = useState(false);
   const [mediumSelected, setMediumSelected] = useState(false);
   const [smallSelected, setSmallSelected] = useState(false);
-
-  console.log(
-    `large:${largeSelected} / medium:${mediumSelected} / small:${smallSelected}`
-  );
 
   const onClickLarge = (key) => {
     if (largeSelected === false) {
@@ -72,8 +70,6 @@ const Category = () => {
   };
 
   const onClickMedium = (key) => {
-    console.log(categoryData[largeSelected - 1]);
-    console.log(`key:${key}`);
     if (mediumSelected === key) {
       setMediumSelected(false);
     }
@@ -83,7 +79,6 @@ const Category = () => {
   };
 
   const onClickSmall = (key) => {
-    console.log(`key:${key}`);
     if (smallSelected === key) {
       setSmallSelected(false);
     }
