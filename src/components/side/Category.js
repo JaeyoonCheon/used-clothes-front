@@ -50,32 +50,39 @@ const Category = () => {
   const [mediumSelected, setMediumSelected] = useState(false);
   const [smallSelected, setSmallSelected] = useState(false);
 
+  console.log(
+    `large:${largeSelected} / medium:${mediumSelected} / small:${smallSelected}`
+  );
+
   const onClickLarge = (key) => {
+    if (largeSelected === false) {
+      setLargeSelected(key);
+    }
     if (largeSelected === key) {
       setLargeSelected(false);
-      setMediumSelected(mediumSelected);
+      setMediumSelected(false);
+      setSmallSelected(false);
     }
-    if (largeSelected === false && categoryData[key - 1].child.length !== 0) {
+    if (largeSelected !== key && largeSelected !== false) {
+      setLargeSelected(false);
+      setMediumSelected(false);
+      setSmallSelected(false);
       setLargeSelected(key);
     }
   };
 
   const onClickMedium = (key) => {
+    console.log(categoryData[largeSelected - 1]);
+    console.log(`key:${key}`);
     if (mediumSelected === key) {
       setMediumSelected(false);
     }
-    if (
-      mediumSelected === false &&
-      categoryData[largeSelected - 1].child[key - 1].child.length !== 0
-    ) {
+    if (mediumSelected === false) {
       setMediumSelected(key);
     }
   };
 
   const onClickSmall = (key) => {
-    console.log(
-      `large:${largeSelected} / medium:${mediumSelected} / small:${smallSelected}`
-    );
     console.log(`key:${key}`);
     if (smallSelected === key) {
       setSmallSelected(false);
@@ -105,7 +112,7 @@ const Category = () => {
             >
               {large.name}
             </CategoryItem>
-            {largeSelected &&
+            {largeSelected === large.largeId &&
               large.child.map((medium) => (
                 <CategorySubList key={medium.mediumId}>
                   <CategoryItem
@@ -119,7 +126,7 @@ const Category = () => {
                   >
                     {medium.name}
                   </CategoryItem>
-                  {mediumSelected &&
+                  {mediumSelected === medium.mediumId &&
                     medium.child.map((small) => (
                       <CategorySubList key={small.smallId}>
                         <CategoryItem
