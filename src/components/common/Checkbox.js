@@ -50,7 +50,7 @@ const Checkbox = (props) => {
       <input
         className="checkbox"
         type="checkbox"
-        name="option"
+        data-testid="checkbox"
         id="option"
         checked={checked}
         onChange={onClick}
