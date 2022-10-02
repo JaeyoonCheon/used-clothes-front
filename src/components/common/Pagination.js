@@ -1,5 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  HiChevronDoubleLeft,
+  HiChevronLeft,
+  HiChevronDoubleRight,
+  HiChevronRight,
+} from "react-icons/hi";
 
 import colors from "../../lib/styles/colors";
 
@@ -13,17 +19,21 @@ const PaginationButtonContainer = styled.li`
   align-items: center;
 
   ul[class^="button"] {
-    padding: 8px;
     display: flex;
     justify-items: center;
-    margin-left: 10px;
+    padding: 0;
+    margin-left: 20px;
     font-family: "Noto Sans KR";
     font-weight: 400;
     font-size: 20px;
 
     cursor: pointer;
 
-    &[class$="current"] {
+    & span {
+      display: flex;
+    }
+
+    &[class$="current"] span {
       color: ${colors.blue[0]};
     }
   }
@@ -53,7 +63,7 @@ const Pagination = (props) => {
             className="button"
             onClick={() => setCurrentPage(pageUnitNum * pageCount)}
           >
-            &laquo;
+            <HiChevronDoubleLeft size={20}></HiChevronDoubleLeft>
           </ul>
         )}
         {currentPage > pageCount && (
@@ -61,7 +71,7 @@ const Pagination = (props) => {
             className="button"
             onClick={() => setCurrentPage(currentPage - 1)}
           >
-            &lt;
+            <HiChevronLeft size={20}></HiChevronLeft>
           </ul>
         )}
         {pages.map((page, i) => {
@@ -72,7 +82,7 @@ const Pagination = (props) => {
               key={i}
               onClick={() => setCurrentPage(page)}
             >
-              {page}
+              <span>{page}</span>
             </ul>
           );
         })}
@@ -81,7 +91,7 @@ const Pagination = (props) => {
             className="button"
             onClick={() => setCurrentPage(currentPage + 1)}
           >
-            &gt;
+            <HiChevronRight size={20}></HiChevronRight>
           </ul>
         )}
         {end < limit && (
@@ -89,7 +99,7 @@ const Pagination = (props) => {
             className="button"
             onClick={() => setCurrentPage((pageUnitNum + 1) * pageCount + 1)}
           >
-            &raquo;
+            <HiChevronDoubleRight size={20}></HiChevronDoubleRight>
           </ul>
         )}
       </PaginationButtonContainer>
