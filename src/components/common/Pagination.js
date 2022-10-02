@@ -30,7 +30,7 @@ const PaginationButtonContainer = styled.li`
 `;
 
 const Pagination = (props) => {
-  const { currentPage, pageCount, limit, setCurrentPage } = props;
+  const { currentPage = 1, pageCount = 10, limit = 1, setCurrentPage } = props;
 
   const pageUnitNum = Math.floor((currentPage - 1) / pageCount);
   const end =
