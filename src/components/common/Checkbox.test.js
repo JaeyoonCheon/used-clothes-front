@@ -54,4 +54,12 @@ describe("<Checkbox />", () => {
 
     expect(checkbox).toHaveProperty("checked", true);
   });
+  it("Checkbox in modal test", () => {
+    const { container } = render(<Checkbox isModal={true}></Checkbox>);
+
+    // eslint-disable-next-line testing-library/no-node-access
+    const checkboxModal = container.firstChild;
+
+    expect(checkboxModal).toHaveClass("modelCheckbox");
+  });
 });
