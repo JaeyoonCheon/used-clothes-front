@@ -1,9 +1,14 @@
-import { screen, render, fireEvent } from "@testing-library/react";
+import { screen, render, fireEvent, rerender } from "@testing-library/react";
 import { faker } from "@faker-js/faker";
 
 import Checkbox from "./Checkbox";
 
+jest.useFakeTimers();
+
 describe("<Checkbox />", () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
   it("Checkbox render test", () => {
     const fakeLabel = "fakeLabel";
     render(<Checkbox checkboxLabel={fakeLabel} />);
@@ -19,11 +24,34 @@ describe("<Checkbox />", () => {
     render(<Checkbox checkboxLabel={fakeLabel} toggleCheckbox={fakeFn} />);
     const checkbox = screen.getByTestId("checkbox");
 
-    console.log(checkbox);
-    expect(checkbox).toHaveAttribute("checked", true);
+    expect(checkbox).toHaveProperty("checked", false);
 
     fireEvent.click(checkbox);
 
-    console.log(checkbox);
+    expect(checkbox).toHaveProperty("checked", true);
+  });
+  it("Checkbox existent option test", () => {
+    const fakeLabelNumber = 11;
+    const fakeFn = jest.fn();
+    const checkboxOptions = new Set([fakeLabelNumber]);
+    const { rerender } = render(
+      <Checkbox
+        checkboxLabel={11}
+        checkedOptions={checkboxOptions}
+        toggleCheckbox={fakeFn}
+      />
+    );
+
+    rerender(
+      <Checkbox
+        checkboxLabel={11}
+        checkedOptions={checkboxOptions}
+        toggleCheckbox={fakeFn}
+      />
+    );
+
+    const checkbox = screen.getByTestId("checkbox");
+
+    expect(checkbox).toHaveProperty("checked", true);
   });
 });
