@@ -61,6 +61,7 @@ const Pagination = (props) => {
         {currentPage > pageCount && (
           <ul
             className="button"
+            data-testid="prevUnit"
             onClick={() => setCurrentPage(pageUnitNum * pageCount)}
           >
             <HiChevronDoubleLeft size={20}></HiChevronDoubleLeft>
@@ -69,6 +70,7 @@ const Pagination = (props) => {
         {currentPage > pageCount && (
           <ul
             className="button"
+            data-testid="prevPage"
             onClick={() => setCurrentPage(currentPage - 1)}
           >
             <HiChevronLeft size={20}></HiChevronLeft>
@@ -89,6 +91,7 @@ const Pagination = (props) => {
         {end < limit && (
           <ul
             className="button"
+            data-testid="nextPage"
             onClick={() => setCurrentPage(currentPage + 1)}
           >
             <HiChevronRight size={20}></HiChevronRight>
@@ -97,6 +100,7 @@ const Pagination = (props) => {
         {end < limit && (
           <ul
             className="button"
+            data-testid="nextUnit"
             onClick={() => setCurrentPage((pageUnitNum + 1) * pageCount + 1)}
           >
             <HiChevronDoubleRight size={20}></HiChevronDoubleRight>

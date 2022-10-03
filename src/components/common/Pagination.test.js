@@ -26,16 +26,34 @@ describe("<Pagination />", () => {
     expect(page1).toHaveStyle(`color: ${colors.blue[0]}`);
 
     const page2 = screen.getByText("2");
-
-    rerender(
+    fireEvent.click(page2);
+    expect(fakeFn).toBeCalledTimes(1);
+  });
+  it("Pagination page nav button test", () => {
+    const fakeFn = jest.fn();
+    const { rerender } = render(
       <Pagination
-        currentPage={2}
+        currentPage={11}
         pageCount={10}
         limit={30}
         setCurrentPage={fakeFn}
       ></Pagination>
     );
 
-    expect(page2).toHaveStyle(`color: ${colors.blue[0]}`);
+    const nextPage = screen.getByTestId("nextPage");
+    fireEvent.click(nextPage);
+    expect(fakeFn).toBeCalledTimes(1);
+
+    const nextUnit = screen.getByTestId("nextUnit");
+    fireEvent.click(nextUnit);
+    expect(fakeFn).toBeCalledTimes(2);
+
+    const prevPage = screen.getByTestId("prevPage");
+    fireEvent.click(prevPage);
+    expect(fakeFn).toBeCalledTimes(3);
+
+    const prevUnit = screen.getByTestId("prevUnit");
+    fireEvent.click(prevUnit);
+    expect(fakeFn).toBeCalledTimes(4);
   });
 });

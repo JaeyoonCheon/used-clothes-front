@@ -58,6 +58,7 @@ const Searchbar = () => {
         <RiSearchLine
           className="button"
           type="submit"
+          data-testid="search"
           onClick={onSubmit}
         ></RiSearchLine>
       </FormContainer>
