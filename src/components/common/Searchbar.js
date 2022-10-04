@@ -18,6 +18,8 @@ const FormContainer = styled.form`
   .button {
     position: absolute;
     right: 20px;
+
+    cursor: pointer;
   }
 `;
 

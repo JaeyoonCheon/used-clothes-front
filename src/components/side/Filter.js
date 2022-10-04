@@ -18,6 +18,10 @@ const FilterContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+
+    .filterModalButton {
+      cursor: pointer;
+    }
   }
   div[class$="modelCheckbox"] {
     margin: 5px;
@@ -56,6 +60,7 @@ const Filter = (props) => {
       <div className="filter-header">
         <div>{name}</div>
         <BsPlusSquare
+          className="filterModalButton"
           onClick={(e) => {
             const pos = [e.pageX, e.pageY];
             setCurrentPos(pos);

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
 import Searchbar from "./Searchbar";
+import LoginModal from "../modal/LoginModal";
 
 const HeaderBox = styled.div`
   position: fixed;
@@ -41,6 +42,8 @@ const NavMenu = styled.div`
     font-size: 16px;
     margin-left: 18px;
     color: ${colors.mono[0]};
+
+    cursor: pointer;
   }
 `;
 
@@ -49,6 +52,10 @@ const HeaderSpacer = styled.div`
 `;
 
 const Header = () => {
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const onClickLogin = () => {
+    setisModalOpen(true);
+  };
   return (
     <>
       <HeaderBox>
@@ -56,7 +63,12 @@ const Header = () => {
           <Logo>Title</Logo>
           <Searchbar></Searchbar>
           <NavMenu>
-            <span className="menu">로그인</span>
+            <span className="menu" onClick={onClickLogin}>
+              로그인
+            </span>
+            {isModalOpen && (
+              <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
+            )}
             <span className="menu">상품등록</span>
             <span className="menu">내 상품</span>
           </NavMenu>

@@ -14,6 +14,10 @@ const CategoryContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+
+    .foldingButton {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -91,10 +95,17 @@ const Category = () => {
     <CategoryContainer>
       <div className="category-header">
         <div>카테고리</div>
-        {!fold && (
-          <AiOutlineDown onClick={() => setFold(!fold)}></AiOutlineDown>
+        {fold ? (
+          <AiOutlineUp
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineUp>
+        ) : (
+          <AiOutlineDown
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineDown>
         )}
-        {fold && <AiOutlineUp onClick={() => setFold(!fold)}></AiOutlineUp>}
       </div>
       {fold &&
         categoryData.map((large) => (

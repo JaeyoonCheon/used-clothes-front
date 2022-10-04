@@ -21,6 +21,8 @@ const ModalContainer = styled.div`
   .clearbutton {
     flex: none;
     margin-left: auto;
+
+    cursor: pointer;
   }
 `;
 
