@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import IDForgotPage from "./pages/IDForgotPage";
+import PWForgotPage from "./pages/PWForgotPage";
 
 const App = () => {
   console.log("Render start");
@@ -10,7 +11,8 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="forgot" element={<IDForgotPage />}></Route>
+        <Route path="idforgot" element={<IDForgotPage />}></Route>
+        <Route path="pwforgot" element={<PWForgotPage />}></Route>
       </Routes>
     </>
   );
