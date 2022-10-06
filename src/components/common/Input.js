@@ -18,13 +18,18 @@ const LargeInputContainer = styled.input`
     font-size: 12px;
   }
 
+  &::placeholder::first-letter {
+    color: blue;
+    /* color: ${(props) => props.required && colors.blue[0]}; */
+  }
+
   &:focus {
     border-bottom: 2px solid ${colors.blue[0]};
   }
 `;
 
 export const LargeInput = (props) => {
-  const { placeholder, name } = props;
+  const { placeholder, name, required = false } = props;
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -37,6 +42,7 @@ export const LargeInput = (props) => {
       value={value}
       placeholder={placeholder}
       name={name}
+      required={required}
       onChange={onChange}
     ></LargeInputContainer>
   );
