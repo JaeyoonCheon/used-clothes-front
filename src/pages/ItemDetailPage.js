@@ -79,7 +79,19 @@ const DeliveryFee = styled.div`
 const Stars = styled.div`
   width: fit-content;
   margin-left: auto;
+
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
   color: ${colors.blue[0]};
+
+  .starIcon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const ItemClassContainer = styled.div`
@@ -188,7 +200,7 @@ const NavButtonContainer = styled.div`
   margin-top: 30px;
 `;
 
-const ItemDescription = styled.div`
+const ItemDescription = styled.p`
   margin: 60px 0 300px 0;
 `;
 
@@ -206,7 +218,7 @@ const ItemDetailPage = () => {
               color={colors.mono[0]}
               fontSize={12}
             >
-              목록으로
+              &lt; 목록으로
             </Button>
           </div>
           <ItemSummaryContainer>
@@ -222,15 +234,20 @@ const ItemDetailPage = () => {
               <ItemPriceContainer>
                 <ItemPrice>10000원</ItemPrice>
                 <DeliveryFee>배송비 포함</DeliveryFee>
-                <Stars>star 10</Stars>
+                <Stars>
+                  <img className="starIcon" src="star.png" alt="star" />
+                  <span>10</span>
+                </Stars>
               </ItemPriceContainer>
               <ItemClassContainer>
-                <ItemCategories>상의 &gt; 티셔츠</ItemCategories>
+                <ItemCategories>상의 / 티셔츠</ItemCategories>
                 <ItemOptionContainer>
                   <ItemOptionTitle>옵션</ItemOptionTitle>
                   <ItemOptionList>
                     <li className="itemOption">색상: 블랙</li>
+                    <span className="itemOption"> /</span>
                     <li className="itemOption">브랜드: 브랜드1</li>
+                    <span className="itemOption"> /</span>
                     <li className="itemOption">사이즈: M</li>
                   </ItemOptionList>
                 </ItemOptionContainer>
@@ -272,7 +289,7 @@ const ItemDetailPage = () => {
               </NavButtonContainer>
             </ItemInfoContainer>
           </ItemSummaryContainer>
-          <ItemDescription>{faker.lorem.paragraphs(3)}</ItemDescription>
+          <ItemDescription>{faker.lorem.paragraphs(20)}</ItemDescription>
         </ItemDetailContainer>
       </Wrapper>
       <Footer></Footer>

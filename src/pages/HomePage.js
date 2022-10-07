@@ -14,6 +14,7 @@ import { itemDatas } from "../lib/dummydata/dummydata";
 const HomePageContainer = styled.div`
   display: flex;
   margin: 0 auto;
+  margin-bottom: 300px;
   width: 1180px;
 `;
 

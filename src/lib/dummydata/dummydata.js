@@ -106,6 +106,32 @@ export const filterDatas = [
   },
 ];
 
+export const itemDetailInfos = {
+  id: 4606,
+  itemimage: "https://loremflickr.com/580/580/abstract?21730",
+  itemname: "Gloves",
+  itemprice: "311.00",
+  category: {
+    large: 1,
+    medium: 1,
+    small: 1,
+  },
+  options: {
+    colors: ["화이트", "블루"],
+    textiles: ["면", "실크"],
+    pollution: "미사용",
+    size: "M",
+  },
+  seller: {
+    id: 50,
+    name: "홍길동",
+    sellingItems: 10,
+    currentLocation: "대구 북구",
+  },
+  descriptions:
+    "Hic eius ipsum placeat voluptas vel corrupti. Optio rem corporis a qui animi dolore. Est alias beatae facilis veniam. Et dolore dolor ipsum asperiores sed et et nihil eveniet. Ipsa corrupti vel rerum. Rerum ipsa modi consequatur et. Ut maxime ipsum facilis itaque eveniet et. Ut molestiae veniam ipsam nobis sed ipsum dignissimos sed. Officia soluta dolores eligendi rerum exercitationem cupiditate eum quo. Illo ipsa iste autem accusamus ut eum repudiandae. Voluptatem laborum aut culpa labore. Rem ut voluptates qui ullam ducimus error excepturi facere odit. Rerum animi nihil ea ex nisi amet nihil quasi optio. Velit beatae eos. Aut exercitationem delectus saepe.",
+};
+
 export const itemDatas = [
   {
     id: 4606,
