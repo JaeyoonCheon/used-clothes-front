@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
 
-const LargeInputContainer = styled.input`
-  width: 280px;
+const InputContainer = styled.input`
+  width: 100%;
   height: 25px;
   padding: 0;
   margin-top: 10px;
@@ -20,7 +20,7 @@ const LargeInputContainer = styled.input`
 
   &::placeholder::first-letter {
     color: blue;
-    /* color: ${(props) => props.required && colors.blue[0]}; */
+    /* color: ${(props) => props.isRequired && colors.blue[0]}; */
   }
 
   &:focus {
@@ -28,8 +28,8 @@ const LargeInputContainer = styled.input`
   }
 `;
 
-export const LargeInput = (props) => {
-  const { placeholder, name, required = false } = props;
+export const Input = (props) => {
+  const { placeholder, name, isRequired = false } = props;
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -37,13 +37,13 @@ export const LargeInput = (props) => {
   };
 
   return (
-    <LargeInputContainer
+    <InputContainer
       type="text"
       value={value}
       placeholder={placeholder}
       name={name}
-      required={required}
+      isRequired={isRequired}
       onChange={onChange}
-    ></LargeInputContainer>
+    ></InputContainer>
   );
 };

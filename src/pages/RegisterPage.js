@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
-import { LargeInput } from "../components/common/Input";
+import { Input } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 import { RadioButton, RadioGroup } from "../components/common/RadioButton";
 
@@ -57,14 +57,14 @@ const RegisterPage = () => {
       <ForgotContainer>
         <Spacer></Spacer>
         <ForgotFormContainer>
-          <LargeInput placeholder="* 이름" isRequired={true}></LargeInput>
-          <LargeInput placeholder="* 이메일"></LargeInput>
+          <Input placeholder="* 이름" isRequired={true}></Input>
+          <Input placeholder="* 이메일"></Input>
           <div className="redundancyCheck">
             <SmallButton backgroundColor={colors.blue[0]}>중복체크</SmallButton>
           </div>
-          <LargeInput placeholder="* 비밀번호"></LargeInput>
-          <LargeInput placeholder="* 비밀번호 확인"></LargeInput>
-          <LargeInput placeholder="* 전화번호"></LargeInput>
+          <Input placeholder="* 비밀번호"></Input>
+          <Input placeholder="* 비밀번호 확인"></Input>
+          <Input placeholder="* 전화번호"></Input>
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>회원가입</LargeButton>
           </div>

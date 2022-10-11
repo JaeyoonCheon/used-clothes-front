@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
-import { LargeInput } from "../components/common/Input";
+import { Input } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 import { RadioButton, RadioGroup } from "../components/common/RadioButton";
 
@@ -79,7 +79,7 @@ const IDForgotPage = () => {
               이메일
             </RadioButton>
           </RadioGroup>
-          <LargeInput placeholder="이름"></LargeInput>
+          <Input placeholder="이름"></Input>
           {confirmType === "phone" && (
             <>
               <TelecomContainer>
@@ -90,18 +90,18 @@ const IDForgotPage = () => {
                   <option value="LG">LG</option>
                 </select>
               </TelecomContainer>
-              <LargeInput placeholder="전화번호"></LargeInput>
+              <Input placeholder="전화번호"></Input>
             </>
           )}
           {confirmType === "email" && (
             <>
-              <LargeInput placeholder="이메일"></LargeInput>
+              <Input placeholder="이메일"></Input>
             </>
           )}
           <div className="authButton">
             <SmallButton backgroundColor={colors.blue[0]}>인증하기</SmallButton>
           </div>
-          <LargeInput placeholder="인증번호"></LargeInput>
+          <Input placeholder="인증번호"></Input>
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>
               아이디 찾기

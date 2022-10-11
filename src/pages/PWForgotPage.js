@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
-import { LargeInput } from "../components/common/Input";
+import { Input } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 import { RadioButton, RadioGroup } from "../components/common/RadioButton";
 
@@ -70,8 +70,8 @@ const PWForgotPage = () => {
       <ForgotContainer>
         <Spacer></Spacer>
         <ForgotFormContainer>
-          <LargeInput placeholder="이름"></LargeInput>
-          <LargeInput placeholder="이메일"></LargeInput>
+          <Input placeholder="이름"></Input>
+          <Input placeholder="이메일"></Input>
           <TelecomContainer>
             <span className="telecomTitle">통신사</span>
             <select>
@@ -80,11 +80,11 @@ const PWForgotPage = () => {
               <option value="LG">LG</option>
             </select>
           </TelecomContainer>
-          <LargeInput placeholder="전화번호"></LargeInput>
+          <Input placeholder="전화번호"></Input>
           <div className="authButton">
             <SmallButton backgroundColor={colors.blue[0]}>인증하기</SmallButton>
           </div>
-          <LargeInput placeholder="인증번호"></LargeInput>
+          <Input placeholder="인증번호"></Input>
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>
               비밀번호 찾기

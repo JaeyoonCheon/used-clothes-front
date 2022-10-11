@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
-import { LargeInput } from "../common/Input";
+import { Input } from "../common/Input";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -111,8 +111,8 @@ const LoginModal = (props) => {
         <LogoContainer></LogoContainer>
         <FeatureContainer>
           <LoginFeature>
-            <LargeInput placeholder={"이메일"} name={"이메일"}></LargeInput>
-            <LargeInput placeholder={"비밀번호"} name={"비밀번호"}></LargeInput>
+            <Input placeholder={"이메일"} name={"이메일"}></Input>
+            <Input placeholder={"비밀번호"} name={"비밀번호"}></Input>
             <LoginButton>
               <LargeButton backgroundColor={colors.blue[0]}>로그인</LargeButton>
             </LoginButton>
