@@ -6,6 +6,7 @@ import IDForgotPage from "./pages/IDForgotPage";
 import PWForgotPage from "./pages/PWForgotPage";
 import RegisterPage from "./pages/RegisterPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
+import AddItemPage from "./pages/AddItemPage";
 
 const App = () => {
   console.log("Render start");
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="pwforgot" element={<PWForgotPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
         <Route path="detail" element={<ItemDetailPage />}></Route>
+        <Route path="addItem" element={<AddItemPage />}></Route>
       </Routes>
     </>
   );
