@@ -14,6 +14,7 @@ const InputContainer = styled.input`
   outline: none;
 
   &::placeholder {
+    color: ${colors.mono[0]};
     font-family: "Noto Serif";
     font-size: 12px;
   }
@@ -26,6 +27,32 @@ const InputContainer = styled.input`
   &:focus {
     border-bottom: 2px solid ${colors.blue[0]};
   }
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 35px;
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+`;
+
+const Counter = styled.div`
+  float: right;
+  width: 50px;
+  height: 90%;
+  z-index: 99;
+
+  color: ${colors.mono[0]};
+  font-family: "Noto Serif";
+  font-size: 12px;
 `;
 
 export const Input = (props) => {
@@ -45,5 +72,33 @@ export const Input = (props) => {
       isRequired={isRequired}
       onChange={onChange}
     ></InputContainer>
+  );
+};
+
+export const LimitedInput = (props) => {
+  const { placeholder, name, isRequired = false, limit = 60 } = props;
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(0);
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+    if (e.target.value.length >= limit) {
+      setValue(e.target.value.substr(0, limit));
+    }
+    setCount(e.target.value.length);
+  };
+
+  return (
+    <Wrapper>
+      <InputContainer
+        type="text"
+        value={value}
+        placeholder={placeholder}
+        name={name}
+        isRequired={isRequired}
+        onChange={onChange}
+      ></InputContainer>
+      <Counter>{`${count}/${limit}`}</Counter>
+    </Wrapper>
   );
 };
