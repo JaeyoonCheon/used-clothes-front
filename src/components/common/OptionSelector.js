@@ -33,6 +33,7 @@ const OptionGroupContainer = styled.fieldset`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  padding: 0%;
 
   border: 0.3px solid ${colors.mono[1]};
   -ms-overflow-style: none;
@@ -44,6 +45,8 @@ const OptionGroupContainer = styled.fieldset`
 
 export const RadioOptionSelector = (props) => {
   const { categories, selectedId, onClick } = props;
+
+  console.log(selectedId);
 
   return (
     <OptionGroupContainer>
@@ -69,20 +72,12 @@ export const CategorySelector = (props) => {
   const [medium, setMedium] = useState(false);
   const [small, setSmall] = useState(false);
 
-  console.log(`${large} ${medium} ${small}`);
-
-  console.log(categoryData);
-
   const mediumCategoryData =
     large && categoryData.filter((category) => category.id === large)[0].child;
-
-  console.log(mediumCategoryData);
 
   const smallCategoryData =
     medium &&
     mediumCategoryData.filter((category) => category.id === medium)[0].child;
-
-  console.log(smallCategoryData);
 
   const onClickLarge = (id) => {
     setSmall(false);
@@ -104,7 +99,7 @@ export const CategorySelector = (props) => {
           <span>대분류</span>
           <RadioOptionSelector
             categories={categoryData}
-            selected={large}
+            selectedId={large}
             onClick={onClickLarge}
           ></RadioOptionSelector>
         </GroupWrapper>
@@ -112,7 +107,7 @@ export const CategorySelector = (props) => {
           <span>중분류</span>
           <RadioOptionSelector
             categories={mediumCategoryData}
-            selected={medium}
+            selectedId={medium}
             onClick={onClickMedium}
           ></RadioOptionSelector>
         </GroupWrapper>
@@ -120,7 +115,7 @@ export const CategorySelector = (props) => {
           <span>소분류</span>
           <RadioOptionSelector
             categories={smallCategoryData}
-            selected={small}
+            selectedId={small}
             onClick={onClickSmall}
           ></RadioOptionSelector>
         </GroupWrapper>

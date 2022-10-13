@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 import colors from "../../lib/styles/colors";
@@ -24,6 +24,7 @@ const RadiobuttonContainer = styled.label`
 
 const RadioGroupContainer = styled.fieldset`
   display: flex;
+
   border: none;
 `;
 
@@ -31,6 +32,7 @@ const RadioOptionContainer = styled.label`
   height: 40px;
   display: flex;
   align-items: center;
+  padding-left: 5px;
 
   font-family: "Nanum Gothic", "Noto Serif";
   font-style: normal;
@@ -38,6 +40,7 @@ const RadioOptionContainer = styled.label`
   font-size: 20px;
   color: black;
   background: white;
+  line-height: 40px;
 
   ${(props) =>
     props.selected &&
