@@ -109,37 +109,36 @@ const Category = () => {
       </div>
       {fold &&
         categoryData.map((large) => (
-          <CategorySubList key={large.largeId}>
+          <CategorySubList key={large.id}>
             <CategoryItem
               className={`largeItem ${
-                largeSelected === large.largeId ? "active" : ""
+                largeSelected === large.id ? "active" : ""
               }`}
-              onClick={() => onClickLarge(large.largeId)}
+              onClick={() => onClickLarge(large.id)}
             >
               {large.name}
             </CategoryItem>
-            {largeSelected === large.largeId &&
+            {largeSelected === large.id &&
               large.child.map((medium) => (
-                <CategorySubList key={medium.mediumId}>
+                <CategorySubList key={medium.id}>
                   <CategoryItem
                     className={`mediumItem ${
-                      largeSelected === large.largeId &&
-                      mediumSelected === medium.mediumId
+                      largeSelected === large.id && mediumSelected === medium.id
                         ? "active"
                         : ""
                     }`}
-                    onClick={() => onClickMedium(medium.mediumId)}
+                    onClick={() => onClickMedium(medium.id)}
                   >
                     {medium.name}
                   </CategoryItem>
-                  {mediumSelected === medium.mediumId &&
+                  {mediumSelected === medium.id &&
                     medium.child.map((small) => (
-                      <CategorySubList key={small.smallId}>
+                      <CategorySubList key={small.id}>
                         <CategoryItem
                           className={`smallItem ${
-                            smallSelected === small.smallId ? "active" : ""
+                            smallSelected === small.id ? "active" : ""
                           }`}
-                          onClick={() => onClickSmall(small.smallId)}
+                          onClick={() => onClickSmall(small.id)}
                         >
                           {small.name}
                         </CategoryItem>

@@ -14,7 +14,7 @@ const LargeButtonContainer = styled.div`
   border: ${(props) => props.border || "none"};
   border-radius: 10px;
   color: ${(props) => props.color || "white"};
-  font-family: "Noto Serif";
+  font-family: "Nanum Gothic", "Noto Serif";
   font-style: normal;
   font-size: 16px;
   line-height: 20px;
@@ -132,7 +132,7 @@ export const Button = (props) => {
     backgroundColor,
     color,
     border = false,
-    fontSize
+    fontSize,
   } = props;
   console.log(border);
   return (

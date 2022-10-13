@@ -6,12 +6,12 @@ const CardContainer = styled.div`
   margin-bottom: 40px;
 
   .itemname {
-    font-family: "Noto Sans KR";
+    font-family: "Nanum Gothic", "Noto Sans KR";
     font-weight: 100;
     font-size: 16px;
   }
   .itemprice {
-    font-family: "Noto Serif";
+    font-family: "Nanum Gothic", "Noto Serif";
     font-weight: 400;
     font-size: 20px;
   }

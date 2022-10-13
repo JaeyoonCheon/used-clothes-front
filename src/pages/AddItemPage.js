@@ -5,6 +5,8 @@ import colors from "../lib/styles/colors";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import { Input, LimitedInput } from "../components/common/Input";
+import { CategorySelector } from "../components/common/OptionSelector";
+import { categoryData } from "../lib/dummydata/dummydata";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -44,7 +46,7 @@ const AddItemPage = () => {
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>카테고리</ContentTitle>
-          <Input></Input>
+          <CategorySelector categoryData={categoryData}></CategorySelector>
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>옵션</ContentTitle>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import colors from "../../lib/styles/colors";
 
@@ -25,6 +25,30 @@ const RadiobuttonContainer = styled.label`
 const RadioGroupContainer = styled.fieldset`
   display: flex;
   border: none;
+`;
+
+const RadioOptionContainer = styled.label`
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  font-family: "Nanum Gothic", "Noto Serif";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  color: black;
+  background: white;
+
+  ${(props) =>
+    props.selected &&
+    css`
+      color: white;
+      background: ${colors.blue[0]};
+    `}
+
+  input[type=radio] {
+    display: none;
+  }
 `;
 
 export const RadioButton = (props) => {
@@ -53,5 +77,24 @@ export const RadioGroup = (props) => {
       {label && <legend>{label}</legend>}
       {children}
     </RadioGroupContainer>
+  );
+};
+
+export const RadioOption = (props) => {
+  const { children, id, selected, onClick } = props;
+
+  console.log(selected);
+
+  return (
+    <RadioOptionContainer selected={selected} onClick={() => onClick(id)}>
+      <input
+        className="radiobutton"
+        type="radio"
+        name={children}
+        value={children}
+        data-testid="radiobutton"
+      ></input>
+      {children}
+    </RadioOptionContainer>
   );
 };
