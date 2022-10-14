@@ -78,9 +78,23 @@ const ButtonContainer = styled.div`
   cursor: pointer;
 `;
 
+const SquareButtonContainer = styled.button`
+  width: 100px;
+  height: auto;
+
+  border: 0.3px solid ${colors.mono[1]};
+  font-family: "Noto Serif";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  color: ${colors.mono[0]};
+  background: white;
+
+  cursor: pointer;
+`;
+
 export const LargeButton = (props) => {
   const { children, icon, backgroundColor, color, border = false } = props;
-  console.log(border);
   return (
     <LargeButtonContainer
       backgroundColor={backgroundColor}
@@ -95,7 +109,6 @@ export const LargeButton = (props) => {
 
 export const MiddleButton = (props) => {
   const { children, icon, backgroundColor, color, border = false } = props;
-  console.log(border);
   return (
     <MiddleButtonContainer
       backgroundColor={backgroundColor}
@@ -110,7 +123,6 @@ export const MiddleButton = (props) => {
 
 export const SmallButton = (props) => {
   const { children, icon, backgroundColor, color, border = false } = props;
-  console.log(border);
   return (
     <SmallButtonContainer
       backgroundColor={backgroundColor}
@@ -134,7 +146,6 @@ export const Button = (props) => {
     border = false,
     fontSize,
   } = props;
-  console.log(border);
   return (
     <ButtonContainer
       backgroundColor={backgroundColor}
@@ -147,5 +158,13 @@ export const Button = (props) => {
       {icon !== undefined && icon}
       {children}
     </ButtonContainer>
+  );
+};
+
+export const SquareButton = (props) => {
+  const { onClick } = props;
+
+  return (
+    <SquareButtonContainer onClick={onClick}>더 보기 +</SquareButtonContainer>
   );
 };

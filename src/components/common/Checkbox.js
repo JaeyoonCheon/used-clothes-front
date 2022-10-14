@@ -51,11 +51,11 @@ const Checkbox = (props) => {
         className="checkbox"
         type="checkbox"
         data-testid="checkbox"
-        id="option"
+        id={checkboxLabel}
         checked={checked}
         onChange={onClick}
       ></input>
-      <label htmlFor="option" className="optionName">
+      <label htmlFor={checkboxLabel} className="optionName">
         {checkboxLabel}
       </label>
     </CheckboxContainer>

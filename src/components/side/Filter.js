@@ -43,7 +43,6 @@ const Filter = (props) => {
   const [checkedOptions, setCheckedOptions] = useState(new Set());
 
   const toggleCheckbox = (option) => {
-    console.log(checkedOptions);
     if (checkedOptions.has(option)) {
       const newCheckedOptions = new Set(checkedOptions);
       newCheckedOptions.delete(option);

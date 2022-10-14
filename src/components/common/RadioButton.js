@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import colors from "../../lib/styles/colors";
 
 const RadiobuttonContainer = styled.label`
-  width: 120px;
+  width: ${(props) => props.width};
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -24,6 +24,7 @@ const RadiobuttonContainer = styled.label`
 
 const RadioGroupContainer = styled.fieldset`
   display: flex;
+  padding: 0;
 
   border: none;
 `;
@@ -55,10 +56,10 @@ const RadioOptionContainer = styled.label`
 `;
 
 export const RadioButton = (props) => {
-  const { children, name, value, defaultChecked } = props;
+  const { children, name, value, width = `120px`, defaultChecked } = props;
 
   return (
-    <RadiobuttonContainer>
+    <RadiobuttonContainer width={width}>
       <input
         className="radiobutton"
         type="radio"
@@ -85,8 +86,6 @@ export const RadioGroup = (props) => {
 
 export const RadioOption = (props) => {
   const { children, id, selected, onClick } = props;
-
-  console.log(selected);
 
   return (
     <RadioOptionContainer selected={selected} onClick={() => onClick(id)}>
