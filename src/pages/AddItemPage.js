@@ -15,6 +15,7 @@ import {
 } from "../components/common/OptionSelector";
 import { categoryData, filterDatas } from "../lib/dummydata/dummydata";
 import { RadioGroup, RadioButton } from "../components/common/RadioButton";
+import ImageUploader from "../components/common/ImageUploader";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -68,6 +69,7 @@ const AddItemPage = () => {
       <Wrapper>
         <ContentWrapper>
           <ContentTitle>사진 등록</ContentTitle>
+          <ImageUploader></ImageUploader>
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>제목</ContentTitle>
