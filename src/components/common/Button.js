@@ -3,9 +3,7 @@ import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
 
-const LargeButtonContainer = styled.div`
-  width: 280px;
-  height: 50px;
+const ButtionContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,60 +20,24 @@ const LargeButtonContainer = styled.div`
   cursor: pointer;
 `;
 
-const MiddleButtonContainer = styled.div`
+const LargeButtonContainer = styled(ButtionContainer)`
+  width: 280px;
+  height: 50px;
+`;
+
+const MiddleButtonContainer = styled(ButtionContainer)`
   width: 120px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: ${(props) => props.backgroundColor || "white"};
-  border: ${(props) => props.border || "none"};
-  border-radius: 10px;
-  color: ${(props) => props.color || "white"};
-  font-family: "Noto Serif";
-  font-style: normal;
-  font-size: 12px;
-  line-height: 16px;
-
-  cursor: pointer;
 `;
 
-const SmallButtonContainer = styled.div`
+const SmallButtonContainer = styled(ButtionContainer)`
   width: 60px;
   height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: ${(props) => props.backgroundColor || "white"};
-  border: ${(props) => props.border || "none"};
-  border-radius: 15px;
-  color: ${(props) => props.color || "white"};
-  font-family: "Noto Serif";
-  font-style: normal;
-  font-size: 8px;
-  line-height: 20px;
-
-  cursor: pointer;
 `;
 
-const ButtonContainer = styled.div`
+const FreeSizeButtonContainer = styled(ButtionContainer)`
   width: ${(props) => `${props.width}px`};
   height: ${(props) => `${props.height}px`};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: ${(props) => props.backgroundColor || "white"};
-  border: ${(props) => props.border || "none"};
-  border-radius: 15px;
-  color: ${(props) => props.color || "white"};
-  font-family: "Noto Serif";
-  font-style: normal;
-  font-size: ${(props) => `${props.fontSize}px`};
-
-  cursor: pointer;
 `;
 
 const SquareButtonContainer = styled.button`
@@ -147,7 +109,7 @@ export const Button = (props) => {
     fontSize,
   } = props;
   return (
-    <ButtonContainer
+    <FreeSizeButtonContainer
       backgroundColor={backgroundColor}
       width={width}
       height={height}
@@ -157,7 +119,7 @@ export const Button = (props) => {
     >
       {icon !== undefined && icon}
       {children}
-    </ButtonContainer>
+    </FreeSizeButtonContainer>
   );
 };
 
