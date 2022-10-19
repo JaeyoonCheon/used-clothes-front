@@ -4,7 +4,7 @@ import styled from "styled-components";
 import colors from "../../lib/styles/colors";
 
 const InputContainer = styled.input`
-  width: ${(props) => props.width || "inherit"};
+  width: ${(props) => props.width || "100%"};
   height: 25px;
   padding: 0;
   margin-top: 10px;
