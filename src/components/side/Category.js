@@ -42,7 +42,6 @@ const CategorySubList = styled.div`
 `;
 
 const CategoryItem = styled.div`
-  font-family: "Noto Serif";
   font-weight: 200;
   font-size: 14px;
   margin: 5px 0 10px 0;

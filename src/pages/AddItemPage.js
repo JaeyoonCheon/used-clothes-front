@@ -44,15 +44,6 @@ const ContentRowWrapper = styled.div`
 `;
 
 const ContentTitle = styled.h2`
-  @font-face {
-    font-family: "SDSamliphopangche_Outline";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 300;
   font-size: 32px;

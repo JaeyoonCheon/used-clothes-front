@@ -23,7 +23,6 @@ const PaginationButtonContainer = styled.li`
     justify-items: center;
     padding: 0;
     margin-left: 20px;
-    font-family: "Noto Sans KR";
     font-weight: 400;
     font-size: 20px;
 

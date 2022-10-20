@@ -15,7 +15,6 @@ const InputContainer = styled.input`
 
   &::placeholder {
     color: ${colors.mono[0]};
-    font-family: "Noto Serif";
     font-size: 12px;
   }
 
@@ -49,7 +48,6 @@ const Counter = styled.div`
   z-index: 99;
 
   color: ${colors.mono[0]};
-  font-family: "Noto Serif";
   font-size: 12px;
   text-align: right;
 `;
@@ -68,7 +66,6 @@ const TextContainer = styled.textarea`
 
   &::placeholder {
     color: ${colors.mono[0]};
-    font-family: "Noto Serif";
     font-size: 12px;
   }
 

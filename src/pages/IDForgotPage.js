@@ -58,7 +58,6 @@ const TelecomContainer = styled.div`
 
   .telecomTitle {
     margin-right: 10px;
-    font-family: "Noto Serif";
     font-size: 12px;
     color: ${colors.mono[0]};
   }

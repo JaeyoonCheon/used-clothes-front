@@ -35,7 +35,6 @@ const RadioOptionContainer = styled.label`
   align-items: center;
   padding-left: 5px;
 
-  font-family: "Nanum Gothic", "Noto Serif";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;

@@ -33,7 +33,6 @@ const NavBar = styled.div`
   align-items: baseline;
 
   .location {
-    font-family: "Noto Serif";
     font-weight: 100;
     font-size: 20px;
   }
@@ -42,7 +41,6 @@ const NavBar = styled.div`
 
     span {
       color: ${colors.mono[0]};
-      font-family: "Noto Serif";
       font-weight: 100;
       font-size: 14px;
 

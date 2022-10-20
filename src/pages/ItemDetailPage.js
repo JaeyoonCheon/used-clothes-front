@@ -47,7 +47,6 @@ const ItemTitle = styled.h2`
   margin: 0;
   margin-bottom: 30px;
 
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 100;
   font-size: 32px;
@@ -60,7 +59,6 @@ const ItemPriceContainer = styled.div`
 `;
 
 const ItemPrice = styled.div`
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 300;
   font-size: 36px;
@@ -68,7 +66,6 @@ const ItemPrice = styled.div`
 `;
 
 const DeliveryFee = styled.div`
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -80,7 +77,6 @@ const Stars = styled.div`
   width: fit-content;
   margin-left: auto;
 
-  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -102,7 +98,6 @@ const ItemClassContainer = styled.div`
 const ItemCategories = styled.div`
   margin-bottom: 15px;
 
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 100;
   font-size: 20px;
@@ -115,7 +110,6 @@ const ItemOptionContainer = styled.div`
 `;
 
 const ItemOptionTitle = styled.div`
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 100;
   font-size: 16px;
@@ -134,7 +128,6 @@ const ItemOptionList = styled.ul`
   .itemOption {
     margin-left: 10px;
 
-    font-family: "Noto Serif";
     font-style: normal;
     font-weight: 100;
     font-size: 16px;
@@ -168,14 +161,12 @@ const SellerIcon = styled.div`
 
 const SellerDetail = styled.div`
   .sellerName {
-    font-family: "Noto Serif";
     font-style: normal;
     font-weight: 100;
     font-size: 20px;
     line-height: 27px;
   }
   .sellerItems {
-    font-family: "Noto Serif";
     font-style: normal;
     font-weight: 100;
     font-size: 12px;
@@ -185,7 +176,6 @@ const SellerDetail = styled.div`
 `;
 
 const SellerPlace = styled.div`
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 100;
   font-size: 16px;

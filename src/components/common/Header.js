@@ -9,7 +9,6 @@ const HeaderBox = styled.div`
   position: fixed;
   width: 100%;
   background-color: white;
-  font-family: "Noto Serif";
   border-bottom: 0.3px solid ${colors.mono[1]};
   z-index: 99;
 `;

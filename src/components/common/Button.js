@@ -12,7 +12,6 @@ const ButtionContainer = styled.button`
   border: ${(props) => props.border || "none"};
   border-radius: 20px;
   color: ${(props) => props.color || "white"};
-  font-family: "Nanum Gothic", "Noto Serif";
   font-style: normal;
   font-size: 16px;
   line-height: 20px;
@@ -45,7 +44,6 @@ const SquareButtonContainer = styled.button`
   height: auto;
 
   border: 0.3px solid ${colors.mono[1]};
-  font-family: "Noto Serif";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
