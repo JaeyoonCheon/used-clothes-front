@@ -276,7 +276,7 @@ const ItemDetailPage = () => {
                   backgroundColor={colors.mono[0]}
                   fontSize={20}
                 >
-                  관심목록
+                  관심목록 추가
                 </Button>
                 <Button
                   width={180}

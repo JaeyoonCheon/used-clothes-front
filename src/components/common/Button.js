@@ -10,7 +10,7 @@ const ButtionContainer = styled.button`
 
   background: ${(props) => props.backgroundColor || "white"};
   border: ${(props) => props.border || "none"};
-  border-radius: 10px;
+  border-radius: 20px;
   color: ${(props) => props.color || "white"};
   font-family: "Nanum Gothic", "Noto Serif";
   font-style: normal;
@@ -26,8 +26,8 @@ const LargeButtonContainer = styled(ButtionContainer)`
 `;
 
 const MiddleButtonContainer = styled(ButtionContainer)`
-  width: 120px;
-  height: 40px;
+  width: 180px;
+  height: 60px;
 `;
 
 const SmallButtonContainer = styled(ButtionContainer)`

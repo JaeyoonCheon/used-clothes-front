@@ -4,6 +4,7 @@ import styled from "styled-components";
 import colors from "../lib/styles/colors";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
+import { MiddleButton } from "../components/common/Button";
 import {
   Input,
   LimitedInput,
@@ -60,6 +61,11 @@ const ContentTitle = styled.h2`
 
 const ConfirmButtonWrapper = styled.div`
   display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 40px;
+  }
 `;
 
 const AddItemPage = () => {
@@ -119,6 +125,16 @@ const AddItemPage = () => {
             isRequired={true}
             limit={2000}
           ></LimitedTextarea>
+        </ContentWrapper>
+        <ContentWrapper>
+          <ConfirmButtonWrapper>
+            <MiddleButton backgroundColor={colors.mono[0]}>
+              취소하기
+            </MiddleButton>
+            <MiddleButton backgroundColor={colors.blue[0]}>
+              등록하기
+            </MiddleButton>
+          </ConfirmButtonWrapper>
         </ContentWrapper>
       </Wrapper>
       <Footer></Footer>

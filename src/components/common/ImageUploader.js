@@ -16,6 +16,13 @@ const UploadedImageContainer = styled.div`
     height: 280px;
     object-fit: cover;
   }
+  label {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  input {
+    display: none;
+  }
 `;
 const ImageNumber = styled.span`
   width: 30px;
@@ -78,13 +85,19 @@ const ImageUploader = () => {
 
   return (
     <Wrapper>
-      <input
-        type="file"
-        multiple
-        accept="image/*"
-        ref={imgRef}
-        onChange={uploadFiles}
-      ></input>
+      <UploadedImageContainer>
+        <label for="file">
+          <img src="add-2935429.svg" alt="add"></img>
+        </label>
+        <input
+          type="file"
+          multiple
+          id="file"
+          accept="image/*"
+          ref={imgRef}
+          onChange={uploadFiles}
+        ></input>
+      </UploadedImageContainer>
       {uploadedFiles && makePreview()}
     </Wrapper>
   );
