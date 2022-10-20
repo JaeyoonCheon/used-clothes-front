@@ -17,7 +17,7 @@ const App = () => {
         <Route path="idforgot" element={<IDForgotPage />}></Route>
         <Route path="pwforgot" element={<PWForgotPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
-        <Route path="detail" element={<ItemDetailPage />}></Route>
+        <Route path="product/:id/*" element={<ItemDetailPage />}></Route>
         <Route path="addItem" element={<AddItemPage />}></Route>
       </Routes>
     </>

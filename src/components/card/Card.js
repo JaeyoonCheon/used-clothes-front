@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const CardContainer = styled.div`
   height: 240px;
-  margin-bottom: 40px;
 
   .itemname {
     font-weight: 100;

@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
 import colors from "../lib/styles/colors";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import { MiddleButton, LargeButton, Button } from "../components/common/Button";
+import { itemDetailInfos } from "../lib/dummydata/dummydata";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -87,6 +89,7 @@ const Stars = styled.div`
     display: inline-block;
     width: 20px;
     height: 20px;
+    fill: ${colors.blue[0]};
   }
 `;
 
@@ -123,15 +126,14 @@ const ItemOptionList = styled.ul`
   padding: 0;
 
   list-style: none;
-  display: flex;
 
   .itemOption {
     margin-left: 10px;
 
     font-style: normal;
-    font-weight: 100;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
     color: ${colors.mono[0]};
   }
 `;
@@ -195,6 +197,35 @@ const ItemDescription = styled.p`
 `;
 
 const ItemDetailPage = () => {
+  const params = useParams();
+  const { paramsId } = params;
+
+  // 비동기로 구현해야하는 부분이나, 더미데이터로 우선 동작 구현
+  const gotItem = itemDetailInfos;
+
+  const {
+    id,
+    itemimage,
+    itemname,
+    itemprice,
+    category,
+    options,
+    seller,
+    descriptions,
+  } = gotItem;
+
+  const { large, medium, small } = category;
+  const {
+    colors: itemColors,
+    brand,
+    textiles,
+    pollution,
+    size: itemsize,
+  } = options;
+  const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
+
+  console.log(itemColors);
+
   return (
     <>
       <Header></Header>
@@ -213,19 +244,19 @@ const ItemDetailPage = () => {
           </div>
           <ItemSummaryContainer>
             <ImageContainer>
-              <img
-                src={faker.image.abstract(580, 580)}
-                className="itemImage"
-                alt="itemDetail"
-              ></img>
+              <img src={itemimage} className="itemImage" alt="itemDetail"></img>
             </ImageContainer>
             <ItemInfoContainer>
-              <ItemTitle>상품 명</ItemTitle>
+              <ItemTitle>{itemname}</ItemTitle>
               <ItemPriceContainer>
-                <ItemPrice>10000원</ItemPrice>
+                <ItemPrice>{itemprice}원</ItemPrice>
                 <DeliveryFee>배송비 포함</DeliveryFee>
                 <Stars>
-                  <img className="starIcon" src="star.png" alt="star" />
+                  <img
+                    className="starIcon"
+                    src={process.env.PUBLIC_URL + "/star.png"}
+                    alt="star"
+                  />
                   <span>10</span>
                 </Stars>
               </ItemPriceContainer>
@@ -234,11 +265,13 @@ const ItemDetailPage = () => {
                 <ItemOptionContainer>
                   <ItemOptionTitle>옵션</ItemOptionTitle>
                   <ItemOptionList>
-                    <li className="itemOption">색상: 블랙</li>
-                    <span className="itemOption"> /</span>
-                    <li className="itemOption">브랜드: 브랜드1</li>
-                    <span className="itemOption"> /</span>
-                    <li className="itemOption">사이즈: M</li>
+                    <li className="itemOption">
+                      색상: {itemColors.join(", ")}
+                    </li>
+                    <li className="itemOption">브랜드: {brand}</li>
+                    <li className="itemOption">사이즈: {itemsize}</li>
+                    <li className="itemOption">재질: {textiles}</li>
+                    <li className="itemOption">사용감: {pollution}</li>
                   </ItemOptionList>
                 </ItemOptionContainer>
               </ItemClassContainer>
@@ -252,11 +285,13 @@ const ItemDetailPage = () => {
                     />
                   </SellerIcon>
                   <SellerDetail>
-                    <div className="sellerName">판매자 1</div>
-                    <div className="sellerItems">등록한 상품: 10개</div>
+                    <div className="sellerName">{sellerName}</div>
+                    <div className="sellerItems">
+                      등록한 상품: {sellingItems}개
+                    </div>
                   </SellerDetail>
                 </SellerInfo>
-                <SellerPlace>지역 : 대구광역시</SellerPlace>
+                <SellerPlace>지역 : {currentLocation}</SellerPlace>
               </SellerInfoContainer>
               <hr />
               <NavButtonContainer>
@@ -279,7 +314,7 @@ const ItemDetailPage = () => {
               </NavButtonContainer>
             </ItemInfoContainer>
           </ItemSummaryContainer>
-          <ItemDescription>{faker.lorem.paragraphs(20)}</ItemDescription>
+          <ItemDescription>{descriptions}</ItemDescription>
         </ItemDetailContainer>
       </Wrapper>
       <Footer></Footer>

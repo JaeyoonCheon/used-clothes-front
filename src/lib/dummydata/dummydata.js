@@ -118,6 +118,7 @@ export const itemDetailInfos = {
   },
   options: {
     colors: ["화이트", "블루"],
+    brand: "브랜드1",
     textiles: ["면", "실크"],
     pollution: "미사용",
     size: "M",
