@@ -7,7 +7,7 @@ import colors from "../lib/styles/colors";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import { MiddleButton, LargeButton, Button } from "../components/common/Button";
-import { itemDetailInfos } from "../lib/dummydata/dummydata";
+import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -213,7 +213,6 @@ const ItemDetailPage = () => {
     seller,
     descriptions,
   } = gotItem;
-
   const { large, medium, small } = category;
   const {
     colors: itemColors,
@@ -223,8 +222,6 @@ const ItemDetailPage = () => {
     size: itemsize,
   } = options;
   const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
-
-  console.log(itemColors);
 
   return (
     <>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import colors from "../lib/styles/colors";
 import { Input } from "../components/common/Input";
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
   background: ${colors.mono[1]};
 `;
 
-const ForgotContainer = styled.div`
+const RegisterContainer = styled.div`
   width: 400px;
   height: 600px;
   display: flex;
@@ -35,7 +36,7 @@ const Spacer = styled.div`
   height: 100px;
 `;
 
-const ForgotFormContainer = styled.form`
+const RegisterFormContainer = styled.form`
   width: 280px;
   height: 400px;
   display: flex;
@@ -52,24 +53,91 @@ const ForgotFormContainer = styled.form`
 `;
 
 const RegisterPage = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const onSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      try {
+        await axios
+          // 라우팅 경로 상수화 필요
+          .post("/user/create", {
+            email: email,
+            password: password,
+            name: username,
+            phone: phoneNumber,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              console.log("Register OK");
+            }
+          });
+      } catch (error) {
+        console.log(`${error} occured!`);
+      }
+    },
+    [email, password, username, phoneNumber]
+  );
+
+  const onChangeUsername = (e) => {
+    setUsername(e.target.value);
+  };
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const onChangePasswordConfirm = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+  const onChangePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
   return (
     <Wrapper>
-      <ForgotContainer>
+      <RegisterContainer>
         <Spacer></Spacer>
-        <ForgotFormContainer>
-          <Input placeholder="* 이름" isRequired={true}></Input>
-          <Input placeholder="* 이메일"></Input>
+        <RegisterFormContainer onSubmit={onSubmit}>
+          <Input
+            placeholder="이름"
+            value={username}
+            onChange={onChangeUsername}
+          ></Input>
+          <Input
+            placeholder="이메일"
+            value={email}
+            onChange={onChangeEmail}
+          ></Input>
           <div className="redundancyCheck">
             <SmallButton backgroundColor={colors.blue[0]}>중복체크</SmallButton>
           </div>
-          <Input placeholder="* 비밀번호"></Input>
-          <Input placeholder="* 비밀번호 확인"></Input>
-          <Input placeholder="* 전화번호"></Input>
+          <Input
+            placeholder="비밀번호"
+            value={password}
+            onChange={onChangePassword}
+          ></Input>
+          <Input
+            placeholder="비밀번호 확인"
+            value={passwordConfirm}
+            onChange={onChangePasswordConfirm}
+          ></Input>
+          <Input
+            placeholder="전화번호"
+            value={phoneNumber}
+            onChange={onChangePhoneNumber}
+          ></Input>
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>회원가입</LargeButton>
           </div>
-        </ForgotFormContainer>
-      </ForgotContainer>
+        </RegisterFormContainer>
+      </RegisterContainer>
     </Wrapper>
   );
 };

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import colors from "../../lib/styles/colors";
 
 const InputContainer = styled.input`
-  width: ${(props) => props.width || "100%"};
+  width: 100%;
   height: 25px;
   padding: 0;
   margin-top: 10px;
@@ -80,12 +80,7 @@ const TextContainer = styled.textarea`
 `;
 
 export const Input = (props) => {
-  const { placeholder, name, width = false, isRequired = false } = props;
-  const [value, setValue] = useState("");
-
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
+  const { placeholder, name, value, onChange, isRequired = false } = props;
 
   return (
     <>
@@ -94,7 +89,6 @@ export const Input = (props) => {
         value={value}
         placeholder={placeholder}
         name={name}
-        width={width}
         isRequired={isRequired}
         onChange={onChange}
       ></InputContainer>
