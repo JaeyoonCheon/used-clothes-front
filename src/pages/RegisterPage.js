@@ -74,16 +74,21 @@ const RegisterPage = () => {
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
+      const noHyphenPhoneNumber = phoneNumber.replace(/-/g, "");
 
       try {
         await axios
           // 라우팅 경로 상수화 필요
-          .post("/user/create", {
-            email: email,
-            password: password,
-            name: username,
-            phone: phoneNumber,
-          })
+          .post(
+            "http://118.67.142.10/user/create",
+            {
+              email: email,
+              password: password,
+              name: username,
+              phone: noHyphenPhoneNumber,
+            },
+            { withCredentials: true }
+          )
           .then((res) => {
             if (res.status === 200) {
               console.log("Register OK");
@@ -97,7 +102,8 @@ const RegisterPage = () => {
   );
 
   const onChangeUsername = useCallback((e) => {
-    const regex = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]$/;
+    console.log(e.target.value);
+    const regex = /[가-힣]/;
     setUsername(e.target.value);
 
     if (regex.test(e.target.value)) {
@@ -114,7 +120,7 @@ const RegisterPage = () => {
     }
   }, []);
 
-  const onChangeEmail = (e) => {
+  const onChangeEmail = useCallback((e) => {
     const regex =
       /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     setEmail(e.target.value);
@@ -126,23 +132,22 @@ const RegisterPage = () => {
       setValidEmail(false);
       setEmailMessage("올바르지 않은 이메일 형식입니다");
     }
-  };
-
-  const onChangePassword = (e) => {
+  }, []);
+  const onChangePassword = useCallback((e) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,30}$/;
     setPassword(e.target.value);
 
     if (regex.test(e.target.value)) {
-      setValidEmail(true);
+      setValidPassword(true);
       setPasswordMessage("");
     } else {
-      setValidEmail(false);
+      setValidPassword(false);
       setPasswordMessage(
         "비밀번호는 8~30자리의 숫자, 영문자, 특수문자 조합으로 구성되어야 합니다"
       );
     }
-  };
-  const onChangePasswordConfirm = (e) => {
+  }, []);
+  const onChangePasswordConfirm = useCallback((e) => {
     setPasswordConfirm(e.target.value);
 
     if (e.target.value === password) {
@@ -152,15 +157,15 @@ const RegisterPage = () => {
       setValidPasswordConfirm(false);
       setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
     }
-  };
-  const onChangePhoneNumber = (e) => {
-    const autoHyphen = (number) => {
+  }, []);
+  const onChangePhoneNumber = useCallback((e) => {
+    const setAutoHyphen = (number) => {
       return number
         .replace(/[^0-9]/g, "")
         .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
     };
-    setPhoneNumber(autoHyphen(e.target.value));
-  };
+    setPhoneNumber(setAutoHyphen(e.target.value));
+  }, []);
 
   return (
     <Wrapper>
