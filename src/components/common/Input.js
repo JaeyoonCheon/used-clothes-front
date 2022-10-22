@@ -80,12 +80,19 @@ const TextContainer = styled.textarea`
 `;
 
 export const Input = (props) => {
-  const { placeholder, name, value, onChange, isRequired = false } = props;
+  const {
+    placeholder,
+    name,
+    value,
+    isPassword = false,
+    onChange,
+    isRequired = false,
+  } = props;
 
   return (
     <>
       <InputContainer
-        type="text"
+        type={isPassword ? "password" : "text"}
         value={value}
         placeholder={placeholder}
         name={name}

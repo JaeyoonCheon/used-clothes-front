@@ -147,17 +147,20 @@ const RegisterPage = () => {
       );
     }
   }, []);
-  const onChangePasswordConfirm = useCallback((e) => {
-    setPasswordConfirm(e.target.value);
+  const onChangePasswordConfirm = useCallback(
+    (e) => {
+      setPasswordConfirm(e.target.value);
 
-    if (e.target.value === password) {
-      setValidPasswordConfirm(true);
-      setPasswordConfirmMessage("");
-    } else {
-      setValidPasswordConfirm(false);
-      setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
-    }
-  }, []);
+      if (e.target.value === password) {
+        setValidPasswordConfirm(true);
+        setPasswordConfirmMessage("");
+      } else {
+        setValidPasswordConfirm(false);
+        setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
+      }
+    },
+    [password]
+  );
   const onChangePhoneNumber = useCallback((e) => {
     const setAutoHyphen = (number) => {
       return number
@@ -190,12 +193,14 @@ const RegisterPage = () => {
           <Input
             placeholder="비밀번호"
             value={password}
+            isPassword={true}
             onChange={onChangePassword}
           ></Input>
           {!validpassword && <div>{passwordMessage}</div>}
           <Input
             placeholder="비밀번호 확인"
             value={passwordConfirm}
+            isPassword={true}
             onChange={onChangePasswordConfirm}
           ></Input>
           {!validpasswordConfirm && <div>{passwordConfirmMessage}</div>}
