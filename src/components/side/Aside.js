@@ -14,7 +14,8 @@ const AsideContainer = styled.div`
   flex-direction: column;
 `;
 
-const Aside = () => {
+const Aside = (props) => {
+  const { options, setOptions } = props;
   const [modalState, setModalState] = useState({ index: -1 });
 
   return (
