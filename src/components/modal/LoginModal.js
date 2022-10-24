@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
 import { Input } from "../common/Input";
+import useInput from "../../hooks/useInput";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -90,6 +91,8 @@ const SocialLoginFeature = styled.div`
 
 const LoginModal = (props) => {
   const { setisModalOpen } = props;
+  const [email, onChangeEmail] = useInput("");
+  const [password, onChangePassword] = useInput("");
 
   const onClick = () => {
     setisModalOpen(false);
@@ -111,8 +114,19 @@ const LoginModal = (props) => {
         <LogoContainer></LogoContainer>
         <FeatureContainer>
           <LoginFeature>
-            <Input placeholder={"이메일"} name={"이메일"}></Input>
-            <Input placeholder={"비밀번호"} name={"비밀번호"}></Input>
+            <Input
+              placeholder="이메일"
+              name="email"
+              value={email}
+              onChange={onChangeEmail}
+            ></Input>
+            <Input
+              placeholder="비밀번호"
+              name="password"
+              value={password}
+              isPassword={true}
+              onChange={onChangePassword}
+            ></Input>
             <LoginButton>
               <LargeButton backgroundColor={colors.blue[0]}>로그인</LargeButton>
             </LoginButton>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import colors from "../lib/styles/colors";
 import { Input } from "../components/common/Input";
@@ -19,7 +20,7 @@ const Wrapper = styled.div`
   background: ${colors.mono[1]};
 `;
 
-const ForgotContainer = styled.div`
+const RegisterContainer = styled.div`
   width: 400px;
   height: 600px;
   display: flex;
@@ -35,7 +36,7 @@ const Spacer = styled.div`
   height: 100px;
 `;
 
-const ForgotFormContainer = styled.form`
+const RegisterFormContainer = styled.form`
   width: 280px;
   height: 400px;
   display: flex;
@@ -52,24 +53,168 @@ const ForgotFormContainer = styled.form`
 `;
 
 const RegisterPage = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [usernameMessage, setUsernameMessage] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
+  const [phoneNumberMessage, setPhoneNumberMessage] = useState("");
+
+  const [validUsername, setValidUsername] = useState(false);
+  const [validemail, setValidEmail] = useState(false);
+  const [validpassword, setValidPassword] = useState(false);
+  const [validpasswordConfirm, setValidPasswordConfirm] = useState(false);
+  const [validphoneNumber, setValidPhoneNumber] = useState(false);
+
+  const onSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const noHyphenPhoneNumber = phoneNumber.replace(/-/g, "");
+
+      try {
+        await axios
+          // 라우팅 경로 상수화 필요
+          .post(
+            "http://118.67.142.10/user/create",
+            {
+              email: email,
+              password: password,
+              name: username,
+              phone: noHyphenPhoneNumber,
+            },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              console.log("Register OK");
+            }
+          });
+      } catch (error) {
+        console.log(`${error} occured!`);
+      }
+    },
+    [email, password, username, phoneNumber]
+  );
+
+  const onChangeUsername = useCallback((e) => {
+    console.log(e.target.value);
+    const regex = /[가-힣]/;
+    setUsername(e.target.value);
+
+    if (regex.test(e.target.value)) {
+      if (e.target.value.length >= 2 && e.target.value.length <= 10) {
+        setValidUsername(true);
+        setUsernameMessage("");
+      } else {
+        setValidUsername(false);
+        setUsernameMessage("2자 이상 10자 이하로 입력해 주세요");
+      }
+    } else {
+      setValidUsername(false);
+      setUsernameMessage("이름은 한글로 입력되어야 합니다");
+    }
+  }, []);
+
+  const onChangeEmail = useCallback((e) => {
+    const regex =
+      /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+    setEmail(e.target.value);
+
+    if (regex.test(e.target.value)) {
+      setValidEmail(true);
+      setEmailMessage("");
+    } else {
+      setValidEmail(false);
+      setEmailMessage("올바르지 않은 이메일 형식입니다");
+    }
+  }, []);
+  const onChangePassword = useCallback((e) => {
+    const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,30}$/;
+    setPassword(e.target.value);
+
+    if (regex.test(e.target.value)) {
+      setValidPassword(true);
+      setPasswordMessage("");
+    } else {
+      setValidPassword(false);
+      setPasswordMessage(
+        "비밀번호는 8~30자리의 숫자, 영문자, 특수문자 조합으로 구성되어야 합니다"
+      );
+    }
+  }, []);
+  const onChangePasswordConfirm = useCallback(
+    (e) => {
+      setPasswordConfirm(e.target.value);
+
+      if (e.target.value === password) {
+        setValidPasswordConfirm(true);
+        setPasswordConfirmMessage("");
+      } else {
+        setValidPasswordConfirm(false);
+        setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
+      }
+    },
+    [password]
+  );
+  const onChangePhoneNumber = useCallback((e) => {
+    const setAutoHyphen = (number) => {
+      return number
+        .replace(/[^0-9]/g, "")
+        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+    };
+    setPhoneNumber(setAutoHyphen(e.target.value));
+  }, []);
+
   return (
     <Wrapper>
-      <ForgotContainer>
+      <RegisterContainer>
         <Spacer></Spacer>
-        <ForgotFormContainer>
-          <Input placeholder="* 이름" isRequired={true}></Input>
-          <Input placeholder="* 이메일"></Input>
+        <RegisterFormContainer onSubmit={onSubmit}>
+          <Input
+            placeholder="이름"
+            value={username}
+            onChange={onChangeUsername}
+          ></Input>
+          {!validUsername && <div>{usernameMessage}</div>}
+          <Input
+            placeholder="이메일"
+            value={email}
+            onChange={onChangeEmail}
+          ></Input>
+          {!validemail && <div>{emailMessage}</div>}
           <div className="redundancyCheck">
             <SmallButton backgroundColor={colors.blue[0]}>중복체크</SmallButton>
           </div>
-          <Input placeholder="* 비밀번호"></Input>
-          <Input placeholder="* 비밀번호 확인"></Input>
-          <Input placeholder="* 전화번호"></Input>
+          <Input
+            placeholder="비밀번호"
+            value={password}
+            isPassword={true}
+            onChange={onChangePassword}
+          ></Input>
+          {!validpassword && <div>{passwordMessage}</div>}
+          <Input
+            placeholder="비밀번호 확인"
+            value={passwordConfirm}
+            isPassword={true}
+            onChange={onChangePasswordConfirm}
+          ></Input>
+          {!validpasswordConfirm && <div>{passwordConfirmMessage}</div>}
+          <Input
+            placeholder="휴대폰 번호"
+            value={phoneNumber}
+            onChange={onChangePhoneNumber}
+          ></Input>
+          {!validphoneNumber && <div>{phoneNumberMessage}</div>}
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>회원가입</LargeButton>
           </div>
-        </ForgotFormContainer>
-      </ForgotContainer>
+        </RegisterFormContainer>
+      </RegisterContainer>
     </Wrapper>
   );
 };

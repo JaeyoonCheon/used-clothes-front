@@ -65,13 +65,23 @@ const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거
 const HomePage = () => {
   const [sortOption, setSortOption] = useState("최신 순");
   const [currentPage, setCurrentPage] = useState(1);
+  const [options, setOptions] = useState({
+    minPrice: 0,
+    maxPrice: Infinity,
+    condition: "",
+    deliveryFee: 0,
+    brandId: [],
+    purchasePlaceId: [],
+    color: "",
+    material: [],
+  });
 
   return (
     <>
       <Header></Header>
       <HeaderSpacer></HeaderSpacer>
       <HomePageContainer>
-        <Aside></Aside>
+        <Aside options={options} setOptions={setOptions}></Aside>
         <ContentContainer>
           <NavBar>
             <span>{location}</span>
