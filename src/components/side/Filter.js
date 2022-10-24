@@ -91,3 +91,59 @@ const Filter = (props) => {
 };
 
 export default Filter;
+
+export const CheckboxFilter = (props) => {
+  const { idx, name, types, modalState, setModalState } = props;
+
+  const representativeTypes = [...types].splice(0, 4);
+
+  const [currentPos, setCurrentPos] = useState([]);
+  const [checkedTypes, setCheckedTypes] = useState(new Set());
+
+  const toggleCheckbox = (type) => {
+    if (checkedTypes.has(type)) {
+      const newCheckedTypes = new Set(checkedTypes);
+      newCheckedTypes.delete(type);
+      setCheckedTypes(newCheckedTypes);
+    } else {
+      const newCheckedTypes = new Set(checkedTypes);
+      newCheckedTypes.add(type);
+      setCheckedTypes(newCheckedTypes);
+    }
+  };
+
+  return (
+    <FilterContainer>
+      <div className="filter-header">
+        <div>{name}</div>
+        <BsPlusSquare
+          className="filterModalButton"
+          onClick={(e) => {
+            const pos = [e.pageX, e.pageY];
+            setCurrentPos(pos);
+            setModalState({ ...modalState, index: idx });
+          }}
+        ></BsPlusSquare>
+      </div>
+      <CheckboxList>
+        {representativeTypes.map((type) => (
+          <Checkbox
+            key={type}
+            checkboxLabel={type}
+            checkedOptions={checkedTypes}
+            toggleCheckbox={toggleCheckbox}
+          ></Checkbox>
+        ))}
+      </CheckboxList>
+      {modalState.index === idx && (
+        <FilterModal
+          options={types}
+          position={currentPos}
+          setModalState={setModalState}
+          checkedOptions={checkedTypes}
+          toggleCheckbox={toggleCheckbox}
+        ></FilterModal>
+      )}
+    </FilterContainer>
+  );
+};

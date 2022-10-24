@@ -89,20 +89,29 @@ export const categoryData = [
 
 export const filterDatas = [
   {
+    typeCode: "color_code",
     name: "색상",
-    options: ["화이트", "블랙", "그레이", "브라운", "레드", "블루", "실버"],
+    types: ["화이트", "블랙", "그레이", "브라운", "레드", "블루", "실버"],
   },
   {
+    typeCode: "material",
     name: "소재",
-    options: ["면", "데님", "가죽", "실크", "폴리에스테르", "레이온", "기모"],
+    types: ["면", "데님", "가죽", "실크", "폴리에스테르", "레이온", "기모"],
   },
   {
+    typeCode: "condition",
     name: "오염도",
-    options: ["미사용", "매우양호", "사용감 있음", "사용감 많음"],
+    types: ["미사용", "매우양호", "사용감 있음", "사용감 많음"],
   },
   {
+    typeCode: "size",
     name: "사이즈",
-    options: ["S", "M", "L", "XL", "XXS", "XS", "XXL"],
+    types: ["S", "M", "L", "XL", "XXS", "XS", "XXL"],
+  },
+  {
+    typeCode: "brand",
+    name: "브랜드",
+    types: ["brand_1", "brand_2", "brand_4", "brand_5", "brand_6"],
   },
 ];
 

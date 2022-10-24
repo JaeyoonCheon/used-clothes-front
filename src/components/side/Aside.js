@@ -5,6 +5,7 @@ import Category from "./Category";
 import Filter from "./Filter";
 
 import { filterDatas } from "../../lib/dummydata/dummydata";
+import FilterList from "./FilterList";
 
 const AsideContainer = styled.div`
   width: 180px;
@@ -16,20 +17,11 @@ const AsideContainer = styled.div`
 
 const Aside = (props) => {
   const { options, setOptions } = props;
-  const [modalState, setModalState] = useState({ index: -1 });
 
   return (
     <AsideContainer>
       <Category></Category>
-      {filterDatas.map((filterData, i) => (
-        <Filter
-          key={i}
-          idx={i}
-          filteringData={filterData}
-          modalState={modalState}
-          setModalState={setModalState}
-        ></Filter>
-      ))}
+      <FilterList options={options} setOptions={setOptions}></FilterList>
     </AsideContainer>
   );
 };
