@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios, { Axios } from "axios";
+import qs from "qs";
 
 import colors from "../lib/styles/colors";
 
@@ -68,13 +70,34 @@ const HomePage = () => {
   const [options, setOptions] = useState({
     minPrice: 0,
     maxPrice: Infinity,
-    condition: "",
+    condition: [],
     deliveryFee: 0,
-    brandId: [],
+    brand: [],
     purchasePlaceId: [],
-    color: "",
+    color_code: [],
     material: [],
   });
+  const [products, setProducts] = useState([]);
+
+  console.log(options);
+
+  useEffect(() => {
+    const query = qs.stringify(options, { delimiter: "," });
+
+    async function fetchProducts() {
+      try {
+        const response = await axios.get(
+          `http://118.67.142.10/clothe/list?filters=${query}`
+        );
+        setProducts(response);
+      } catch (e) {
+        console.log(`fetch products Error!`);
+        console.log(e);
+      }
+    }
+
+    fetchProducts();
+  }, [options]);
 
   return (
     <>

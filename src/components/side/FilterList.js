@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import Filter, { CheckboxFilter } from "./Filter";
+import { CheckboxFilter } from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const FilterList = (props) => {
@@ -14,9 +14,10 @@ const FilterList = (props) => {
     return (
       <CheckboxFilter
         key={typeCode}
-        idx={typeCode}
+        typeCode={typeCode}
         name={name}
         types={types}
+        options={options}
         setOptions={setOptions}
         modalState={modalState}
         setModalState={setModalState}
