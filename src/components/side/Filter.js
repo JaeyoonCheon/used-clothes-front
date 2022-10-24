@@ -59,10 +59,10 @@ export const CheckboxFilter = (props) => {
       newCheckedTypes.add(type);
     }
     setCheckedTypes(newCheckedTypes);
-    setOptions({
-      ...options,
+    setOptions((prev) => ({
+      ...prev,
       [typeCode]: Array.from(newCheckedTypes),
-    });
+    }));
   };
 
   return (

@@ -101,6 +101,8 @@ const RegisterPage = () => {
     [email, password, username, phoneNumber]
   );
 
+  // 디바운싱 추후 적용 필수!
+
   const onChangeUsername = useCallback((e) => {
     console.log(e.target.value);
     const regex = /[가-힣]/;

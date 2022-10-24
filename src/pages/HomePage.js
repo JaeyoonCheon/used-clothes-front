@@ -83,12 +83,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const query = qs.stringify(options, { delimiter: "," });
+    console.log(`Ready to fetching!`);
 
     async function fetchProducts() {
       try {
+        console.log("fetch Start");
         const response = await axios.get(
           `http://118.67.142.10/clothe/list?filters=${query}`
         );
+        console.log(`fetch success!`);
         setProducts(response);
       } catch (e) {
         console.log(`fetch products Error!`);

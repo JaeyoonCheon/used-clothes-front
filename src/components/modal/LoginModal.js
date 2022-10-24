@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import axios from "axios";
+import qs from "qs";
 
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
@@ -98,6 +100,24 @@ const LoginModal = (props) => {
     setisModalOpen(false);
   };
 
+  // bcrypt 암호화 진행 예정.
+  const fetchLogin = async () => {
+    try {
+      const response = await axios.post(`http://118.67.142.10/user/read`, {
+        email: email,
+        password: password,
+      });
+
+      if (response.status === 200) {
+        sessionStorage.setItem("email", email);
+      } else {
+        throw new Error(response);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
     document.body.style.cssText = `overflow:hidden`;
     return () => {
@@ -113,7 +133,7 @@ const LoginModal = (props) => {
         </div>
         <LogoContainer></LogoContainer>
         <FeatureContainer>
-          <LoginFeature>
+          <LoginFeature onSubmit={fetchLogin}>
             <Input
               placeholder="이메일"
               name="email"
@@ -128,7 +148,9 @@ const LoginModal = (props) => {
               onChange={onChangePassword}
             ></Input>
             <LoginButton>
-              <LargeButton backgroundColor={colors.blue[0]}>로그인</LargeButton>
+              <LargeButton type="submit" backgroundColor={colors.blue[0]}>
+                로그인
+              </LargeButton>
             </LoginButton>
           </LoginFeature>
           <ForgotRegisterFeature>
