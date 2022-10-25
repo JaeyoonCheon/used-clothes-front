@@ -76,7 +76,10 @@ const HomePage = () => {
     purchasePlaceId: [],
     color_code: [],
     material: [],
+    sorting: sortOption,
+    page: currentPage,
   });
+
   const [products, setProducts] = useState([]);
 
   console.log(options);
@@ -102,6 +105,22 @@ const HomePage = () => {
     fetchProducts();
   }, [options]);
 
+  const onClickSort = (order) => {
+    setSortOption(order);
+    setOptions((prev) => ({
+      ...prev,
+      sorting: order,
+    }));
+  };
+
+  const onClickPage = (nextPage) => {
+    setCurrentPage(nextPage);
+    setOptions((prev) => ({
+      ...prev,
+      page: nextPage,
+    }));
+  };
+
   return (
     <>
       <Header></Header>
@@ -116,7 +135,7 @@ const HomePage = () => {
                 <span
                   className={sortOption === order ? "active" : ""}
                   key={i}
-                  onClick={() => setSortOption(order)}
+                  onClick={() => onClickSort(order)}
                 >{`${order}`}</span>
               ))}
             </div>
@@ -127,7 +146,7 @@ const HomePage = () => {
             currentPage={currentPage}
             pageCount={10}
             limit={40}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={onClickPage}
           ></Pagination>
         </ContentContainer>
       </HomePageContainer>
