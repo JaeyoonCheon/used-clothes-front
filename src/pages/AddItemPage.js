@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import colors from "../lib/styles/colors";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+import BaseLayout from "../components/layout/BaseLayout";
 import { MiddleButton } from "../components/common/Button";
 import {
   Input,
@@ -61,8 +60,7 @@ const ConfirmButtonWrapper = styled.div`
 
 const AddItemPage = () => {
   return (
-    <>
-      <Header></Header>
+    <BaseLayout>
       <Wrapper>
         <ContentWrapper>
           <ContentTitle>사진 등록</ContentTitle>
@@ -128,8 +126,7 @@ const AddItemPage = () => {
           </ConfirmButtonWrapper>
         </ContentWrapper>
       </Wrapper>
-      <Footer></Footer>
-    </>
+    </BaseLayout>
   );
 };
 

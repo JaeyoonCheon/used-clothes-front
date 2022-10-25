@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
 import colors from "../lib/styles/colors";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+import BaseLayout from "../components/layout/BaseLayout";
 import { MiddleButton, LargeButton, Button } from "../components/common/Button";
 import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
 
@@ -224,8 +223,7 @@ const ItemDetailPage = () => {
   const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
 
   return (
-    <>
-      <Header></Header>
+    <BaseLayout>
       <Wrapper>
         <ItemDetailContainer>
           <div className="navButton-back">
@@ -314,8 +312,7 @@ const ItemDetailPage = () => {
           <ItemDescription>{descriptions}</ItemDescription>
         </ItemDetailContainer>
       </Wrapper>
-      <Footer></Footer>
-    </>
+    </BaseLayout>
   );
 };
 

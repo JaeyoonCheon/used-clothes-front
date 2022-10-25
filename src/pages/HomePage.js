@@ -6,11 +6,10 @@ import qs from "qs";
 
 import colors from "../lib/styles/colors";
 
-import Header from "../components/common/Header";
+import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
-import Footer from "../components/common/Footer";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
@@ -122,8 +121,7 @@ const HomePage = () => {
   };
 
   return (
-    <>
-      <Header></Header>
+    <BaseLayout>
       <HeaderSpacer></HeaderSpacer>
       <HomePageContainer>
         <Aside options={options} setOptions={setOptions}></Aside>
@@ -150,8 +148,7 @@ const HomePage = () => {
           ></Pagination>
         </ContentContainer>
       </HomePageContainer>
-      <Footer></Footer>
-    </>
+    </BaseLayout>
   );
 };
 
