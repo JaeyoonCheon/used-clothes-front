@@ -182,8 +182,8 @@ export const CheckboxSelector = (props) => {
 
 export const CheckboxOption = (props) => {
   const { idx, filteringData, modalState, setModalState } = props;
-  const { name, options } = filteringData;
-  const preOptions = [...options].splice(0, 4);
+  const { name, types } = filteringData;
+  const preOptions = [...types].splice(0, 4);
 
   const [currentPos, setCurrentPos] = useState([]);
   const [checkedOptions, setCheckedOptions] = useState(new Set());
@@ -222,7 +222,7 @@ export const CheckboxOption = (props) => {
       ></SquareButton>
       {modalState.index === idx && (
         <FilterModal
-          options={options}
+          options={types}
           position={currentPos}
           setModalState={setModalState}
           checkedOptions={checkedOptions}

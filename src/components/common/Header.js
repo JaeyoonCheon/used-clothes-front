@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import colors from "../../lib/styles/colors";
 import Searchbar from "./Searchbar";
@@ -59,7 +60,9 @@ const Header = () => {
     <>
       <HeaderBox>
         <Wrapper>
-          <Logo>Title</Logo>
+          <Logo>
+            <Link to="/">Title</Link>
+          </Logo>
           <Searchbar></Searchbar>
           <NavMenu>
             <span className="menu" onClick={onClickLogin}>

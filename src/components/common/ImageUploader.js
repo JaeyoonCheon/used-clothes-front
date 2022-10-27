@@ -86,7 +86,7 @@ const ImageUploader = () => {
   return (
     <Wrapper>
       <UploadedImageContainer>
-        <label for="file">
+        <label htmlFor="file">
           <img src="add-2935429.svg" alt="add"></img>
         </label>
         <input
