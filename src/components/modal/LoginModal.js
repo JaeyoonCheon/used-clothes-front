@@ -8,6 +8,7 @@ import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
 import { Input } from "../common/Input";
 import useInput from "../../hooks/useInput";
+import { loginAPI } from "../../lib/api/user";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -101,20 +102,11 @@ const LoginModal = (props) => {
   };
 
   // bcrypt 암호화 진행 예정.
-  const fetchLogin = async () => {
-    try {
-      const response = await axios.post(`http://118.67.142.10/user/read`, {
-        email: email,
-        password: password,
-      });
+  const fetchLogin = () => {
+    const fetchResponse = loginAPI({ email, password });
 
-      if (response.status === 200) {
-        sessionStorage.setItem("email", email);
-      } else {
-        throw new Error(response);
-      }
-    } catch (e) {
-      console.log(e);
+    if (fetchResponse) {
+      setisModalOpen(false);
     }
   };
 
@@ -126,7 +118,7 @@ const LoginModal = (props) => {
   }, []);
 
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={onClick}>
       <ModalContainer>
         <div className="clearButton">
           <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>

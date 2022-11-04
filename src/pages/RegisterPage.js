@@ -57,24 +57,24 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
 
   const [usernameMessage, setUsernameMessage] = useState("");
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
-  const [phoneNumberMessage, setPhoneNumberMessage] = useState("");
+  const [phonenumberMessage, setPhonenumberMessage] = useState("");
 
   const [validUsername, setValidUsername] = useState(false);
   const [validemail, setValidEmail] = useState(false);
   const [validpassword, setValidPassword] = useState(false);
   const [validpasswordConfirm, setValidPasswordConfirm] = useState(false);
-  const [validphoneNumber, setValidPhoneNumber] = useState(false);
+  const [validphonenumber, setValidPhonenumber] = useState(false);
 
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      const noHyphenPhoneNumber = phoneNumber.replace(/-/g, "");
+      const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
 
       try {
         await axios
@@ -85,7 +85,7 @@ const RegisterPage = () => {
               email: email,
               password: password,
               name: username,
-              phone: noHyphenPhoneNumber,
+              phone: noHyphenPhonenumber,
             },
             { withCredentials: true }
           )
@@ -98,7 +98,7 @@ const RegisterPage = () => {
         console.log(`${error} occured!`);
       }
     },
-    [email, password, username, phoneNumber]
+    [email, password, username, phonenumber]
   );
 
   // 디바운싱 추후 적용 필수!
@@ -163,13 +163,13 @@ const RegisterPage = () => {
     },
     [password]
   );
-  const onChangePhoneNumber = useCallback((e) => {
+  const onChangePhonenumber = useCallback((e) => {
     const setAutoHyphen = (number) => {
       return number
         .replace(/[^0-9]/g, "")
         .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
     };
-    setPhoneNumber(setAutoHyphen(e.target.value));
+    setPhonenumber(setAutoHyphen(e.target.value));
   }, []);
 
   return (
@@ -208,10 +208,10 @@ const RegisterPage = () => {
           {!validpasswordConfirm && <div>{passwordConfirmMessage}</div>}
           <Input
             placeholder="휴대폰 번호"
-            value={phoneNumber}
-            onChange={onChangePhoneNumber}
+            value={phonenumber}
+            onChange={onChangePhonenumber}
           ></Input>
-          {!validphoneNumber && <div>{phoneNumberMessage}</div>}
+          {!validphonenumber && <div>{phonenumberMessage}</div>}
           <div className="confirmButton">
             <LargeButton backgroundColor={colors.blue[0]}>회원가입</LargeButton>
           </div>

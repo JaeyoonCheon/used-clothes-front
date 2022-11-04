@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import axios, { Axios } from "axios";
-import qs from "qs";
 
 import colors from "../lib/styles/colors";
-
 import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
+import { listProductsAPI } from "../lib/api/product";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
@@ -66,16 +64,21 @@ const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거
 const HomePage = () => {
   const [sortOption, setSortOption] = useState("최신 순");
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageLimit, setPageLimit] = useState(50);
   const [options, setOptions] = useState({
-    minPrice: 0,
-    maxPrice: Infinity,
-    condition: [],
-    deliveryFee: 0,
-    brand: [],
-    purchasePlaceId: [],
+    name: "",
+    main_category: 0,
+    sub_category: 0,
+    min_price: 0,
+    max_price: Infinity,
+    condition_code: [],
+    shippingfee: 0,
+    brand_id: [],
+    purchase_place_id: [],
     color_code: [],
-    material: [],
+    material_code: [],
     sorting: sortOption,
+    elements: pageLimit,
     page: currentPage,
   });
 
@@ -84,24 +87,9 @@ const HomePage = () => {
   console.log(options);
 
   useEffect(() => {
-    const query = qs.stringify(options, { delimiter: "," });
-    console.log(`Ready to fetching!`);
+    const fetchResult = listProductsAPI(options);
 
-    async function fetchProducts() {
-      try {
-        console.log("fetch Start");
-        const response = await axios.get(
-          `http://118.67.142.10/clothe/list?filters=${query}`
-        );
-        console.log(`fetch success!`);
-        setProducts(response);
-      } catch (e) {
-        console.log(`fetch products Error!`);
-        console.log(e);
-      }
-    }
-
-    fetchProducts();
+    setProducts(fetchResult);
   }, [options]);
 
   const onClickSort = (order) => {
