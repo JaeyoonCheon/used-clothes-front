@@ -1,57 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
-import axios from "axios";
-import qs from "qs";
 
+import { ModalLayout } from "../layout/ModalLayout";
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
 import { Input } from "../common/Input";
 import useInput from "../../hooks/useInput";
 import { loginAPI } from "../../lib/api/user";
 
-const ModalOverlay = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-
-  background: rgba(0, 0, 0, 0.6);
+const ContentContainer = styled.div`
+  width: 320px;
+  margin: 40px auto 30px auto;
 `;
 
-const ModalContainer = styled.div`
-  position: absolute;
-  width: 400px;
-  height: 600px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background: white;
-
-  .clearButton {
-    display: flex;
-    justify-content: flex-end;
-    margin: 5px;
-
-    color: ${colors.mono[0]};
-
-    cursor: pointer;
-  }
-`;
-
-const LogoContainer = styled.div`
+const LogoContainer = styled.h2`
+  margin: 0;
   height: 60px;
-`;
 
-const FeatureContainer = styled.div`
-  width: 280px;
-  margin-left: auto;
-  margin-right: auto;
+  font-weight: 400;
+  font-style: initial;
+  font-size: 32px;
+  line-height: 38px;
 `;
 
 const LoginFeature = styled.form`
@@ -118,60 +88,58 @@ const LoginModal = (props) => {
   }, []);
 
   return (
-    <ModalOverlay onClick={onClick}>
-      <ModalContainer>
-        <div className="clearButton">
-          <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>
-        </div>
-        <LogoContainer></LogoContainer>
-        <FeatureContainer>
-          <LoginFeature onSubmit={fetchLogin}>
-            <Input
-              placeholder="이메일"
-              name="email"
-              value={email}
-              onChange={onChangeEmail}
-            ></Input>
-            <Input
-              placeholder="비밀번호"
-              name="password"
-              value={password}
-              isPassword={true}
-              onChange={onChangePassword}
-            ></Input>
-            <LoginButton>
-              <LargeButton type="submit" backgroundColor={colors.blue[0]}>
-                로그인
-              </LargeButton>
-            </LoginButton>
-          </LoginFeature>
-          <ForgotRegisterFeature>
-            <span className="forgotRegisterButton">아이디/비밀번호 찾기</span>
-            <span className="forgotRegisterButton">회원가입</span>
-          </ForgotRegisterFeature>
-          <SocialLoginFeature>
-            <div className="socialLoginButton">
-              <LargeButton color={colors.mono[0]} border={true}>
-                구글로 로그인하기
-              </LargeButton>
-            </div>
-            <div className="socialLoginButton">
-              <LargeButton color={colors.mono[0]} border={true}>
-                애플로 로그인하기
-              </LargeButton>
-            </div>
-            <div className="socialLoginButton">
-              <img
-                src="kakao_login_medium_wide.png"
-                width="280px"
-                height="50px"
-                alt="kakaoLogin"
-              ></img>
-            </div>
-          </SocialLoginFeature>
-        </FeatureContainer>
-      </ModalContainer>
-    </ModalOverlay>
+    <ModalLayout onClick={onClick}>
+      <div className="clearButton">
+        <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>
+      </div>
+      <ContentContainer>
+        <LogoContainer>로그인</LogoContainer>
+        <LoginFeature onSubmit={fetchLogin}>
+          <Input
+            placeholder="이메일"
+            name="email"
+            value={email}
+            onChange={onChangeEmail}
+          ></Input>
+          <Input
+            placeholder="비밀번호"
+            name="password"
+            value={password}
+            isPassword={true}
+            onChange={onChangePassword}
+          ></Input>
+          <LoginButton>
+            <LargeButton type="submit" backgroundColor={colors.blue[0]}>
+              로그인
+            </LargeButton>
+          </LoginButton>
+        </LoginFeature>
+        <ForgotRegisterFeature>
+          <span className="forgotRegisterButton">아이디/비밀번호 찾기</span>
+          <span className="forgotRegisterButton">회원가입</span>
+        </ForgotRegisterFeature>
+        <SocialLoginFeature>
+          <div className="socialLoginButton">
+            <LargeButton color={colors.mono[0]} border={true}>
+              구글로 로그인하기
+            </LargeButton>
+          </div>
+          <div className="socialLoginButton">
+            <LargeButton color={colors.mono[0]} border={true}>
+              애플로 로그인하기
+            </LargeButton>
+          </div>
+          <div className="socialLoginButton">
+            <img
+              src="kakao_login_medium_wide.png"
+              width="280px"
+              height="50px"
+              alt="kakaoLogin"
+            ></img>
+          </div>
+        </SocialLoginFeature>
+      </ContentContainer>
+    </ModalLayout>
   );
 };
 
