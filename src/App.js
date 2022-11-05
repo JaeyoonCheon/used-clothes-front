@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import GlobalStyle from "./lib/styles/globalStyle";
 import HomePage from "./pages/HomePage";
 import IDForgotPage from "./pages/IDForgotPage";
 import PWForgotPage from "./pages/PWForgotPage";
@@ -12,6 +13,7 @@ const App = () => {
   console.log("Render start");
   return (
     <>
+      <GlobalStyle></GlobalStyle>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="idforgot" element={<IDForgotPage />}></Route>
