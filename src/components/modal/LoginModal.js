@@ -18,10 +18,11 @@ const LogoContainer = styled.h2`
   margin: 0;
   height: 60px;
 
-  font-weight: 400;
-  font-style: initial;
+  font-style: normal;
+  font-weight: 500;
   font-size: 32px;
   line-height: 38px;
+  letter-spacing: -0.05em;
 `;
 
 const LoginFeature = styled.form`
@@ -109,7 +110,11 @@ const LoginModal = (props) => {
             onChange={onChangePassword}
           ></Input>
           <LoginButton>
-            <LargeButton type="submit" backgroundColor={colors.blue[0]}>
+            <LargeButton
+              type="submit"
+              isFilled={true}
+              colorTheme={colors.blue[0]}
+            >
               로그인
             </LargeButton>
           </LoginButton>
@@ -120,22 +125,32 @@ const LoginModal = (props) => {
         </ForgotRegisterFeature>
         <SocialLoginFeature>
           <div className="socialLoginButton">
-            <LargeButton color={colors.mono[0]} border={true}>
+            <LargeButton
+              isFilled={false}
+              colorTheme={colors.mono[1]}
+              icon="Google_Logo"
+            >
               구글로 로그인하기
             </LargeButton>
           </div>
           <div className="socialLoginButton">
-            <LargeButton color={colors.mono[0]} border={true}>
+            <LargeButton
+              isFilled={false}
+              colorTheme={colors.mono[1]}
+              icon="Apple_Logo"
+            >
               애플로 로그인하기
             </LargeButton>
           </div>
           <div className="socialLoginButton">
-            <img
-              src="kakao_login_medium_wide.png"
-              width="280px"
-              height="50px"
-              alt="kakaoLogin"
-            ></img>
+            <LargeButton
+              isFilled={true}
+              colorTheme={colors.kakao[0]}
+              fontColor={colors.kakao[1]}
+              icon="Kakao_Logo"
+            >
+              카카오로 로그인하기
+            </LargeButton>
           </div>
         </SocialLoginFeature>
       </ContentContainer>
