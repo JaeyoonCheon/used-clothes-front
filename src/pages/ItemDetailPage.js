@@ -5,7 +5,11 @@ import { faker } from "@faker-js/faker";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
-import { MiddleButton, LargeButton, Button } from "../components/common/Button";
+import {
+  LargeButton,
+  MiddleButton,
+  AnotherButton,
+} from "../components/common/Button";
 import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
 
 const Wrapper = styled.div`
@@ -227,7 +231,7 @@ const ItemDetailPage = () => {
       <Wrapper>
         <ItemDetailContainer>
           <div className="navButton-back">
-            <Button
+            <AnotherButton
               width={120}
               height={40}
               border={colors.mono[1]}
@@ -235,7 +239,7 @@ const ItemDetailPage = () => {
               fontSize={12}
             >
               &lt; 목록으로
-            </Button>
+            </AnotherButton>
           </div>
           <ItemSummaryContainer>
             <ImageContainer>
@@ -290,22 +294,22 @@ const ItemDetailPage = () => {
               </SellerInfoContainer>
               <hr />
               <NavButtonContainer>
-                <Button
+                <MiddleButton
                   width={180}
                   height={60}
                   backgroundColor={colors.mono[0]}
                   fontSize={20}
                 >
                   관심목록 추가
-                </Button>
-                <Button
+                </MiddleButton>
+                <MiddleButton
                   width={180}
                   height={60}
                   backgroundColor={colors.blue[0]}
                   fontSize={20}
                 >
                   채팅하기
-                </Button>
+                </MiddleButton>
               </NavButtonContainer>
             </ItemInfoContainer>
           </ItemSummaryContainer>

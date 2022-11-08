@@ -79,6 +79,73 @@ const TextContainer = styled.textarea`
   }
 `;
 
+const InputBox = styled.div`
+  margin: 0px 0px 15px 0;
+  width: 100%;
+  position: relative;
+
+  input:placeholder-shown + label {
+    position: absolute;
+    color: ${colors.mono[0]};
+    font-size: 16px;
+    top: 15px;
+    left: 0px;
+  }
+  input:focus + label,
+  label {
+    color: ${colors.blue[0]};
+    font-weight: 500;
+    font-size: 10px;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+  }
+`;
+
+const InputContent = styled.input`
+  padding: 20px 0px 5px 0px;
+
+  border: none;
+  border-bottom: 1.5px solid ${colors.mono[0]};
+  background-color: transparent;
+  font-size: 16px;
+  width: 100%;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus,
+  &:not(:placeholder-shown) {
+    border-bottom: 1.5px solid ${colors.blue[0]};
+    outline: none;
+  }
+`;
+
+export const DefaultInput = (props) => {
+  const { placeholder, name, value, onChange } = props;
+
+  return (
+    <InputBox>
+      <InputContent
+        type="text"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      ></InputContent>
+      <label htmlFor={name}>{placeholder}</label>
+    </InputBox>
+  );
+};
+
 export const Input = (props) => {
   const {
     placeholder,

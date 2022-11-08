@@ -1,48 +1,40 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
+import { NonModalLayout } from "../components/layout/ModalLayout";
 import colors from "../lib/styles/colors";
-import { Input } from "../components/common/Input";
+import { DefaultInput, Input } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
-import { RadioButton, RadioGroup } from "../components/common/RadioButton";
 
-const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: ${colors.mono[1]};
+const ContentContainer = styled.div`
+  width: 320px;
+  min-height: 500px;
 `;
 
-const RegisterContainer = styled.div`
-  width: 400px;
-  height: 600px;
+const TitleContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
-  background: white;
-  box-shadow: rgba(0, 0, 0, 0.6);
-`;
+  .title {
+    margin: 0;
 
-const Spacer = styled.div`
-  width: 400px;
-  height: 100px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.1em;
+  }
 `;
 
 const RegisterFormContainer = styled.form`
-  width: 280px;
+  width: 320px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  margin-top: 35px;
 
   .confirmButton {
     margin-top: 40px;
@@ -173,51 +165,58 @@ const RegisterPage = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <RegisterContainer>
-        <Spacer></Spacer>
+    <NonModalLayout>
+      <ContentContainer>
+        <TitleContainer>
+          <h2 className="title">회원가입</h2>
+          <AiOutlineArrowLeft size={21.33}></AiOutlineArrowLeft>
+        </TitleContainer>
         <RegisterFormContainer onSubmit={onSubmit}>
-          <Input
+          <DefaultInput
             placeholder="이름"
             value={username}
             onChange={onChangeUsername}
-          ></Input>
+          ></DefaultInput>
           {!validUsername && <div>{usernameMessage}</div>}
-          <Input
+          <DefaultInput
             placeholder="이메일"
             value={email}
             onChange={onChangeEmail}
-          ></Input>
+          ></DefaultInput>
           {!validemail && <div>{emailMessage}</div>}
           <div className="redundancyCheck">
-            <SmallButton backgroundColor={colors.blue[0]}>중복체크</SmallButton>
+            <SmallButton isFilled={true} colorTheme={colors.blue[0]}>
+              중복체크
+            </SmallButton>
           </div>
-          <Input
+          <DefaultInput
             placeholder="비밀번호"
             value={password}
             isPassword={true}
             onChange={onChangePassword}
-          ></Input>
+          ></DefaultInput>
           {!validpassword && <div>{passwordMessage}</div>}
-          <Input
+          <DefaultInput
             placeholder="비밀번호 확인"
             value={passwordConfirm}
             isPassword={true}
             onChange={onChangePasswordConfirm}
-          ></Input>
+          ></DefaultInput>
           {!validpasswordConfirm && <div>{passwordConfirmMessage}</div>}
-          <Input
+          <DefaultInput
             placeholder="휴대폰 번호"
             value={phonenumber}
             onChange={onChangePhonenumber}
-          ></Input>
+          ></DefaultInput>
           {!validphonenumber && <div>{phonenumberMessage}</div>}
           <div className="confirmButton">
-            <LargeButton backgroundColor={colors.blue[0]}>회원가입</LargeButton>
+            <LargeButton isFilled={true} colorTheme={colors.blue[0]}>
+              회원가입
+            </LargeButton>
           </div>
         </RegisterFormContainer>
-      </RegisterContainer>
-    </Wrapper>
+      </ContentContainer>
+    </NonModalLayout>
   );
 };
 

@@ -5,7 +5,7 @@ import colors from "../../lib/styles/colors";
 import { RadioOption } from "./RadioButton";
 import Checkbox from "../common/Checkbox";
 import FilterModal from "../modal/FilterModal";
-import { SquareButton } from "./Button";
+import { SmallButton } from "./Button";
 
 const SelectorWrapper = styled.div`
   width: fit-content;
@@ -213,13 +213,13 @@ export const CheckboxOption = (props) => {
           ></Checkbox>
         ))}
       </CheckboxList>
-      <SquareButton
+      <SmallButton
         onClick={(e) => {
           const pos = [e.pageX, e.pageY];
           setCurrentPos(pos);
           setModalState({ ...modalState, index: idx });
         }}
-      ></SquareButton>
+      ></SmallButton>
       {modalState.index === idx && (
         <FilterModal
           options={types}

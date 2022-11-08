@@ -60,23 +60,9 @@ const SmallButtonContainer = styled(ButtonWrapper)`
   height: 30px;
 `;
 
-const FreeSizeButtonContainer = styled(ButtonWrapper)`
-  width: ${(props) => `${props.width}px`};
-  height: ${(props) => `${props.height}px`};
-`;
-
-const SquareButtonContainer = styled.button`
+const AnotherButtonContainer = styled(ButtonWrapper)`
   width: 100px;
-  height: auto;
-
-  border: 0.3px solid ${colors.mono[1]};
-  font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
-  color: ${colors.mono[0]};
-  background: white;
-
-  cursor: pointer;
+  height: 50px;
 `;
 
 export const LargeButton = (props) => {
@@ -115,36 +101,12 @@ export const SmallButton = (props) => {
   );
 };
 
-export const Button = (props) => {
-  const {
-    children,
-    width,
-    height,
-    icon,
-    backgroundColor,
-    color,
-    border = false,
-    fontSize,
-  } = props;
+export const AnotherButton = (props) => {
+  const { children, icon, isFilled, colorTheme } = props;
   return (
-    <FreeSizeButtonContainer
-      backgroundColor={backgroundColor}
-      width={width}
-      height={height}
-      color={color}
-      border={border && `0.3px solid ${colors.mono[1]}`}
-      fontSize={fontSize}
-    >
-      {icon !== undefined && icon}
+    <AnotherButtonContainer isFilled={isFilled} colorTheme={colorTheme}>
+      {icon}
       {children}
-    </FreeSizeButtonContainer>
-  );
-};
-
-export const SquareButton = (props) => {
-  const { onClick } = props;
-
-  return (
-    <SquareButtonContainer onClick={onClick}>더 보기 +</SquareButtonContainer>
+    </AnotherButtonContainer>
   );
 };

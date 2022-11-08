@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { ModalLayout } from "../layout/ModalLayout";
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
-import { Input } from "../common/Input";
+import { DefaultInput } from "../common/Input";
 import useInput from "../../hooks/useInput";
 import { loginAPI } from "../../lib/api/user";
 
@@ -14,15 +15,20 @@ const ContentContainer = styled.div`
   margin: 40px auto 30px auto;
 `;
 
-const LogoContainer = styled.h2`
-  margin: 0;
-  height: 60px;
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 38px;
-  letter-spacing: -0.05em;
+  .title {
+    margin: 0;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.05em;
+  }
 `;
 
 const LoginFeature = styled.form`
@@ -44,11 +50,16 @@ const ForgotRegisterFeature = styled.div`
   margin-top: 10px;
   margin-left: auto;
 
-  .forgotRegisterButton {
+  .account_button {
     margin-left: 15px;
 
     font-size: 12px;
     cursor: pointer;
+
+    .link {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 `;
 
@@ -90,25 +101,26 @@ const LoginModal = (props) => {
 
   return (
     <ModalLayout onClick={onClick}>
-      <div className="clearButton">
-        <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>
-      </div>
       <ContentContainer>
-        <LogoContainer>로그인</LogoContainer>
+        <div className="clearButton">
+          <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>
+        </div>
+        <TitleContainer>
+          <h2 className="title">로그인</h2>
+        </TitleContainer>
         <LoginFeature onSubmit={fetchLogin}>
-          <Input
+          <DefaultInput
             placeholder="이메일"
             name="email"
             value={email}
             onChange={onChangeEmail}
-          ></Input>
-          <Input
+          ></DefaultInput>
+          <DefaultInput
             placeholder="비밀번호"
             name="password"
             value={password}
-            isPassword={true}
             onChange={onChangePassword}
-          ></Input>
+          ></DefaultInput>
           <LoginButton>
             <LargeButton
               type="submit"
@@ -120,8 +132,20 @@ const LoginModal = (props) => {
           </LoginButton>
         </LoginFeature>
         <ForgotRegisterFeature>
-          <span className="forgotRegisterButton">아이디/비밀번호 찾기</span>
-          <span className="forgotRegisterButton">회원가입</span>
+          <span className="account_button">
+            <Link to="idforgot" className="link">
+              <span>아이디</span>
+            </Link>
+            /
+            <Link to="pwforgot" className="link">
+              <span>비밀번호 찾기</span>
+            </Link>
+          </span>
+          <span className="account_button">
+            <Link to="register" className="link">
+              <span>회원가입</span>
+            </Link>
+          </span>
         </ForgotRegisterFeature>
         <SocialLoginFeature>
           <div className="socialLoginButton">
