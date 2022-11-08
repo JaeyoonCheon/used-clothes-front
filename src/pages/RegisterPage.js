@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { NonModalLayout } from "../components/layout/ModalLayout";
@@ -169,7 +170,10 @@ const RegisterPage = () => {
       <ContentContainer>
         <TitleContainer>
           <h2 className="title">회원가입</h2>
-          <AiOutlineArrowLeft size={21.33}></AiOutlineArrowLeft>
+          <AiOutlineArrowLeft
+            size={21.33}
+            onClick={() => {}}
+          ></AiOutlineArrowLeft>
         </TitleContainer>
         <RegisterFormContainer onSubmit={onSubmit}>
           <DefaultInput
