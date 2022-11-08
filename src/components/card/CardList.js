@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Card from "./Card";
+import Card, { Card1 } from "./Card";
 
 const Wrapper = styled.div`
-  width: 980px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 
   .product {
     margin-bottom: 40px;
@@ -34,7 +33,7 @@ const CardList = (props) => {
             key={itemData.id}
             className="product"
           >
-            <Card itemData={itemData}></Card>
+            <Card1 itemData={itemData}></Card1>
           </Link>
         );
       })}

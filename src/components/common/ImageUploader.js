@@ -31,7 +31,7 @@ const ImageNumber = styled.span`
   top: 0;
   left: 0;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 50;
 
   border: 1px solid ${colors.blue[0]};
   border-radius: 70%;

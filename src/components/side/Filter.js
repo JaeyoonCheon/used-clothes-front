@@ -7,7 +7,7 @@ import Checkbox from "../common/Checkbox";
 import FilterModal from "../modal/FilterModal";
 
 const FilterContainer = styled.div`
-  width: 180px;
+  width: 100%;
   background: white;
 
   padding: 5px 0 5px 0;

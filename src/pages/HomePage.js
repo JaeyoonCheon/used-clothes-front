@@ -11,11 +11,20 @@ import { listProductsAPI } from "../lib/api/product";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1180px 1fr;
+
+  aside {
+    margin-left: auto;
+  }
+`;
+
 const HomePageContainer = styled.div`
   display: flex;
-  margin: 0 auto;
+  margin: 0;
   margin-bottom: 300px;
-  width: 1180px;
+  width: 100%;
 `;
 
 const HeaderSpacer = styled.div`
@@ -23,7 +32,8 @@ const HeaderSpacer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width: 980px;
+  width: 1180px;
+  margin-right: auto;
 `;
 
 const NavBar = styled.div`
@@ -111,31 +121,35 @@ const HomePage = () => {
   return (
     <BaseLayout>
       <HeaderSpacer></HeaderSpacer>
-      <HomePageContainer>
-        <Aside options={options} setOptions={setOptions}></Aside>
-        <ContentContainer>
-          <NavBar>
-            <span>{location}</span>
-            <div className="sortorders">
-              {sortOrders.map((order, i) => (
-                <span
-                  className={sortOption === order ? "active" : ""}
-                  key={i}
-                  onClick={() => onClickSort(order)}
-                >{`${order}`}</span>
-              ))}
-            </div>
-          </NavBar>
-          <CardList itemDatas={itemDatas}></CardList>
-          <hr></hr>
-          <Pagination
-            currentPage={currentPage}
-            pageCount={10}
-            limit={40}
-            setCurrentPage={onClickPage}
-          ></Pagination>
-        </ContentContainer>
-      </HomePageContainer>
+      <Wrapper>
+        <aside>
+          <Aside options={options} setOptions={setOptions}></Aside>
+        </aside>
+        <HomePageContainer>
+          <ContentContainer>
+            <NavBar>
+              <span>{location}</span>
+              <div className="sortorders">
+                {sortOrders.map((order, i) => (
+                  <span
+                    className={sortOption === order ? "active" : ""}
+                    key={i}
+                    onClick={() => onClickSort(order)}
+                  >{`${order}`}</span>
+                ))}
+              </div>
+            </NavBar>
+            <CardList itemDatas={itemDatas}></CardList>
+            <hr></hr>
+            <Pagination
+              currentPage={currentPage}
+              pageCount={10}
+              limit={40}
+              setCurrentPage={onClickPage}
+            ></Pagination>
+          </ContentContainer>
+        </HomePageContainer>
+      </Wrapper>
     </BaseLayout>
   );
 };

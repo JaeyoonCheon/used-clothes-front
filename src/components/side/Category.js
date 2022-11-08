@@ -6,7 +6,7 @@ import colors from "../../lib/styles/colors";
 import { categoryData } from "../../lib/dummydata/dummydata";
 
 const CategoryContainer = styled.div`
-  width: 180px;
+  width: 100%;
   background: white;
 
   .category-header {

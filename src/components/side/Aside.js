@@ -8,7 +8,7 @@ import { filterDatas } from "../../lib/dummydata/dummydata";
 import FilterList from "./FilterList";
 
 const AsideContainer = styled.div`
-  width: 180px;
+  width: 140px;
   margin-right: 20px;
 
   display: flex;

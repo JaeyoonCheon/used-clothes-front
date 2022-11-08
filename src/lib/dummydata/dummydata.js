@@ -6,7 +6,7 @@ export const categoryData = [
       {
         id: 1,
         name: "티셔츠",
-        child: [{ id: 1, name: "라운드넥", child: [] }],
+        child: [],
       },
       { id: 2, name: "셔츠/블라우스", child: [] },
       { id: 3, name: "맨투맨", child: [] },
@@ -152,7 +152,7 @@ export const itemDatas = [
   {
     id: 7820,
     itemimage: "https://loremflickr.com/180/180/abstract?45230",
-    itemname: "Shoes",
+    itemname: "ShoesShoesShoesShoes ShoesShoesShoesShoesShoes",
     itemprice: "997.00",
   },
   {
