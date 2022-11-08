@@ -8,6 +8,7 @@ import PWForgotPage from "./pages/PWForgotPage";
 import RegisterPage from "./pages/RegisterPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import AddItemPage from "./pages/AddItemPage";
+import WelcomePage from "./pages/WelcomePage";
 
 const App = () => {
   console.log("Render start");
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="register" element={<RegisterPage />}></Route>
         <Route path="product/:id/*" element={<ItemDetailPage />}></Route>
         <Route path="addItem" element={<AddItemPage />}></Route>
+        <Route path="welcome" element={<WelcomePage />}></Route>
       </Routes>
     </>
   );

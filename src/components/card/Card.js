@@ -1,63 +1,56 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import colors from "../../lib/styles/colors";
 
-const CardContainer = styled.div`
-  height: 240px;
+const CardContainer = styled.li`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
 
-  .itemname {
-    font-weight: 100;
-    font-size: 16px;
-  }
-  .itemprice {
-    font-weight: 400;
-    font-size: 20px;
-  }
-`;
-
-const Card = (props) => {
-  const { itemData } = props;
-  const {
-    itemimage = "180x180.png",
-    itemname = "itemname",
-    itemprice = "10000",
-  } = itemData;
-
-  return (
-    <CardContainer>
-      <img src={itemimage} alt="item"></img>
-      <div className="itemname">{itemname}</div>
-      <div className="itemprice">{`${itemprice}원`}</div>
-    </CardContainer>
-  );
-};
-
-export default Card;
-
-const CardContainer1 = styled.div`
-  width: 280px;
+  width: 240px;
+  min-height: 360px;
   padding-bottom: 5px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  vertical-align: top;
 
-  .itemname {
-    height: 40px;
+  &:hover {
+    box-shadow: 0px 15px 15px rgba(197, 197, 197, 0.5);
+    transition: box-shadow 0.1s linear;
+  }
+  &:nth-child(4n + 4) {
+    margin-right: 0;
+  }
+  cursor: pointer;
+`;
+
+const CardInfo = styled.div`
+  .link {
+    text-decoration: none;
+
+    &:visited {
+      text-decoration: none;
+    }
+    .itemname {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  .namebox {
     margin: 5px 0px 0px 5px;
     overflow-y: hidden;
-
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 19px;
   }
   .itemprice {
     margin-left: 5px;
     font-style: normal;
     font-weight: 400;
-    font-size: 28px;
-    line-height: 33px;
+    font-size: 24px;
   }
   .enrolltime {
     margin-left: 5px;
@@ -67,15 +60,9 @@ const CardContainer1 = styled.div`
     line-height: 14px;
     color: ${colors.mono[0]};
   }
-  &:hover {
-    box-shadow: 0px 15px 15px rgba(197, 197, 197, 0.5);
-    transition: box-shadow 0.1s linear;
-  }
-
-  cursor: pointer;
 `;
 
-export const Card1 = (props) => {
+const Card = (props) => {
   const { itemData } = props;
   const {
     itemimage = "240x240.png",
@@ -85,11 +72,27 @@ export const Card1 = (props) => {
   } = itemData;
 
   return (
-    <CardContainer1>
-      <img src={itemimage} alt="item"></img>
-      <span className="itemname">{itemname}</span>
-      <span className="itemprice">{`${itemprice}원`}</span>
-      <span className="enrolltime">{`${enrollTime}분 전`}</span>
-    </CardContainer1>
+    <CardContainer>
+      <div className="thumbnail">
+        <Link to={`/product/:${itemData.id}`} className="link">
+          <img src={"240x240.png"} alt="item"></img>
+        </Link>
+      </div>
+      <CardInfo>
+        <div className="namebox">
+          <Link to={`/product/:${itemData.id}`} className="link">
+            <span className="itemname">{itemname}</span>
+          </Link>
+        </div>
+        <div className="pricebox">
+          <span className="itemprice">{`${itemprice}원`}</span>
+        </div>
+        <div className="timebox">
+          <span className="enrolltime">{`${enrollTime}분 전`}</span>
+        </div>
+      </CardInfo>
+    </CardContainer>
   );
 };
+
+export default Card;

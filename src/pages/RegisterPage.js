@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
+import { registerAPI } from "../lib/api/user";
 import { NonModalLayout } from "../components/layout/ModalLayout";
 import colors from "../lib/styles/colors";
-import { DefaultInput, Input } from "../components/common/Input";
+import { DefaultInput, PasswordInput } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 
 const ContentContainer = styled.div`
@@ -32,13 +32,13 @@ const TitleContainer = styled.div`
 
 const RegisterFormContainer = styled.form`
   width: 320px;
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   margin-top: 35px;
 
   .confirmButton {
-    margin-top: 40px;
+    margin-top: auto;
   }
   .redundancyCheck {
     margin-left: auto;
@@ -58,41 +58,30 @@ const RegisterPage = () => {
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
   const [phonenumberMessage, setPhonenumberMessage] = useState("");
 
-  const [validUsername, setValidUsername] = useState(false);
-  const [validemail, setValidEmail] = useState(false);
-  const [validpassword, setValidPassword] = useState(false);
-  const [validpasswordConfirm, setValidPasswordConfirm] = useState(false);
-  const [validphonenumber, setValidPhonenumber] = useState(false);
+  const navigate = useNavigate();
 
-  const onSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
-      const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
 
-      try {
-        await axios
-          // 라우팅 경로 상수화 필요
-          .post(
-            "http://118.67.142.10/user/create",
-            {
-              email: email,
-              password: password,
-              name: username,
-              phone: noHyphenPhonenumber,
-            },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            if (res.status === 200) {
-              console.log("Register OK");
-            }
-          });
-      } catch (error) {
-        console.log(`${error} occured!`);
-      }
-    },
-    [email, password, username, phonenumber]
-  );
+    const result = registerAPI("http://118.67.142.10/user/create", {
+      username,
+      email,
+      password,
+      phonenumber: noHyphenPhonenumber,
+    });
+
+    if (result === 200) {
+      navigate("/welcome");
+    } else if (result === 400) {
+      alert("회원가입에 필요한 정보를 모두 작성해주세요!");
+    } else if (result === 409) {
+      alert("이미 존재하는 이메일입니다!");
+      setEmailMessage("이미 존재하는 이메일입니다!");
+    } else {
+      navigate("/notfound");
+    }
+  };
 
   // 디바운싱 추후 적용 필수!
 
@@ -103,15 +92,12 @@ const RegisterPage = () => {
 
     if (regex.test(e.target.value)) {
       if (e.target.value.length >= 2 && e.target.value.length <= 10) {
-        setValidUsername(true);
         setUsernameMessage("");
       } else {
-        setValidUsername(false);
-        setUsernameMessage("2자 이상 10자 이하로 입력해 주세요");
+        setUsernameMessage("2자 이상 10자 이하로 입력해 주세요.");
       }
     } else {
-      setValidUsername(false);
-      setUsernameMessage("이름은 한글로 입력되어야 합니다");
+      setUsernameMessage("이름은 한글로 입력되어야 합니다.");
     }
   }, []);
 
@@ -121,11 +107,9 @@ const RegisterPage = () => {
     setEmail(e.target.value);
 
     if (regex.test(e.target.value)) {
-      setValidEmail(true);
       setEmailMessage("");
     } else {
-      setValidEmail(false);
-      setEmailMessage("올바르지 않은 이메일 형식입니다");
+      setEmailMessage("올바르지 않은 이메일 형식입니다.");
     }
   }, []);
   const onChangePassword = useCallback((e) => {
@@ -133,12 +117,10 @@ const RegisterPage = () => {
     setPassword(e.target.value);
 
     if (regex.test(e.target.value)) {
-      setValidPassword(true);
       setPasswordMessage("");
     } else {
-      setValidPassword(false);
       setPasswordMessage(
-        "비밀번호는 8~30자리의 숫자, 영문자, 특수문자 조합으로 구성되어야 합니다"
+        "8~30자리의 숫자, 영문자, 특수문자 조합으로 구성되어야 합니다."
       );
     }
   }, []);
@@ -147,11 +129,9 @@ const RegisterPage = () => {
       setPasswordConfirm(e.target.value);
 
       if (e.target.value === password) {
-        setValidPasswordConfirm(true);
         setPasswordConfirmMessage("");
       } else {
-        setValidPasswordConfirm(false);
-        setPasswordConfirmMessage("비밀번호가 일치하지 않습니다");
+        setPasswordConfirmMessage("비밀번호가 일치하지 않습니다.");
       }
     },
     [password]
@@ -179,40 +159,45 @@ const RegisterPage = () => {
           <DefaultInput
             placeholder="이름"
             value={username}
+            name="username"
             onChange={onChangeUsername}
+            errorMsg={usernameMessage}
           ></DefaultInput>
-          {!validUsername && <div>{usernameMessage}</div>}
           <DefaultInput
             placeholder="이메일"
             value={email}
+            name="email"
             onChange={onChangeEmail}
+            errorMsg={emailMessage}
           ></DefaultInput>
-          {!validemail && <div>{emailMessage}</div>}
           <div className="redundancyCheck">
             <SmallButton isFilled={true} colorTheme={colors.blue[0]}>
               중복체크
             </SmallButton>
           </div>
-          <DefaultInput
+          <PasswordInput
             placeholder="비밀번호"
             value={password}
+            name="password"
             isPassword={true}
             onChange={onChangePassword}
-          ></DefaultInput>
-          {!validpassword && <div>{passwordMessage}</div>}
-          <DefaultInput
+            errorMsg={passwordMessage}
+          ></PasswordInput>
+          <PasswordInput
             placeholder="비밀번호 확인"
             value={passwordConfirm}
+            name="passwordConfirm"
             isPassword={true}
             onChange={onChangePasswordConfirm}
-          ></DefaultInput>
-          {!validpasswordConfirm && <div>{passwordConfirmMessage}</div>}
+            errorMsg={passwordConfirmMessage}
+          ></PasswordInput>
           <DefaultInput
             placeholder="휴대폰 번호"
             value={phonenumber}
+            name="phonenumber"
             onChange={onChangePhonenumber}
+            errorMsg={phonenumberMessage}
           ></DefaultInput>
-          {!validphonenumber && <div>{phonenumberMessage}</div>}
           <div className="confirmButton">
             <LargeButton isFilled={true} colorTheme={colors.blue[0]}>
               회원가입

@@ -93,7 +93,7 @@ const InputBox = styled.div`
   }
   input:focus + label,
   label {
-    color: ${colors.blue[0]};
+    color: ${(props) => (props.isError ? colors.red[0] : colors.blue[0])};
     font-weight: 500;
     font-size: 10px;
     pointer-events: none;
@@ -105,6 +105,11 @@ const InputBox = styled.div`
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
+  }
+  .errormsg {
+    color: ${(props) => (props.isError ? colors.red[0] : colors.blue[0])};
+    font-weight: 500;
+    font-size: 12px;
   }
 `;
 
@@ -120,19 +125,22 @@ const InputContent = styled.input`
   &::placeholder {
     color: transparent;
   }
-
   &:focus,
   &:not(:placeholder-shown) {
-    border-bottom: 1.5px solid ${colors.blue[0]};
+    border-bottom: 1.5px solid
+      ${(props) => (props.isError ? colors.red[0] : colors.blue[0])};
     outline: none;
   }
 `;
 
 export const DefaultInput = (props) => {
-  const { placeholder, name, value, onChange } = props;
+  const { placeholder, name, value, onChange, errorMsg } = props;
+
+  const isError = errorMsg !== "" ? true : false;
+  console.log(`${name} ${errorMsg} ${isError}`);
 
   return (
-    <InputBox>
+    <InputBox isError={isError}>
       <InputContent
         type="text"
         name={name}
@@ -140,8 +148,33 @@ export const DefaultInput = (props) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        isError={isError}
       ></InputContent>
       <label htmlFor={name}>{placeholder}</label>
+      {isError && <span className="errormsg">{errorMsg}</span>}
+    </InputBox>
+  );
+};
+
+export const PasswordInput = (props) => {
+  const { placeholder, name, value, onChange, errorMsg } = props;
+
+  const isError = errorMsg !== "" ? true : false;
+  console.log(`${name} ${errorMsg} ${isError}`);
+
+  return (
+    <InputBox isError={isError}>
+      <InputContent
+        type="password"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        isError={isError}
+      ></InputContent>
+      <label htmlFor={name}>{placeholder}</label>
+      {isError && <span className="errormsg">{errorMsg}</span>}
     </InputBox>
   );
 };

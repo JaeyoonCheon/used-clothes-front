@@ -1,6 +1,7 @@
 const colors = {
   mono: ["#727272", "#D9D9D9"],
   blue: ["#2F79E8"],
+  red: ["#FF5454"],
   kakao: ["#FEE500", "#1A1A1C"],
 };
 

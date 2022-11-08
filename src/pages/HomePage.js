@@ -11,20 +11,17 @@ import { listProductsAPI } from "../lib/api/product";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1180px 1fr;
+const Wrapper = styled.div``;
+
+const HomePageContainer = styled.div`
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 300px;
+  width: 1180px;
 
   aside {
     margin-left: auto;
   }
-`;
-
-const HomePageContainer = styled.div`
-  display: flex;
-  margin: 0;
-  margin-bottom: 300px;
-  width: 100%;
 `;
 
 const HeaderSpacer = styled.div`
@@ -32,15 +29,12 @@ const HeaderSpacer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  width: 1180px;
+  width: 100%;
   margin-right: auto;
 `;
 
 const NavBar = styled.div`
   height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
 
   .location {
     font-weight: 100;
@@ -48,6 +42,7 @@ const NavBar = styled.div`
   }
   .sortorders {
     display: flex;
+    justify-content: end;
 
     span {
       color: ${colors.mono[0]};
@@ -122,13 +117,15 @@ const HomePage = () => {
     <BaseLayout>
       <HeaderSpacer></HeaderSpacer>
       <Wrapper>
-        <aside>
-          <Aside options={options} setOptions={setOptions}></Aside>
-        </aside>
         <HomePageContainer>
+          <aside>
+            <Aside options={options} setOptions={setOptions}></Aside>
+          </aside>
           <ContentContainer>
             <NavBar>
-              <span>{location}</span>
+              <div>
+                <span>{location}</span>
+              </div>
               <div className="sortorders">
                 {sortOrders.map((order, i) => (
                   <span

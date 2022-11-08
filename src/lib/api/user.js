@@ -40,8 +40,8 @@ export const registerAPI = async (formData) => {
       phone: phonenumber,
     });
 
-    if (response && response.status === 200) {
-      console.log("Register success!");
+    if (response !== 500) {
+      return response.status;
     } else {
       throw new Error(response);
     }

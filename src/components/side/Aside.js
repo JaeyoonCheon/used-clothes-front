@@ -7,7 +7,7 @@ import Filter from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 import FilterList from "./FilterList";
 
-const AsideContainer = styled.div`
+const AsideContainer = styled.aside`
   width: 140px;
   margin-right: 20px;
 
