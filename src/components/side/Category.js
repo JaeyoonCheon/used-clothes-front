@@ -42,7 +42,7 @@ const CategorySubList = styled.div`
 `;
 
 const CategoryItem = styled.div`
-  font-weight: 200;
+  font-weight: 400;
   font-size: 14px;
   margin: 5px 0 10px 0;
 

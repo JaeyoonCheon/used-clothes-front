@@ -49,3 +49,5 @@ export const registerAPI = async (formData) => {
     console.log(e);
   }
 };
+
+export const getUserInfoAPI = async (formData) => {};

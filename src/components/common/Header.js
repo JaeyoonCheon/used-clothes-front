@@ -92,7 +92,7 @@ const NavMenu = styled.div`
 `;
 
 const HeaderSpacer = styled.div`
-  height: 84px;
+  height: 109px;
 `;
 
 const Header = () => {

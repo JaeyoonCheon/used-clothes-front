@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import AddItemPage from "./pages/AddItemPage";
 import WelcomePage from "./pages/WelcomePage";
+import MyPage from "./pages/MyPage";
 
 const App = () => {
   console.log("Render start");
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="product/:id/*" element={<ItemDetailPage />}></Route>
         <Route path="addItem" element={<AddItemPage />}></Route>
         <Route path="welcome" element={<WelcomePage />}></Route>
+        <Route path="mypage" element={<MyPage />}></Route>
       </Routes>
     </>
   );

@@ -9,6 +9,7 @@ const ButtonWrapper = styled.button`
   align-items: center;
   justify-content: center;
 
+  font-family: Pretendard;
   background: ${(props) => (props.isFilled ? props.colorTheme : "white")};
   border: ${(props) =>
     props.isFilled ? "none" : `0.3px solid ${props.colorTheme}`};
@@ -21,7 +22,11 @@ const ButtonWrapper = styled.button`
         return "white";
       }
     } else {
-      return "black";
+      if (props.fontColor) {
+        return `${props.fontColor}`;
+      } else {
+        return "black";
+      }
     }
   }};
 
@@ -58,6 +63,12 @@ const MiddleButtonContainer = styled(ButtonWrapper)`
 const SmallButtonContainer = styled(ButtonWrapper)`
   width: 80px;
   height: 30px;
+  border-radius: 5px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
 `;
 
 const AnotherButtonContainer = styled(ButtonWrapper)`
@@ -92,9 +103,13 @@ export const MiddleButton = (props) => {
 };
 
 export const SmallButton = (props) => {
-  const { children, icon, isFilled, colorTheme } = props;
+  const { children, icon, isFilled, colorTheme, fontColor } = props;
   return (
-    <SmallButtonContainer isFilled={isFilled} colorTheme={colorTheme}>
+    <SmallButtonContainer
+      isFilled={isFilled}
+      colorTheme={colorTheme}
+      fontColor={fontColor}
+    >
       {icon}
       {children}
     </SmallButtonContainer>
