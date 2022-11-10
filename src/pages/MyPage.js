@@ -7,7 +7,9 @@ import { getUserInfoAPI } from "../lib/api/user";
 import colors from "../lib/styles/colors";
 import { DefaultInput } from "../components/common/Input";
 import { SmallButton } from "../components/common/Button";
-import Card from "../components/card/Card";
+import CardList from "../components/card/CardList";
+
+import { itemDatas } from "../lib/dummydata/dummydata";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -121,7 +123,11 @@ const MyPage = () => {
             </ProfileButtonContainer>
           </UserInfoContainer>
         </UserContainer>
-        <UserProductContainer></UserProductContainer>
+        <UserProductContainer>
+          <div>상품 10</div>
+          <hr />
+          <CardList itemDatas={itemDatas} />
+        </UserProductContainer>
       </Wrapper>
     </BaseLayout>
   );

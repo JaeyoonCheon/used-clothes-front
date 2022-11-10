@@ -15,9 +15,8 @@ const InputContainer = styled.div`
     top: 15px;
     left: 0px;
   }
-  input:focus + label,
-  label {
-    visibility: hidden;
+  input:focus + label {
+    display: none;
   }
 `;
 
@@ -26,7 +25,7 @@ const LabelInputContainer = styled(InputContainer)`
 
   input:focus + label,
   label {
-    visibility: visible;
+    display: inline;
     color: ${(props) => (props.isError ? colors.red[0] : colors.blue[0])};
     font-weight: 500;
     font-size: 10px;
