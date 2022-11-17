@@ -12,7 +12,7 @@ const CardContainer = styled.li`
   margin-bottom: 20px;
 
   width: 240px;
-  min-height: 360px;
+  min-height: 320px;
   padding-bottom: 5px;
   background-color: white;
   display: inline-block;
