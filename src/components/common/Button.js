@@ -58,6 +58,11 @@ const LargeButtonContainer = styled(ButtonWrapper)`
 const MiddleButtonContainer = styled(ButtonWrapper)`
   width: 180px;
   height: 60px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
 `;
 
 const SmallButtonContainer = styled(ButtonWrapper)`
@@ -77,12 +82,14 @@ const AnotherButtonContainer = styled(ButtonWrapper)`
 `;
 
 export const LargeButton = (props) => {
-  const { children, icon, isFilled, colorTheme, fontColor } = props;
+  const { children, icon, isFilled, colorTheme, fontColor, ...restProps } =
+    props;
   return (
     <LargeButtonContainer
       isFilled={isFilled}
       colorTheme={colorTheme}
       fontColor={fontColor}
+      type={restProps.type}
     >
       {icon && (
         <img className="icon" src={`${icon}.svg`} alt="button_icon"></img>
@@ -93,9 +100,15 @@ export const LargeButton = (props) => {
 };
 
 export const MiddleButton = (props) => {
-  const { children, icon, isFilled, colorTheme } = props;
+  const { children, icon, isFilled, colorTheme, fontColor, ...restProps } =
+    props;
   return (
-    <MiddleButtonContainer isFilled={isFilled} colorTheme={colorTheme}>
+    <MiddleButtonContainer
+      isFilled={isFilled}
+      colorTheme={colorTheme}
+      fontColor={fontColor}
+      type={restProps.type}
+    >
       {icon}
       {children}
     </MiddleButtonContainer>
@@ -103,12 +116,14 @@ export const MiddleButton = (props) => {
 };
 
 export const SmallButton = (props) => {
-  const { children, icon, isFilled, colorTheme, fontColor } = props;
+  const { children, icon, isFilled, colorTheme, fontColor, ...restProps } =
+    props;
   return (
     <SmallButtonContainer
       isFilled={isFilled}
       colorTheme={colorTheme}
       fontColor={fontColor}
+      type={restProps.type}
     >
       {icon}
       {children}

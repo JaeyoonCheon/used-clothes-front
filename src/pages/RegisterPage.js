@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useMutation } from "@tanstack/react-query";
 
 import { registerAPI } from "../lib/api/user";
 import { NonModalLayout } from "../components/layout/ModalLayout";
@@ -58,28 +59,31 @@ const RegisterPage = () => {
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
   const [phonenumberMessage, setPhonenumberMessage] = useState("");
 
+  const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
+
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
-
-    const result = registerAPI("http://118.67.142.10/user/create", {
+  const mutation = useMutation(
+    registerAPI({
       username,
       email,
       password,
       phonenumber: noHyphenPhonenumber,
-    });
+    })
+  );
 
-    if (result === 200) {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log("submit");
+    console.log(mutation);
+
+    if (mutation.isSuccess) {
+      alert("회원가입이 완료되었습니다!");
       navigate("/welcome");
-    } else if (result === 400) {
+    }
+    if (mutation.error) {
       alert("회원가입에 필요한 정보를 모두 작성해주세요!");
-    } else if (result === 409) {
-      alert("이미 존재하는 이메일입니다!");
-      setEmailMessage("이미 존재하는 이메일입니다!");
-    } else {
-      navigate("/notfound");
+      navigate("/register");
     }
   };
 
@@ -152,7 +156,9 @@ const RegisterPage = () => {
           <h2 className="title">회원가입</h2>
           <AiOutlineArrowLeft
             size={21.33}
-            onClick={() => {}}
+            onClick={() => {
+              navigate(-1);
+            }}
           ></AiOutlineArrowLeft>
         </TitleContainer>
         <RegisterFormContainer onSubmit={onSubmit}>
@@ -199,7 +205,11 @@ const RegisterPage = () => {
             errorMsg={phonenumberMessage}
           ></DefaultInput>
           <div className="confirmButton">
-            <LargeButton isFilled={true} colorTheme={colors.blue[0]}>
+            <LargeButton
+              isFilled={true}
+              colorTheme={colors.blue[0]}
+              type="submit"
+            >
               회원가입
             </LargeButton>
           </div>

@@ -41,6 +41,7 @@ const ImageNumber = styled.span`
   line-height: 30px;
 `;
 
+// 이미지 리사이징 필요
 const ImageUploader = () => {
   const imgRef = useRef();
   const dataTransfer = new DataTransfer();
@@ -49,7 +50,8 @@ const ImageUploader = () => {
 
   const uploadFiles = () => {
     console.log(imgRef.current.files);
-    setUploadedFiles([...imgRef.current.files]);
+    setUploadedFiles([...uploadedFiles, ...imgRef.current.files]);
+    makePreview();
   };
   const removeFiles = (filename) => {
     setUploadedFiles(

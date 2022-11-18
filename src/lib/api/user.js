@@ -1,11 +1,7 @@
 import { APIInstance } from "../utils/axiosInstance";
 
-export const loginAPI = async (formData) => {
-  const { email, password } = formData;
-
-  if (!email || !password) {
-    return null;
-  }
+export const loginAPI = async (payload) => {
+  const { email, password } = payload;
 
   try {
     const response = await APIInstance.post(`user/login`, {
@@ -13,41 +9,35 @@ export const loginAPI = async (formData) => {
       password: password,
     });
 
-    if (response && response.status === 200) {
-      sessionStorage.setItem("email", response.email);
-      return response.data;
-    } else {
-      throw new Error(response);
-    }
+    return response.data;
   } catch (e) {
     console.log(e);
-    return null;
+    if (e.response && e.response.status === 404) {
+      console.log("404 Not Found");
+    } else {
+      console.log("500 Server error");
+    }
   }
 };
 
-export const registerAPI = async (formData) => {
-  const { email, username, password, phonenumber } = formData;
-
-  if (!email || !username || !password || !phonenumber) {
-    return null;
-  }
+export const registerAPI = async (payload) => {
+  const { email, username, password, phonenumber } = payload;
 
   try {
-    const response = await APIInstance.post(`user/create`, {
+    await APIInstance.post(`user/create`, {
       email,
       name: username,
       password,
       phone: phonenumber,
     });
-
-    if (response !== 500) {
-      return response.status;
-    } else {
-      throw new Error(response);
-    }
   } catch (e) {
     console.log(e);
+    if (e.response && e.response.status === 404) {
+      console.log("404 Not Found");
+    } else {
+      console.log("500 Server error");
+    }
   }
 };
 
-export const getUserInfoAPI = async (formData) => {};
+export const getUserInfoAPI = async (payload) => {};

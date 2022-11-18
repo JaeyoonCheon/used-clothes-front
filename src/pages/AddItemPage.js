@@ -117,10 +117,10 @@ const AddItemPage = () => {
         </ContentWrapper>
         <ContentWrapper>
           <ConfirmButtonWrapper>
-            <MiddleButton backgroundColor={colors.mono[0]}>
+            <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
               취소하기
             </MiddleButton>
-            <MiddleButton backgroundColor={colors.blue[0]}>
+            <MiddleButton isFilled={true} colorTheme={colors.blue[0]}>
               등록하기
             </MiddleButton>
           </ConfirmButtonWrapper>
