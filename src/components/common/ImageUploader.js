@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import colors from "../../lib/styles/colors";
 
+import { MAX_IMAGE_UPLOAD } from "../../lib/constant/constants";
+
 const Wrapper = styled.div`
   display: flex;
   height: 300px;
@@ -50,8 +52,13 @@ const ImageUploader = () => {
 
   const uploadFiles = () => {
     console.log(imgRef.current.files);
-    setUploadedFiles([...uploadedFiles, ...imgRef.current.files]);
-    makePreview();
+
+    if (uploadedFiles <= MAX_IMAGE_UPLOAD) {
+      if (!uploadedFiles.includes(imgRef.current.files[0])) {
+        setUploadedFiles([...uploadedFiles, ...imgRef.current.files]);
+        makePreview();
+      }
+    }
   };
   const removeFiles = (filename) => {
     setUploadedFiles(
