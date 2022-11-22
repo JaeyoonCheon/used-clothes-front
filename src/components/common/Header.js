@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Searchbar from "./Searchbar";
@@ -100,24 +102,40 @@ const Header = () => {
   const onClickLogin = () => {
     setisModalOpen(true);
   };
+  const { email: currentUser } = createSelector((state) => ({
+    email: state.auth.login.email,
+  }));
   return (
     <>
       <HeaderContainer>
         <TopHeader>
           <TopNavbar>
-            <div className="top_nav_menu">
-              <span className="top_nav_clicker" onClick={onClickLogin}>
-                로그인
-              </span>
-              {isModalOpen && (
-                <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
-              )}
-              <Link to="/register">
-                <span className="top_nav_clicker">회원가입</span>
-              </Link>
-              <span className="top_nav_clicker">알림</span>
-              <span className="top_nav_clicker">마이페이지</span>
-            </div>
+            {currentUser ? (
+              <div className="top_nav_menu">
+                <span className="top_nav_clicker" onClick={onClickLogin}>
+                  로그아웃
+                </span>
+                {isModalOpen && (
+                  <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
+                )}
+                <span className="top_nav_clicker">알림</span>
+                <span className="top_nav_clicker">마이페이지</span>
+              </div>
+            ) : (
+              <div className="top_nav_menu">
+                <span className="top_nav_clicker" onClick={onClickLogin}>
+                  로그인
+                </span>
+                {isModalOpen && (
+                  <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
+                )}
+                <Link to="/register">
+                  <span className="top_nav_clicker">회원가입</span>
+                </Link>
+                <span className="top_nav_clicker">알림</span>
+                <span className="top_nav_clicker">마이페이지</span>
+              </div>
+            )}
           </TopNavbar>
         </TopHeader>
         <HeaderBox>

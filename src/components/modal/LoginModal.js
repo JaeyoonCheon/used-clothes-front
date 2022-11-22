@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit";
 
 import { ModalLayout } from "../layout/ModalLayout";
@@ -11,7 +11,6 @@ import { LargeButton } from "../common/Button";
 import { DefaultInput } from "../common/Input";
 import useInput from "../../hooks/useInput";
 import { login } from "../../slices/authSlice";
-import { currentUser } from "../../slices/userSlice";
 
 const ContentContainer = styled.div`
   width: 320px;
@@ -83,10 +82,9 @@ const LoginModal = (props) => {
   const [password, onChangePassword] = useInput("");
 
   const dispatch = useDispatch();
-  const { auth, authError, currentUser } = createSelector((state) => ({
+  const { auth, authError } = useSelector((state) => ({
     auth: state.auth.auth,
     authError: state.auth.authError,
-    currentUser: state.user.currentUser,
   }));
 
   const onClickModalToggle = () => {
@@ -107,6 +105,7 @@ const LoginModal = (props) => {
     };
   }, []);
   useEffect(() => {
+    console.log("after login");
     if (authError) {
       console.log("Login Error!");
       console.log(authError);
@@ -114,9 +113,10 @@ const LoginModal = (props) => {
     }
     if (auth) {
       console.log("Login Success");
-      window.sessionStorage.setItem("currentUser", currentUser);
+      window.sessionStorage.setItem("currentUser", auth);
+      setisModalOpen(false);
     }
-  }, [auth, authError, currentUser]);
+  }, [auth, authError, setisModalOpen]);
 
   return (
     <ModalLayout onClick={onClickModalToggle}>

@@ -6,6 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import createStore from "./store";
+import { worker } from "./mocks/worker";
+
+if (process.env.NODE_ENV === "development") {
+  worker.start();
+}
 
 const queryClient = new QueryClient();
 const store = createStore();

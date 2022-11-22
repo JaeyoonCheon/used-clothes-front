@@ -25,6 +25,7 @@ export const authSlice = createSlice({
     login: {
       reducer: (state, action) => ({
         ...state,
+        login: action.payload,
       }),
       prepare: ({ email, password }) => {
         return {
@@ -38,7 +39,6 @@ export const authSlice = createSlice({
     login_success: {
       reducer: (state, action) => ({
         ...state,
-        authError: null,
         auth: action.payload,
       }),
       prepare: ({ email, password }) => {
@@ -67,12 +67,15 @@ export const authSlice = createSlice({
     register: {
       reducer: (state, action) => ({
         ...state,
+        register: action.payload,
       }),
-      prepare: ({ email, password }) => {
+      prepare: ({ email, name, password, phone }) => {
         return {
           payload: {
             email,
+            name,
             password,
+            phone,
           },
         };
       },
@@ -81,8 +84,18 @@ export const authSlice = createSlice({
       reducer: (state, action) => ({
         ...state,
         authError: null,
-        auth: action.payload,
+        auth: true,
       }),
+      prepare: ({ email, name, password, phone }) => {
+        return {
+          payload: {
+            email,
+            name,
+            password,
+            phone,
+          },
+        };
+      },
     },
     register_failure: {
       reducer: (state, action) => ({
@@ -90,6 +103,19 @@ export const authSlice = createSlice({
         authError: true,
         error: action.error,
       }),
+      prepare: ({ email, name, password, phone }) => {
+        return {
+          payload: {
+            email,
+            name,
+            password,
+            phone,
+          },
+        };
+      },
+    },
+    check: {
+      reducer: (state, action) => {},
     },
   },
 });

@@ -8,4 +8,11 @@ const axiosInstance = (options) => {
   return instance;
 };
 
+const testAxiosInstance = () => {
+  const instance = axios.create();
+
+  return instance;
+};
+
 export const APIInstance = axiosInstance();
+export const testAPIInstance = testAxiosInstance();

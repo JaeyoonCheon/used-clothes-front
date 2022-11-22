@@ -75,14 +75,24 @@ const RegisterPage = () => {
     e.preventDefault();
     console.log("submit");
 
-    dispatch(
-      register({
-        email,
-        name: username,
-        password,
-        phone: phonenumber,
-      })
-    );
+    if (
+      !usernameMessage &&
+      !emailMessage &&
+      !passwordMessage &&
+      !passwordConfirmMessage &&
+      !phonenumberMessage
+    ) {
+      dispatch(
+        register({
+          email,
+          name: username,
+          password,
+          phone: phonenumber,
+        })
+      );
+    } else {
+      alert("회원가입 정보를 다시 확인해 주세요!");
+    }
   };
 
   useEffect(() => {
@@ -94,8 +104,9 @@ const RegisterPage = () => {
     if (auth) {
       console.log("회원가입 성공");
       console.log(auth);
+      navigate("/");
     }
-  }, [auth, authError]);
+  }, [auth, authError, navigate]);
 
   // 디바운싱 추후 적용 필수!
 
