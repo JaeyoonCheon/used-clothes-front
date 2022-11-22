@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 
 import { ModalLayout } from "../layout/ModalLayout";
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
 import { DefaultInput } from "../common/Input";
 import useInput from "../../hooks/useInput";
-import { loginAPI } from "../../lib/api/user";
+import { login } from "../../slices/authSlice";
+import { currentUser } from "../../slices/userSlice";
 
 const ContentContainer = styled.div`
   width: 320px;
@@ -79,17 +82,22 @@ const LoginModal = (props) => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
 
-  const onClick = () => {
+  const dispatch = useDispatch();
+  const { auth, authError, currentUser } = createSelector((state) => ({
+    auth: state.auth.auth,
+    authError: state.auth.authError,
+    currentUser: state.user.currentUser,
+  }));
+
+  const onClickModalToggle = () => {
     setisModalOpen(false);
   };
 
   // bcrypt 암호화 진행 예정.
-  const fetchLogin = () => {
-    const fetchResponse = loginAPI({ email, password });
+  const fetchLogin = (e) => {
+    e.preventDefault();
 
-    if (fetchResponse) {
-      setisModalOpen(false);
-    }
+    dispatch(login({ email, password }));
   };
 
   useEffect(() => {
@@ -98,12 +106,26 @@ const LoginModal = (props) => {
       document.body.style.cssText = `overflow:unset`;
     };
   }, []);
+  useEffect(() => {
+    if (authError) {
+      console.log("Login Error!");
+      console.log(authError);
+      return;
+    }
+    if (auth) {
+      console.log("Login Success");
+      window.sessionStorage.setItem("currentUser", currentUser);
+    }
+  }, [auth, authError, currentUser]);
 
   return (
-    <ModalLayout onClick={onClick}>
+    <ModalLayout onClick={onClickModalToggle}>
       <ContentContainer>
         <div className="clearButton">
-          <AiOutlineClose size={20} onClick={onClick}></AiOutlineClose>
+          <AiOutlineClose
+            size={20}
+            onClick={onClickModalToggle}
+          ></AiOutlineClose>
         </div>
         <TitleContainer>
           <h2 className="title">로그인</h2>

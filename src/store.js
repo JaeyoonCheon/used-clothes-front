@@ -1,17 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
+import createSagaMiddleware from "@redux-saga/core";
 
-import rootReducer from "./slices";
+import rootReducer, { rootSaga } from "./slices";
 
 const logger = createLogger();
+const sagaMiddleware = createSagaMiddleware();
 
 const initialState = {};
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: [logger],
-  preloadedState: initialState,
-  devTools: process.env.NODE_ENV !== "production",
-});
+const createStore = () => {
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: [logger, sagaMiddleware],
+    preloadedState: initialState,
+    devTools: process.env.NODE_ENV !== "production",
+  });
 
-export default store;
+  sagaMiddleware.run(rootSaga);
+
+  return store;
+};
+
+export default createStore;

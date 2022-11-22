@@ -1,22 +1,14 @@
-import { APIInstance } from "../utils/axiosInstance";
+import { APIInstance } from "./axiosInstance";
 import makeQuery from "../utils/makeQuery";
 
 export const listProductsAPI = async (options) => {
   const query = makeQuery(options);
 
-  try {
-    console.log("fetch Start");
-    const response = await APIInstance.get(
-      `${process.env.REACT_APP_HOST}/clothe/list?filters=${query}`
-    );
-    console.log(`fetch success!`);
-    console.log(response.data);
+  return await APIInstance.get(`/clothe/list?filters=${query}`);
+};
 
-    return response.data;
-  } catch (e) {
-    console.log(`fetch products Error!`);
-    console.log(e);
+export const testListProductsAPI = async (options) => {
+  const query = makeQuery(options);
 
-    return null;
-  }
+  return await APIInstance.get(`/unknown`);
 };

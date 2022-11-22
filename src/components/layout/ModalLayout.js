@@ -45,9 +45,6 @@ const Wrapper = styled.div`
   .clearButton {
     display: flex;
     justify-content: flex-end;
-    margin: 5px;
-
-    color: ${colors.mono[0]};
 
     cursor: pointer;
   }
@@ -65,7 +62,7 @@ export const ModalLayout = (props) => {
         }
       }}
     >
-      <Wrapper className="wrapper">{children}</Wrapper>
+      <Wrapper>{children}</Wrapper>
     </ModalOverlay>
   );
 };

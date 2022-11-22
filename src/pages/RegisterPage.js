@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -9,6 +9,8 @@ import { NonModalLayout } from "../components/layout/ModalLayout";
 import colors from "../lib/styles/colors";
 import { DefaultInput, PasswordInput } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../slices/authSlice";
 
 const ContentContainer = styled.div`
   width: 320px;
@@ -62,30 +64,38 @@ const RegisterPage = () => {
   const noHyphenPhonenumber = phonenumber.replace(/-/g, "");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const mutation = useMutation(
-    registerAPI({
-      username,
-      email,
-      password,
-      phonenumber: noHyphenPhonenumber,
-    })
-  );
+  const { auth, authError } = useSelector((state) => ({
+    auth: state.auth.auth,
+    authError: state.auth.authError,
+  }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log("submit");
-    console.log(mutation);
 
-    if (mutation.isSuccess) {
-      alert("회원가입이 완료되었습니다!");
-      navigate("/welcome");
-    }
-    if (mutation.error) {
-      alert("회원가입에 필요한 정보를 모두 작성해주세요!");
-      navigate("/register");
-    }
+    dispatch(
+      register({
+        email,
+        name: username,
+        password,
+        phone: phonenumber,
+      })
+    );
   };
+
+  useEffect(() => {
+    if (authError) {
+      console.log("회원가입 실패");
+      console.log(authError);
+      return;
+    }
+    if (auth) {
+      console.log("회원가입 성공");
+      console.log(auth);
+    }
+  }, [auth, authError]);
 
   // 디바운싱 추후 적용 필수!
 
@@ -104,7 +114,6 @@ const RegisterPage = () => {
       setUsernameMessage("이름은 한글로 입력되어야 합니다.");
     }
   }, []);
-
   const onChangeEmail = useCallback((e) => {
     const regex =
       /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -154,12 +163,14 @@ const RegisterPage = () => {
       <ContentContainer>
         <TitleContainer>
           <h2 className="title">회원가입</h2>
-          <AiOutlineArrowLeft
-            size={21.33}
-            onClick={() => {
-              navigate(-1);
-            }}
-          ></AiOutlineArrowLeft>
+          <div className="clearButton">
+            <AiOutlineArrowLeft
+              size={21.33}
+              onClick={() => {
+                navigate(-1);
+              }}
+            ></AiOutlineArrowLeft>
+          </div>
         </TitleContainer>
         <RegisterFormContainer onSubmit={onSubmit}>
           <DefaultInput

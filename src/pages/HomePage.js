@@ -7,7 +7,7 @@ import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
-import { listProductsAPI } from "../lib/api/product";
+import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
@@ -46,7 +46,7 @@ const NavBar = styled.div`
 
     span {
       color: ${colors.mono[0]};
-      font-weight: 100;
+      font-weight: 400;
       font-size: 14px;
 
       cursor: pointer;
@@ -92,9 +92,11 @@ const HomePage = () => {
   console.log(options);
 
   useEffect(() => {
-    const fetchResult = listProductsAPI(options);
-
-    setProducts(fetchResult);
+    console.log("Fetch new options");
+    testListProductsAPI(options).then((result) => {
+      console.log(result.data);
+      setProducts(result.data);
+    });
   }, [options]);
 
   const onClickSort = (order) => {
