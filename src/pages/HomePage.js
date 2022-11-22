@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { createSelector } from "@reduxjs/toolkit";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -8,8 +9,10 @@ import Aside from "../components/side/Aside";
 import CardList from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
 import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
+import { list } from "../slices/productSlice";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
+import { useDispatch } from "react-redux";
 
 const Wrapper = styled.div``;
 
@@ -89,7 +92,10 @@ const HomePage = () => {
 
   const [products, setProducts] = useState([]);
 
-  console.log(options);
+  const dispatch = useDispatch();
+  const { options: productOptions } = createSelector((state) => ({
+    options: state.product.options,
+  }));
 
   useEffect(() => {
     console.log("Fetch new options");
@@ -100,11 +106,20 @@ const HomePage = () => {
   }, [options]);
 
   const onClickSort = (order) => {
+    const prevState = options;
+
     setSortOption(order);
     setOptions((prev) => ({
       ...prev,
       sorting: order,
     }));
+
+    dispatch(
+      list({
+        ...prevState,
+        sorting: order,
+      })
+    );
   };
 
   const onClickPage = (nextPage) => {

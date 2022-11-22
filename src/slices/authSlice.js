@@ -54,7 +54,6 @@ export const authSlice = createSlice({
       reducer: (state, action) => ({
         ...state,
         authError: action.error,
-        error: action.error,
       }),
       prepare: ({ email, password }) => {
         return {

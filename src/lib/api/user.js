@@ -1,12 +1,13 @@
 import { APIInstance } from "./axiosInstance";
 
-export const loginAPI = async (payload) =>
-  APIInstance.post(`user/login`, payload, { withCredentials: true });
+export const loginAPI = async (payload) => {
+  return await APIInstance.post(`user/login`, payload);
+};
 
 export const registerAPI = async (payload) => {
   const { email, name, password, phone } = payload;
 
-  return APIInstance.post(
+  return await APIInstance.post(
     `user/create`,
     {
       email,
