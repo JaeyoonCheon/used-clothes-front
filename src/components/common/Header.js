@@ -102,7 +102,7 @@ const Header = () => {
   const onClickLogin = () => {
     setisModalOpen(true);
   };
-  const { email: currentUser } = createSelector((state) => ({
+  const { email: currentUser } = useSelector((state) => ({
     email: state.auth.login.email,
   }));
   return (
