@@ -2,23 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Card from "./Card";
+import { SmallCard, LargeCard } from "./Card";
 
 const Wrapper = styled.ul`
   padding: 0;
   width: 100%;
 `;
 
-const CardList = (props) => {
+export const SmallCardList = (props) => {
   const { itemDatas } = props;
 
   return (
     <Wrapper>
       {itemDatas.map((itemData) => {
-        return <Card key={itemData.id} itemData={itemData}></Card>;
+        return <SmallCard key={itemData.id} itemData={itemData}></SmallCard>;
       })}
     </Wrapper>
   );
 };
 
-export default CardList;
+export const LargeCardList = (props) => {
+  const { itemDatas } = props;
+
+  return (
+    <Wrapper>
+      {itemDatas.map((itemData) => {
+        return <LargeCard key={itemData.id} itemData={itemData}></LargeCard>;
+      })}
+    </Wrapper>
+  );
+};

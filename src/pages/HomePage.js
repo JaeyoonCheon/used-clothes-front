@@ -6,7 +6,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
-import CardList from "../components/card/CardList";
+import { SmallCardList } from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
 import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
 import { list } from "../slices/productSlice";
@@ -154,7 +154,7 @@ const HomePage = () => {
                 ))}
               </div>
             </NavBar>
-            <CardList itemDatas={itemDatas}></CardList>
+            <SmallCardList itemDatas={itemDatas}></SmallCardList>
             <hr></hr>
             <Pagination
               currentPage={currentPage}

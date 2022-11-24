@@ -7,7 +7,7 @@ import { getUserInfoAPI } from "../lib/api/user";
 import colors from "../lib/styles/colors";
 import { LabelInput } from "../components/common/Input";
 import { SmallButton } from "../components/common/Button";
-import CardList from "../components/card/CardList";
+import { LargeCardList } from "../components/card/CardList";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 
@@ -95,7 +95,7 @@ const MyProductPage = () => {
             </UserProductButtonContainer>
           </UserProductHeader>
           <hr />
-          <CardList itemDatas={itemDatas} />
+          <LargeCardList itemDatas={itemDatas} />
         </UserProductContainer>
       </Wrapper>
     </BaseLayout>

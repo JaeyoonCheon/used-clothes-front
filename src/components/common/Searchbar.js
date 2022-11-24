@@ -25,11 +25,13 @@ const FormContainer = styled.form`
 
 const SearchbarInput = styled.input`
   width: 500px;
-  border: none;
-  background-color: ${colors.mono[1]};
   margin-left: 10px;
   padding-left: 10px;
 
+  border: none;
+  background-color: ${colors.mono[1]};
+  font-size: 16px;
+  font-weight: 400;
   &:focus {
     outline: none;
   }

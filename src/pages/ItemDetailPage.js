@@ -5,12 +5,9 @@ import { faker } from "@faker-js/faker";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
-import {
-  LargeButton,
-  MiddleButton,
-  AnotherButton,
-} from "../components/common/Button";
+import { MiddleButton } from "../components/common/Button";
 import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
+import { ReactComponent as StarIcon } from "../asset/star.svg";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -24,131 +21,130 @@ const ItemDetailContainer = styled.div`
   width: 1015px;
   height: fit-content;
   margin: auto;
+  padding-top: 100px;
 
-  .navButton-back {
-    margin-top: 35px;
-    margin-bottom: 25px;
+  .item_summary {
+    display: flex;
+
+    justify-content: space-between;
   }
 `;
 
-const ItemSummaryContainer = styled.div`
-  display: flex;
-  margin: auto;
-  margin-top: 20px;
-`;
-
-const ImageContainer = styled.div`
-  .itemImage {
-    display: block;
+const MainImageContainer = styled.div`
+  .main_image {
+    display: inline-block;
+    vertical-align: top;
   }
 `;
 
 const ItemInfoContainer = styled.div`
   width: 400px;
-  margin-left: 30px;
-`;
-
-const ItemTitle = styled.h2`
-  margin: 0;
-  margin-bottom: 30px;
-
-  font-style: normal;
-  font-weight: 100;
-  font-size: 32px;
-  line-height: 44px;
-`;
-
-const ItemPriceContainer = styled.div`
-  width: 100%;
-  margin-bottom: 40px;
-`;
-
-const ItemPrice = styled.div`
-  font-style: normal;
-  font-weight: 300;
-  font-size: 36px;
-  line-height: 49px;
-`;
-
-const DeliveryFee = styled.div`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: ${colors.mono[0]};
-`;
-
-const Stars = styled.div`
-  width: fit-content;
+  height: 580px;
   margin-left: auto;
+  position: relative;
+`;
 
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 20px;
-  color: ${colors.blue[0]};
+const ItemPurchaseInfo = styled.div`
+  padding-bottom: 10px;
 
-  .starIcon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    fill: ${colors.blue[0]};
+  border-bottom: 0.3px solid ${colors.mono[1]};
+
+  .item_title {
+    margin: 0;
+    margin-bottom: 30px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+  }
+  .item_price_container {
+    width: 100%;
+  }
+  .item_shipping_fee {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: ${colors.mono[0]};
+  }
+  .item_enrolled_time {
+    padding-top: 25px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: ${colors.mono[0]};
+  }
+`;
+
+const PriceStars = styled.div`
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  .item_price {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 43px;
+  }
+  .star_icon {
+    margin-right: 5px;
+  }
+  .star_count {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: ${colors.blue[0]};
   }
 `;
 
 const ItemClassContainer = styled.div`
   width: 100%;
+  padding: 10px 0;
   margin-bottom: 50px;
-`;
 
-const ItemCategories = styled.div`
-  margin-bottom: 15px;
+  .item_category {
+    margin-bottom: 20px;
 
-  font-style: normal;
-  font-weight: 100;
-  font-size: 20px;
-  line-height: 27px;
-  color: ${colors.mono[0]};
-`;
-
-const ItemOptionContainer = styled.div`
-  width: 100%;
-`;
-
-const ItemOptionTitle = styled.div`
-  font-style: normal;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 22px;
-  color: ${colors.mono[0]};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000;
+  }
 `;
 
 const ItemOptionList = styled.ul`
   margin: 0;
-  margin-left: 10px;
   padding: 0;
 
-  list-style: none;
-
   .itemOption {
-    margin-left: 10px;
+    display: block;
+    margin-left: 20px;
+    padding-bottom: 5px;
 
+    list-style: none;
     font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
     color: ${colors.mono[0]};
   }
 `;
 
 const SellerInfoContainer = styled.div`
   width: 100%;
-  margin-bottom: 70px;
 `;
 
 const SellerInfo = styled.div`
   display: flex;
   margin-bottom: 15px;
+  height: auto;
 `;
 
 const SellerIcon = styled.div`
@@ -159,44 +155,52 @@ const SellerIcon = styled.div`
   border-radius: 70%;
   overflow: hidden;
 
-  .sellerImage {
+  .seller_image {
     display: block;
   }
 `;
 
 const SellerDetail = styled.div`
-  .sellerName {
+  height: 40px;
+
+  .seller_name {
     font-style: normal;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 20px;
-    line-height: 27px;
+    line-height: 24px;
   }
-  .sellerItems {
+  .seller_items {
     font-style: normal;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 14px;
+    color: ${colors.mono[0]};
+  }
+  .seller_location {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
     color: ${colors.mono[0]};
   }
 `;
 
-const SellerPlace = styled.div`
-  font-style: normal;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 22px;
-  color: ${colors.mono[0]};
-`;
-
 const NavButtonContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
 `;
 
 const ItemDescription = styled.p`
   margin: 60px 0 300px 0;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
 `;
 
 const ItemDetailPage = () => {
@@ -230,89 +234,69 @@ const ItemDetailPage = () => {
     <BaseLayout>
       <Wrapper>
         <ItemDetailContainer>
-          <div className="navButton-back">
-            <AnotherButton
-              width={120}
-              height={40}
-              border={colors.mono[1]}
-              color={colors.mono[0]}
-              fontSize={12}
-            >
-              &lt; 목록으로
-            </AnotherButton>
-          </div>
-          <ItemSummaryContainer>
-            <ImageContainer>
-              <img src={itemimage} className="itemImage" alt="itemDetail"></img>
-            </ImageContainer>
+          <div className="item_summary">
+            <MainImageContainer>
+              <img
+                src={itemimage}
+                className="main_image"
+                alt="itemDetail"
+              ></img>
+            </MainImageContainer>
             <ItemInfoContainer>
-              <ItemTitle>{itemname}</ItemTitle>
-              <ItemPriceContainer>
-                <ItemPrice>{itemprice}원</ItemPrice>
-                <DeliveryFee>배송비 포함</DeliveryFee>
-                <Stars>
-                  <img
-                    className="starIcon"
-                    src={process.env.PUBLIC_URL + "/star.png"}
-                    alt="star"
-                  />
-                  <span>10</span>
-                </Stars>
-              </ItemPriceContainer>
+              <ItemPurchaseInfo>
+                <h2 className="item_title">{itemname}</h2>
+                <div className="item_price_container">
+                  <PriceStars>
+                    <span className="item_price">{itemprice}원</span>
+                    <div className="star_box">
+                      <StarIcon className="star_icon"></StarIcon>
+                      <span className="star_count">10</span>
+                    </div>
+                  </PriceStars>
+                  <div className="item_shipping_fee">배송비 포함</div>
+                  <div className="item_enrolled_time">1시간 전</div>
+                </div>
+              </ItemPurchaseInfo>
               <ItemClassContainer>
-                <ItemCategories>상의 / 티셔츠</ItemCategories>
-                <ItemOptionContainer>
-                  <ItemOptionTitle>옵션</ItemOptionTitle>
-                  <ItemOptionList>
-                    <li className="itemOption">
-                      색상: {itemColors.join(", ")}
-                    </li>
-                    <li className="itemOption">브랜드: {brand}</li>
-                    <li className="itemOption">사이즈: {itemsize}</li>
-                    <li className="itemOption">재질: {textiles}</li>
-                    <li className="itemOption">사용감: {pollution}</li>
-                  </ItemOptionList>
-                </ItemOptionContainer>
+                <div className="item_category">상의 / 티셔츠</div>
+                <ItemOptionList>
+                  <li className="itemOption">색상: {itemColors.join(", ")}</li>
+                  <li className="itemOption">브랜드: {brand}</li>
+                  <li className="itemOption">사이즈: {itemsize}</li>
+                  <li className="itemOption">재질: {textiles}</li>
+                  <li className="itemOption">사용감: {pollution}</li>
+                </ItemOptionList>
               </ItemClassContainer>
               <SellerInfoContainer>
                 <SellerInfo>
                   <SellerIcon>
                     <img
                       src={faker.image.animals(40, 40)}
-                      className="sellerImage"
-                      alt="sellerIcon"
+                      className="seller_image"
+                      alt="seller_image"
                     />
                   </SellerIcon>
                   <SellerDetail>
-                    <div className="sellerName">{sellerName}</div>
-                    <div className="sellerItems">
+                    <div className="seller_name">{sellerName}</div>
+                    <div className="seller_items">
                       등록한 상품: {sellingItems}개
                     </div>
+                    <span className="seller_location">
+                      지역 : {currentLocation}
+                    </span>
                   </SellerDetail>
                 </SellerInfo>
-                <SellerPlace>지역 : {currentLocation}</SellerPlace>
               </SellerInfoContainer>
-              <hr />
               <NavButtonContainer>
-                <MiddleButton
-                  width={180}
-                  height={60}
-                  backgroundColor={colors.mono[0]}
-                  fontSize={20}
-                >
+                <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
                   관심목록 추가
                 </MiddleButton>
-                <MiddleButton
-                  width={180}
-                  height={60}
-                  backgroundColor={colors.blue[0]}
-                  fontSize={20}
-                >
+                <MiddleButton isFilled={true} colorTheme={colors.blue[0]}>
                   채팅하기
                 </MiddleButton>
               </NavButtonContainer>
             </ItemInfoContainer>
-          </ItemSummaryContainer>
+          </div>
           <ItemDescription>{descriptions}</ItemDescription>
         </ItemDetailContainer>
       </Wrapper>
