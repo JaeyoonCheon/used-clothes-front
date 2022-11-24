@@ -109,7 +109,7 @@ const TextContainer = styled.textarea`
   }
 `;
 
-export const DefaultInput = (props) => {
+export const LabelInput = (props) => {
   const {
     placeholder,
     name,
@@ -142,7 +142,7 @@ export const DefaultInput = (props) => {
   );
 };
 
-export const PasswordInput = (props) => {
+export const LabelPasswordInput = (props) => {
   const {
     placeholder,
     name,

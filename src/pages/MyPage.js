@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BaseLayout from "../components/layout/BaseLayout";
 import { getUserInfoAPI } from "../lib/api/user";
 import colors from "../lib/styles/colors";
-import { DefaultInput } from "../components/common/Input";
+import { LabelInput } from "../components/common/Input";
 import { SmallButton } from "../components/common/Button";
 import CardList from "../components/card/CardList";
 
@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 const UserContainer = styled.div`
   width: 100%;
   display: flex;
+  margin-bottom: 60px;
 
   .profileImage {
     width: 360px;
@@ -46,7 +47,42 @@ const ProfileButtonContainer = styled.div`
   justify-content: space-between;
 `;
 
-const UserProductContainer = styled.section``;
+const UserProductContainer = styled.section`
+  width: 100%;
+`;
+
+const UserProductHeader = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const UserProductCounter = styled.div`
+  display: flex;
+  margin-right: 30px;
+
+  span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    align-items: center;
+
+    color: #000000;
+
+    &.count {
+      margin-left: 15px;
+      color: ${colors.blue[0]};
+    }
+  }
+`;
+
+const UserProductButtonContainer = styled.div`
+  display: flex;
+  width: 180px;
+
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const MyPage = () => {
   const [userdata, setUserdata] = useState({
@@ -69,27 +105,27 @@ const MyPage = () => {
           </div>
           <UserInfoContainer>
             <InfoInputContainer>
-              <DefaultInput
+              <LabelInput
                 placeholder="이메일"
                 name="email"
                 value={userdata.email}
                 isDisabled={true}
                 errorMsg=""
-              ></DefaultInput>
-              <DefaultInput
+              ></LabelInput>
+              <LabelInput
                 placeholder="이름"
                 name="username"
                 value={userdata.username}
                 isDisabled={false}
                 errorMsg=""
-              ></DefaultInput>
-              <DefaultInput
+              ></LabelInput>
+              <LabelInput
                 placeholder="전화번호"
                 name="phonenumber"
                 value={userdata.phonenumber}
                 isDisabled={false}
                 errorMsg=""
-              ></DefaultInput>
+              ></LabelInput>
             </InfoInputContainer>
             <ProfileButtonContainer>
               <SmallButton
@@ -124,7 +160,30 @@ const MyPage = () => {
           </UserInfoContainer>
         </UserContainer>
         <UserProductContainer>
-          <div>상품 10</div>
+          <UserProductHeader>
+            <UserProductCounter>
+              <span>상품</span>
+              <span className="count">10</span>
+            </UserProductCounter>
+            <UserProductButtonContainer>
+              <Link to="/additem">
+                <SmallButton
+                  isFilled={false}
+                  colorTheme={colors.blue[0]}
+                  fontColor={colors.blue[0]}
+                >
+                  상품 등록
+                </SmallButton>
+              </Link>
+              <SmallButton
+                isFilled={false}
+                colorTheme={colors.blue[0]}
+                fontColor={colors.blue[0]}
+              >
+                자세히 보기
+              </SmallButton>
+            </UserProductButtonContainer>
+          </UserProductHeader>
           <hr />
           <CardList itemDatas={itemDatas} />
         </UserProductContainer>

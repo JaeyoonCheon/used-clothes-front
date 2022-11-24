@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
 
     @font-face { 
       font-family: 'Pretendard'; 
+      font-weight: 300; 
+      src: local("fonts/Pretendard/Pretendard-light.woff2") 
+    }
+    @font-face { 
+      font-family: 'Pretendard'; 
       font-weight: 400; 
       src: local("fonts/Pretendard/Pretendard-Regular.woff2") 
     }
@@ -25,8 +30,15 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   a, a:link, a:visited, a:hover, a:active {
-    color: #000;
+    color: inherit;
     text-decoration: none;
+  }
+  ul{
+    all: unset;
+  }
+  li {
+    all:unset;
+    display:inline-block
   }
 `;
 

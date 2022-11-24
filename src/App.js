@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "./lib/styles/globalStyle";
 import HomePage from "./pages/HomePage";
+import HomePage2 from "./pages/HomePage2";
 import IDForgotPage from "./pages/IDForgotPage";
 import PWForgotPage from "./pages/PWForgotPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -10,6 +11,7 @@ import ItemDetailPage from "./pages/ItemDetailPage";
 import AddItemPage from "./pages/AddItemPage";
 import WelcomePage from "./pages/WelcomePage";
 import MyPage from "./pages/MyPage";
+import MyProductPage from "./pages/MyProductPage";
 
 const App = () => {
   console.log("Render start");
@@ -18,6 +20,7 @@ const App = () => {
       <GlobalStyle></GlobalStyle>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/2" element={<HomePage2 />}></Route>
         <Route path="idforgot" element={<IDForgotPage />}></Route>
         <Route path="pwforgot" element={<PWForgotPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
@@ -25,6 +28,7 @@ const App = () => {
         <Route path="addItem" element={<AddItemPage />}></Route>
         <Route path="welcome" element={<WelcomePage />}></Route>
         <Route path="mypage" element={<MyPage />}></Route>
+        <Route path="myproduct" element={<MyProductPage />}></Route>
       </Routes>
     </>
   );

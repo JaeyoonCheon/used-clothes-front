@@ -32,13 +32,14 @@ const TopNavbar = styled.div`
   align-items: center;
 
   .top_nav_menu {
-    width: 180px;
     margin-left: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
 
     .top_nav_clicker {
+      margin-left: 5px;
+
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -119,7 +120,9 @@ const Header = () => {
                   <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
                 )}
                 <span className="top_nav_clicker">알림</span>
-                <span className="top_nav_clicker">마이페이지</span>
+                <span className="top_nav_clicker">
+                  <Link to="/mypage">마이페이지</Link>
+                </span>
               </div>
             ) : (
               <div className="top_nav_menu">
@@ -129,11 +132,13 @@ const Header = () => {
                 {isModalOpen && (
                   <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
                 )}
-                <Link to="/register">
-                  <span className="top_nav_clicker">회원가입</span>
-                </Link>
+                <span className="top_nav_clicker">
+                  <Link to="/register">회원가입</Link>
+                </span>
                 <span className="top_nav_clicker">알림</span>
-                <span className="top_nav_clicker">마이페이지</span>
+                <span className="top_nav_clicker">
+                  <Link to="/mypage">마이페이지</Link>
+                </span>
               </div>
             )}
           </TopNavbar>

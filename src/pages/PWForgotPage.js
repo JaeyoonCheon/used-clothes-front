@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import colors from "../lib/styles/colors";
 import { NonModalLayout } from "../components/layout/ModalLayout";
-import { DefaultInput } from "../components/common/Input";
+import { LabelInput } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 
 const ContentContainer = styled.div`
@@ -63,8 +63,8 @@ const PWForgotPage = () => {
           <AiOutlineArrowLeft size={21.33}></AiOutlineArrowLeft>
         </TitleContainer>
         <ForgotFormContainer>
-          <DefaultInput placeholder="이름"></DefaultInput>
-          <DefaultInput placeholder="이메일"></DefaultInput>
+          <LabelInput placeholder="이름"></LabelInput>
+          <LabelInput placeholder="이메일"></LabelInput>
           <TelecomContainer>
             <span className="telecomTitle">통신사</span>
             <select>
@@ -73,13 +73,13 @@ const PWForgotPage = () => {
               <option value="LG">LG</option>
             </select>
           </TelecomContainer>
-          <DefaultInput placeholder="전화번호"></DefaultInput>
+          <LabelInput placeholder="전화번호"></LabelInput>
           <div className="authButton">
             <SmallButton isFilled={true} colorTheme={colors.blue[0]}>
               인증하기
             </SmallButton>
           </div>
-          <DefaultInput placeholder="인증번호"></DefaultInput>
+          <LabelInput placeholder="인증번호"></LabelInput>
           <div className="confirmButton">
             <LargeButton isFilled={true} colorTheme={colors.blue[0]}>
               비밀번호 찾기

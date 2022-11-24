@@ -4,7 +4,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { NonModalLayout } from "../components/layout/ModalLayout";
 import colors from "../lib/styles/colors";
-import { DefaultInput } from "../components/common/Input";
+import { LabelInput } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 const ContentContainer = styled.div`
   width: 320px;
@@ -63,7 +63,7 @@ const IDForgotPage = () => {
           <AiOutlineArrowLeft size={21.33}></AiOutlineArrowLeft>
         </TitleContainer>
         <ForgotFormContainer>
-          <DefaultInput placeholder="이름" name="username"></DefaultInput>
+          <LabelInput placeholder="이름" name="username"></LabelInput>
           <TelecomContainer>
             <span className="telecomTitle">통신사</span>
             <select>
@@ -72,13 +72,13 @@ const IDForgotPage = () => {
               <option value="LG">LG</option>
             </select>
           </TelecomContainer>
-          <DefaultInput placeholder="전화번호"></DefaultInput>
+          <LabelInput placeholder="전화번호"></LabelInput>
           <div className="authButton">
             <SmallButton isFilled={true} colorTheme={colors.blue[0]}>
               인증하기
             </SmallButton>
           </div>
-          <DefaultInput placeholder="인증번호"></DefaultInput>
+          <LabelInput placeholder="인증번호"></LabelInput>
           <div className="confirmButton">
             <LargeButton isFilled={true} colorTheme={colors.blue[0]}>
               아이디 찾기

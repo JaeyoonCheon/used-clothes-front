@@ -10,6 +10,7 @@ import CardList from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
 import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
 import { list } from "../slices/productSlice";
+import OptionTable from "../components/common/OptionTable";
 
 import { itemDatas } from "../lib/dummydata/dummydata";
 import { useDispatch } from "react-redux";
@@ -34,6 +35,10 @@ const HeaderSpacer = styled.div`
 const ContentContainer = styled.div`
   width: 100%;
   margin-right: auto;
+
+  .aside {
+    margin-bottom: 40px;
+  }
 `;
 
 const NavBar = styled.div`
@@ -69,7 +74,7 @@ const location = "산격동";
 
 const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
 
-const HomePage = () => {
+const HomePage2 = () => {
   const [sortOption, setSortOption] = useState("최신 순");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageLimit, setPageLimit] = useState(50);
@@ -135,25 +140,25 @@ const HomePage = () => {
       <HeaderSpacer></HeaderSpacer>
       <Wrapper>
         <HomePageContainer>
-          <aside>
-            <Aside options={options} setOptions={setOptions}></Aside>
-          </aside>
           <ContentContainer>
-            <NavBar>
-              <div>
-                <span>{location}</span>
-                <img src="location.svg" alt="location"></img>
-              </div>
-              <div className="sortorders">
-                {sortOrders.map((order, i) => (
-                  <span
-                    className={sortOption === order ? "active" : ""}
-                    key={i}
-                    onClick={() => onClickSort(order)}
-                  >{`${order}`}</span>
-                ))}
-              </div>
-            </NavBar>
+            <div className="aside">
+              <NavBar>
+                <div>
+                  <span>{location}</span>
+                  <img src="location.svg" alt="location"></img>
+                </div>
+                <div className="sortorders">
+                  {sortOrders.map((order, i) => (
+                    <span
+                      className={sortOption === order ? "active" : ""}
+                      key={i}
+                      onClick={() => onClickSort(order)}
+                    >{`${order}`}</span>
+                  ))}
+                </div>
+              </NavBar>
+              <OptionTable></OptionTable>
+            </div>
             <CardList itemDatas={itemDatas}></CardList>
             <hr></hr>
             <Pagination
@@ -169,4 +174,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePage2;

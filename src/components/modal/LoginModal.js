@@ -8,7 +8,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { ModalLayout } from "../layout/ModalLayout";
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
-import { DefaultInput } from "../common/Input";
+import { LabelInput, LabelPasswordInput } from "../common/Input";
 import useInput from "../../hooks/useInput";
 import { login } from "../../slices/authSlice";
 
@@ -131,18 +131,18 @@ const LoginModal = (props) => {
           <h2 className="title">로그인</h2>
         </TitleContainer>
         <LoginFeature onSubmit={fetchLogin}>
-          <DefaultInput
+          <LabelInput
             placeholder="이메일"
             name="email"
             value={email}
             onChange={onChangeEmail}
-          ></DefaultInput>
-          <DefaultInput
+          ></LabelInput>
+          <LabelPasswordInput
             placeholder="비밀번호"
             name="password"
             value={password}
             onChange={onChangePassword}
-          ></DefaultInput>
+          ></LabelPasswordInput>
           <LoginButton>
             <LargeButton
               type="submit"

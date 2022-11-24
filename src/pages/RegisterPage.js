@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { registerAPI } from "../lib/api/user";
 import { NonModalLayout } from "../components/layout/ModalLayout";
 import colors from "../lib/styles/colors";
-import { DefaultInput, PasswordInput } from "../components/common/Input";
+import { LabelInput, LabelPasswordInput } from "../components/common/Input";
 import { LargeButton, SmallButton } from "../components/common/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../slices/authSlice";
@@ -184,48 +184,48 @@ const RegisterPage = () => {
           </div>
         </TitleContainer>
         <RegisterFormContainer onSubmit={onSubmit}>
-          <DefaultInput
+          <LabelInput
             placeholder="이름"
             value={username}
             name="username"
             onChange={onChangeUsername}
             errorMsg={usernameMessage}
-          ></DefaultInput>
-          <DefaultInput
+          ></LabelInput>
+          <LabelInput
             placeholder="이메일"
             value={email}
             name="email"
             onChange={onChangeEmail}
             errorMsg={emailMessage}
-          ></DefaultInput>
+          ></LabelInput>
           <div className="redundancyCheck">
             <SmallButton isFilled={true} colorTheme={colors.blue[0]}>
               중복체크
             </SmallButton>
           </div>
-          <PasswordInput
+          <LabelPasswordInput
             placeholder="비밀번호"
             value={password}
             name="password"
             isPassword={true}
             onChange={onChangePassword}
             errorMsg={passwordMessage}
-          ></PasswordInput>
-          <PasswordInput
+          ></LabelPasswordInput>
+          <LabelPasswordInput
             placeholder="비밀번호 확인"
             value={passwordConfirm}
             name="passwordConfirm"
             isPassword={true}
             onChange={onChangePasswordConfirm}
             errorMsg={passwordConfirmMessage}
-          ></PasswordInput>
-          <DefaultInput
+          ></LabelPasswordInput>
+          <LabelInput
             placeholder="휴대폰 번호"
             value={phonenumber}
             name="phonenumber"
             onChange={onChangePhonenumber}
             errorMsg={phonenumberMessage}
-          ></DefaultInput>
+          ></LabelInput>
           <div className="confirmButton">
             <LargeButton
               isFilled={true}
