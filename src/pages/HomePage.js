@@ -22,7 +22,8 @@ const HomePageContainer = styled.div`
   margin-bottom: 300px;
   width: 1180px;
 
-  aside {
+  .aside_category_option {
+    padding-top: 40px;
     margin-left: auto;
   }
 `;
@@ -38,13 +39,26 @@ const ContentContainer = styled.div`
 
 const NavBar = styled.div`
   height: 40px;
+  display: flex;
+  justify-content: space-between;
 
-  .location {
-    font-weight: 100;
+  .user_location {
+    display: flex;
+    align-items: center;
+  }
+  .location_name {
+    font-weight: 400;
     font-size: 20px;
   }
-  .sortorders {
+  .location_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+  .sort_orders {
     display: flex;
+
+    align-items: center;
     justify-content: end;
 
     span {
@@ -135,16 +149,20 @@ const HomePage = () => {
       <HeaderSpacer></HeaderSpacer>
       <Wrapper>
         <HomePageContainer>
-          <aside>
+          <div className="aside_category_option">
             <Aside options={options} setOptions={setOptions}></Aside>
-          </aside>
+          </div>
           <ContentContainer>
             <NavBar>
-              <div>
-                <span>{location}</span>
-                <img src="location.svg" alt="location"></img>
+              <div className="user_location">
+                <span className="location_name">{location}</span>
+                <img
+                  classNmae="location_icon"
+                  src="location.svg"
+                  alt="location"
+                ></img>
               </div>
-              <div className="sortorders">
+              <div className="sort_orders">
                 {sortOrders.map((order, i) => (
                   <span
                     className={sortOption === order ? "active" : ""}

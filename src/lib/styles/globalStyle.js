@@ -40,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
     all:unset;
     display:inline-block
   }
+  textarea {
+    all:unset;
+  }
 `;
 
 export default GlobalStyle;

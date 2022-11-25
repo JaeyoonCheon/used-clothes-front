@@ -10,7 +10,7 @@ const FilterContainer = styled.div`
   width: 100%;
   background: white;
 
-  padding: 5px 0 5px 0;
+  padding: 10px 0;
   border-top: 2px solid ${colors.mono[1]};
 
   .filter-header {

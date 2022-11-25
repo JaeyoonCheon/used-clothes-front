@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
+import { useSelector } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -230,6 +231,10 @@ const ItemDetailPage = () => {
   } = options;
   const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
 
+  const { email: currentUser } = useSelector((state) => ({
+    email: state.auth.login.email,
+  }));
+
   return (
     <BaseLayout>
       <Wrapper>
@@ -288,12 +293,25 @@ const ItemDetailPage = () => {
                 </SellerInfo>
               </SellerInfoContainer>
               <NavButtonContainer>
-                <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
-                  관심목록 추가
-                </MiddleButton>
-                <MiddleButton isFilled={true} colorTheme={colors.blue[0]}>
-                  채팅하기
-                </MiddleButton>
+                {currentUser ? (
+                  <>
+                    <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
+                      상품 삭제하기
+                    </MiddleButton>
+                    <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
+                      상품 정보 수정
+                    </MiddleButton>
+                  </>
+                ) : (
+                  <>
+                    <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
+                      관심목록 추기
+                    </MiddleButton>
+                    <MiddleButton isFilled={true} colorTheme={colors.blue[0]}>
+                      채팅하기
+                    </MiddleButton>
+                  </>
+                )}
               </NavButtonContainer>
             </ItemInfoContainer>
           </div>

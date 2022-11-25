@@ -18,7 +18,7 @@ const SelectorWrapper = styled.div`
 `;
 
 const GroupsWrapper = styled.div`
-  width: 850px;
+  width: 450px;
   height: 300px;
 
   display: flex;
@@ -145,14 +145,6 @@ export const CategorySelector = (props) => {
             onClick={onClickMedium}
           ></RadioOptionSelector>
         </GroupWrapper>
-        <GroupWrapper>
-          <span className="CategoryTag">소분류</span>
-          <RadioOptionSelector
-            categories={smallCategoryData}
-            selectedId={small}
-            onClick={onClickSmall}
-          ></RadioOptionSelector>
-        </GroupWrapper>
       </GroupsWrapper>
     </SelectorWrapper>
   );
@@ -214,12 +206,17 @@ export const CheckboxOption = (props) => {
         ))}
       </CheckboxList>
       <SmallButton
+        isFilled={false}
+        colorTheme={colors.mono[0]}
+        fontColor={colors.mono[0]}
         onClick={(e) => {
           const pos = [e.pageX, e.pageY];
           setCurrentPos(pos);
           setModalState({ ...modalState, index: idx });
         }}
-      ></SmallButton>
+      >
+        더 보기
+      </SmallButton>
       {modalState.index === idx && (
         <FilterModal
           options={types}

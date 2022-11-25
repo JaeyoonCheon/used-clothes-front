@@ -16,10 +16,12 @@ import {
 import { categoryData, filterDatas } from "../lib/dummydata/dummydata";
 import { RadioGroup, RadioButton } from "../components/common/RadioButton";
 import ImageUploader from "../components/common/ImageUploader";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   width: 1180px;
   margin: auto;
+  padding: 50px 0;
 `;
 
 const ContentWrapper = styled.div`
@@ -57,8 +59,7 @@ const ConfirmButtonWrapper = styled.div`
     margin-left: 40px;
   }
 `;
-
-const AddItemPage = () => {
+const AddItemPage = (props) => {
   return (
     <BaseLayout>
       <Wrapper>

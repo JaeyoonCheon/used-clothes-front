@@ -19,6 +19,10 @@ const Wrapper = styled.div`
 
 const UserProductContainer = styled.section`
   width: 100%;
+
+  .products {
+    padding-top: 20px;
+  }
 `;
 
 const UserProductHeader = styled.div`
@@ -95,7 +99,9 @@ const MyProductPage = () => {
             </UserProductButtonContainer>
           </UserProductHeader>
           <hr />
-          <LargeCardList itemDatas={itemDatas} />
+          <div className="products">
+            <LargeCardList itemDatas={itemDatas} />
+          </div>
         </UserProductContainer>
       </Wrapper>
     </BaseLayout>

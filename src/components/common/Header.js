@@ -132,13 +132,13 @@ const Header = () => {
                 {isModalOpen && (
                   <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
                 )}
-                <span className="top_nav_clicker">
-                  <Link to="/register">회원가입</Link>
-                </span>
+                <Link to="/register" className="top_nav_clicker">
+                  <span>회원가입</span>
+                </Link>
                 <span className="top_nav_clicker">알림</span>
-                <span className="top_nav_clicker">
-                  <Link to="/mypage">마이페이지</Link>
-                </span>
+                <Link to="/mypage" className="top_nav_clicker">
+                  <span>마이페이지</span>
+                </Link>
               </div>
             )}
           </TopNavbar>
@@ -151,10 +151,12 @@ const Header = () => {
             <Searchbar></Searchbar>
             <NavMenu>
               <Link to="/additem" className="menu">
-                상품등록
+                <span>상품등록</span>
               </Link>
               <span className="menu">최근 본 상품</span>
-              <span className="menu">내 상품</span>
+              <Link to="/myproduct" className="menu">
+                <span>내 상품</span>
+              </Link>
             </NavMenu>
           </Wrapper>
         </HeaderBox>

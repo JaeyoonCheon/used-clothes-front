@@ -92,11 +92,14 @@ const TextContainer = styled.textarea`
   border-bottom: 1.5px solid ${colors.mono[0]};
   outline: none;
   resize: none;
-  line-height: 18px;
+
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 27px;
 
   &::placeholder {
     color: ${colors.mono[0]};
-    font-size: 12px;
   }
 
   &::placeholder::first-letter {
