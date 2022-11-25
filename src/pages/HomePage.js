@@ -113,7 +113,7 @@ const HomePage = () => {
 
   useEffect(() => {
     console.log("Fetch new options");
-    testListProductsAPI(options).then((result) => {
+    listProductsAPI(options).then((result) => {
       console.log(result.data);
       setProducts(result.data);
     });
