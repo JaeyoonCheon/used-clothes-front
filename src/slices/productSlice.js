@@ -29,45 +29,17 @@ export const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    changeOption: {
-      reducer: (state, action) => ({
-        ...state,
-        options: action.payload,
-      }),
+    changeOption: (state, action) => {
+      state.options[action.payload.name] = action.payload.value;
     },
-    list: {
-      reducer: (state, action) => ({
-        state: action.payload,
-      }),
-      prepare: (payload) => {
-        return {
-          payload,
-        };
-      },
+    list: (state) => {},
+    list_success: (state, action) => {
+      state.listError = null;
+      state.productList = action.payload;
     },
-    list_success: {
-      reducer: (state, action) => ({
-        ...state,
-        listError: null,
-        productList: action.payload,
-      }),
-      prepare: (payload) => {
-        return {
-          payload,
-        };
-      },
-    },
-    list_failure: {
-      reducer: (state, action) => ({
-        ...state,
-        listError: action.error,
-        productList: action.error,
-      }),
-      prepare: (payload) => {
-        return {
-          payload,
-        };
-      },
+    list_failure: (state, action) => {
+      state.listError = action.error;
+      state.productList = action.error;
     },
   },
 });

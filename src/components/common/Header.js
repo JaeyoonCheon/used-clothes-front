@@ -104,7 +104,7 @@ const Header = () => {
     setisModalOpen(true);
   };
   const { email: currentUser } = useSelector((state) => ({
-    email: state.auth.login.email,
+    email: state.auth.auth,
   }));
   return (
     <>

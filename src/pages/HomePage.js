@@ -157,7 +157,7 @@ const HomePage = () => {
               <div className="user_location">
                 <span className="location_name">{location}</span>
                 <img
-                  classNmae="location_icon"
+                  className="location_icon"
                   src="location.svg"
                   alt="location"
                 ></img>

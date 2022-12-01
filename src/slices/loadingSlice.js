@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {};
+
 export const loadingSlice = createSlice({
   name: "loading",
-  initialState: {
-    currentAccount: "",
-  },
+  initialState,
   reducers: {
     start: {
       reducer: (state, action) => {
@@ -13,26 +13,12 @@ export const loadingSlice = createSlice({
           [action.payload]: true,
         };
       },
-      prepare: (actionType) => {
-        return {
-          payload: {
-            actionType,
-          },
-        };
-      },
     },
     finish: {
       reducer: (state, action) => {
         return {
           ...state,
           [action.payload]: false,
-        };
-      },
-      prepare: (actionType) => {
-        return {
-          payload: {
-            actionType,
-          },
         };
       },
     },

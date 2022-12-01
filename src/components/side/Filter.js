@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { BsPlusSquare } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Checkbox from "../common/Checkbox";

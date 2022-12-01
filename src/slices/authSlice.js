@@ -4,16 +4,6 @@ import { loginAPI, registerAPI } from "../lib/api/user";
 import { takeLatest } from "redux-saga/effects";
 
 const initialState = {
-  login: {
-    email: "",
-    password: "",
-  },
-  register: {
-    email: "",
-    name: "",
-    password: "",
-    phone: "",
-  },
   auth: null,
   authError: null,
 };
@@ -22,101 +12,23 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: {
-      reducer: (state, action) => ({
-        ...state,
-        login: action.payload,
-      }),
-      prepare: ({ email, password }) => {
-        return {
-          payload: {
-            email,
-            password,
-          },
-        };
-      },
+    login: () => {},
+    login_success: (state, action) => {
+      state.auth = action.payload;
     },
-    login_success: {
-      reducer: (state, action) => ({
-        ...state,
-        auth: action.payload,
-      }),
-      prepare: ({ email, password }) => {
-        return {
-          payload: {
-            email,
-            password,
-          },
-        };
-      },
+    login_failure: (state, action) => {
+      state.authError = action.error;
     },
-    login_failure: {
-      reducer: (state, action) => ({
-        ...state,
-        authError: action.error,
-      }),
-      prepare: ({ email, password }) => {
-        return {
-          payload: {
-            email,
-            password,
-          },
-        };
-      },
+    register: () => {},
+    register_success: (state, action) => {
+      state.authError = null;
+      state.auth = null;
     },
-    register: {
-      reducer: (state, action) => ({
-        ...state,
-        register: action.payload,
-      }),
-      prepare: ({ email, name, password, phone }) => {
-        return {
-          payload: {
-            email,
-            name,
-            password,
-            phone,
-          },
-        };
-      },
+    register_failure: (state, action) => {
+      state.authError = true;
+      state.error = action.error;
     },
-    register_success: {
-      reducer: (state, action) => ({
-        ...state,
-        authError: null,
-        auth: true,
-      }),
-      prepare: ({ email, name, password, phone }) => {
-        return {
-          payload: {
-            email,
-            name,
-            password,
-            phone,
-          },
-        };
-      },
-    },
-    register_failure: {
-      reducer: (state, action) => ({
-        ...state,
-        authError: true,
-        error: action.error,
-      }),
-      prepare: ({ email, name, password, phone }) => {
-        return {
-          payload: {
-            email,
-            name,
-            password,
-            phone,
-          },
-        };
-      },
-    },
-    check: {
-      reducer: (state, action) => {},
-    },
+    check: () => {},
   },
 });
 

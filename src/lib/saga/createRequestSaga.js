@@ -1,12 +1,15 @@
 import { call, put } from "redux-saga/effects";
-import { start, finish } from "../../slices/loadingSlice";
+import {
+  start as startLoading,
+  finish as finishLoading,
+} from "../../slices/loadingSlice";
 
 export default function createRequestSaga(actionType, request) {
   const SUCCESS = `${actionType}_success`;
   const FAILURE = `${actionType}_failure`;
 
   return function* (action) {
-    yield put(start(actionType));
+    yield put(startLoading(actionType));
 
     try {
       const response = yield call(request, action.payload);
@@ -22,6 +25,6 @@ export default function createRequestSaga(actionType, request) {
       });
     }
 
-    yield put(finish(actionType));
+    yield put(finishLoading(actionType));
   };
 }
