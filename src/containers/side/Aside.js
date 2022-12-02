@@ -16,12 +16,12 @@ const AsideContainer = styled.aside`
 `;
 
 const Aside = (props) => {
-  const { options, onClickOption } = props;
+  const { options, setOptions } = props;
 
   return (
     <AsideContainer>
       <Category></Category>
-      <FilterList options={options} onClickOption={onClickOption}></FilterList>
+      <FilterList options={options} setOptions={setOptions}></FilterList>
     </AsideContainer>
   );
 };

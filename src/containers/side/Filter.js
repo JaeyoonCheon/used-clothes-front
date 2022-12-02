@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import colors from "../../lib/styles/colors";
 import Checkbox from "../common/Checkbox";
 import FilterModal from "../modal/FilterModal";
-import { changeArrayOption } from "../../slices/productSlice";
 
 const FilterContainer = styled.div`
   width: 100%;
@@ -42,12 +41,10 @@ export const CheckboxFilter = (props) => {
     name,
     types,
     options,
-    onClickOption,
+    setOptions,
     modalState,
     setModalState,
   } = props;
-
-  const dispatch = useDispatch();
 
   const representativeTypes = [...types].splice(0, 4);
 
@@ -63,12 +60,10 @@ export const CheckboxFilter = (props) => {
       newCheckedTypes.add(type);
     }
     setCheckedTypes(newCheckedTypes);
-    dispatch(
-      changeArrayOption({
-        name: typeCode,
-        value: Array.from(newCheckedTypes),
-      })
-    );
+    setOptions((prev) => ({
+      ...prev,
+      [typeCode]: Array.from(newCheckedTypes),
+    }));
   };
 
   return (

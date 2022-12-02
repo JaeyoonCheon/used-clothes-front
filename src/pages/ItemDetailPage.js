@@ -231,8 +231,8 @@ const ItemDetailPage = () => {
   } = options;
   const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
 
-  const { email: currentUser } = useSelector((state) => ({
-    email: state.auth.login.email,
+  const { auth: currentUser } = useSelector((state) => ({
+    auth: state.auth.auth,
   }));
 
   return (

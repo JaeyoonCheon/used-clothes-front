@@ -5,7 +5,7 @@ import { CheckboxFilter } from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const FilterList = (props) => {
-  const { options, onClickOption } = props;
+  const { options, setOptions } = props;
   const [modalState, setModalState] = useState({ index: -1 });
 
   return filterDatas.map((filterData) => {
@@ -18,7 +18,7 @@ const FilterList = (props) => {
         name={name}
         types={types}
         options={options}
-        onClickOption={onClickOption}
+        setOptions={setOptions}
         modalState={modalState}
         setModalState={setModalState}
       ></CheckboxFilter>

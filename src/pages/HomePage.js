@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { createSelector } from "@reduxjs/toolkit";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import { SmallCardList } from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
-import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
-import { list } from "../slices/productSlice";
+import { list, changeOption } from "../slices/productSlice";
+import { getMetadata } from "../slices/metadataSlice";
 
-import { itemDatas } from "../lib/dummydata/dummydata";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Wrapper = styled.div``;
 
@@ -84,61 +82,51 @@ const location = "산격동";
 const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
 
 const HomePage = () => {
-  const [sortOption, setSortOption] = useState("최신 순");
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageLimit, setPageLimit] = useState(50);
-  const [options, setOptions] = useState({
-    name: "",
-    main_category: 0,
-    sub_category: 0,
-    min_price: 0,
-    max_price: Infinity,
-    condition_code: [],
-    shippingfee: 0,
-    brand_id: [],
-    purchase_place_id: [],
-    color_code: [],
-    material_code: [],
-    sorting: sortOption,
-    elements: pageLimit,
-    page: currentPage,
-  });
-
-  const [products, setProducts] = useState([]);
 
   const dispatch = useDispatch();
-  const { options: productOptions } = createSelector((state) => ({
-    options: state.product.options,
+  const { options: productOptions } = useSelector(({ product }) => ({
+    options: product.list.options,
+    sort_by: product.list.sort_by,
+    order: product.list.order,
+    elements: product.list.elements,
+    page: product.list.page,
   }));
+
+  const { productList } = useSelector(({ product }) => ({
+    productList: product.productList,
+  }));
+
+  console.log(productOptions);
 
   useEffect(() => {
     console.log("Fetch new options");
-    listProductsAPI(options).then((result) => {
-      console.log(result.data);
-      setProducts(result.data);
-    });
-  }, [options]);
+    dispatch(getMetadata("colors"));
+    dispatch(list(productOptions));
+  }, []);
 
   const onClickSort = (order) => {
-    const prevState = options;
-
-    setSortOption(order);
-    setOptions((prev) => ({
-      ...prev,
-      sorting: order,
-    }));
-
     dispatch(
-      list({
-        ...prevState,
-        sorting: order,
+      changeOption({
+        name: "sorting",
+        value: order,
+      })
+    );
+    dispatch(list(productOptions));
+  };
+
+  const onClickOption = (typeCode, option) => {
+    dispatch(
+      changeOption({
+        name: typeCode,
+        value: option,
       })
     );
   };
 
   const onClickPage = (nextPage) => {
     setCurrentPage(nextPage);
-    setOptions((prev) => ({
+    onClickOption((prev) => ({
       ...prev,
       page: nextPage,
     }));
@@ -150,7 +138,10 @@ const HomePage = () => {
       <Wrapper>
         <HomePageContainer>
           <div className="aside_category_option">
-            <Aside options={options} setOptions={setOptions}></Aside>
+            <Aside
+              options={productOptions}
+              onClickOption={onClickOption}
+            ></Aside>
           </div>
           <ContentContainer>
             <NavBar>
@@ -165,14 +156,14 @@ const HomePage = () => {
               <div className="sort_orders">
                 {sortOrders.map((order, i) => (
                   <span
-                    className={sortOption === order ? "active" : ""}
+                    className={productOptions.sorting === order ? "active" : ""}
                     key={i}
                     onClick={() => onClickSort(order)}
                   >{`${order}`}</span>
                 ))}
               </div>
             </NavBar>
-            <SmallCardList itemDatas={itemDatas}></SmallCardList>
+            <SmallCardList itemDatas={productList}></SmallCardList>
             <hr></hr>
             <Pagination
               currentPage={currentPage}
