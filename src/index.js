@@ -22,6 +22,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <App />
+          <div id="modal"></div>
         </BrowserRouter>
       </QueryClientProvider>
     </Provider>

@@ -1,6 +1,11 @@
 import { rest } from "msw";
 
-import { itemDatas, metaDatas } from "../lib/dummydata/dummydata";
+import {
+  itemDatas,
+  metaDatas,
+  mainCategoryData,
+  subCategoryData,
+} from "../lib/dummydata/dummydata";
 
 export const handlers = [
   rest.post("/user/login", (req, res, ctx) => {
@@ -32,6 +37,24 @@ export const handlers = [
 
     if (params) {
       return res(ctx.json(metaDatas));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/category/main/list`, (req, res, ctx) => {
+    const mainCategoryList = mainCategoryData;
+
+    if (mainCategoryList) {
+      return res(ctx.json(mainCategoryList));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/category/sub/list`, (req, res, ctx) => {
+    const subCategoryList = subCategoryData;
+
+    if (subCategoryList) {
+      return res(ctx.json(subCategoryList));
     } else {
       return res(ctx.status(400));
     }

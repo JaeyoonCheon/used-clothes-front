@@ -87,6 +87,88 @@ export const categoryData = [
   },
 ];
 
+export const mainCategoryData = [
+  {
+    main_category_id: 1,
+    main_category_name: "상의",
+  },
+  {
+    main_category_id: 2,
+    main_category_name: "아우터",
+  },
+  {
+    main_category_id: 3,
+    main_category_name: "바지",
+  },
+  {
+    main_category_id: 4,
+    main_category_name: "원피스",
+  },
+  {
+    main_category_id: 5,
+    main_category_name: "스커트",
+  },
+  {
+    main_category_id: 6,
+    main_category_name: "가방",
+  },
+  {
+    main_category_id: 7,
+    main_category_name: "스니커즈",
+  },
+  {
+    main_category_id: 8,
+    main_category_name: "신발",
+  },
+  {
+    main_category_id: 9,
+    main_category_name: "시계",
+  },
+  {
+    main_category_id: 10,
+    main_category_name: "모자",
+  },
+  {
+    main_category_id: 11,
+    main_category_name: "스포츠",
+  },
+  {
+    main_category_id: 12,
+    main_category_name: "양말/레그웨어",
+  },
+  {
+    main_category_id: 13,
+    main_category_name: "안경",
+  },
+  {
+    main_category_id: 14,
+    main_category_name: "악세서리",
+  },
+];
+
+export const subCategoryData = [
+  {
+    main_category_id: 1,
+    sub_category_id: 2,
+    sub_category_name: "셔츠/블라우스",
+  },
+  {
+    main_category_id: 1,
+    sub_category_id: 3,
+    sub_category_name: "맨투맨",
+  },
+  {
+    main_category_id: 1,
+    sub_category_id: 4,
+    sub_category_name: "후드티",
+  },
+  {
+    main_category_id: 1,
+    sub_category_id: 5,
+    sub_category_name: "니트/스웨터",
+  },
+];
+
 export const filterDatas = [
   {
     typeCode: "color_code",

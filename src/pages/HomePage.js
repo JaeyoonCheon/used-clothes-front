@@ -8,6 +8,7 @@ import Aside from "../components/side/Aside";
 import { SmallCardList } from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
 import { list, changeOption } from "../slices/productSlice";
+import { getCategory } from "../slices/categorySlice";
 import { getMetadata } from "../slices/metadataSlice";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -97,10 +98,9 @@ const HomePage = () => {
     productList: product.productList,
   }));
 
-  console.log(productOptions);
-
   useEffect(() => {
     console.log("Fetch new options");
+    dispatch(getCategory());
     dispatch(getMetadata("colors"));
     dispatch(list(productOptions));
   }, []);

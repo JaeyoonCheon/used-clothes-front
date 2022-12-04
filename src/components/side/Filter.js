@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Checkbox from "../common/Checkbox";
+import Portal from "../../lib/portal";
 import FilterModal from "../modal/FilterModal";
 import { changeArrayOption } from "../../slices/productSlice";
 
@@ -15,13 +16,17 @@ const FilterContainer = styled.div`
   padding: 10px 0;
   border-top: 2px solid ${colors.mono[1]};
 
-  .filter-header {
+  .filter_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 
+    font-size: 20px;
+
     .filterModalButton {
+      width: 16px;
+      height: 16px;
       cursor: pointer;
     }
   }
@@ -73,7 +78,7 @@ export const CheckboxFilter = (props) => {
 
   return (
     <FilterContainer>
-      <div className="filter-header">
+      <div className="filter_header">
         <div>{name}</div>
         <BsPlusSquare
           className="filterModalButton"
@@ -95,13 +100,15 @@ export const CheckboxFilter = (props) => {
         ))}
       </CheckboxList>
       {modalState.index === typeCode && (
-        <FilterModal
-          options={types}
-          position={currentPos}
-          setModalState={setModalState}
-          checkedOptions={checkedTypes}
-          toggleCheckbox={toggleCheckbox}
-        ></FilterModal>
+        <Portal>
+          <FilterModal
+            options={types}
+            position={currentPos}
+            setModalState={setModalState}
+            checkedOptions={checkedTypes}
+            toggleCheckbox={toggleCheckbox}
+          ></FilterModal>
+        </Portal>
       )}
     </FilterContainer>
   );

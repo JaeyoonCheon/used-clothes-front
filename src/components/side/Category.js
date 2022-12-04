@@ -1,40 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
 
 import colors from "../../lib/styles/colors";
-import { categoryData } from "../../lib/dummydata/dummydata";
+import { changeOption } from "../../slices/productSlice";
 
 const CategoryContainer = styled.div`
   width: 100%;
   background: white;
 
-  .category-header {
+  .category_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+
+    font-size: 20px;
 
     .foldingButton {
+      width: 16px;
+      height: 16px;
       cursor: pointer;
     }
   }
 `;
 
 const CategorySubList = styled.div`
-  .largeItem {
+  .mainItem {
     &.active {
       color: ${colors.blue[0]};
     }
   }
-  .mediumItem {
+  .subItem {
     margin-left: 10px;
-    &.active {
-      color: ${colors.blue[0]};
-    }
-  }
-  .smallItem {
-    margin-left: 15px;
     &.active {
       color: ${colors.blue[0]};
     }
@@ -51,48 +50,56 @@ const CategoryItem = styled.div`
 
 const Category = () => {
   const [fold, setFold] = useState(true);
-  const [largeSelected, setLargeSelected] = useState(false);
-  const [mediumSelected, setMediumSelected] = useState(false);
-  const [smallSelected, setSmallSelected] = useState(false);
+  const [mainSelected, setMainSelected] = useState(null);
+  const [subSelected, setSubSelected] = useState(null);
+  const [subCategoryList, setSubCategoryList] = useState([]);
 
-  const onClickLarge = (key) => {
-    if (largeSelected === false) {
-      setLargeSelected(key);
+  const { mainCategory, subCategory } = useSelector((state) => ({
+    mainCategory: state.category.main_category,
+    subCategory: state.category.sub_category,
+  }));
+
+  useEffect(() => {
+    const currentSub = subCategory.filter((sub) => {
+      console.log(sub.sub_category_id);
+      console.log(mainSelected);
+      return sub.main_category_id === mainSelected;
+    });
+    setSubCategoryList(currentSub);
+  }, [mainSelected]);
+
+  const onClickmain = (key) => {
+    if (mainSelected === null) {
+      setMainSelected(key);
     }
-    if (largeSelected === key) {
-      setLargeSelected(false);
-      setMediumSelected(false);
-      setSmallSelected(false);
+    if (mainSelected === key) {
+      setMainSelected(null);
+      setSubSelected(null);
+      setSubCategoryList([]);
     }
-    if (largeSelected !== key && largeSelected !== false) {
-      setLargeSelected(false);
-      setMediumSelected(false);
-      setSmallSelected(false);
-      setLargeSelected(key);
+    if (mainSelected !== key && mainSelected !== null) {
+      setMainSelected(null);
+      setSubSelected(null);
+      setMainSelected(key);
     }
   };
 
-  const onClickMedium = (key) => {
-    if (mediumSelected === key) {
-      setMediumSelected(false);
-    }
-    if (mediumSelected === false) {
-      setMediumSelected(key);
+  const onClicksub = (key) => {
+    if (subSelected === key) {
+      setSubSelected(null);
+    } else {
+      setSubSelected(key);
     }
   };
 
-  const onClickSmall = (key) => {
-    if (smallSelected === key) {
-      setSmallSelected(false);
-    }
-    if (smallSelected === false) {
-      setSmallSelected(key);
-    }
-  };
+  console.log(mainCategory);
+  console.log(subCategoryList);
+  console.log(`main : ${mainSelected}`);
+  console.log(`sub : ${subSelected}`);
 
   return (
     <CategoryContainer>
-      <div className="category-header">
+      <div className="category_header">
         <div>카테고리</div>
         {fold ? (
           <AiOutlineUp
@@ -107,42 +114,31 @@ const Category = () => {
         )}
       </div>
       {fold &&
-        categoryData.map((large) => (
-          <CategorySubList key={large.id}>
+        mainCategory &&
+        mainCategory.map((main) => (
+          <CategorySubList key={main.main_category_id}>
             <CategoryItem
-              className={`largeItem ${
-                largeSelected === large.id ? "active" : ""
+              className={`mainItem ${
+                mainSelected === main.main_category_id ? "active" : ""
               }`}
-              onClick={() => onClickLarge(large.id)}
+              onClick={() => onClickmain(main.main_category_id)}
             >
-              {large.name}
+              {main.main_category_name}
             </CategoryItem>
-            {largeSelected === large.id &&
-              large.child.map((medium) => (
-                <CategorySubList key={medium.id}>
+            {mainSelected === main.main_category_id &&
+              subCategoryList.map((sub) => (
+                <CategorySubList key={sub.sub_category_id}>
                   <CategoryItem
-                    className={`mediumItem ${
-                      largeSelected === large.id && mediumSelected === medium.id
+                    className={`subItem ${
+                      mainSelected === main.main_category_id &&
+                      subSelected === sub.sub_category_id
                         ? "active"
                         : ""
                     }`}
-                    onClick={() => onClickMedium(medium.id)}
+                    onClick={() => onClicksub(sub.sub_category_id)}
                   >
-                    {medium.name}
+                    {sub.sub_category_name}
                   </CategoryItem>
-                  {mediumSelected === medium.id &&
-                    medium.child.map((small) => (
-                      <CategorySubList key={small.id}>
-                        <CategoryItem
-                          className={`smallItem ${
-                            smallSelected === small.id ? "active" : ""
-                          }`}
-                          onClick={() => onClickSmall(small.id)}
-                        >
-                          {small.name}
-                        </CategoryItem>
-                      </CategorySubList>
-                    ))}
                 </CategorySubList>
               ))}
           </CategorySubList>

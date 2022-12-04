@@ -50,9 +50,9 @@ const Pagination = (props) => {
     (v, i) => i + 1 + pageUnitNum * pageCount
   );
 
-  console.log(
-    `Current Page : ${currentPage} / pageCount : ${pageCount} / pageUnitNum : ${pageUnitNum}`
-  );
+  // console.log(
+  //   `Current Page : ${currentPage} / pageCount : ${pageCount} / pageUnitNum : ${pageUnitNum}`
+  // );
 
   return (
     <PaginationContainer>

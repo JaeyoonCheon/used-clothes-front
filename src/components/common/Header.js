@@ -6,11 +6,14 @@ import { useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Searchbar from "./Searchbar";
+import Portal from "../../lib/portal";
 import LoginModal from "../modal/LoginModal";
 
 const HeaderContainer = styled.header`
   position: fixed;
   width: 100%;
+
+  z-index: 100;
 `;
 
 const TopHeader = styled.div`
@@ -116,9 +119,6 @@ const Header = () => {
                 <span className="top_nav_clicker" onClick={onClickLogin}>
                   로그아웃
                 </span>
-                {isModalOpen && (
-                  <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
-                )}
                 <span className="top_nav_clicker">알림</span>
                 <span className="top_nav_clicker">
                   <Link to="/mypage">마이페이지</Link>
@@ -130,7 +130,9 @@ const Header = () => {
                   로그인
                 </span>
                 {isModalOpen && (
-                  <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
+                  <Portal>
+                    <LoginModal setisModalOpen={setisModalOpen}></LoginModal>
+                  </Portal>
                 )}
                 <Link to="/register" className="top_nav_clicker">
                   <span>회원가입</span>
