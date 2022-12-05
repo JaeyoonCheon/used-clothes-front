@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { RiSearchLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 
+import { changeOption } from "../../slices/productSlice";
 import colors from "../../lib/styles/colors";
 
 const FormContainer = styled.form`
@@ -39,6 +41,9 @@ const SearchbarInput = styled.input`
 
 const Searchbar = () => {
   const [keyword, setKeyword] = useState("");
+
+  const dispatch = useDispatch();
+
   const onChange = useCallback(
     (e) => {
       setKeyword(e.target.value);
@@ -47,7 +52,18 @@ const Searchbar = () => {
   );
   const onSubmit = (e) => {
     e.preventDefault();
-    setKeyword("");
+    console.log("submit");
+    dispatch(
+      changeOption({
+        name: "name",
+        value: keyword,
+      })
+    );
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSubmit(e);
+    }
   };
 
   return (
@@ -58,6 +74,7 @@ const Searchbar = () => {
           value={keyword}
           placeholder="찾으시는 상품명,판매자를 입력해 주세요."
           onChange={onChange}
+          onKeyDown={handleKeyDown}
         ></SearchbarInput>
         <RiSearchLine
           className="button"
