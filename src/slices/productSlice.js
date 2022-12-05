@@ -8,8 +8,8 @@ const initialState = {
   list: {
     options: {
       name: "",
-      main_category: 0,
-      sub_category: 0,
+      main_category_id: 0,
+      sub_category_id: 0,
       min_price: 0,
       max_price: Infinity,
       condition_code: [],

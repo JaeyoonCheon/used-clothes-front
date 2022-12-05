@@ -59,14 +59,29 @@ const Category = () => {
     subCategory: state.category.sub_category,
   }));
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const currentSub = subCategory.filter((sub) => {
-      console.log(sub.sub_category_id);
-      console.log(mainSelected);
       return sub.main_category_id === mainSelected;
     });
     setSubCategoryList(currentSub);
   }, [mainSelected]);
+
+  useEffect(() => {
+    dispatch(
+      changeOption({
+        name: "main_category_id",
+        value: mainSelected,
+      })
+    );
+    dispatch(
+      changeOption({
+        name: "sub_category_id",
+        value: subSelected,
+      })
+    );
+  }, [dispatch, mainSelected, subSelected]);
 
   const onClickmain = (key) => {
     if (mainSelected === null) {

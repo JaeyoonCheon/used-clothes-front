@@ -149,6 +149,11 @@ export const mainCategoryData = [
 export const subCategoryData = [
   {
     main_category_id: 1,
+    sub_category_id: 1,
+    sub_category_name: "티셔츠",
+  },
+  {
+    main_category_id: 1,
     sub_category_id: 2,
     sub_category_name: "셔츠/블라우스",
   },
