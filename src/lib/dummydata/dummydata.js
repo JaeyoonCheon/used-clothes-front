@@ -181,7 +181,7 @@ export const filterDatas = [
     types: ["화이트", "블랙", "그레이", "브라운", "레드", "블루", "실버"],
   },
   {
-    typeCode: "material",
+    typeCode: "material_code",
     name: "소재",
     types: ["면", "데님", "가죽", "실크", "폴리에스테르", "레이온", "기모"],
   },
@@ -196,7 +196,7 @@ export const filterDatas = [
     types: ["S", "M", "L", "XL", "XXS", "XS", "XXL"],
   },
   {
-    typeCode: "brand",
+    typeCode: "brand_id",
     name: "브랜드",
     types: ["brand_1", "brand_2", "brand_4", "brand_5", "brand_6"],
   },

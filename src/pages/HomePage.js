@@ -86,16 +86,20 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
-  const { options: productOptions } = useSelector(({ product }) => ({
-    options: product.list.options,
-    sort_by: product.list.sort_by,
-    order: product.list.order,
-    elements: product.list.elements,
-    page: product.list.page,
-  }));
+  const { filter: productOptions } = useSelector((state) => {
+    const list = state.product.list;
+
+    return {
+      filter: list.options.filter,
+      sort_by: list.sort_by,
+      order: list.order,
+      elements: list.elements,
+      page: list.page,
+    };
+  });
 
   const { productList } = useSelector(({ product }) => ({
-    productList: product.productList,
+    productList: product.list.productList,
   }));
 
   useEffect(() => {
