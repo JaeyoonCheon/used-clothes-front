@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -18,7 +19,7 @@ import { RadioGroup, RadioButton } from "../components/common/RadioButton";
 import ImageUploader from "../components/common/ImageUploader";
 import { useSelector } from "react-redux";
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   width: 1180px;
   margin: auto;
   padding: 50px 0;
@@ -60,6 +61,12 @@ const ConfirmButtonWrapper = styled.div`
   }
 `;
 const AddItemPage = (props) => {
+  const dispatch = useDispatch();
+
+  const onSubmit = () => {
+    dispatch();
+  };
+
   return (
     <BaseLayout>
       <Wrapper>

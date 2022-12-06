@@ -254,6 +254,31 @@ export const itemDetailInfos = {
     "Hic eius ipsum placeat voluptas vel corrupti. Optio rem corporis a qui animi dolore. Est alias beatae facilis veniam. Et dolore dolor ipsum asperiores sed et et nihil eveniet. Ipsa corrupti vel rerum. Rerum ipsa modi consequatur et. Ut maxime ipsum facilis itaque eveniet et. Ut molestiae veniam ipsam nobis sed ipsum dignissimos sed. Officia soluta dolores eligendi rerum exercitationem cupiditate eum quo. Illo ipsa iste autem accusamus ut eum repudiandae. Voluptatem laborum aut culpa labore. Rem ut voluptates qui ullam ducimus error excepturi facere odit. Rerum animi nihil ea ex nisi amet nihil quasi optio. Velit beatae eos. Aut exercitationem delectus saepe.",
 };
 
+export const itemDetailDatas = [
+  {
+    clothe_id: 4606,
+    itemimage: ["https://loremflickr.com/580/580/abstract?21730"],
+    name: "Gloves",
+    price: "311.00",
+    main_category_id: 1,
+    sub_category_id: 1,
+    color_code: [1, 4],
+    brand_id: ["브랜드1"],
+    material_code: [1, 2],
+    condition_code: ["미사용"],
+
+    shipping_fee: null,
+    upload_date: null,
+    upload_time: null,
+    purchase_place_id: null,
+    ex_price: null,
+    purchase_date: null,
+
+    descriptions:
+      "Hic eius ipsum placeat voluptas vel corrupti. Optio rem corporis a qui animi dolore. Est alias beatae facilis veniam. Et dolore dolor ipsum asperiores sed et et nihil eveniet. Ipsa corrupti vel rerum. Rerum ipsa modi consequatur et. Ut maxime ipsum facilis itaque eveniet et. Ut molestiae veniam ipsam nobis sed ipsum dignissimos sed. Officia soluta dolores eligendi rerum exercitationem cupiditate eum quo. Illo ipsa iste autem accusamus ut eum repudiandae. Voluptatem laborum aut culpa labore. Rem ut voluptates qui ullam ducimus error excepturi facere odit. Rerum animi nihil ea ex nisi amet nihil quasi optio. Velit beatae eos. Aut exercitationem delectus saepe.",
+  },
+];
+
 export const itemDatas = [
   {
     id: 4606,

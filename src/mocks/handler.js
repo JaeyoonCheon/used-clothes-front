@@ -5,6 +5,7 @@ import {
   metaDatas,
   mainCategoryData,
   subCategoryData,
+  itemDetailDatas,
 } from "../lib/dummydata/dummydata";
 
 export const handlers = [
@@ -26,6 +27,18 @@ export const handlers = [
 
     if (params) {
       return res(ctx.json(itemDatas));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/clothe/read/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    const info = itemDetailDatas.find(
+      (data) => data.clothe_id === parseInt(id)
+    );
+
+    if (info) {
+      return res(ctx.json(info));
     } else {
       return res(ctx.status(400));
     }

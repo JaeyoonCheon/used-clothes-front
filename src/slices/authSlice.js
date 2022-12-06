@@ -19,6 +19,13 @@ export const authSlice = createSlice({
     login_failure: (state, action) => {
       state.authError = action.error;
     },
+    logout: () => {},
+    logout_success: (state, action) => {
+      state.auth = action.payload;
+    },
+    logout_failure: (state, action) => {
+      state.authError = action.error;
+    },
     register: () => {},
     register_success: (state, action) => {
       state.authError = null;

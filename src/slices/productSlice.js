@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { takeLatest } from "redux-saga/effects";
 
-import { listProductsAPI } from "../lib/api/product";
+import {
+  listProductsAPI,
+  getProductAPI,
+  addProductAPI,
+  modifyProductAPI,
+} from "../lib/api/product";
 import createRequestSaga from "../lib/saga/createRequestSaga";
 
 const initialState = {
@@ -34,6 +39,7 @@ const initialState = {
   detail: {
     currentProduct: {
       clothe_id: null,
+      itemimage: [],
       user_email: "",
       name: "",
       main_category_id: null,
@@ -51,8 +57,33 @@ const initialState = {
       material_code: null,
       description: "",
     },
+    detailSuccess: false,
     detailError: null,
   },
+  selected: {
+    product: {
+      clothe_id: null,
+      itemimage: [],
+      user_email: "",
+      name: "",
+      main_category_id: null,
+      sub_category_id: null,
+      price: null,
+      condition_code: null,
+      shipping_fee: null,
+      upload_date: null,
+      upload_time: null,
+      brand_id: null,
+      purchase_place_id: null,
+      ex_price: null,
+      color_code: null,
+      purchase_date: null,
+      material_code: null,
+      description: "",
+    },
+  },
+  addError: null,
+  modifyError: null,
 };
 
 export const productSlice = createSlice({
@@ -79,18 +110,35 @@ export const productSlice = createSlice({
     },
     getProduct: () => {},
     getProduct_success: (state, action) => {
+      state.detail.detailSuccess = true;
       state.detail.currentProduct = action.payload;
     },
-    getProduct_failure: (state, action) => {},
-    changeProduct: () => {},
-    changeProduct_success: () => {},
-    changeProduct_failure: () => {},
+    getProduct_failure: (state, action) => {
+      state.detail.detailError = action.error;
+    },
+    changeProduct: (state, action) => {
+      state.selected.product[action.payload.name] = action.payload.value;
+    },
+    changeArrayProduct: (state, action) => {
+      if (!state.selected.product[action.payload.name]) {
+        state.selected.product[action.payload.name] = [];
+      }
+      state.selected.product[action.payload.name] = action.payload.value;
+    },
     addProduct: () => {},
-    addProduct_success: () => {},
-    addProduct_failure: () => {},
+    addProduct_success: (state, action) => {
+      state.selected.product = initialState.selected.product;
+    },
+    addProduct_failure: (state, action) => {
+      state.addError = action.error;
+    },
     modifyProduct: () => {},
-    modifyProduct_success: () => {},
-    modifyProduct_failure: () => {},
+    modifyProduct_success: (state, action) => {
+      state.selected.product = initialState.selected.product;
+    },
+    modifyProduct_failure: (state, action) => {
+      state.modifyError = action.error;
+    },
   },
 });
 
@@ -100,10 +148,25 @@ export const {
   list,
   list_success,
   list_failure,
+  getProduct,
+  getProduct_success,
+  getProduct_failure,
+  addProduct,
+  addProduct_success,
+  addProduct_failure,
+  modifyProduct,
+  modifyProduct_success,
+  modifyProduct_failure,
 } = productSlice.actions;
 
 const listSaga = createRequestSaga(list, listProductsAPI);
+const getProductSaga = createRequestSaga(getProduct, getProductAPI);
+const addProductSaga = createRequestSaga(addProduct, addProductAPI);
+const modifyProductSaga = createRequestSaga(modifyProduct, modifyProductAPI);
 
 export function* productSaga() {
   yield takeLatest(list, listSaga);
+  yield takeLatest(getProduct, getProductSaga);
+  yield takeLatest(addProduct, addProductSaga);
+  yield takeLatest(modifyProduct, modifyProductSaga);
 }

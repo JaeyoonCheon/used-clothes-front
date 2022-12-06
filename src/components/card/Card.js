@@ -81,13 +81,13 @@ export const SmallCard = (props) => {
   return (
     <SmallCardContainer>
       <div className="thumbnail">
-        <Link to={`/product/:${itemData.id}`} className="link">
+        <Link to={`/product/${itemData.id}`} className="link">
           <img src={`240x240.png`} alt="item"></img>
         </Link>
       </div>
       <CardInfo>
         <div className="namebox">
-          <Link to={`/product/:${itemData.id}`} className="link">
+          <Link to={`/product/${itemData.id}`} className="link">
             <span className="itemname">{itemname}</span>
           </Link>
         </div>

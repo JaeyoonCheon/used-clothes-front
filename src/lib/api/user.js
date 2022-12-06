@@ -19,4 +19,16 @@ export const registerAPI = async (payload) => {
   );
 };
 
-export const getUserInfoAPI = async (payload) => {};
+export const logoutAPI = async () => {
+  return await testAPIInstance.get(`user/logout`);
+};
+
+export const deleteUserAPI = async () => {
+  return await testAPIInstance.delete(`user/delete`);
+};
+
+export const editUserAPI = async (payload) => {
+  return await testAPIInstance.put(`user/update`, payload);
+};
+
+export const checkAPI = async (payload) => {};
