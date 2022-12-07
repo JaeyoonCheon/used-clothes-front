@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import BaseLayout from "../components/layout/BaseLayout";
-import { getUserInfoAPI } from "../lib/api/user";
+import { checkAPI } from "../lib/api/user";
 import colors from "../lib/styles/colors";
 import { LabelInput } from "../components/common/Input";
 import { SmallButton } from "../components/common/Button";
@@ -66,7 +66,7 @@ const MyProductPage = () => {
   });
 
   useEffect(() => {
-    const result = getUserInfoAPI();
+    const result = checkAPI();
     setUserdata(result);
   }, []);
 

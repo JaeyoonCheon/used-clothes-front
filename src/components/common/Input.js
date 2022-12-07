@@ -196,16 +196,17 @@ export const Input = (props) => {
 };
 
 export const LimitedInput = (props) => {
-  const { placeholder, name, isDisabled = false, limit = 60 } = props;
+  const { placeholder, name, isDisabled = false, limit = 60, onChange } = props;
   const [value, setValue] = useState("");
   const [count, setCount] = useState(0);
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setValue(e.target.value);
     if (e.target.value.length >= limit) {
       setValue(e.target.value.substr(0, limit));
     }
     setCount(e.target.value.length);
+    onChange(name, value);
   };
 
   return (
@@ -216,7 +217,7 @@ export const LimitedInput = (props) => {
         id={name}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         disabled={isDisabled}
       ></InputContent>
       <label htmlFor={name}>{placeholder}</label>

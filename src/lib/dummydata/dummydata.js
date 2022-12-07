@@ -204,26 +204,26 @@ export const filterDatas = [
 
 export const metaDatas = {
   colors: [
-    { color_code: 1, color_name: "화이트" },
-    { color_code: 2, color_name: "블랙" },
-    { color_code: 3, color_name: "그레이" },
-    { color_code: 4, color_name: "브라운" },
-    { color_code: 5, color_name: "레드" },
-    { color_code: 6, color_name: "블루" },
-    { color_code: 7, color_name: "실버" },
+    { code: 1, name: "화이트" },
+    { code: 2, name: "블랙" },
+    { code: 3, name: "그레이" },
+    { code: 4, name: "브라운" },
+    { code: 5, name: "레드" },
+    { code: 6, name: "블루" },
+    { code: 7, name: "실버" },
   ],
   materials: [
-    { materials_code: 1, materials_name: "면" },
-    { materials_code: 2, materials_name: "데님" },
-    { materials_code: 3, materials_name: "가죽" },
-    { materials_code: 4, materials_name: "실크" },
-    { materials_code: 5, materials_name: "폴리" },
+    { code: 1, name: "면" },
+    { code: 2, name: "데님" },
+    { code: 3, name: "가죽" },
+    { code: 4, name: "실크" },
+    { code: 5, name: "폴리" },
   ],
   conditions: [
-    { conditions_code: 1, conditions_name: "미사용" },
-    { conditions_code: 2, conditions_name: "매우 양호" },
-    { conditions_code: 3, conditions_name: "사용감 있음" },
-    { conditions_code: 4, conditions_name: "사용감 많음" },
+    { code: 1, name: "미사용" },
+    { code: 2, name: "매우 양호" },
+    { code: 3, name: "사용감 있음" },
+    { code: 4, name: "사용감 많음" },
   ],
 };
 
@@ -256,7 +256,7 @@ export const itemDetailInfos = {
 
 export const itemDetailDatas = [
   {
-    clothe_id: 4606,
+    id: 4606,
     itemimage: ["https://loremflickr.com/580/580/abstract?21730"],
     name: "Gloves",
     price: "311.00",

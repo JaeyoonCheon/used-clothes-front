@@ -14,10 +14,19 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(email));
   }),
   rest.post("/user/create", (req, res, ctx) => {
-    const formData = req.body;
+    const formData = req.json();
 
     if (formData) {
       return res(ctx.status(200));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.post(`/clothe/create`, (req, res, ctx) => {
+    const formData = req.json();
+
+    if (formData) {
+      return res(ctx.json(formData));
     } else {
       return res(ctx.status(400));
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -17,7 +17,11 @@ import {
 import { categoryData, filterDatas } from "../lib/dummydata/dummydata";
 import { RadioGroup, RadioButton } from "../components/common/RadioButton";
 import ImageUploader from "../components/common/ImageUploader";
-import { useSelector } from "react-redux";
+import {
+  addProduct,
+  changeArrayOption,
+  changeProduct,
+} from "../slices/productSlice";
 
 const Wrapper = styled.form`
   width: 1180px;
@@ -63,13 +67,24 @@ const ConfirmButtonWrapper = styled.div`
 const AddItemPage = (props) => {
   const dispatch = useDispatch();
 
-  const onSubmit = () => {
-    dispatch();
+  const { product } = useSelector((state) => {
+    return {
+      product: state.product.selected.product,
+    };
+  });
+
+  const onChange = (name, value) => {
+    dispatch(changeProduct({ name, value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addProduct(product));
   };
 
   return (
     <BaseLayout>
-      <Wrapper>
+      <Wrapper onSubmit={onSubmit}>
         <ContentWrapper>
           <ContentTitle>사진 등록</ContentTitle>
           <ImageUploader></ImageUploader>
@@ -78,24 +93,31 @@ const AddItemPage = (props) => {
           <ContentTitle>제목</ContentTitle>
           <LimitedInput
             placeholder="제목을 입력해주세요."
+            name="name"
             isRequired={true}
             limit={60}
+            onChange={onChange}
           ></LimitedInput>
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>카테고리</ContentTitle>
-          <CategorySelector categoryData={categoryData}></CategorySelector>
+          <CategorySelector onChange={onChange}></CategorySelector>
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>옵션</ContentTitle>
-          <CheckboxSelector filteringData={filterDatas}></CheckboxSelector>
+          <CheckboxSelector
+            filteringData={filterDatas}
+            onChange={onChange}
+          ></CheckboxSelector>
         </ContentWrapper>
         <ContentWrapper>
           <ContentRowWrapper>
             <div className="priceTitle">
               <ContentTitle>가격</ContentTitle>
             </div>
-            <Input width={`300px`}>원</Input>
+            <Input width={`300px`} onChange={onChange}>
+              원
+            </Input>
           </ContentRowWrapper>
           <ContentRowWrapper>
             <div className="priceTitle">배송비</div>
@@ -105,14 +127,22 @@ const AddItemPage = (props) => {
                 value="include"
                 width="80px"
                 defaultChecked
+                onChange={onChange}
               >
                 포함
               </RadioButton>
-              <RadioButton name="confirmType" value="exclude" width="80px">
+              <RadioButton
+                name="confirmType"
+                value="exclude"
+                width="80px"
+                onChange={onChange}
+              >
                 별도
               </RadioButton>
             </RadioGroup>
-            <Input width={`128px`}>원</Input>
+            <Input width={`128px`} onChange={onChange}>
+              원
+            </Input>
           </ContentRowWrapper>
         </ContentWrapper>
         <ContentWrapper>
@@ -121,6 +151,7 @@ const AddItemPage = (props) => {
             placeholder="상품을 설명할 수 있는 내용을 입력해주세요."
             isRequired={true}
             limit={2000}
+            onChange={onChange}
           ></LimitedTextarea>
         </ContentWrapper>
         <ContentWrapper>

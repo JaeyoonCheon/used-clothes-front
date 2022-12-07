@@ -151,6 +151,8 @@ export const {
   getProduct,
   getProduct_success,
   getProduct_failure,
+  changeProduct,
+  changeArrayProduct,
   addProduct,
   addProduct_success,
   addProduct_failure,

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import useCategory from "../../hooks/useCategory";
 import colors from "../../lib/styles/colors";
 import { RadioOption } from "./RadioButton";
 import Checkbox from "../common/Checkbox";
@@ -78,52 +79,50 @@ const OptionName = styled.div`
 `;
 
 export const RadioOptionSelector = (props) => {
-  const { categories, selectedId, onClick } = props;
+  const { name, categories, selectedId, onClick } = props;
 
-  console.log(selectedId);
+  console.log(props);
 
   return (
     <OptionGroupContainer>
       {categories &&
         categories.map((category) => (
           <RadioOption
-            key={category.id}
-            id={category.id}
-            selected={category.id === selectedId ? true : false}
+            key={category[`${name}_id`]}
+            id={category[`${name}_id`]}
+            selected={category[`${name}_id`] === selectedId ? true : false}
             onClick={onClick}
           >
-            {category.name}
+            {category[`${name}_name`]}
           </RadioOption>
         ))}
     </OptionGroupContainer>
   );
 };
 
-export const CategorySelector = (props) => {
-  const { categoryData } = props;
+export const CategorySelector = ({ onChange }) => {
+  const { main, sub } = useCategory();
 
-  const [large, setLarge] = useState(1);
-  const [medium, setMedium] = useState(false);
-  const [small, setSmall] = useState(false);
+  const [mainCategory, setMainCategory] = useState(1);
+  const [subCategory, setSubCategory] = useState(null);
 
-  const mediumCategoryData =
-    large && categoryData.filter((category) => category.id === large)[0].child;
+  useEffect(() => {
+    onChange("main_category_id", mainCategory);
+  }, []);
 
-  const smallCategoryData =
-    medium &&
-    mediumCategoryData.filter((category) => category.id === medium)[0].child;
+  const subList =
+    mainCategory &&
+    sub.filter((category) => category.main_category_id === mainCategory);
 
-  const onClickLarge = (id) => {
-    setSmall(false);
-    setMedium(false);
-    setLarge(id);
+  const onClickMainCategory = (id) => {
+    setSubCategory(null);
+    setMainCategory(id);
+    onChange("main_category_id", id);
+    onChange("sub_category_id", null);
   };
-  const onClickMedium = (id) => {
-    setSmall(false);
-    setMedium(id);
-  };
-  const onClickSmall = (id) => {
-    setSmall(id);
+  const onClickSubCategory = (id) => {
+    setSubCategory(id);
+    onChange("sub_category_id", id);
   };
 
   return (
@@ -132,17 +131,19 @@ export const CategorySelector = (props) => {
         <GroupWrapper>
           <span className="CategoryTag">대분류</span>
           <RadioOptionSelector
-            categories={categoryData}
-            selectedId={large}
-            onClick={onClickLarge}
+            name="main_category"
+            categories={main}
+            selectedId={mainCategory}
+            onClick={onClickMainCategory}
           ></RadioOptionSelector>
         </GroupWrapper>
         <GroupWrapper>
-          <span className="CategoryTag">중분류</span>
+          <span className="CategoryTag">소분류</span>
           <RadioOptionSelector
-            categories={mediumCategoryData}
-            selectedId={medium}
-            onClick={onClickMedium}
+            name="sub_category"
+            categories={subList}
+            selectedId={subCategory}
+            onClick={onClickSubCategory}
           ></RadioOptionSelector>
         </GroupWrapper>
       </GroupsWrapper>
