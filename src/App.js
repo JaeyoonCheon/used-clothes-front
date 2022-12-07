@@ -26,7 +26,14 @@ const App = () => {
         <Route path="pwforgot" element={<PWForgotPage />}></Route>
         <Route path="register" element={<RegisterPage />}></Route>
         <Route path="product/:id" element={<ItemDetailPage />}></Route>
-        <Route path="addItem" element={<AddItemPage />}></Route>
+        <Route
+          path="addItem"
+          element={
+            <ProtectedRoute>
+              <AddItemPage />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route path="welcome" element={<WelcomePage />}></Route>
         <Route
           path="mypage"

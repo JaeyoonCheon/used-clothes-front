@@ -113,6 +113,31 @@ const TextContainer = styled.textarea`
   }
 `;
 
+export const Input = (props) => {
+  const { placeholder, name, onChange, isDisabled = false } = props;
+  const [inputValue, setInputValue] = useInput("");
+
+  const handleChange = (e) => {
+    setInputValue(e);
+    onChange(name, inputValue);
+  };
+
+  return (
+    <InputContainer>
+      <InputContent
+        type="text"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleChange}
+        disabled={isDisabled}
+      ></InputContent>
+      <label htmlFor={name}>{placeholder}</label>
+    </InputContainer>
+  );
+};
+
 export const LabelInput = (props) => {
   const {
     placeholder,
@@ -177,41 +202,15 @@ export const LabelPasswordInput = (props) => {
   );
 };
 
-export const Input = (props) => {
-  const { placeholder, name, onChange, isDisabled = false } = props;
-  const [inputValue, setInputValue] = useInput("");
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-    onChange(name, inputValue);
-  };
-
-  return (
-    <InputContainer>
-      <InputContent
-        type="text"
-        name={name}
-        id={name}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={handleChange}
-        disabled={isDisabled}
-      ></InputContent>
-      <label htmlFor={name}>{placeholder}</label>
-    </InputContainer>
-  );
-};
-
 export const LimitedInput = (props) => {
   const { placeholder, name, isDisabled = false, limit = 60, onChange } = props;
-  const [value, setValue] = useState("");
+  const setLimit = (value) => value.length < limit;
+
+  const [value, setValue] = useInput("", setLimit);
   const [count, setCount] = useState(0);
 
   const handleChange = (e) => {
-    setValue(e.target.value);
-    if (e.target.value.length >= limit) {
-      setValue(e.target.value.substr(0, limit));
-    }
+    setValue(e);
     setCount(e.target.value.length);
     onChange(name, value);
   };
@@ -235,15 +234,14 @@ export const LimitedInput = (props) => {
 
 export const LimitedTextarea = (props) => {
   const { placeholder, name, isRequired = false, limit = 60, onChange } = props;
-  const [value, setValue] = useState("");
+  const setLimit = (value) => value.length < limit;
+
+  const [value, setValue] = useInput("", setLimit);
   const [count, setCount] = useState(0);
 
   const textArea = useRef();
   const handleChange = (e) => {
-    setValue(e.target.value);
-    if (e.target.value.length >= limit) {
-      setValue(e.target.value.substr(0, limit));
-    }
+    setValue(e);
     setCount(e.target.value.length);
     textArea.current.style.height = "auto";
     textArea.current.style.height = textArea.current.scrollHeight + `px`;

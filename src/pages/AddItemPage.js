@@ -161,7 +161,7 @@ const AddItemPage = () => {
           <ContentTitle>게시글 내용</ContentTitle>
           <LimitedTextarea
             placeholder="상품을 설명할 수 있는 내용을 입력해주세요."
-            name="descriptions"
+            name="description"
             isRequired={true}
             limit={2000}
             onChange={onChange}

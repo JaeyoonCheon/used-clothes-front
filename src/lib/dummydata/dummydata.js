@@ -204,13 +204,13 @@ export const filterDatas = [
 
 export const metaDatas = {
   colors: [
-    { code: 1, name: "화이트" },
-    { code: 2, name: "블랙" },
-    { code: 3, name: "그레이" },
-    { code: 4, name: "브라운" },
-    { code: 5, name: "레드" },
-    { code: 6, name: "블루" },
-    { code: 7, name: "실버" },
+    { code: "#FFFFFF", name: "화이트" },
+    { code: "#000000", name: "블랙" },
+    { code: "#A0A0A0", name: "그레이" },
+    { code: "#663300", name: "브라운" },
+    { code: "#FF0000", name: "레드" },
+    { code: "#004C99", name: "블루" },
+    { code: "#E0E0E0", name: "실버" },
   ],
   materials: [
     { code: 1, name: "면" },

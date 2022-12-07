@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { CheckboxFilter } from "./Filter";
+import { CheckboxFilter, ColorCheckboxFilter } from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const FilterList = (props) => {
@@ -19,14 +19,14 @@ const FilterList = (props) => {
 
   return (
     <>
-      <CheckboxFilter
+      <ColorCheckboxFilter
         title="색상"
         name="color"
         list={colors}
         onClickOption={onClickOption}
         modalState={modalState}
         setModalState={setModalState}
-      ></CheckboxFilter>
+      ></ColorCheckboxFilter>
       <CheckboxFilter
         title="소재"
         name="material"

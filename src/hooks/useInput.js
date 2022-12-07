@@ -1,14 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useCallback, useState } from "react";
 
-const useInput = (initVal) => {
-  const [value, setValue] = useState(initVal);
+const useInput = (initValue, validCallback = null) => {
+  const [value, setValue] = useState(initValue);
 
-  const onChangeValue = useCallback((value) => {
-    setValue(value);
-  }, []);
+  const onChange = (e) => {
+    let isValid = true;
 
-  return [value, onChangeValue];
+    if (typeof validCallback === "function") {
+      isValid = validCallback(e.target.value);
+    }
+    if (isValid) {
+      setValue(e.target.value);
+    }
+  };
+
+  return [value, onChange];
 };
 
 export default useInput;
