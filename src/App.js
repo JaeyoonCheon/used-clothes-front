@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import ProtectedRoute from "./lib/router/ProtectedRoute";
 import GlobalStyle from "./lib/styles/globalStyle";
 import HomePage from "./pages/HomePage";
 import HomePage2 from "./pages/HomePage2";
@@ -27,7 +28,14 @@ const App = () => {
         <Route path="product/:id" element={<ItemDetailPage />}></Route>
         <Route path="addItem" element={<AddItemPage />}></Route>
         <Route path="welcome" element={<WelcomePage />}></Route>
-        <Route path="mypage" element={<MyPage />}></Route>
+        <Route
+          path="mypage"
+          element={
+            <ProtectedRoute>
+              <MyPage />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route path="myproduct" element={<MyProductPage />}></Route>
       </Routes>
     </>

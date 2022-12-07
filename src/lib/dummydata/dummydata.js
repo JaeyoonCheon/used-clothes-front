@@ -256,7 +256,7 @@ export const itemDetailInfos = {
 
 export const itemDetailDatas = [
   {
-    id: 4606,
+    clothe_id: 4606,
     itemimage: ["https://loremflickr.com/580/580/abstract?21730"],
     name: "Gloves",
     price: "311.00",

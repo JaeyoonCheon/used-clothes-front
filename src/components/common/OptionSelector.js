@@ -7,6 +7,8 @@ import { RadioOption } from "./RadioButton";
 import Checkbox from "../common/Checkbox";
 import FilterModal from "../modal/FilterModal";
 import { SmallButton } from "./Button";
+import { useSelector, useDispatch } from "react-redux";
+import { changeArrayProduct } from "../../slices/productSlice";
 
 const SelectorWrapper = styled.div`
   width: fit-content;
@@ -81,8 +83,6 @@ const OptionName = styled.div`
 export const RadioOptionSelector = (props) => {
   const { name, categories, selectedId, onClick } = props;
 
-  console.log(props);
-
   return (
     <OptionGroupContainer>
       {categories &&
@@ -152,59 +152,93 @@ export const CategorySelector = ({ onChange }) => {
 };
 
 export const CheckboxSelector = (props) => {
-  const { filteringData } = props;
-
   const [modalState, setModalState] = useState({ index: -1 });
+
+  const { colors, materials, conditions } = useSelector((state) => {
+    return {
+      colors: state.metadata.colors,
+      materials: state.metadata.materials,
+      conditions: state.metadata.conditions,
+    };
+  });
 
   return (
     <CheckboxSelectorWrapper>
-      {filteringData.map((data, idx) => {
-        return (
-          <CheckboxOption
-            key={idx}
-            idx={idx}
-            filteringData={data}
-            modalState={modalState}
-            setModalState={setModalState}
-          ></CheckboxOption>
-        );
-      })}
+      <CheckboxOption
+        title="색상"
+        name="color"
+        list={colors}
+        modalState={modalState}
+        setModalState={setModalState}
+      ></CheckboxOption>
+      <CheckboxOption
+        title="소재"
+        name="material"
+        list={materials}
+        modalState={modalState}
+        setModalState={setModalState}
+      ></CheckboxOption>
+      <CheckboxOption
+        title="상품 상태"
+        name="condition"
+        list={conditions}
+        modalState={modalState}
+        setModalState={setModalState}
+      ></CheckboxOption>
     </CheckboxSelectorWrapper>
   );
 };
 
 export const CheckboxOption = (props) => {
-  const { idx, filteringData, modalState, setModalState } = props;
-  const { name, types } = filteringData;
-  const preOptions = [...types].splice(0, 4);
+  const { title, name, list, modalState, setModalState } = props;
+  const dispatch = useDispatch();
+
+  const preOptions = [...list].splice(0, 4);
 
   const [currentPos, setCurrentPos] = useState([]);
   const [checkedOptions, setCheckedOptions] = useState(new Set());
 
   const toggleCheckbox = (option) => {
-    if (checkedOptions.has(option)) {
-      const newCheckedOptions = new Set(checkedOptions);
-      newCheckedOptions.delete(option);
-      setCheckedOptions(newCheckedOptions);
+    const newCheckedOptions = new Set(checkedOptions);
+    if (checkedOptions.has(option.code)) {
+      newCheckedOptions.delete(option.code);
     } else {
-      const newCheckedOptions = new Set(checkedOptions);
-      newCheckedOptions.add(option);
-      setCheckedOptions(newCheckedOptions);
+      newCheckedOptions.add(option.code);
+    }
+    setCheckedOptions(newCheckedOptions);
+  };
+
+  useEffect(() => {
+    dispatch(
+      changeArrayProduct({
+        name: `${name}_code`,
+        value: Array.from(checkedOptions),
+      })
+    );
+  }, [checkedOptions]);
+
+  const isChecked = (option) => {
+    if (checkedOptions.has(option.code)) {
+      return true;
+    } else {
+      return false;
     }
   };
 
   return (
     <CheckboxWrapper>
-      <OptionName>{name}</OptionName>
+      <OptionName>{title}</OptionName>
       <CheckboxList>
-        {preOptions.map((preOption, idx) => (
-          <Checkbox
-            key={idx}
-            checkboxLabel={preOption}
-            checkedOptions={checkedOptions}
-            toggleCheckbox={toggleCheckbox}
-          ></Checkbox>
-        ))}
+        {preOptions.map((preOption) => {
+          return (
+            <Checkbox
+              key={preOption.code}
+              data={preOption}
+              isChecked={isChecked(preOption)}
+              toggleCheckbox={() => toggleCheckbox(preOption)}
+            ></Checkbox>
+          );
+        })}
       </CheckboxList>
       <SmallButton
         isFilled={false}
@@ -213,14 +247,14 @@ export const CheckboxOption = (props) => {
         onClick={(e) => {
           const pos = [e.pageX, e.pageY];
           setCurrentPos(pos);
-          setModalState({ ...modalState, index: idx });
+          setModalState({ ...modalState, index: name });
         }}
       >
         더 보기
       </SmallButton>
-      {modalState.index === idx && (
+      {modalState.index === name && (
         <FilterModal
-          options={types}
+          options={list}
           position={currentPos}
           setModalState={setModalState}
           checkedOptions={checkedOptions}

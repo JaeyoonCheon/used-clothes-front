@@ -86,7 +86,13 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
-  const { filter: productOptions } = useSelector((state) => {
+  const {
+    filter: productOptions,
+    sort_by,
+    order,
+    elements,
+    page,
+  } = useSelector((state) => {
     const list = state.product.list;
 
     return {
@@ -108,6 +114,10 @@ const HomePage = () => {
     dispatch(getMetadata("colors"));
     dispatch(list(productOptions));
   }, []);
+
+  useEffect(() => {
+    dispatch(list(productOptions));
+  }, [productOptions, sort_by, order, elements, page]);
 
   const onClickSort = (order) => {
     dispatch(

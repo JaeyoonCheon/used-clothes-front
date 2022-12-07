@@ -107,11 +107,6 @@ const Category = () => {
     }
   };
 
-  console.log(mainCategory);
-  console.log(subCategoryList);
-  console.log(`main : ${mainSelected}`);
-  console.log(`sub : ${subSelected}`);
-
   return (
     <CategoryContainer>
       <div className="category_header">

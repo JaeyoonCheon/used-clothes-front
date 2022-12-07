@@ -11,7 +11,7 @@ const ModalOverlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 199;
 
   background: rgba(0, 0, 0, 0.6);
 `;

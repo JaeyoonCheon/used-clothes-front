@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,6 +22,7 @@ import {
   changeArrayOption,
   changeProduct,
 } from "../slices/productSlice";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.form`
   width: 1180px;
@@ -64,8 +65,10 @@ const ConfirmButtonWrapper = styled.div`
     margin-left: 40px;
   }
 `;
-const AddItemPage = (props) => {
+const AddItemPage = () => {
+  const [isShipping, setIsShipping] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { product } = useSelector((state) => {
     return {
@@ -77,9 +80,19 @@ const AddItemPage = (props) => {
     dispatch(changeProduct({ name, value }));
   };
 
+  const onPressRadio = (e) => {
+    if (e.target.value === "include") {
+      dispatch(changeProduct(e.target.name, null));
+      setIsShipping(false);
+    } else {
+      setIsShipping(true);
+    }
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addProduct(product));
+    navigate("/mypage");
   };
 
   return (
@@ -105,17 +118,14 @@ const AddItemPage = (props) => {
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>옵션</ContentTitle>
-          <CheckboxSelector
-            filteringData={filterDatas}
-            onChange={onChange}
-          ></CheckboxSelector>
+          <CheckboxSelector onChange={onChange}></CheckboxSelector>
         </ContentWrapper>
         <ContentWrapper>
           <ContentRowWrapper>
             <div className="priceTitle">
               <ContentTitle>가격</ContentTitle>
             </div>
-            <Input width={`300px`} onChange={onChange}>
+            <Input width={`300px`} name="price" onChange={onChange}>
               원
             </Input>
           </ContentRowWrapper>
@@ -127,7 +137,7 @@ const AddItemPage = (props) => {
                 value="include"
                 width="80px"
                 defaultChecked
-                onChange={onChange}
+                onClick={onPressRadio}
               >
                 포함
               </RadioButton>
@@ -135,20 +145,23 @@ const AddItemPage = (props) => {
                 name="confirmType"
                 value="exclude"
                 width="80px"
-                onChange={onChange}
+                onClick={onPressRadio}
               >
                 별도
               </RadioButton>
             </RadioGroup>
-            <Input width={`128px`} onChange={onChange}>
-              원
-            </Input>
+            {isShipping && (
+              <Input width={`128px`} name="shipping_fee" onChange={onChange}>
+                원
+              </Input>
+            )}
           </ContentRowWrapper>
         </ContentWrapper>
         <ContentWrapper>
           <ContentTitle>게시글 내용</ContentTitle>
           <LimitedTextarea
             placeholder="상품을 설명할 수 있는 내용을 입력해주세요."
+            name="descriptions"
             isRequired={true}
             limit={2000}
             onChange={onChange}
@@ -159,7 +172,11 @@ const AddItemPage = (props) => {
             <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
               취소하기
             </MiddleButton>
-            <MiddleButton isFilled={true} colorTheme={colors.blue[0]}>
+            <MiddleButton
+              type="submit"
+              isFilled={true}
+              colorTheme={colors.blue[0]}
+            >
               등록하기
             </MiddleButton>
           </ConfirmButtonWrapper>

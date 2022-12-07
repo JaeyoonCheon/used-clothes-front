@@ -41,9 +41,9 @@ const FilterModal = (props) => {
       <CheckboxList>
         {options.map((option) => (
           <Checkbox
-            key={option}
+            key={option.code}
             isModal={true}
-            checkboxLabel={option}
+            checkboxLabel={option.name}
             checkedOptions={checkedOptions}
             toggleCheckbox={toggleCheckbox}
           ></Checkbox>

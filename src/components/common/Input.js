@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Children } from "react";
 import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
+import useInput from "../../hooks/useInput";
 
 const InputContainer = styled.div`
   margin: 0;
@@ -177,7 +178,13 @@ export const LabelPasswordInput = (props) => {
 };
 
 export const Input = (props) => {
-  const { placeholder, name, value, onChange, isDisabled = false } = props;
+  const { placeholder, name, onChange, isDisabled = false } = props;
+  const [inputValue, setInputValue] = useInput("");
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    onChange(name, inputValue);
+  };
 
   return (
     <InputContainer>
@@ -186,8 +193,8 @@ export const Input = (props) => {
         name={name}
         id={name}
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
+        value={inputValue}
+        onChange={handleChange}
         disabled={isDisabled}
       ></InputContent>
       <label htmlFor={name}>{placeholder}</label>
@@ -227,12 +234,12 @@ export const LimitedInput = (props) => {
 };
 
 export const LimitedTextarea = (props) => {
-  const { placeholder, name, isRequired = false, limit = 60 } = props;
+  const { placeholder, name, isRequired = false, limit = 60, onChange } = props;
   const [value, setValue] = useState("");
   const [count, setCount] = useState(0);
 
   const textArea = useRef();
-  const onChange = (e) => {
+  const handleChange = (e) => {
     setValue(e.target.value);
     if (e.target.value.length >= limit) {
       setValue(e.target.value.substr(0, limit));
@@ -240,6 +247,7 @@ export const LimitedTextarea = (props) => {
     setCount(e.target.value.length);
     textArea.current.style.height = "auto";
     textArea.current.style.height = textArea.current.scrollHeight + `px`;
+    onChange(name, value);
   };
 
   return (
@@ -252,7 +260,7 @@ export const LimitedTextarea = (props) => {
         name={name}
         isRequired={isRequired}
         rows={1}
-        onChange={onChange}
+        onChange={handleChange}
       ></TextContainer>
       <Counter>{`${count}/${limit}`}</Counter>
     </>

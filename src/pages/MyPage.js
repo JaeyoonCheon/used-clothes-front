@@ -110,20 +110,23 @@ const MyPage = () => {
                 name="email"
                 value={userdata.email}
                 isDisabled={true}
+                onChange={(e) => e.target.value}
                 errorMsg=""
               ></LabelInput>
               <LabelInput
                 placeholder="이름"
                 name="username"
                 value={userdata.username}
-                isDisabled={false}
+                isDisabled={true}
+                onChange={(e) => e.target.value}
                 errorMsg=""
               ></LabelInput>
               <LabelInput
                 placeholder="전화번호"
                 name="phonenumber"
                 value={userdata.phonenumber}
-                isDisabled={false}
+                isDisabled={true}
+                onChange={(e) => e.target.value}
                 errorMsg=""
               ></LabelInput>
             </InfoInputContainer>

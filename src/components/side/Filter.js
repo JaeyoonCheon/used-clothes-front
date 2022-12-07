@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsPlusSquare } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,67 +42,70 @@ const CheckboxList = styled.div`
 `;
 
 export const CheckboxFilter = (props) => {
-  const {
-    typeCode,
-    name,
-    types,
-    options,
-    onClickOption,
-    modalState,
-    setModalState,
-  } = props;
+  const { title, name, list, onClickOption, modalState, setModalState } = props;
 
   const dispatch = useDispatch();
 
-  const representativeTypes = [...types].splice(0, 4);
+  const preOptions = [...list].splice(0, 4);
 
   const [currentPos, setCurrentPos] = useState([]);
   const [checkedTypes, setCheckedTypes] = useState(new Set());
 
-  const toggleCheckbox = (type) => {
+  const toggleCheckbox = (option) => {
     const newCheckedTypes = new Set(checkedTypes);
 
-    if (checkedTypes.has(type)) {
-      newCheckedTypes.delete(type);
+    if (checkedTypes.has(option)) {
+      newCheckedTypes.delete(option);
     } else {
-      newCheckedTypes.add(type);
+      newCheckedTypes.add(option);
     }
     setCheckedTypes(newCheckedTypes);
+  };
+
+  const isChecked = (option) => {
+    if (checkedTypes.has(option.code)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  useEffect(() => {
     dispatch(
       changeArrayOption({
-        name: typeCode,
-        value: Array.from(newCheckedTypes),
+        name: `${name}_code`,
+        value: Array.from(checkedTypes),
       })
     );
-  };
+  }, [checkedTypes]);
 
   return (
     <FilterContainer>
       <div className="filter_header">
-        <div>{name}</div>
+        <div>{title}</div>
         <BsPlusSquare
           className="filterModalButton"
           onClick={(e) => {
             const pos = [e.pageX, e.pageY];
             setCurrentPos(pos);
-            setModalState({ ...modalState, index: typeCode });
+            setModalState({ ...modalState, index: name });
           }}
         ></BsPlusSquare>
       </div>
       <CheckboxList>
-        {representativeTypes.map((type) => (
+        {preOptions.map((preOption) => (
           <Checkbox
-            key={type}
-            checkboxLabel={type}
-            checkedOptions={checkedTypes}
-            toggleCheckbox={toggleCheckbox}
+            key={preOption.code}
+            data={preOption}
+            isChecked={isChecked(preOption)}
+            toggleCheckbox={() => toggleCheckbox(preOption.code)}
           ></Checkbox>
         ))}
       </CheckboxList>
-      {modalState.index === typeCode && (
+      {modalState.index === name && (
         <Portal>
           <FilterModal
-            options={types}
+            options={list}
             position={currentPos}
             setModalState={setModalState}
             checkedOptions={checkedTypes}

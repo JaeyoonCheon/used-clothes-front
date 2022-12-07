@@ -25,24 +25,10 @@ const CheckboxContainer = styled.div`
 `;
 
 const Checkbox = (props) => {
-  const { isModal, checkboxLabel, checkedOptions, toggleCheckbox } = props;
-
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    if (
-      typeof checkedOptions === "object" &&
-      checkedOptions.has(checkboxLabel)
-    ) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [checkedOptions, checkboxLabel]);
+  const { isModal, data = { name: "" }, isChecked, toggleCheckbox } = props;
 
   const onClick = () => {
-    toggleCheckbox(checkboxLabel);
-    setChecked(!checked);
+    toggleCheckbox(data.code);
   };
 
   return (
@@ -51,12 +37,12 @@ const Checkbox = (props) => {
         className="checkbox"
         type="checkbox"
         data-testid="checkbox"
-        id={checkboxLabel}
-        checked={checked}
+        id={data.name}
+        checked={isChecked}
         onChange={onClick}
       ></input>
-      <label htmlFor={checkboxLabel} className="optionName">
-        {checkboxLabel}
+      <label htmlFor={data.name} className="optionName">
+        {data.name}
       </label>
     </CheckboxContainer>
   );

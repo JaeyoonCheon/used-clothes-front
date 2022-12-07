@@ -55,7 +55,14 @@ const RadioOptionContainer = styled.label`
 `;
 
 export const RadioButton = (props) => {
-  const { children, name, value, width = `120px`, defaultChecked } = props;
+  const {
+    children,
+    name,
+    value,
+    width = `120px`,
+    defaultChecked,
+    onClick,
+  } = props;
 
   return (
     <RadiobuttonContainer width={width}>
@@ -66,6 +73,7 @@ export const RadioButton = (props) => {
         value={value}
         data-testid="radiobutton"
         defaultChecked={defaultChecked}
+        onClick={onClick}
       ></input>
       {children}
     </RadiobuttonContainer>

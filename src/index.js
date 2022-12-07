@@ -8,6 +8,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import createStore from "./store";
 import { worker } from "./mocks/worker";
 
+import ScrollToTop from "./lib/utils/ScrollToTop";
+
 if (process.env.NODE_ENV === "development") {
   worker.start();
 }
@@ -21,6 +23,7 @@ root.render(
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
+          <ScrollToTop></ScrollToTop>
           <App />
           <div id="modal"></div>
         </BrowserRouter>
