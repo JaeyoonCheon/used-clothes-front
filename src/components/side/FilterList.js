@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { CheckboxFilter, ColorCheckboxFilter } from "./Filter";
+import { CheckboxFilter, ColorCheckboxFilter, PriceFilter } from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const FilterList = (props) => {
@@ -43,6 +43,7 @@ const FilterList = (props) => {
         modalState={modalState}
         setModalState={setModalState}
       ></CheckboxFilter>
+      <PriceFilter title="가격" name="price"></PriceFilter>
     </>
   );
 };

@@ -43,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
   textarea {
     all:unset;
   }
+  input {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export default GlobalStyle;
