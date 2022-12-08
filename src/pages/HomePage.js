@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -11,10 +12,9 @@ import { list, changeOption } from "../slices/productSlice";
 import { getCategory } from "../slices/categorySlice";
 import { getMetadata } from "../slices/metadataSlice";
 import { getBrandList } from "../slices/brandSlice";
-
-import { useDispatch, useSelector } from "react-redux";
 import { toggleLocationModal } from "../slices/modalSlice";
 import LocationModal from "../components/modal/LocationModal";
+import useIntersect from "../hooks/useIntersect";
 
 const Wrapper = styled.div``;
 
@@ -173,6 +173,20 @@ const HomePage = () => {
     }));
   };
 
+  const { isListLoaded } = useSelector((state) => {
+    return {
+      isListLoaded: state.loading[`product/list`],
+    };
+  });
+
+  console.log(isListLoaded);
+
+  const [_, setRef] = useIntersect(async (entry, observer) => {
+    observer.unobserve(entry.target);
+    await dispatch(list(productOptions));
+    observer.observe(entry.target);
+  }, {});
+
   return (
     <BaseLayout>
       <HeaderSpacer></HeaderSpacer>
@@ -207,6 +221,7 @@ const HomePage = () => {
             </NavBar>
             <SmallCardList itemDatas={productList}></SmallCardList>
             <hr></hr>
+            {!isListLoaded && <p ref={setRef}> Loading ... </p>}
             <Pagination
               currentPage={currentPage}
               pageCount={10}
