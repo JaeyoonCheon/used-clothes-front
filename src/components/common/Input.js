@@ -1,4 +1,4 @@
-import React, { useState, useRef, Children } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
 import colors from "../../lib/styles/colors";
@@ -119,8 +119,10 @@ export const Input = (props) => {
 
   const handleChange = (e) => {
     setInputValue(e);
-    onChange(name, inputValue);
   };
+  useEffect(() => {
+    onChange(name, inputValue);
+  }, [inputValue]);
 
   return (
     <InputContainer>

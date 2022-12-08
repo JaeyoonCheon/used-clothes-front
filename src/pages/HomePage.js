@@ -10,8 +10,11 @@ import Pagination from "../components/common/Pagination";
 import { list, changeOption } from "../slices/productSlice";
 import { getCategory } from "../slices/categorySlice";
 import { getMetadata } from "../slices/metadataSlice";
+import { getBrandList } from "../slices/brandSlice";
 
 import { useDispatch, useSelector } from "react-redux";
+import { toggleLocationModal } from "../slices/modalSlice";
+import LocationModal from "../components/modal/LocationModal";
 
 const Wrapper = styled.div``;
 
@@ -44,6 +47,8 @@ const NavBar = styled.div`
   .user_location {
     display: flex;
     align-items: center;
+
+    cursor: pointer;
   }
   .location_name {
     font-weight: 400;
@@ -78,29 +83,40 @@ const NavBar = styled.div`
   }
 `;
 
-const location = "산격동";
-
 const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
-
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const dispatch = useDispatch();
+  const { isLoginModal, isLocationModal } = useSelector((state) => {
+    return {
+      isLoginModal: state.modal.login,
+      isLocationModal: state.modal.location,
+    };
+  });
   const {
     filter: productOptions,
     sort_by,
     order,
     elements,
     page,
+    location,
+    scope_a_code,
+    scope_b_code,
+    scope_c_code,
   } = useSelector((state) => {
-    const list = state.product.list;
+    const options = state.product.list.options;
 
     return {
-      filter: list.options.filter,
-      sort_by: list.sort_by,
-      order: list.order,
-      elements: list.elements,
-      page: list.page,
+      filter: options.filter,
+      sort_by: options.sort_by,
+      order: options.order,
+      elements: options.elements,
+      page: options.page,
+      location: options.location,
+      scope_a_code: options.scope_a_code,
+      scope_b_code: options.scope_b_code,
+      scope_c_code: options.scope_c_code,
     };
   });
 
@@ -112,13 +128,26 @@ const HomePage = () => {
     console.log("Fetch new options");
     dispatch(getCategory());
     dispatch(getMetadata("colors"));
+    dispatch(getBrandList());
     dispatch(list(productOptions));
   }, []);
 
   useEffect(() => {
     dispatch(list(productOptions));
-  }, [productOptions, sort_by, order, elements, page]);
+  }, [
+    productOptions,
+    sort_by,
+    order,
+    elements,
+    page,
+    scope_a_code,
+    scope_b_code,
+    scope_c_code,
+  ]);
 
+  const onClickLocation = () => {
+    dispatch(toggleLocationModal(true));
+  };
   const onClickSort = (order) => {
     dispatch(
       changeOption({
@@ -128,7 +157,6 @@ const HomePage = () => {
     );
     dispatch(list(productOptions));
   };
-
   const onClickOption = (typeCode, option) => {
     dispatch(
       changeOption({
@@ -137,7 +165,6 @@ const HomePage = () => {
       })
     );
   };
-
   const onClickPage = (nextPage) => {
     setCurrentPage(nextPage);
     onClickOption((prev) => ({
@@ -159,7 +186,7 @@ const HomePage = () => {
           </div>
           <ContentContainer>
             <NavBar>
-              <div className="user_location">
+              <div className="user_location" onClick={onClickLocation}>
                 <span className="location_name">{location}</span>
                 <img
                   className="location_icon"
@@ -167,6 +194,7 @@ const HomePage = () => {
                   alt="location"
                 ></img>
               </div>
+              {isLocationModal && <LocationModal></LocationModal>}
               <div className="sort_orders">
                 {sortOrders.map((order, i) => (
                   <span

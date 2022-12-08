@@ -43,7 +43,9 @@ const CheckboxContainer = styled.div`
   }
   .label_name {
     margin-left: 5px;
-    color: black;
+    color: ${colors.mono[0]};
+
+    font-weight: 300;
 
     cursor: pointer;
   }
@@ -68,7 +70,12 @@ const ColorCheckboxContainer = styled.div`
 `;
 
 const Checkbox = (props) => {
-  const { isModal, data = { name: "" }, isChecked, toggleCheckbox } = props;
+  const {
+    isModal = false,
+    data = { name: "" },
+    isChecked,
+    toggleCheckbox,
+  } = props;
 
   const onChange = () => {
     toggleCheckbox(data.code);

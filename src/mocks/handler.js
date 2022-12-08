@@ -6,6 +6,10 @@ import {
   mainCategoryData,
   subCategoryData,
   itemDetailDatas,
+  brandListDatas,
+  locationScopeAData,
+  locationScopeBData,
+  locationScopeCData,
 } from "../lib/dummydata/dummydata";
 
 export const handlers = [
@@ -48,6 +52,34 @@ export const handlers = [
 
     if (info) {
       return res(ctx.json(info));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/location/scope_a/list`, (req, res, ctx) => {
+    if (locationScopeAData) {
+      return res(ctx.json(locationScopeAData));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/location/scope_b/list`, (req, res, ctx) => {
+    if (locationScopeBData) {
+      return res(ctx.json(locationScopeBData));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/location/scope_c/list`, (req, res, ctx) => {
+    if (locationScopeCData) {
+      return res(ctx.json(locationScopeCData));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/brand/list`, (req, res, ctx) => {
+    if (brandListDatas) {
+      return res(ctx.json(brandListDatas));
     } else {
       return res(ctx.status(400));
     }

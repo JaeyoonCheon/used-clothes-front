@@ -6,6 +6,9 @@ import { loadingSlice } from "./loadingSlice";
 import { productSlice, productSaga } from "./productSlice";
 import { categorySlice, categorySaga } from "./categorySlice";
 import { metadataSlice, metadataSaga } from "./metadataSlice";
+import { brandSlice, brandSaga } from "./brandSlice";
+import { modalSlice } from "./modalSlice";
+import { locationSlice, locationSaga } from "./locationSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
@@ -13,10 +16,20 @@ const rootReducer = combineReducers({
   product: productSlice.reducer,
   category: categorySlice.reducer,
   metadata: metadataSlice.reducer,
+  brand: brandSlice.reducer,
+  modal: modalSlice.reducer,
+  location: locationSlice.reducer,
 });
 
 export function* rootSaga() {
-  yield all([authSaga(), productSaga(), categorySaga(), metadataSaga()]);
+  yield all([
+    authSaga(),
+    productSaga(),
+    categorySaga(),
+    metadataSaga(),
+    brandSaga(),
+    locationSaga(),
+  ]);
 }
 
 export default rootReducer;

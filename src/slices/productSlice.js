@@ -32,6 +32,10 @@ const initialState = {
       order: "asc",
       elements: "30",
       page: "1",
+      location: "",
+      scope_a_code: 11,
+      scope_b_code: 11010,
+      scope_c_code: 1101053,
     },
     listError: null,
     productList: [],
@@ -93,6 +97,9 @@ export const productSlice = createSlice({
     changeOption: (state, action) => {
       state.list.options.filter[action.payload.name] = action.payload.value;
     },
+    changeLocation: (state, action) => {
+      state.list.options[action.payload.name] = action.payload.value;
+    },
     changeArrayOption: (state, action) => {
       if (!state.list.options.filter[action.payload.name]) {
         state.list.options[action.payload.name] = [];
@@ -144,6 +151,7 @@ export const productSlice = createSlice({
 
 export const {
   changeOption,
+  changeLocation,
   changeArrayOption,
   list,
   list_success,

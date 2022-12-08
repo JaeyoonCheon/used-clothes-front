@@ -31,6 +31,9 @@ const TitleContainer = styled.div`
     line-height: 38px;
     letter-spacing: -0.05em;
   }
+  .clear_button {
+    margin-left: auto;
+  }
 `;
 
 const LoginFeature = styled.form`
@@ -121,14 +124,14 @@ const LoginModal = (props) => {
   return (
     <ModalLayout onClick={onClickModalToggle}>
       <ContentContainer>
-        <div className="clearButton">
-          <AiOutlineClose
-            size={20}
-            onClick={onClickModalToggle}
-          ></AiOutlineClose>
-        </div>
         <TitleContainer>
           <h2 className="title">로그인</h2>
+          <div className="clearButton">
+            <AiOutlineClose
+              size={25}
+              onClick={onClickModalToggle}
+            ></AiOutlineClose>
+          </div>
         </TitleContainer>
         <LoginFeature onSubmit={fetchLogin}>
           <LabelInput

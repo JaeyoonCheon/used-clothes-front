@@ -29,7 +29,7 @@ const NonModalBackground = styled.div`
   background: ${colors.mono[1]};
 `;
 
-const Wrapper = styled.div`
+const DefaultWrapper = styled.div`
   position: absolute;
   width: 400px;
   height: 600px;
@@ -41,7 +41,26 @@ const Wrapper = styled.div`
   justify-content: center;
 
   background: white;
+  border: ${(props) => props.border && `0.5px solid ${colors.mono[0]}`};
 
+  .clearButton {
+    display: flex;
+    justify-content: flex-end;
+
+    cursor: pointer;
+  }
+`;
+
+const BrandWrapper = styled.div`
+  width: 800px;
+  height: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: white;
+  border: 0.5px solid ${colors.mono[0]};
   .clearButton {
     display: flex;
     justify-content: flex-end;
@@ -62,9 +81,15 @@ export const ModalLayout = (props) => {
         }
       }}
     >
-      <Wrapper>{children}</Wrapper>
+      <DefaultWrapper>{children}</DefaultWrapper>
     </ModalOverlay>
   );
+};
+
+export const NonOverlayModalLayout = (props) => {
+  const { children } = props;
+
+  return <DefaultWrapper border={true}>{children}</DefaultWrapper>;
 };
 
 export const NonModalLayout = (props) => {
@@ -72,7 +97,13 @@ export const NonModalLayout = (props) => {
 
   return (
     <NonModalBackground>
-      <Wrapper>{children}</Wrapper>
+      <DefaultWrapper>{children}</DefaultWrapper>
     </NonModalBackground>
   );
+};
+
+export const BrandModalLayout = (props) => {
+  const { children } = props;
+
+  return <BrandWrapper>{children}</BrandWrapper>;
 };

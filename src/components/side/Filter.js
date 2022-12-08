@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Checkbox, { ColorCheckbox } from "../common/Checkbox";
 import { changeArrayOption } from "../../slices/productSlice";
 import useInput from "../../hooks/useInput";
+import { toggleBrandModal } from "../../slices/modalSlice";
+import BrandModal from "../modal/BrandModal";
 
 const FilterContainer = styled.div`
   width: 100%;
@@ -21,9 +23,9 @@ const FilterContainer = styled.div`
     justify-content: space-between;
     margin-bottom: 10px;
 
-    font-size: 20px;
+    font-size: 18px;
 
-    .filterModalButton {
+    .foldingButton {
       width: 16px;
       height: 16px;
       cursor: pointer;
@@ -31,6 +33,12 @@ const FilterContainer = styled.div`
   }
   div[class$="modelCheckbox"] {
     margin: 5px;
+  }
+  .more_brands {
+    display: inline-block;
+    margin-top: 10px;
+
+    cursor: pointer;
   }
 `;
 
@@ -56,8 +64,94 @@ const PriceForm = styled.form`
   }
 `;
 
+export const BrandCheckboxFilter = (props) => {
+  const { title, name, list } = props;
+  const dispatch = useDispatch();
+
+  const [fold, setFold] = useState(false);
+  const [checkedTypes, setCheckedTypes] = useState(new Set());
+  const { isModal } = useSelector((state) => {
+    return { isModal: state.modal.brand };
+  });
+  const partialList = list.slice(0, 10);
+
+  const toggleCheckbox = (option) => {
+    const newCheckedTypes = new Set(checkedTypes);
+
+    if (checkedTypes.has(option)) {
+      newCheckedTypes.delete(option);
+    } else {
+      newCheckedTypes.add(option);
+    }
+    setCheckedTypes(newCheckedTypes);
+  };
+  const isChecked = (option) => {
+    if (checkedTypes.has(option.brand_id)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    dispatch(
+      changeArrayOption({
+        name: `brand_id`,
+        value: Array.from(checkedTypes),
+      })
+    );
+  }, [checkedTypes]);
+
+  const onClickModal = () => {
+    dispatch(toggleBrandModal(true));
+  };
+
+  return (
+    <FilterContainer>
+      <div className="filter_header">
+        <div>{title}</div>
+        {fold ? (
+          <AiOutlineUp
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineUp>
+        ) : (
+          <AiOutlineDown
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineDown>
+        )}
+      </div>
+      {fold && (
+        <>
+          <CheckboxList>
+            {partialList.map((preOption) => (
+              <Checkbox
+                key={preOption.brand_id}
+                data={preOption}
+                isChecked={isChecked(preOption)}
+                toggleCheckbox={() => toggleCheckbox(preOption.brand_id)}
+              ></Checkbox>
+            ))}
+          </CheckboxList>
+          <span className="more_brands" onClick={onClickModal}>
+            더보기
+          </span>
+        </>
+      )}
+      {isModal && (
+        <BrandModal
+          list={list}
+          checkedTypes={checkedTypes}
+          setCheckedTypes={setCheckedTypes}
+        ></BrandModal>
+      )}
+    </FilterContainer>
+  );
+};
+
 export const CheckboxFilter = (props) => {
-  const { title, name, list, modalState, setModalState } = props;
+  const { title, name, list } = props;
   const dispatch = useDispatch();
 
   const [fold, setFold] = useState(false);
@@ -125,6 +219,7 @@ export const CheckboxFilter = (props) => {
 
 export const ColorCheckboxFilter = (props) => {
   const { title, name, list, modalState, setModalState } = props;
+  const [fold, setFold] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -162,18 +257,32 @@ export const ColorCheckboxFilter = (props) => {
     <FilterContainer>
       <div className="filter_header">
         <div>{title}</div>
+
+        {fold ? (
+          <AiOutlineUp
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineUp>
+        ) : (
+          <AiOutlineDown
+            className="foldingButton"
+            onClick={() => setFold(!fold)}
+          ></AiOutlineDown>
+        )}
       </div>
-      <ColorCheckboxList>
-        {list.map((preOption) => (
-          <ColorCheckbox
-            key={preOption.code}
-            color={preOption.code}
-            name={preOption.name}
-            isChecked={isChecked(preOption)}
-            toggleCheckbox={() => toggleCheckbox(preOption.code)}
-          ></ColorCheckbox>
-        ))}
-      </ColorCheckboxList>
+      {fold && (
+        <ColorCheckboxList>
+          {list.map((preOption) => (
+            <ColorCheckbox
+              key={preOption.code}
+              color={preOption.code}
+              name={preOption.name}
+              isChecked={isChecked(preOption)}
+              toggleCheckbox={() => toggleCheckbox(preOption.code)}
+            ></ColorCheckbox>
+          ))}
+        </ColorCheckboxList>
+      )}
     </FilterContainer>
   );
 };

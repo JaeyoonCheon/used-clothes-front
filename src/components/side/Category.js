@@ -16,7 +16,7 @@ const CategoryContainer = styled.div`
     justify-content: space-between;
     margin-bottom: 20px;
 
-    font-size: 20px;
+    font-size: 18px;
 
     .foldingButton {
       width: 16px;

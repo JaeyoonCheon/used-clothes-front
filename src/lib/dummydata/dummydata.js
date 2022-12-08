@@ -1,89 +1,25 @@
-export const categoryData = [
+export const locationScopeAData = [
   {
-    id: 1,
-    name: "상의",
-    child: [
-      {
-        id: 1,
-        name: "티셔츠",
-        child: [],
-      },
-      { id: 2, name: "셔츠/블라우스", child: [] },
-      { id: 3, name: "맨투맨", child: [] },
-      { id: 4, name: "후드티", child: [] },
-      { id: 5, name: "니트/스웨터", child: [] },
-    ],
+    scope_a_code: "11",
+    scope_a_name: "서울특별시",
   },
+];
+export const locationScopeBData = [
   {
-    id: 2,
-    name: "아우터",
-    child: [
-      {
-        id: 1,
-        name: "코트",
-        child: [],
-      },
-    ],
+    scope_a_code: "11",
+    scope_a_name: "서울특별시",
+    scope_b_code: "11010",
+    scope_b_name: "종로구",
   },
+];
+export const locationScopeCData = [
   {
-    id: 3,
-    name: "바지",
-    child: [],
-  },
-  {
-    id: 4,
-    name: "원피스",
-    child: [],
-  },
-  {
-    id: 5,
-    name: "스커트",
-    child: [],
-  },
-  {
-    id: 6,
-    name: "가방",
-    child: [],
-  },
-  {
-    id: 7,
-    name: "스니커즈",
-    child: [],
-  },
-  {
-    id: 8,
-    name: "신발",
-    child: [],
-  },
-  {
-    id: 9,
-    name: "시계",
-    child: [],
-  },
-  {
-    id: 10,
-    name: "모자",
-    child: [],
-  },
-  {
-    id: 11,
-    name: "스포츠",
-    child: [],
-  },
-  {
-    id: 12,
-    name: "양말/레그웨어",
-    child: [],
-  },
-  {
-    id: 13,
-    name: "안경",
-    child: [],
-  },
-  {
-    id: 14,
-    name: "악세서리",
-    child: [],
+    scope_a_code: "11",
+    scope_a_name: "서울특별시",
+    scope_b_code: "11010",
+    scope_b_name: "종로구",
+    scope_c_code: "1101053",
+    scope_c_name: "사직동",
   },
 ];
 
@@ -199,6 +135,125 @@ export const filterDatas = [
     typeCode: "brand_id",
     name: "브랜드",
     types: ["brand_1", "brand_2", "brand_4", "brand_5", "brand_6"],
+  },
+];
+
+export const brandListDatas = [
+  {
+    brand_id: 1,
+    name: "brand_1",
+  },
+  {
+    brand_id: 2,
+    name: "brand_2",
+  },
+  {
+    brand_id: 3,
+    name: "brand_3",
+  },
+  {
+    brand_id: 4,
+    name: "brand_4",
+  },
+  {
+    brand_id: 5,
+    name: "brand_5",
+  },
+  {
+    brand_id: 7,
+    name: "brand_7",
+  },
+  {
+    brand_id: 8,
+    name: "brand_8",
+  },
+  {
+    brand_id: 9,
+    name: "brand_9",
+  },
+  {
+    brand_id: 10,
+    name: "brand_10",
+  },
+  {
+    brand_id: 11,
+    name: "brand_11",
+  },
+  {
+    brand_id: 12,
+    name: "brand_12",
+  },
+  {
+    brand_id: 13,
+    name: "brand_13",
+  },
+  {
+    brand_id: 14,
+    name: "brand_14",
+  },
+  {
+    brand_id: 15,
+    name: "brand_15",
+  },
+  {
+    brand_id: 16,
+    name: "brand_16",
+  },
+  {
+    brand_id: 17,
+    name: "brand_17",
+  },
+  {
+    brand_id: 18,
+    name: "brand_18",
+  },
+  {
+    brand_id: 19,
+    name: "brand_19",
+  },
+  {
+    brand_id: 20,
+    name: "brand_20",
+  },
+  {
+    brand_id: 21,
+    name: "brand_21",
+  },
+  {
+    brand_id: 22,
+    name: "brand_22",
+  },
+  {
+    brand_id: 23,
+    name: "brand_23",
+  },
+  {
+    brand_id: 24,
+    name: "brand_24",
+  },
+  {
+    brand_id: 25,
+    name: "brand_25",
+  },
+  {
+    brand_id: 26,
+    name: "brand_26",
+  },
+  {
+    brand_id: 27,
+    name: "brand_27",
+  },
+  {
+    brand_id: 28,
+    name: "brand_28",
+  },
+  {
+    brand_id: 29,
+    name: "brand_29",
+  },
+  {
+    brand_id: 30,
+    name: "brand_31",
   },
 ];
 

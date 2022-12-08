@@ -2,15 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { CheckboxFilter, ColorCheckboxFilter, PriceFilter } from "./Filter";
+import {
+  BrandCheckboxFilter,
+  CheckboxFilter,
+  ColorCheckboxFilter,
+  PriceFilter,
+} from "./Filter";
 import { filterDatas } from "../../lib/dummydata/dummydata";
 
 const FilterList = (props) => {
   const { options, onClickOption } = props;
   const [modalState, setModalState] = useState({ index: -1 });
 
-  const { colors, materials, conditions } = useSelector((state) => {
+  const { brands, colors, materials, conditions } = useSelector((state) => {
     return {
+      brands: state.brand.list,
       colors: state.metadata.colors,
       materials: state.metadata.materials,
       conditions: state.metadata.conditions,
@@ -19,6 +25,11 @@ const FilterList = (props) => {
 
   return (
     <>
+      <BrandCheckboxFilter
+        title="브랜드"
+        name="brand"
+        list={brands}
+      ></BrandCheckboxFilter>
       <ColorCheckboxFilter
         title="색상"
         name="color"
