@@ -56,6 +56,26 @@ export const handlers = [
       return res(ctx.status(400));
     }
   }),
+  rest.put(`/clothe/update/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    const payload = req.json();
+    console.log(payload);
+
+    if (payload) {
+      return res(ctx.status(200));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.delete(`/clothe/delete/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+
+    if (id) {
+      return res(ctx.status(200));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
   rest.get(`/location/scope_a/list`, (req, res, ctx) => {
     if (locationScopeAData) {
       return res(ctx.json(locationScopeAData));

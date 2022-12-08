@@ -47,33 +47,48 @@ export const addProductAPI = async (payload) => {
 export const modifyProductAPI = async (payload) => {
   const {
     clothe_id,
-    images,
+    itemimage,
     name,
     main_category_id,
     sub_category_id,
     price,
     condition_code,
     shipping_fee,
+    upload_date,
+    upload_time,
     brand_id,
     purchase_place_id,
     ex_price,
     purchase_date,
+    color_code,
+    material_code,
+    description,
   } = payload;
-  return await testAPIInstance.post(
-    `/clothe/update/:${clothe_id}`,
+  return await testAPIInstance.put(
+    `/clothe/update/${clothe_id}`,
     {
-      images,
+      clothe_id,
+      itemimage,
       name,
       main_category_id,
       sub_category_id,
       price,
       condition_code,
       shipping_fee,
+      upload_date,
+      upload_time,
       brand_id,
       purchase_place_id,
       ex_price,
       purchase_date,
+      color_code,
+      material_code,
+      description,
     },
     { withCredentials: true }
   );
+};
+
+export const deleteProductAPI = async (id) => {
+  return await testAPIInstance.delete(`/clothe/delete/${id}`);
 };

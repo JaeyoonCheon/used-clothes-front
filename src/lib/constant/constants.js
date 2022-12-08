@@ -1,1 +1,1 @@
-export const MAX_IMAGE_UPLOAD = 10;
+export const MAX_IMAGE_UPLOAD = 3;

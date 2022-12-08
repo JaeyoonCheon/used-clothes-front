@@ -10,6 +10,7 @@ import PWForgotPage from "./pages/PWForgotPage";
 import RegisterPage from "./pages/RegisterPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import AddItemPage from "./pages/AddItemPage";
+import ModifyItemPage from "./pages/ModifyItemPage";
 import WelcomePage from "./pages/WelcomePage";
 import MyPage from "./pages/MyPage";
 import MyProductPage from "./pages/MyProductPage";
@@ -34,6 +35,7 @@ const App = () => {
             </ProtectedRoute>
           }
         ></Route>
+        <Route path="modifyItem/:id" element={<ModifyItemPage />}></Route>
         <Route path="welcome" element={<WelcomePage />}></Route>
         <Route
           path="mypage"

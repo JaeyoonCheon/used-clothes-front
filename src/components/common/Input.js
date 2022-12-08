@@ -114,8 +114,14 @@ const TextContainer = styled.textarea`
 `;
 
 export const Input = (props) => {
-  const { placeholder, name, onChange, isDisabled = false } = props;
-  const [inputValue, setInputValue] = useInput("");
+  const {
+    placeholder,
+    name,
+    onChange,
+    isDisabled = false,
+    initValue = "",
+  } = props;
+  const [inputValue, setInputValue] = useInput(initValue);
 
   const handleChange = (e) => {
     setInputValue(e);
@@ -205,10 +211,17 @@ export const LabelPasswordInput = (props) => {
 };
 
 export const LimitedInput = (props) => {
-  const { placeholder, name, isDisabled = false, limit = 60, onChange } = props;
+  const {
+    placeholder,
+    name,
+    isDisabled = false,
+    limit = 60,
+    onChange,
+    initValue = "",
+  } = props;
   const setLimit = (value) => value.length < limit;
 
-  const [value, setValue] = useInput("", setLimit);
+  const [value, setValue] = useInput(initValue, setLimit);
   const [count, setCount] = useState(0);
 
   const handleChange = (e) => {
@@ -235,10 +248,17 @@ export const LimitedInput = (props) => {
 };
 
 export const LimitedTextarea = (props) => {
-  const { placeholder, name, isRequired = false, limit = 60, onChange } = props;
+  const {
+    placeholder,
+    name,
+    isRequired = false,
+    limit = 60,
+    onChange,
+    initValue = "",
+  } = props;
   const setLimit = (value) => value.length < limit;
 
-  const [value, setValue] = useInput("", setLimit);
+  const [value, setValue] = useInput(initValue, setLimit);
   const [count, setCount] = useState(0);
 
   const textArea = useRef();
@@ -249,6 +269,11 @@ export const LimitedTextarea = (props) => {
     textArea.current.style.height = textArea.current.scrollHeight + `px`;
     onChange(name, value);
   };
+
+  useEffect(() => {
+    textArea.current.style.height = "auto";
+    textArea.current.style.height = textArea.current.scrollHeight + `px`;
+  }, []);
 
   return (
     <>

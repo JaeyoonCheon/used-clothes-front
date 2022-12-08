@@ -100,11 +100,14 @@ export const RadioOptionSelector = (props) => {
   );
 };
 
-export const CategorySelector = ({ onChange }) => {
+export const CategorySelector = ({
+  onChange,
+  initValue = { mainCategory: 1, subCategory: null },
+}) => {
   const { main, sub } = useCategory();
 
-  const [mainCategory, setMainCategory] = useState(1);
-  const [subCategory, setSubCategory] = useState(null);
+  const [mainCategory, setMainCategory] = useState(initValue.mainCategory);
+  const [subCategory, setSubCategory] = useState(initValue.subCategory);
 
   useEffect(() => {
     onChange("main_category_id", mainCategory);
@@ -152,8 +155,9 @@ export const CategorySelector = ({ onChange }) => {
 };
 
 export const CheckboxSelector = (props) => {
-  const [modalState, setModalState] = useState({ index: -1 });
+  const { onChange, initValue = {} } = props;
 
+  const [modalState, setModalState] = useState({ index: -1 });
   const { colors, materials, conditions } = useSelector((state) => {
     return {
       colors: state.metadata.colors,
@@ -170,6 +174,7 @@ export const CheckboxSelector = (props) => {
         list={colors}
         modalState={modalState}
         setModalState={setModalState}
+        initValue={initValue.color_code}
       ></CheckboxOption>
       <CheckboxOption
         title="소재"
@@ -177,6 +182,7 @@ export const CheckboxSelector = (props) => {
         list={materials}
         modalState={modalState}
         setModalState={setModalState}
+        initValue={initValue.material_code}
       ></CheckboxOption>
       <CheckboxOption
         title="상품 상태"
@@ -184,19 +190,27 @@ export const CheckboxSelector = (props) => {
         list={conditions}
         modalState={modalState}
         setModalState={setModalState}
+        initValue={initValue.condition_code}
       ></CheckboxOption>
     </CheckboxSelectorWrapper>
   );
 };
 
 export const CheckboxOption = (props) => {
-  const { title, name, list, modalState, setModalState } = props;
+  const {
+    title,
+    name,
+    list,
+    modalState,
+    setModalState,
+    initValue = [],
+  } = props;
   const dispatch = useDispatch();
 
   const preOptions = [...list].splice(0, 4);
 
   const [currentPos, setCurrentPos] = useState([]);
-  const [checkedOptions, setCheckedOptions] = useState(new Set());
+  const [checkedOptions, setCheckedOptions] = useState(new Set(initValue));
 
   const toggleCheckbox = (option) => {
     const newCheckedOptions = new Set(checkedOptions);

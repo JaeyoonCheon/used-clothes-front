@@ -108,6 +108,7 @@ export const MiddleButton = (props) => {
       colorTheme={colorTheme}
       fontColor={fontColor}
       type={restProps.type}
+      {...restProps}
     >
       {icon}
       {children}

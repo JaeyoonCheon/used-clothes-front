@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,7 +9,7 @@ import BaseLayout from "../components/layout/BaseLayout";
 import { MiddleButton } from "../components/common/Button";
 import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
 import { ReactComponent as StarIcon } from "../asset/star.svg";
-import { getProduct } from "../slices/productSlice";
+import { getProduct, deleteProduct } from "../slices/productSlice";
 import { getMetadata } from "../slices/metadataSlice";
 
 const Wrapper = styled.div`
@@ -208,6 +208,7 @@ const ItemDescription = styled.p`
 
 const ItemDetailPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const { id: productId } = params;
 
   const dispatch = useDispatch();
@@ -252,6 +253,11 @@ const ItemDetailPage = () => {
   const { auth: currentUser } = useSelector((state) => ({
     auth: state.auth.auth,
   }));
+
+  const onClickCancel = () => {
+    dispatch(deleteProduct(productId));
+    navigate(-1);
+  };
 
   return (
     <BaseLayout>
@@ -317,12 +323,21 @@ const ItemDetailPage = () => {
                 <NavButtonContainer>
                   {currentUser ? (
                     <>
-                      <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
+                      <MiddleButton
+                        isFilled={true}
+                        colorTheme={colors.mono[0]}
+                        onClick={onClickCancel}
+                      >
                         상품 삭제하기
                       </MiddleButton>
-                      <MiddleButton isFilled={true} colorTheme={colors.mono[0]}>
-                        상품 정보 수정
-                      </MiddleButton>
+                      <Link to={`/modifyItem/${productId}`}>
+                        <MiddleButton
+                          isFilled={true}
+                          colorTheme={colors.mono[0]}
+                        >
+                          상품 정보 수정
+                        </MiddleButton>
+                      </Link>
                     </>
                   ) : (
                     <>

@@ -6,6 +6,7 @@ import {
   getProductAPI,
   addProductAPI,
   modifyProductAPI,
+  deleteProductAPI,
 } from "../lib/api/product";
 import createRequestSaga from "../lib/saga/createRequestSaga";
 
@@ -32,10 +33,10 @@ const initialState = {
       order: "asc",
       elements: "30",
       page: "1",
-      location: "",
+      location: "서울특별시",
       scope_a_code: 11,
-      scope_b_code: 11010,
-      scope_c_code: 1101053,
+      scope_b_code: null,
+      scope_c_code: null,
     },
     listError: null,
     productList: [],
@@ -88,12 +89,16 @@ const initialState = {
   },
   addError: null,
   modifyError: null,
+  deleteError: null,
 };
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    loadProduct: (state, action) => {
+      state.selected.product = state.detail.currentProduct;
+    },
     changeOption: (state, action) => {
       state.list.options.filter[action.payload.name] = action.payload.value;
     },
@@ -146,10 +151,18 @@ export const productSlice = createSlice({
     modifyProduct_failure: (state, action) => {
       state.modifyError = action.error;
     },
+    deleteProduct: () => {},
+    deleteProduct_success: (state, action) => {
+      state.selected.delete = initialState.selected.product;
+    },
+    deleteProduct_failure: (state, action) => {
+      state.selected.deleteError = action.error;
+    },
   },
 });
 
 export const {
+  loadProduct,
   changeOption,
   changeLocation,
   changeArrayOption,
@@ -167,16 +180,21 @@ export const {
   modifyProduct,
   modifyProduct_success,
   modifyProduct_failure,
+  deleteProduct,
+  deleteProduct_success,
+  deleteProduct_failure,
 } = productSlice.actions;
 
 const listSaga = createRequestSaga(list, listProductsAPI);
 const getProductSaga = createRequestSaga(getProduct, getProductAPI);
 const addProductSaga = createRequestSaga(addProduct, addProductAPI);
 const modifyProductSaga = createRequestSaga(modifyProduct, modifyProductAPI);
+const deleteProductSaga = createRequestSaga(deleteProduct, deleteProductAPI);
 
 export function* productSaga() {
   yield takeLatest(list, listSaga);
   yield takeLatest(getProduct, getProductSaga);
   yield takeLatest(addProduct, addProductSaga);
   yield takeLatest(modifyProduct, modifyProductSaga);
+  yield takeLatest(deleteProduct, deleteProductSaga);
 }

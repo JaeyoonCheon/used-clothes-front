@@ -317,10 +317,10 @@ export const itemDetailDatas = [
     price: "311.00",
     main_category_id: 1,
     sub_category_id: 1,
-    color_code: [1, 4],
+    color_code: ["#FFFFFF", "#663300"],
     brand_id: ["브랜드1"],
     material_code: [1, 2],
-    condition_code: ["미사용"],
+    condition_code: [1],
 
     shipping_fee: null,
     upload_date: null,

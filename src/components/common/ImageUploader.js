@@ -1,8 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import colors from "../../lib/styles/colors";
+import { useDispatch } from "react-redux";
 
 import { MAX_IMAGE_UPLOAD } from "../../lib/constant/constants";
+import { ReactComponent as AddImageIcon } from "../../asset/add-2935429.svg";
+import { changeArrayProduct } from "../../slices/productSlice";
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,6 +20,10 @@ const UploadedImageContainer = styled.div`
     width: 280px;
     height: 280px;
     object-fit: cover;
+  }
+  .add_image_icon {
+    width: 280px;
+    height: 280px;
   }
   label {
     margin-right: 20px;
@@ -45,6 +52,7 @@ const ImageNumber = styled.span`
 
 // 이미지 리사이징 필요
 const ImageUploader = () => {
+  const dispatch = useDispatch();
   const imgRef = useRef();
   const dataTransfer = new DataTransfer();
 
@@ -53,7 +61,7 @@ const ImageUploader = () => {
   const uploadFiles = () => {
     console.log(imgRef.current.files);
 
-    if (uploadedFiles <= MAX_IMAGE_UPLOAD) {
+    if (uploadedFiles.length < MAX_IMAGE_UPLOAD) {
       if (!uploadedFiles.includes(imgRef.current.files[0])) {
         setUploadedFiles([...uploadedFiles, ...imgRef.current.files]);
         makePreview();
@@ -92,11 +100,15 @@ const ImageUploader = () => {
     return <>{elements.map((element) => element)}</>;
   };
 
+  useEffect(() => {
+    dispatch(changeArrayProduct({ name: "itemimage", value: uploadedFiles }));
+  }, [uploadedFiles]);
+
   return (
     <Wrapper>
       <UploadedImageContainer>
         <label htmlFor="file">
-          <img src="add-2935429.svg" alt="add"></img>
+          <AddImageIcon className="add_image_icon"></AddImageIcon>
         </label>
         <input
           type="file"
