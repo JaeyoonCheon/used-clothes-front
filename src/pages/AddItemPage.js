@@ -42,7 +42,6 @@ const ContentRowWrapper = styled.div`
 
   .priceTitle {
     width: 100px;
-    color: ${colors.mono[0]};
   }
   .input {
     display: flex;

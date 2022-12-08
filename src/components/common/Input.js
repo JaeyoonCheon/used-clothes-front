@@ -72,6 +72,12 @@ const LabelInputContent = styled(InputContent)`
   }
 `;
 
+const NonLabelInputContent = styled(InputContent)`
+  &:not(:placeholder-shown) + label {
+    display: none;
+  }
+`;
+
 const Counter = styled.div`
   float: right;
   width: 50px;
@@ -132,7 +138,7 @@ export const Input = (props) => {
 
   return (
     <InputContainer>
-      <InputContent
+      <NonLabelInputContent
         type="text"
         name={name}
         id={name}
@@ -140,7 +146,7 @@ export const Input = (props) => {
         value={inputValue}
         onChange={handleChange}
         disabled={isDisabled}
-      ></InputContent>
+      ></NonLabelInputContent>
       <label htmlFor={name}>{placeholder}</label>
     </InputContainer>
   );
@@ -232,7 +238,7 @@ export const LimitedInput = (props) => {
 
   return (
     <InputContainer>
-      <InputContent
+      <NonLabelInputContent
         type="text"
         name={name}
         id={name}
@@ -240,7 +246,7 @@ export const LimitedInput = (props) => {
         value={value}
         onChange={handleChange}
         disabled={isDisabled}
-      ></InputContent>
+      ></NonLabelInputContent>
       <label htmlFor={name}>{placeholder}</label>
       <Counter>{`${count}/${limit}`}</Counter>
     </InputContainer>

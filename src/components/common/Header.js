@@ -80,7 +80,7 @@ const Wrapper = styled.div`
 const Logo = styled.div`
   font-size: 28px;
   font-weight: 600;
-  color: ${colors.blue[0]};
+  color: black;
 `;
 
 const NavMenu = styled.div`
@@ -148,7 +148,7 @@ const Header = () => {
         <HeaderBox>
           <Wrapper>
             <Logo>
-              <Link to="/">Title</Link>
+              <Link to="/">중고중고옷</Link>
             </Logo>
             <Searchbar></Searchbar>
             <NavMenu>
