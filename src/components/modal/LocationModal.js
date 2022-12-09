@@ -47,9 +47,28 @@ const ContentContainer = styled.div`
   .search_box {
     width: 300px;
     margin: 30px auto 0 0;
-    padding: 0 10px;
+    padding-left: 10px;
+    display: flex;
 
     border: 0.5px solid ${colors.mono[0]};
+
+    .search_location_box {
+      .search_location {
+        all: unset;
+        width: 100%;
+
+        line-height: 25px;
+      }
+    }
+    .search_button {
+      display: block;
+      margin-left: auto;
+
+      border: none;
+      background: transparent;
+
+      cursor: pointer;
+    }
   }
   .search_list {
     margin-top: 25px;
@@ -191,13 +210,16 @@ const LocationModal = () => {
         </TitleContainer>
         <ContentContainer>
           <form className="search_box" onSubmit={onSubmitSearch}>
-            <input
-              placeholder="찾으려는 지역명을 입력해 주세요."
-              name="search_location"
-              value={searchWord}
-              onChange={setSearchWord}
-            ></input>
-            <button className="button" type="submit">
+            <div className="search_location_box">
+              <input
+                className="search_location"
+                placeholder="찾으려는 지역명을 입력해 주세요."
+                name="search_location"
+                value={searchWord}
+                onChange={setSearchWord}
+              ></input>
+            </div>
+            <button className="search_button" type="submit">
               <RiSearchLine data-testid="search"></RiSearchLine>
             </button>
           </form>

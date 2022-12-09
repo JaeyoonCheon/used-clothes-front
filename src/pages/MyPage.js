@@ -60,6 +60,9 @@ const UserProductCounter = styled.div`
   display: flex;
   margin-right: 30px;
 
+  .item_list {
+    padding-top: 20px;
+  }
   span {
     font-style: normal;
     font-weight: 400;
@@ -188,7 +191,9 @@ const MyPage = () => {
             </UserProductButtonContainer>
           </UserProductHeader>
           <hr />
-          <LargeCardList itemDatas={itemDatas} />
+          <div className="item_list">
+            <LargeCardList itemDatas={itemDatas} />
+          </div>
         </UserProductContainer>
       </Wrapper>
     </BaseLayout>

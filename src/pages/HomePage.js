@@ -52,6 +52,7 @@ const NavBar = styled.div`
     cursor: pointer;
   }
   .location_name {
+    margin-right: 5px;
     font-weight: 400;
     font-size: 20px;
   }

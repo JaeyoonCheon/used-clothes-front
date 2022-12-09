@@ -14,6 +14,7 @@ import ModifyItemPage from "./pages/ModifyItemPage";
 import WelcomePage from "./pages/WelcomePage";
 import MyPage from "./pages/MyPage";
 import MyProductPage from "./pages/MyProductPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   console.log("Render start");
@@ -46,6 +47,7 @@ const App = () => {
           }
         ></Route>
         <Route path="myproduct" element={<MyProductPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
   );
