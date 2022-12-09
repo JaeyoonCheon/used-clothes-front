@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import colors from "../../lib/styles/colors";
 import { BrandModalLayout } from "../layout/ModalLayout";
 import { NonLabelInput } from "../common/Input";
-import { searchBrand, addBrand } from "../../slices/brandSlice";
-import { toggleBrandModal } from "../../slices/modalSlice";
+import {
+  getPurchasePlaceList,
+  addPurchasePlace,
+} from "../../slices/purchasePlaceSlice";
+import { togglePurchasePlaceModal } from "../../slices/modalSlice";
 import Checkbox from "../common/Checkbox";
 import { SmallButton } from "../common/Button";
 
@@ -64,18 +67,18 @@ const ContentContainer = styled.div`
   }
 `;
 
-const BrandModal = (props) => {
+const PurchasePlaceModal = (props) => {
   const { list, checkedTypes, setCheckedTypes, canEdit = false } = props;
   const [searchList, setSearchList] = useState(list);
   const [isExist, setIsExist] = useState(true);
   const dispatch = useDispatch();
 
   const { searchName } = useSelector((state) => {
-    return { searchName: state.brand.searchBrand };
+    return { searchName: state.purchasePlace.searchPurchasePlace };
   });
 
   const onChangeSearch = (name, value) => {
-    dispatch(searchBrand(value));
+    dispatch(searchList(value));
 
     if (value) {
       const newList = searchList.filter((brand) => brand.name.includes(value));
@@ -85,7 +88,7 @@ const BrandModal = (props) => {
     }
   };
   const onClickClose = () => {
-    dispatch(toggleBrandModal(false));
+    dispatch(togglePurchasePlaceModal(false));
   };
   const toggleCheckbox = (option) => {
     const newCheckedTypes = new Set(checkedTypes);
@@ -98,7 +101,7 @@ const BrandModal = (props) => {
     setCheckedTypes(newCheckedTypes);
   };
   const isChecked = (option) => {
-    if (checkedTypes.has(option.brand_id)) {
+    if (checkedTypes.has(option.purchase_place_id)) {
       return true;
     } else {
       return false;
@@ -106,7 +109,7 @@ const BrandModal = (props) => {
   };
   const onClickAdd = (e) => {
     e.preventDefault();
-    dispatch(addBrand(searchName));
+    dispatch(addPurchasePlace(searchName));
   };
 
   useEffect(() => {
@@ -123,7 +126,7 @@ const BrandModal = (props) => {
     <BrandModalLayout>
       <ModalBox>
         <TitleContainer>
-          <h2 className="title">브랜드</h2>
+          <h2 className="title">구입처</h2>
           <div className="clearButton">
             <AiOutlineClose size={25} onClick={onClickClose}></AiOutlineClose>
           </div>
@@ -132,8 +135,8 @@ const BrandModal = (props) => {
           <div className="content_nav">
             <div className="search_box">
               <NonLabelInput
-                placeholder="찾으려는 브랜드명을 입력해 주세요."
-                name="search_brand"
+                placeholder="찾으려는 구입처를 입력해 주세요."
+                name="search_purchase_place"
                 onChange={onChangeSearch}
                 noUnderline={true}
               ></NonLabelInput>
@@ -146,12 +149,14 @@ const BrandModal = (props) => {
           </div>
           <div className="search_list">
             <ul>
-              {searchList.map((brand) => (
-                <li key={brand.brand_id}>
+              {searchList.map((place) => (
+                <li key={place.purchase_place_id}>
                   <Checkbox
-                    data={brand}
-                    isChecked={isChecked(brand)}
-                    toggleCheckbox={() => toggleCheckbox(brand.brand_id)}
+                    data={place}
+                    isChecked={isChecked(place)}
+                    toggleCheckbox={() =>
+                      toggleCheckbox(place.purchase_place_id)
+                    }
                   ></Checkbox>
                 </li>
               ))}
@@ -163,4 +168,4 @@ const BrandModal = (props) => {
   );
 };
 
-export default BrandModal;
+export default PurchasePlaceModal;

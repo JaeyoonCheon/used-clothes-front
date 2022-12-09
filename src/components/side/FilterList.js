@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 import {
-  BrandCheckboxFilter,
+  ModalCheckboxFilter,
   CheckboxFilter,
   ColorCheckboxFilter,
   PriceFilter,
@@ -14,22 +14,25 @@ const FilterList = (props) => {
   const { options, onClickOption } = props;
   const [modalState, setModalState] = useState({ index: -1 });
 
-  const { brands, colors, materials, conditions } = useSelector((state) => {
-    return {
-      brands: state.brand.list,
-      colors: state.metadata.colors,
-      materials: state.metadata.materials,
-      conditions: state.metadata.conditions,
-    };
-  });
+  const { brands, colors, materials, conditions, purchasePlaces } = useSelector(
+    (state) => {
+      return {
+        brands: state.brand.list,
+        colors: state.metadata.colors,
+        materials: state.metadata.materials,
+        conditions: state.metadata.conditions,
+        purchasePlaces: state.purchasePlace.list,
+      };
+    }
+  );
 
   return (
     <>
-      <BrandCheckboxFilter
+      <ModalCheckboxFilter
         title="브랜드"
         name="brand"
         list={brands}
-      ></BrandCheckboxFilter>
+      ></ModalCheckboxFilter>
       <ColorCheckboxFilter
         title="색상"
         name="color"
@@ -54,6 +57,11 @@ const FilterList = (props) => {
         modalState={modalState}
         setModalState={setModalState}
       ></CheckboxFilter>
+      <ModalCheckboxFilter
+        title="구입처"
+        name="purchasePlace"
+        list={purchasePlaces}
+      ></ModalCheckboxFilter>
       <PriceFilter title="가격" name="price"></PriceFilter>
     </>
   );

@@ -9,6 +9,7 @@ import { metadataSlice, metadataSaga } from "./metadataSlice";
 import { brandSlice, brandSaga } from "./brandSlice";
 import { modalSlice } from "./modalSlice";
 import { locationSlice, locationSaga } from "./locationSlice";
+import { purchasePlaceSlice, purchasePlaceSaga } from "./purchasePlaceSlice";
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   brand: brandSlice.reducer,
   modal: modalSlice.reducer,
   location: locationSlice.reducer,
+  purchasePlace: purchasePlaceSlice.reducer,
 });
 
 export function* rootSaga() {
@@ -29,6 +31,7 @@ export function* rootSaga() {
     metadataSaga(),
     brandSaga(),
     locationSaga(),
+    purchasePlaceSaga(),
   ]);
 }
 

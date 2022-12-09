@@ -64,7 +64,7 @@ const PriceForm = styled.form`
   }
 `;
 
-export const BrandCheckboxFilter = (props) => {
+export const ModalCheckboxFilter = (props) => {
   const { title, name, list } = props;
   const dispatch = useDispatch();
 
@@ -218,7 +218,7 @@ export const CheckboxFilter = (props) => {
 };
 
 export const ColorCheckboxFilter = (props) => {
-  const { title, name, list, modalState, setModalState } = props;
+  const { title, name, list } = props;
   const [fold, setFold] = useState(false);
 
   const dispatch = useDispatch();
@@ -272,13 +272,13 @@ export const ColorCheckboxFilter = (props) => {
       </div>
       {fold && (
         <ColorCheckboxList>
-          {list.map((preOption) => (
+          {list.map((option) => (
             <ColorCheckbox
-              key={preOption.code}
-              color={preOption.code}
-              name={preOption.name}
-              isChecked={isChecked(preOption)}
-              toggleCheckbox={() => toggleCheckbox(preOption.code)}
+              key={option.code}
+              color={option.code}
+              name={option.name}
+              isChecked={isChecked(option)}
+              toggleCheckbox={() => toggleCheckbox(option.code)}
             ></ColorCheckbox>
           ))}
         </ColorCheckboxList>

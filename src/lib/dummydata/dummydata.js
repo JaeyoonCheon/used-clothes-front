@@ -257,6 +257,85 @@ export const brandListDatas = [
   },
 ];
 
+export const purchasePlaceListDatas = [
+  {
+    purchase_place_id: 1,
+    name: "구입처_1",
+  },
+  {
+    purchase_place_id: 2,
+    name: "구입처_2",
+  },
+  {
+    purchase_place_id: 3,
+    name: "구입처_3",
+  },
+  {
+    purchase_place_id: 4,
+    name: "구입처_4",
+  },
+  {
+    purchase_place_id: 5,
+    name: "구입처_5",
+  },
+  {
+    purchase_place_id: 7,
+    name: "구입처_7",
+  },
+  {
+    purchase_place_id: 8,
+    name: "구입처_8",
+  },
+  {
+    purchase_place_id: 9,
+    name: "구입처_9",
+  },
+  {
+    purchase_place_id: 10,
+    name: "구입처_10",
+  },
+  {
+    purchase_place_id: 11,
+    name: "구입처_11",
+  },
+  {
+    purchase_place_id: 12,
+    name: "구입처_12",
+  },
+  {
+    purchase_place_id: 13,
+    name: "구입처_13",
+  },
+  {
+    purchase_place_id: 14,
+    name: "구입처_14",
+  },
+  {
+    purchase_place_id: 15,
+    name: "구입처_15",
+  },
+  {
+    purchase_place_id: 16,
+    name: "구입처_16",
+  },
+  {
+    purchase_place_id: 17,
+    name: "구입처_17",
+  },
+  {
+    purchase_place_id: 18,
+    name: "구입처_18",
+  },
+  {
+    purchase_place_id: 19,
+    name: "구입처_19",
+  },
+  {
+    purchase_place_id: 20,
+    name: "구입처_20",
+  },
+];
+
 export const metaDatas = {
   colors: [
     { code: "#FFFFFF", name: "화이트" },

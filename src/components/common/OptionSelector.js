@@ -4,11 +4,14 @@ import styled from "styled-components";
 import useCategory from "../../hooks/useCategory";
 import colors from "../../lib/styles/colors";
 import { RadioOption } from "./RadioButton";
-import Checkbox from "../common/Checkbox";
+import Checkbox, { ColorCheckbox } from "../common/Checkbox";
 import FilterModal from "../modal/FilterModal";
 import { SmallButton } from "./Button";
 import { useSelector, useDispatch } from "react-redux";
 import { changeArrayProduct } from "../../slices/productSlice";
+import { toggleBrandModal } from "../../slices/modalSlice";
+import useInput from "../../hooks/useInput";
+import BrandModal from "../modal/BrandModal";
 
 const SelectorWrapper = styled.div`
   width: fit-content;
@@ -63,18 +66,19 @@ const CheckboxSelectorWrapper = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
-  display: flex;
   margin-bottom: 30px;
 `;
 
 const CheckboxList = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  flex-wrap: wrap;
 `;
 
 const OptionName = styled.div`
   width: 230px;
+  margin-bottom: 30px;
 
   font-weight: 300;
   font-size: 24px;
@@ -157,9 +161,9 @@ export const CategorySelector = ({
 export const CheckboxSelector = (props) => {
   const { onChange, initValue = {} } = props;
 
-  const [modalState, setModalState] = useState({ index: -1 });
-  const { colors, materials, conditions } = useSelector((state) => {
+  const { brands, colors, materials, conditions } = useSelector((state) => {
     return {
+      brands: state.brand.list,
       colors: state.metadata.colors,
       materials: state.metadata.materials,
       conditions: state.metadata.conditions,
@@ -168,28 +172,29 @@ export const CheckboxSelector = (props) => {
 
   return (
     <CheckboxSelectorWrapper>
-      <CheckboxOption
+      <BrandOption
+        title="브랜드"
+        name="brand"
+        list={brands}
+        initValue={initValue.brand_id}
+        canEdit={true}
+      ></BrandOption>
+      <ColorOption
         title="색상"
         name="color"
         list={colors}
-        modalState={modalState}
-        setModalState={setModalState}
         initValue={initValue.color_code}
-      ></CheckboxOption>
+      ></ColorOption>
       <CheckboxOption
         title="소재"
         name="material"
         list={materials}
-        modalState={modalState}
-        setModalState={setModalState}
         initValue={initValue.material_code}
       ></CheckboxOption>
       <CheckboxOption
         title="상품 상태"
         name="condition"
         list={conditions}
-        modalState={modalState}
-        setModalState={setModalState}
         initValue={initValue.condition_code}
       ></CheckboxOption>
     </CheckboxSelectorWrapper>
@@ -197,19 +202,9 @@ export const CheckboxSelector = (props) => {
 };
 
 export const CheckboxOption = (props) => {
-  const {
-    title,
-    name,
-    list,
-    modalState,
-    setModalState,
-    initValue = [],
-  } = props;
+  const { title, name, list, initValue = [] } = props;
   const dispatch = useDispatch();
 
-  const preOptions = [...list].splice(0, 4);
-
-  const [currentPos, setCurrentPos] = useState([]);
   const [checkedOptions, setCheckedOptions] = useState(new Set(initValue));
 
   const toggleCheckbox = (option) => {
@@ -243,38 +238,141 @@ export const CheckboxOption = (props) => {
     <CheckboxWrapper>
       <OptionName>{title}</OptionName>
       <CheckboxList>
-        {preOptions.map((preOption) => {
+        {list.map((option) => {
           return (
             <Checkbox
-              key={preOption.code}
-              data={preOption}
-              isChecked={isChecked(preOption)}
-              toggleCheckbox={() => toggleCheckbox(preOption)}
+              key={option.code}
+              data={option}
+              isChecked={isChecked(option)}
+              toggleCheckbox={() => toggleCheckbox(option)}
             ></Checkbox>
           );
         })}
       </CheckboxList>
-      <SmallButton
-        isFilled={false}
-        colorTheme={colors.mono[0]}
-        fontColor={colors.mono[0]}
-        onClick={(e) => {
-          const pos = [e.pageX, e.pageY];
-          setCurrentPos(pos);
-          setModalState({ ...modalState, index: name });
-        }}
-      >
-        더 보기
-      </SmallButton>
-      {modalState.index === name && (
-        <FilterModal
-          options={list}
-          position={currentPos}
-          setModalState={setModalState}
-          checkedOptions={checkedOptions}
-          toggleCheckbox={toggleCheckbox}
-        ></FilterModal>
+    </CheckboxWrapper>
+  );
+};
+
+export const BrandOption = (props) => {
+  const { title, name, list, initValue = [], canEdit } = props;
+  const dispatch = useDispatch();
+  const [value, setValue] = useInput("");
+
+  const [checkedOptions, setCheckedOptions] = useState(new Set(initValue));
+  const { isModal } = useSelector((state) => {
+    return { isModal: state.modal.brand };
+  });
+
+  const toggleCheckbox = (option) => {
+    const newCheckedOptions = new Set(checkedOptions);
+    if (checkedOptions.has(option.brand_id)) {
+      newCheckedOptions.delete(option.brand_id);
+    } else {
+      newCheckedOptions.add(option.brand_id);
+    }
+    setCheckedOptions(newCheckedOptions);
+  };
+
+  useEffect(() => {
+    dispatch(
+      changeArrayProduct({
+        name: `brand_id`,
+        value: Array.from(checkedOptions),
+      })
+    );
+  }, [checkedOptions]);
+
+  const isChecked = (option) => {
+    if (checkedOptions.has(option.brand_id)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const onClickModal = () => {
+    dispatch(toggleBrandModal(true));
+  };
+
+  return (
+    <CheckboxWrapper>
+      <OptionName>{title}</OptionName>
+      <CheckboxList>
+        {list.map((option) => {
+          return (
+            <Checkbox
+              key={option.code}
+              data={option}
+              isChecked={isChecked(option)}
+              toggleCheckbox={() => toggleCheckbox(option)}
+            ></Checkbox>
+          );
+        })}
+      </CheckboxList>
+      <span onClick={onClickModal}>더 보기</span>
+      {isModal && (
+        <BrandModal
+          list={list}
+          checkedTypes={checkedOptions}
+          setCheckedTypes={setCheckedOptions}
+          canEdit={canEdit}
+        ></BrandModal>
       )}
+    </CheckboxWrapper>
+  );
+};
+
+export const ColorOption = (props) => {
+  const { title, name, list, initValue = [] } = props;
+  const dispatch = useDispatch();
+
+  const [checkedOptions, setCheckedOptions] = useState(new Set(initValue));
+
+  const toggleCheckbox = (option) => {
+    const newCheckedOptions = new Set(checkedOptions);
+    if (checkedOptions.has(option.code)) {
+      newCheckedOptions.delete(option.code);
+    } else {
+      newCheckedOptions.add(option.code);
+    }
+    setCheckedOptions(newCheckedOptions);
+  };
+
+  useEffect(() => {
+    dispatch(
+      changeArrayProduct({
+        name: `${name}_code`,
+        value: Array.from(checkedOptions),
+      })
+    );
+  }, [checkedOptions]);
+
+  const isChecked = (option) => {
+    if (checkedOptions.has(option.code)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  console.log(list);
+
+  return (
+    <CheckboxWrapper>
+      <OptionName>{title}</OptionName>
+      <CheckboxList>
+        {list.map((option) => {
+          return (
+            <ColorCheckbox
+              key={option.code}
+              color={option.code}
+              name={option.name}
+              isChecked={isChecked(option)}
+              toggleCheckbox={() => toggleCheckbox(option)}
+            ></ColorCheckbox>
+          );
+        })}
+      </CheckboxList>
     </CheckboxWrapper>
   );
 };

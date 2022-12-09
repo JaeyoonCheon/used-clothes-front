@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import createRequestSaga from "../lib/saga/createRequestSaga";
-import { loginAPI, registerAPI } from "../lib/api/user";
+import { loginAPI, logoutAPI, registerAPI } from "../lib/api/user";
 import { takeLatest } from "redux-saga/effects";
 
 const initialState = {
@@ -21,7 +21,7 @@ export const authSlice = createSlice({
     },
     logout: () => {},
     logout_success: (state, action) => {
-      state.auth = action.payload;
+      state.auth = null;
     },
     logout_failure: (state, action) => {
       state.authError = action.error;
@@ -39,12 +39,14 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, register } = authSlice.actions;
+export const { login, logout, register, check } = authSlice.actions;
 
 const loginSaga = createRequestSaga(login, loginAPI);
+const logoutSaga = createRequestSaga(logout, logoutAPI);
 const registerSaga = createRequestSaga(register, registerAPI);
 
 export function* authSaga() {
   yield takeLatest(login, loginSaga);
+  yield takeLatest(logout, logoutSaga);
   yield takeLatest(register, registerSaga);
 }

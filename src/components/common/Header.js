@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { createSelector } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Searchbar from "./Searchbar";
 import Portal from "../../lib/portal";
 import LoginModal from "../modal/LoginModal";
+import { logout } from "../../slices/authSlice";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -102,9 +103,15 @@ const HeaderSpacer = styled.div`
 `;
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [isModalOpen, setisModalOpen] = useState(false);
   const onClickLogin = () => {
     setisModalOpen(true);
+  };
+  const onClickLogout = () => {
+    dispatch(logout());
+    setisModalOpen(false);
   };
   const { email: currentUser } = useSelector((state) => ({
     email: state.auth.auth,
@@ -116,7 +123,7 @@ const Header = () => {
           <TopNavbar>
             {currentUser ? (
               <div className="top_nav_menu">
-                <span className="top_nav_clicker" onClick={onClickLogin}>
+                <span className="top_nav_clicker" onClick={onClickLogout}>
                   로그아웃
                 </span>
                 <span className="top_nav_clicker">알림</span>

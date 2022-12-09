@@ -8,7 +8,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { ModalLayout } from "../layout/ModalLayout";
 import colors from "../../lib/styles/colors";
 import { LargeButton } from "../common/Button";
-import { LabelInput, LabelPasswordInput } from "../common/Input";
+import { NonHookInput, NonHookPasswordInput } from "../common/Input";
 import useInput from "../../hooks/useInput";
 import { login } from "../../slices/authSlice";
 
@@ -108,7 +108,6 @@ const LoginModal = (props) => {
     };
   }, []);
   useEffect(() => {
-    console.log("after login");
     if (authError) {
       console.log("Login Error!");
       console.log(authError);
@@ -134,18 +133,18 @@ const LoginModal = (props) => {
           </div>
         </TitleContainer>
         <LoginFeature onSubmit={fetchLogin}>
-          <LabelInput
+          <NonHookInput
             placeholder="이메일"
             name="email"
             value={email}
             onChange={onChangeEmail}
-          ></LabelInput>
-          <LabelPasswordInput
+          ></NonHookInput>
+          <NonHookPasswordInput
             placeholder="비밀번호"
             name="password"
             value={password}
             onChange={onChangePassword}
-          ></LabelPasswordInput>
+          ></NonHookPasswordInput>
           <LoginButton>
             <LargeButton
               type="submit"

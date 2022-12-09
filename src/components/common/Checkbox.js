@@ -42,7 +42,7 @@ const CheckboxContainer = styled.div`
     }
   }
   .label_name {
-    margin-left: 5px;
+    margin-right: 5px;
     color: ${colors.mono[0]};
 
     font-weight: 300;

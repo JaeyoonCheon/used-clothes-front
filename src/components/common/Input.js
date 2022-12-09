@@ -73,6 +73,7 @@ const LabelInputContent = styled(InputContent)`
 `;
 
 const NonLabelInputContent = styled(InputContent)`
+  border: ${(props) => props.noUnderline && `none`};
   &:not(:placeholder-shown) + label {
     display: none;
   }
@@ -119,7 +120,42 @@ const TextContainer = styled.textarea`
   }
 `;
 
-export const Input = (props) => {
+export const NonLabelInput = (props) => {
+  const {
+    placeholder,
+    name,
+    onChange,
+    isDisabled = false,
+    initValue = "",
+    noUnderline = false,
+  } = props;
+  const [inputValue, setInputValue] = useInput(initValue);
+
+  const handleChange = (e) => {
+    setInputValue(e);
+  };
+  useEffect(() => {
+    onChange(name, inputValue);
+  }, [inputValue]);
+
+  return (
+    <InputContainer>
+      <NonLabelInputContent
+        type="text"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={handleChange}
+        disabled={isDisabled}
+        noUnderline={noUnderline}
+      ></NonLabelInputContent>
+      <label htmlFor={name}>{placeholder}</label>
+    </InputContainer>
+  );
+};
+
+export const NonLabelPasswordInput = (props) => {
   const {
     placeholder,
     name,
@@ -139,7 +175,7 @@ export const Input = (props) => {
   return (
     <InputContainer>
       <NonLabelInputContent
-        type="text"
+        type="password"
         name={name}
         id={name}
         placeholder={placeholder}
@@ -163,9 +199,6 @@ export const LabelInput = (props) => {
   } = props;
 
   const isError = errorMsg !== "" ? true : false;
-  console.log(`${name} ${errorMsg} ${isError}`);
-
-  console.log(`${isDisabled}`);
 
   return (
     <LabelInputContainer isError={isError}>
@@ -196,7 +229,6 @@ export const LabelPasswordInput = (props) => {
   } = props;
 
   const isError = errorMsg !== "" ? true : false;
-  console.log(`${name} ${errorMsg} ${isError}`);
 
   return (
     <LabelInputContainer isError={isError}>
@@ -295,5 +327,43 @@ export const LimitedTextarea = (props) => {
       ></TextContainer>
       <Counter>{`${count}/${limit}`}</Counter>
     </>
+  );
+};
+
+export const NonHookInput = (props) => {
+  const { placeholder, name, onChange, value, isDisabled = false } = props;
+
+  return (
+    <InputContainer>
+      <NonLabelInputContent
+        type="text"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        disabled={isDisabled}
+      ></NonLabelInputContent>
+      <label htmlFor={name}>{placeholder}</label>
+    </InputContainer>
+  );
+};
+
+export const NonHookPasswordInput = (props) => {
+  const { placeholder, name, value, onChange, isDisabled = false } = props;
+
+  return (
+    <InputContainer>
+      <NonLabelInputContent
+        type="password"
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        disabled={isDisabled}
+      ></NonLabelInputContent>
+      <label htmlFor={name}>{placeholder}</label>
+    </InputContainer>
   );
 };

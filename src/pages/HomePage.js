@@ -12,6 +12,7 @@ import { list, changeOption } from "../slices/productSlice";
 import { getCategory } from "../slices/categorySlice";
 import { getMetadata } from "../slices/metadataSlice";
 import { getBrandList } from "../slices/brandSlice";
+import { getPurchasePlaceList } from "../slices/purchasePlaceSlice";
 import { toggleLocationModal } from "../slices/modalSlice";
 import LocationModal from "../components/modal/LocationModal";
 import useIntersect from "../hooks/useIntersect";
@@ -83,7 +84,7 @@ const NavBar = styled.div`
   }
 `;
 
-const sortOrders = ["최신 순", "가격 높은 순", "가격 낮은 순", "거리 순"];
+const sortOrders = ["최신 순", "이전 순", "가격 높은 순", "가격 낮은 순"];
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -129,6 +130,7 @@ const HomePage = () => {
     dispatch(getCategory());
     dispatch(getMetadata("colors"));
     dispatch(getBrandList());
+    dispatch(getPurchasePlaceList());
     dispatch(list(productOptions));
   }, []);
 

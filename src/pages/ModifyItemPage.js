@@ -7,7 +7,7 @@ import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import { MiddleButton } from "../components/common/Button";
 import {
-  Input,
+  NonLabelInput,
   LimitedInput,
   LimitedTextarea,
 } from "../components/common/Input";
@@ -152,14 +152,14 @@ const ModifyItemPage = () => {
             <div className="priceTitle">
               <ContentTitle>가격</ContentTitle>
             </div>
-            <Input
+            <NonLabelInput
               width={`300px`}
               name="price"
               onChange={onChange}
               initValue={product.price}
             >
               원
-            </Input>
+            </NonLabelInput>
           </ContentRowWrapper>
           <ContentRowWrapper>
             <div className="priceTitle">배송비</div>
@@ -183,14 +183,14 @@ const ModifyItemPage = () => {
               </RadioButton>
             </RadioGroup>
             {isShipping && (
-              <Input
+              <NonLabelInput
                 width={`128px`}
                 name="shipping_fee"
                 onChange={onChange}
                 initValue={product.shipping_fee}
               >
                 원
-              </Input>
+              </NonLabelInput>
             )}
           </ContentRowWrapper>
         </ContentWrapper>

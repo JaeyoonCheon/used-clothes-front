@@ -10,6 +10,7 @@ import {
   locationScopeAData,
   locationScopeBData,
   locationScopeCData,
+  purchasePlaceListDatas,
 } from "../lib/dummydata/dummydata";
 
 export const handlers = [
@@ -21,6 +22,14 @@ export const handlers = [
     const formData = req.json();
 
     if (formData) {
+      return res(ctx.status(200));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get("/user/logout", (req, res, ctx) => {
+    const logOn = true;
+    if (logOn) {
       return res(ctx.status(200));
     } else {
       return res(ctx.status(400));
@@ -100,6 +109,39 @@ export const handlers = [
   rest.get(`/brand/list`, (req, res, ctx) => {
     if (brandListDatas) {
       return res(ctx.json(brandListDatas));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.post(`/brand/create`, (req, res, ctx) => {
+    const newBrand = req.json();
+    const newItem = {
+      brand_id: Math.floor(Math.random() * (1000 - 100 + 1)) + 100,
+      name: newBrand.name,
+    };
+
+    if (newBrand) {
+      return res(ctx.json(newItem));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.get(`/purchase_place/list`, (req, res, ctx) => {
+    if (purchasePlaceListDatas) {
+      return res(ctx.json(purchasePlaceListDatas));
+    } else {
+      return res(ctx.status(400));
+    }
+  }),
+  rest.post(`/purchase_place/create`, (req, res, ctx) => {
+    const newpurchase_place = req.json();
+    const newItem = {
+      purchase_place_id: Math.floor(Math.random() * (1000 - 100 + 1)) + 100,
+      name: newpurchase_place.name,
+    };
+
+    if (newpurchase_place) {
+      return res(ctx.json(newItem));
     } else {
       return res(ctx.status(400));
     }
