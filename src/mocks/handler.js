@@ -12,6 +12,7 @@ import {
   locationScopeCData,
   purchasePlaceListDatas,
 } from "../lib/dummydata/dummydata";
+import { productList } from "../lib/dummydata/dummyProductList";
 
 export const handlers = [
   rest.post("/user/login", (req, res, ctx) => {
@@ -45,13 +46,16 @@ export const handlers = [
     }
   }),
   rest.get("/clothe/list", (req, res, ctx) => {
-    const params = req.url.searchParams.get("filters");
+    const filters = req.url.searchParams.get("filters");
+    const sort_by = req.url.searchParams.get("sort_by");
+    const order = req.url.searchParams.get("order");
+    const elements = Number(req.url.searchParams.get("elements"));
+    const page = Number(req.url.searchParams.get("page"));
 
-    if (params) {
-      return res(ctx.json(itemDatas));
-    } else {
-      return res(ctx.status(400));
-    }
+    const newProductList = [...productList];
+    const result = newProductList.slice(elements * page, elements * (page + 1));
+
+    return res(ctx.json(result));
   }),
   rest.get(`/clothe/read/:id`, (req, res, ctx) => {
     const { id } = req.params;

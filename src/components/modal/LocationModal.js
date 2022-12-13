@@ -14,7 +14,7 @@ import {
   getScopeBList,
   getScopeCList,
 } from "../../slices/locationSlice";
-import { changeLocation } from "../../slices/productSlice";
+import { changeOption } from "../../slices/productSlice";
 import { toggleLocationModal } from "../../slices/modalSlice";
 import useInput from "../../hooks/useInput";
 
@@ -151,14 +151,14 @@ const LocationModal = () => {
   const onClickLocation = (loc) => {
     let locationName = loc.scope_a_name;
     dispatch(
-      changeLocation({
+      changeOption({
         name: "scope_a_code",
         value: loc.scope_a_code,
       })
     );
     if (loc.hasOwnProperty("scope_b_code")) {
       dispatch(
-        changeLocation({
+        changeOption({
           name: "scope_b_code",
           value: loc.scope_b_code,
         })
@@ -166,7 +166,7 @@ const LocationModal = () => {
       locationName = `${locationName} ${loc.scope_b_name}`;
     } else {
       dispatch(
-        changeLocation({
+        changeOption({
           name: "scope_b_code",
           value: null,
         })
@@ -174,7 +174,7 @@ const LocationModal = () => {
     }
     if (loc.hasOwnProperty("scope_c_code")) {
       dispatch(
-        changeLocation({
+        changeOption({
           name: "scope_c_code",
           value: loc.scope_c_code,
         })
@@ -182,7 +182,7 @@ const LocationModal = () => {
       locationName = `${locationName} ${loc.scope_c_name}`;
     } else {
       dispatch(
-        changeLocation({
+        changeOption({
           name: "scope_c_code",
           value: null,
         })
@@ -190,7 +190,7 @@ const LocationModal = () => {
     }
     dispatch(
       dispatch(
-        changeLocation({
+        changeOption({
           name: "location",
           value: locationName,
         })

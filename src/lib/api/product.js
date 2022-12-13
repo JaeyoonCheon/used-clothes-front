@@ -1,10 +1,16 @@
 import { APIInstance, testAPIInstance } from "./axiosInstance";
 import makeQuery from "../utils/makeQuery";
 
-export const listProductsAPI = async (options) => {
-  const query = makeQuery(options);
+export const listProductAPI = async (payload) => {
+  const { filters, sort_by, order, elements, page } = payload;
 
-  return await testAPIInstance.get(`/clothe/list?filters=${query}`);
+  console.log(payload);
+
+  const filterQuery = makeQuery(filters);
+
+  return await testAPIInstance.get(
+    `/clothe/list?filters=${filterQuery}&sort_by=${sort_by}&order=${order}&elements=${elements}&page=${page}`
+  );
 };
 
 export const getProductAPI = async (id) => {

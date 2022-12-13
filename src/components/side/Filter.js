@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
 import Checkbox, { ColorCheckbox } from "../common/Checkbox";
-import { changeArrayOption } from "../../slices/productSlice";
+import { changeFilter } from "../../slices/productSlice";
 import useInput from "../../hooks/useInput";
 import { toggleBrandModal } from "../../slices/modalSlice";
 import BrandModal from "../modal/BrandModal";
@@ -95,7 +95,7 @@ export const ModalCheckboxFilter = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayOption({
+      changeFilter({
         name: `brand_id`,
         value: Array.from(checkedTypes),
       })
@@ -178,7 +178,7 @@ export const CheckboxFilter = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayOption({
+      changeFilter({
         name: `${name}_code`,
         value: Array.from(checkedTypes),
       })
@@ -246,7 +246,7 @@ export const ColorCheckboxFilter = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayOption({
+      changeFilter({
         name: `${name}_code`,
         value: Array.from(checkedTypes),
       })

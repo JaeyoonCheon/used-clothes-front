@@ -17,11 +17,7 @@ import {
 import { categoryData, filterDatas } from "../lib/dummydata/dummydata";
 import { RadioGroup, RadioButton } from "../components/common/RadioButton";
 import ImageUploader from "../components/common/ImageUploader";
-import {
-  addProduct,
-  changeArrayOption,
-  changeProduct,
-} from "../slices/productSlice";
+import { addProduct, changeSelected } from "../slices/productSlice";
 import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.form`
@@ -76,12 +72,12 @@ const AddItemPage = () => {
   });
 
   const onChange = (name, value) => {
-    dispatch(changeProduct({ name, value }));
+    dispatch(changeSelected({ name, value }));
   };
 
   const onPressRadio = (e) => {
     if (e.target.value === "include") {
-      dispatch(changeProduct(e.target.name, null));
+      dispatch(changeSelected(e.target.name, null));
       setIsShipping(false);
     } else {
       setIsShipping(true);

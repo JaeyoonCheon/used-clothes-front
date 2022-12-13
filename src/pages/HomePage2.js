@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { createSelector } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import { LargeCardList } from "../components/card/CardList";
 import Pagination from "../components/common/Pagination";
-import { listProductsAPI, testListProductsAPI } from "../lib/api/product";
-import { list } from "../slices/productSlice";
+import { listProductAPI, testListProductsAPI } from "../lib/api/product";
+import { listProduct } from "../slices/productSlice";
 import OptionTable from "../components/common/OptionTable";
-
 import { itemDatas } from "../lib/dummydata/dummydata";
-import { useDispatch } from "react-redux";
 
 const Wrapper = styled.div``;
 
@@ -104,7 +103,7 @@ const HomePage2 = () => {
 
   useEffect(() => {
     console.log("Fetch new options");
-    listProductsAPI(options).then((result) => {
+    listProductAPI(options).then((result) => {
       console.log(result.data);
       setProducts(result.data);
     });
@@ -120,7 +119,7 @@ const HomePage2 = () => {
     }));
 
     dispatch(
-      list({
+      listProduct({
         ...prevState,
         sorting: order,
       })

@@ -15,14 +15,12 @@ import {
   CategorySelector,
   CheckboxSelector,
 } from "../components/common/OptionSelector";
-import { categoryData, filterDatas } from "../lib/dummydata/dummydata";
 import { RadioGroup, RadioButton } from "../components/common/RadioButton";
 import ImageUploader from "../components/common/ImageUploader";
 import {
   loadProduct,
   modifyProduct,
-  changeArrayOption,
-  changeProduct,
+  changeSelected,
 } from "../slices/productSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -86,11 +84,11 @@ const ModifyItemPage = () => {
   console.log(product);
 
   const onChange = (name, value) => {
-    dispatch(changeProduct({ name, value }));
+    dispatch(changeSelected({ name, value }));
   };
   const onPressRadio = (e) => {
     if (e.target.value === "include") {
-      dispatch(changeProduct(e.target.name, null));
+      dispatch(changeSelected(e.target.name, null));
       setIsShipping(false);
     } else {
       setIsShipping(true);

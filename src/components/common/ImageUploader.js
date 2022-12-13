@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { MAX_IMAGE_UPLOAD } from "../../lib/constant/constants";
 import { ReactComponent as AddImageIcon } from "../../asset/add-2935429.svg";
-import { changeArrayProduct } from "../../slices/productSlice";
+import { changeSelected } from "../../slices/productSlice";
 
 const Wrapper = styled.div`
   display: flex;
@@ -101,7 +101,7 @@ const ImageUploader = () => {
   };
 
   useEffect(() => {
-    dispatch(changeArrayProduct({ name: "itemimage", value: uploadedFiles }));
+    dispatch(changeSelected({ name: "itemimage", value: uploadedFiles }));
   }, [uploadedFiles]);
 
   return (

@@ -5,10 +5,8 @@ import useCategory from "../../hooks/useCategory";
 import colors from "../../lib/styles/colors";
 import { RadioOption } from "./RadioButton";
 import Checkbox, { ColorCheckbox } from "../common/Checkbox";
-import FilterModal from "../modal/FilterModal";
-import { SmallButton } from "./Button";
 import { useSelector, useDispatch } from "react-redux";
-import { changeArrayProduct } from "../../slices/productSlice";
+import { changeSelected } from "../../slices/productSlice";
 import { toggleBrandModal } from "../../slices/modalSlice";
 import useInput from "../../hooks/useInput";
 import BrandModal from "../modal/BrandModal";
@@ -219,7 +217,7 @@ export const CheckboxOption = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayProduct({
+      changeSelected({
         name: `${name}_code`,
         value: Array.from(checkedOptions),
       })
@@ -275,7 +273,7 @@ export const BrandOption = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayProduct({
+      changeSelected({
         name: `brand_id`,
         value: Array.from(checkedOptions),
       })
@@ -340,7 +338,7 @@ export const ColorOption = (props) => {
 
   useEffect(() => {
     dispatch(
-      changeArrayProduct({
+      changeSelected({
         name: `${name}_code`,
         value: Array.from(checkedOptions),
       })

@@ -7,8 +7,12 @@ import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import Aside from "../components/side/Aside";
 import { SmallCardList } from "../components/card/CardList";
-import Pagination from "../components/common/Pagination";
-import { list, changeOption } from "../slices/productSlice";
+import {
+  listProduct,
+  listNextProduct,
+  changeFilter,
+  changeOption,
+} from "../slices/productSlice";
 import { getCategory } from "../slices/categorySlice";
 import { getMetadata } from "../slices/metadataSlice";
 import { getBrandList } from "../slices/brandSlice";
@@ -97,7 +101,7 @@ const HomePage = () => {
     };
   });
   const {
-    filter: productOptions,
+    filter,
     sort_by,
     order,
     elements,
@@ -107,6 +111,7 @@ const HomePage = () => {
     scope_b_code,
     scope_c_code,
   } = useSelector((state) => {
+    const list = state.product.list;
     const options = state.product.list.options;
 
     return {
@@ -115,30 +120,30 @@ const HomePage = () => {
       order: options.order,
       elements: options.elements,
       page: options.page,
-      location: options.location,
-      scope_a_code: options.scope_a_code,
-      scope_b_code: options.scope_b_code,
-      scope_c_code: options.scope_c_code,
+      location: list.location,
+      scope_a_code: list.scope_a_code,
+      scope_b_code: list.scope_b_code,
+      scope_c_code: list.scope_c_code,
     };
   });
-
   const { productList } = useSelector(({ product }) => ({
     productList: product.list.productList,
   }));
 
   useEffect(() => {
-    console.log("Fetch new options");
+    console.log("Fetch by new options");
     dispatch(getCategory());
     dispatch(getMetadata("colors"));
     dispatch(getBrandList());
     dispatch(getPurchasePlaceList());
-    dispatch(list(productOptions));
+    dispatch(listProduct({ filter, sort_by, order, elements, page }));
   }, []);
 
   useEffect(() => {
-    dispatch(list(productOptions));
+    dispatch(listProduct({ filter, sort_by, order, elements, page }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    productOptions,
+    filter,
     sort_by,
     order,
     elements,
@@ -158,22 +163,15 @@ const HomePage = () => {
         value: order,
       })
     );
-    dispatch(list(productOptions));
+    dispatch(listProduct(filter));
   };
   const onClickOption = (typeCode, option) => {
     dispatch(
-      changeOption({
+      changeFilter({
         name: typeCode,
         value: option,
       })
     );
-  };
-  const onClickPage = (nextPage) => {
-    setCurrentPage(nextPage);
-    onClickOption((prev) => ({
-      ...prev,
-      page: nextPage,
-    }));
   };
 
   const { isListLoaded } = useSelector((state) => {
@@ -182,12 +180,20 @@ const HomePage = () => {
     };
   });
 
-  console.log(isListLoaded);
-
   const [_, setRef] = useIntersect(async (entry, observer) => {
+    const nextPageNumber = page + 1;
     observer.unobserve(entry.target);
-    await dispatch(list(productOptions));
+    await dispatch(
+      listNextProduct({
+        filter,
+        sort_by,
+        order,
+        elements,
+        page: nextPageNumber,
+      })
+    );
     observer.observe(entry.target);
+    dispatch(changeFilter({ name: "page", value: nextPageNumber }));
   }, {});
 
   return (
@@ -196,10 +202,7 @@ const HomePage = () => {
       <Wrapper>
         <HomePageContainer>
           <div className="aside_category_option">
-            <Aside
-              options={productOptions}
-              onClickOption={onClickOption}
-            ></Aside>
+            <Aside options={filter} onClickOption={onClickOption}></Aside>
           </div>
           <ContentContainer>
             <NavBar>
@@ -215,7 +218,7 @@ const HomePage = () => {
               <div className="sort_orders">
                 {sortOrders.map((order, i) => (
                   <span
-                    className={productOptions.sorting === order ? "active" : ""}
+                    className={filter.sorting === order ? "active" : ""}
                     key={i}
                     onClick={() => onClickSort(order)}
                   >{`${order}`}</span>
@@ -224,13 +227,7 @@ const HomePage = () => {
             </NavBar>
             <SmallCardList itemDatas={productList}></SmallCardList>
             <hr></hr>
-            {!isListLoaded && <p ref={setRef}> Loading ... </p>}
-            <Pagination
-              currentPage={currentPage}
-              pageCount={10}
-              limit={40}
-              setCurrentPage={onClickPage}
-            ></Pagination>
+            {/* {!isListLoaded && <p ref={setRef}> Loading ... </p>} */}
           </ContentContainer>
         </HomePageContainer>
       </Wrapper>
