@@ -44,7 +44,7 @@ export const handlers = [
       return res(ctx.status(400));
     }
   }),
-  rest.get("/clothe/list?*", (req, res, ctx) => {
+  rest.get("/clothe/list", (req, res, ctx) => {
     const params = req.url.searchParams.get("filters");
 
     if (params) {
@@ -146,7 +146,7 @@ export const handlers = [
       return res(ctx.status(400));
     }
   }),
-  rest.get(`/clothe_metadata/list?*`, (req, res, ctx) => {
+  rest.get(`/clothe_metadata/list`, (req, res, ctx) => {
     const params = req.url.searchParams.get("metadata_kind");
 
     console.log(params);
