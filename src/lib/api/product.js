@@ -1,4 +1,4 @@
-import { APIInstance, testAPIInstance } from "./axiosInstance";
+import { APIInstance } from "./axiosInstance";
 import makeQuery from "../utils/makeQuery";
 
 export const listProductAPI = async (payload) => {
@@ -8,13 +8,13 @@ export const listProductAPI = async (payload) => {
 
   const filterQuery = makeQuery(filters);
 
-  return await testAPIInstance.get(
+  return await APIInstance.get(
     `/clothe/list?filters=${filterQuery}&sort_by=${sort_by}&order=${order}&elements=${elements}&page=${page}`
   );
 };
 
 export const getProductAPI = async (id) => {
-  return await testAPIInstance.get(`/clothe/read/${id}`);
+  return await APIInstance.get(`/clothe/read/${id}`);
 };
 
 export const addProductAPI = async (payload) => {
@@ -31,7 +31,7 @@ export const addProductAPI = async (payload) => {
     ex_price,
     purchase_date,
   } = payload;
-  return await testAPIInstance.post(
+  return await APIInstance.post(
     `/clothe/create`,
     {
       images,
@@ -70,7 +70,7 @@ export const modifyProductAPI = async (payload) => {
     material_code,
     description,
   } = payload;
-  return await testAPIInstance.put(
+  return await APIInstance.put(
     `/clothe/update/${clothe_id}`,
     {
       clothe_id,
@@ -96,5 +96,5 @@ export const modifyProductAPI = async (payload) => {
 };
 
 export const deleteProductAPI = async (id) => {
-  return await testAPIInstance.delete(`/clothe/delete/${id}`);
+  return await APIInstance.delete(`/clothe/delete/${id}`);
 };

@@ -12,11 +12,16 @@ const Wrapper = styled.ul`
 export const SmallCardList = (props) => {
   const { itemDatas } = props;
 
+  console.log(`itemDatas : ${itemDatas}`);
+
   return (
     <Wrapper>
-      {itemDatas.map((itemData) => {
-        return <SmallCard key={itemData.id} itemData={itemData}></SmallCard>;
-      })}
+      {itemDatas &&
+        itemDatas.map((itemData) => {
+          return (
+            <SmallCard key={itemData.clothe_id} itemData={itemData}></SmallCard>
+          );
+        })}
     </Wrapper>
   );
 };
@@ -24,11 +29,14 @@ export const SmallCardList = (props) => {
 export const LargeCardList = (props) => {
   const { itemDatas } = props;
 
+  console.log(`itemDatas : ${itemDatas}`);
+
   return (
     <Wrapper>
-      {itemDatas.map((itemData) => {
-        return <LargeCard key={itemData.id} itemData={itemData}></LargeCard>;
-      })}
+      {itemDatas &&
+        itemDatas.map((itemData) => {
+          return <LargeCard key={itemData.id} itemData={itemData}></LargeCard>;
+        })}
     </Wrapper>
   );
 };

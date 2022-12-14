@@ -1,7 +1,5 @@
-import { APIInstance, testAPIInstance } from "./axiosInstance";
+import { APIInstance } from "./axiosInstance";
 
 export const getMetadataAPI = async (type) => {
-  return await testAPIInstance.get(
-    `/clothe_metadata/list?metadata_kind=${type}`
-  );
+  return await APIInstance.get(`/clothe_metadata/list?metadata_kind=${type}`);
 };

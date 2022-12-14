@@ -1,9 +1,9 @@
-import { APIInstance, testAPIInstance } from "./axiosInstance";
+import { APIInstance } from "./axiosInstance";
 
 export const getMainCategoryAPI = async (type) => {
-  return await testAPIInstance.get(`/category/main/list`);
+  return await APIInstance.get(`/category/main/list`);
 };
 
 export const getSubCategoryAPI = async (type) => {
-  return await testAPIInstance.get(`/category/sub/list`);
+  return await APIInstance.get(`/category/sub/list`);
 };

@@ -1,13 +1,13 @@
-import { APIInstance, testAPIInstance } from "./axiosInstance";
+import { APIInstance } from "./axiosInstance";
 
 export const loginAPI = async (payload) => {
-  return await testAPIInstance.post(`user/login`, payload);
+  return await APIInstance.post(`user/login`, payload);
 };
 
 export const registerAPI = async (payload) => {
   const { email, name, password, phone } = payload;
 
-  return await testAPIInstance.post(
+  return await APIInstance.post(
     `user/create`,
     {
       email,
@@ -20,15 +20,15 @@ export const registerAPI = async (payload) => {
 };
 
 export const logoutAPI = async () => {
-  return await testAPIInstance.get(`user/logout`);
+  return await APIInstance.get(`user/logout`);
 };
 
 export const deleteUserAPI = async () => {
-  return await testAPIInstance.delete(`user/delete`);
+  return await APIInstance.delete(`user/delete`);
 };
 
 export const editUserAPI = async (payload) => {
-  return await testAPIInstance.put(`user/update`, payload);
+  return await APIInstance.put(`user/update`, payload);
 };
 
 export const checkAPI = async (payload) => {};

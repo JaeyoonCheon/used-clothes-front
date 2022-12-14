@@ -14,5 +14,7 @@ const testAxiosInstance = () => {
   return instance;
 };
 
-export const APIInstance = axiosInstance();
-export const testAPIInstance = testAxiosInstance();
+export const APIInstance =
+  process.env.NODE_ENV === "development"
+    ? testAxiosInstance()
+    : axiosInstance();

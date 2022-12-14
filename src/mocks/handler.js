@@ -59,9 +59,7 @@ export const handlers = [
   }),
   rest.get(`/clothe/read/:id`, (req, res, ctx) => {
     const { id } = req.params;
-    const info = itemDetailDatas.find(
-      (data) => data.clothe_id === parseInt(id)
-    );
+    const info = productList.find((data) => data.clothe_id === parseInt(id));
 
     if (info) {
       return res(ctx.json(info));

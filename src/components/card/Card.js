@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import colors from "../../lib/styles/colors";
+import makeUnitTime from "../../lib/utils/makeUnitTime";
 
 const CardContainer = styled.li`
   list-style: none;
@@ -73,29 +74,31 @@ export const SmallCard = (props) => {
   const { itemData } = props;
   const {
     itemimage = "240x240.png",
-    itemname = "itemname",
-    itemprice = "10000",
-    enrollTime = 1,
+    name = "itemname",
+    price = "10000",
+    upload_date = new Date(),
   } = itemData;
+
+  const uploadedTime = makeUnitTime(upload_date);
 
   return (
     <SmallCardContainer>
       <div className="thumbnail">
-        <Link to={`/product/${itemData.id}`} className="link">
+        <Link to={`/product/${itemData.clothe_id}`} className="link">
           <img src={`240x240.png`} alt="item"></img>
         </Link>
       </div>
       <CardInfo>
         <div className="namebox">
-          <Link to={`/product/${itemData.id}`} className="link">
-            <span className="itemname">{itemname}</span>
+          <Link to={`/product/${itemData.clothe_id}`} className="link">
+            <span className="itemname">{name}</span>
           </Link>
         </div>
         <div className="pricebox">
-          <span className="itemprice">{`${itemprice}원`}</span>
+          <span className="itemprice">{`${price}원`}</span>
         </div>
         <div className="timebox">
-          <span className="enrolltime">{`${enrollTime}분 전`}</span>
+          <span className="enrolltime">{uploadedTime}</span>
         </div>
       </CardInfo>
     </SmallCardContainer>
@@ -106,29 +109,31 @@ export const LargeCard = (props) => {
   const { itemData } = props;
   const {
     itemimage = "280x280.png",
-    itemname = "itemname",
-    itemprice = "10000",
-    enrollTime = 1,
+    name = "itemname",
+    price = "10000",
+    upload_date = new Date(),
   } = itemData;
+
+  const uploadedTime = makeUnitTime(upload_date);
 
   return (
     <LargeCardContainer>
       <div className="thumbnail">
-        <Link to={`/product/:${itemData.id}`} className="link">
+        <Link to={`/product/${itemData.clothe_id}`} className="link">
           <img src={`280x280.png`} alt="item"></img>
         </Link>
       </div>
       <CardInfo>
         <div className="namebox">
-          <Link to={`/product/:${itemData.id}`} className="link">
-            <span className="itemname">{itemname}</span>
+          <Link to={`/product/${itemData.clothe_id}`} className="link">
+            <span className="itemname">{name}</span>
           </Link>
         </div>
         <div className="pricebox">
-          <span className="itemprice">{`${itemprice}원`}</span>
+          <span className="itemprice">{`${price}원`}</span>
         </div>
         <div className="timebox">
-          <span className="enrolltime">{`${enrollTime}분 전`}</span>
+          <span className="enrolltime">{uploadedTime}</span>
         </div>
       </CardInfo>
     </LargeCardContainer>

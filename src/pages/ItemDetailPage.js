@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import { MiddleButton } from "../components/common/Button";
-import { categoryData, itemDetailInfos } from "../lib/dummydata/dummydata";
+import { itemDetailInfos } from "../lib/dummydata/dummydata";
 import { ReactComponent as StarIcon } from "../asset/star.svg";
 import { getProduct, deleteProduct } from "../slices/productSlice";
+import { getBrandList } from "../slices/brandSlice";
 import { getMetadata } from "../slices/metadataSlice";
+import makeUnitTime from "../lib/utils/makeUnitTime";
 
 const Wrapper = styled.div`
   width: 1180px;
@@ -206,12 +208,35 @@ const ItemDescription = styled.p`
   line-height: 20px;
 `;
 
+const ColorBox = styled.div`
+  width: 22px;
+  height: 22px;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: ${(props) => props.color};
+  border: 0.5px solid #eeeeee;
+`;
+
 const ItemDetailPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const { id: productId } = params;
 
   const dispatch = useDispatch();
+
+  const { colorList, materialList, conditionList, brandList, placeList } =
+    useSelector((state) => {
+      return {
+        colorList: state.metadata.colors,
+        materialList: state.metadata.materials,
+        conditionList: state.metadata.conditions,
+        brandList: state.brand.list,
+        placeList: state.purchasePlace.list,
+      };
+    });
 
   const { product, getProductSuccess } = useSelector((state) => {
     return {
@@ -223,6 +248,7 @@ const ItemDetailPage = () => {
   useEffect(() => {
     dispatch(getMetadata("color"));
     dispatch(getProduct(productId));
+    dispatch(getBrandList());
   }, [dispatch, productId]);
 
   const {
@@ -259,6 +285,12 @@ const ItemDetailPage = () => {
     navigate(-1);
   };
 
+  const purchasePlaceInfo = placeList.find(
+    (listItem) => listItem.purchase_place_id === purchase_place_id
+  );
+
+  const uploadedTime = makeUnitTime(upload_date);
+
   return (
     <BaseLayout>
       <Wrapper>
@@ -284,19 +316,83 @@ const ItemDetailPage = () => {
                       </div>
                     </PriceStars>
                     <div className="item_shipping_fee">배송비 포함</div>
-                    <div className="item_enrolled_time">1시간 전</div>
+                    <div className="item_enrolled_time">{uploadedTime}</div>
                   </div>
                 </ItemPurchaseInfo>
                 <ItemClassContainer>
                   <div className="item_category">상의 / 티셔츠</div>
                   <ItemOptionList>
                     <li className="itemOption">
-                      색상: {color_code.join(", ")}
+                      색상:{" "}
+                      <ul>
+                        {color_code.map((code) => {
+                          const mappedColor = colorList.find(
+                            (listItem) => listItem.code === code
+                          );
+                          return (
+                            <li key={mappedColor.code}>
+                              <ColorBox
+                                color={mappedColor.code}
+                                name={mappedColor.name}
+                              ></ColorBox>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </li>
-                    <li className="itemOption">브랜드: {brand_id}</li>
-                    <li className="itemOption">재질: {material_code}</li>
-                    <li className="itemOption">사용감: {condition_code}</li>
-                    <li className="itemOption">구매처: {purchase_place_id}</li>
+                    <li className="itemOption">
+                      브랜드:{" "}
+                      <ul className="itemOptionDetail">
+                        {brand_id.map((code) => {
+                          const mappedBrand = brandList.find(
+                            (listItem) => listItem.brand_id === code
+                          );
+                          return (
+                            <li key={mappedBrand.brand_id}>
+                              {mappedBrand.name}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                    <li className="itemOption">
+                      재질:{" "}
+                      <ul>
+                        {material_code.map((code) => {
+                          const mappedMaterial = materialList.find(
+                            (listItem) => listItem.code === code
+                          );
+                          return (
+                            <li key={mappedMaterial.code}>
+                              {mappedMaterial.name}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                    <li className="itemOption">
+                      상태:{" "}
+                      <ul>
+                        {condition_code.map((code) => {
+                          const mappedCondition = conditionList.find(
+                            (listItem) => listItem.code === code
+                          );
+                          return (
+                            <li key={mappedCondition.code}>
+                              {mappedCondition.name}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </li>
+                    <li className="itemOption">
+                      구매처:{" "}
+                      <ul>
+                        <li key={purchasePlaceInfo.purchase_place_id}>
+                          {purchasePlaceInfo.name}
+                        </li>
+                      </ul>
+                    </li>
                     <li className="itemOption">구매일자: {purchase_date}</li>
                   </ItemOptionList>
                 </ItemClassContainer>
