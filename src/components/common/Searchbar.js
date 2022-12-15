@@ -2,8 +2,9 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { RiSearchLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { changeOption } from "../../slices/productSlice";
+import { changeFilter } from "../../slices/productSlice";
 import colors from "../../lib/styles/colors";
 
 const FormContainer = styled.form`
@@ -43,6 +44,7 @@ const Searchbar = () => {
   const [keyword, setKeyword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChange = useCallback(
     (e) => {
@@ -54,11 +56,12 @@ const Searchbar = () => {
     e.preventDefault();
     console.log("submit");
     dispatch(
-      changeOption({
+      changeFilter({
         name: "name",
         value: keyword,
       })
     );
+    navigate("/");
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

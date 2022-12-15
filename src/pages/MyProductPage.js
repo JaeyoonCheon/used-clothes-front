@@ -28,6 +28,10 @@ const UserProductContainer = styled.section`
 const UserProductHeader = styled.div`
   display: flex;
   width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid black;
 `;
 
 const UserProductCounter = styled.div`
@@ -89,16 +93,8 @@ const MyProductPage = () => {
                   상품 등록
                 </SmallButton>
               </Link>
-              <SmallButton
-                isFilled={false}
-                colorTheme={colors.blue[0]}
-                fontColor={colors.blue[0]}
-              >
-                자세히 보기
-              </SmallButton>
             </UserProductButtonContainer>
           </UserProductHeader>
-          <hr />
           <div className="products">
             <LargeCardList itemDatas={itemDatas} />
           </div>

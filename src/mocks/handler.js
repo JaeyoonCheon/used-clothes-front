@@ -52,6 +52,8 @@ export const handlers = [
     const elements = Number(req.url.searchParams.get("elements"));
     const page = Number(req.url.searchParams.get("page"));
 
+    console.log("handler page " + page);
+
     const newProductList = [...productList];
     const result = newProductList.slice(elements * page, elements * (page + 1));
 

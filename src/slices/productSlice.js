@@ -28,14 +28,15 @@ const initialState = {
       },
       sort_by: "upload_date",
       order: "asc",
-      elements: "30",
-      page: "1",
+      elements: 30,
+      page: 1,
     },
     location: "서울특별시",
     scope_a_code: 11,
     scope_b_code: null,
     scope_c_code: null,
     listError: null,
+    isLoaded: true,
     productList: [],
   },
   detail: {
@@ -100,7 +101,7 @@ export const productSlice = createSlice({
     changeOption: (state, action) => {
       state.list.options[action.payload.name] = action.payload.value;
     },
-    listProduct: () => {},
+    listProduct: (state) => {},
     listProduct_success: (state, action) => {
       state.list.listError = null;
       state.list.productList = action.payload;
@@ -108,9 +109,13 @@ export const productSlice = createSlice({
     listProduct_failure: (state, action) => {
       state.list.listError = action.error;
     },
-    listNextProduct: () => {},
+    listNextProduct: (state) => {
+      state.list.isLoaded = false;
+    },
     listNextProduct_success: (state, action) => {
+      console.log(action.payload);
       state.list.listError = null;
+      state.list.isLoaded = true;
       state.list.productList = [...state.list.productList, ...action.payload];
     },
     listNextProduct_failure: (state, action) => {

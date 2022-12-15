@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, batch } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -41,6 +41,7 @@ const HeaderSpacer = styled.div`
 
 const ContentContainer = styled.div`
   width: 100%;
+  min-height: 101vh;
   margin-right: auto;
 `;
 
@@ -91,7 +92,7 @@ const NavBar = styled.div`
 
 const sortOrders = ["최신 순", "이전 순", "가격 높은 순", "가격 낮은 순"];
 const HomePage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [count, setCount] = useState(1);
 
   const dispatch = useDispatch();
   const { isLoginModal, isLocationModal } = useSelector((state) => {
@@ -126,17 +127,20 @@ const HomePage = () => {
       scope_c_code: list.scope_c_code,
     };
   });
-  const { productList } = useSelector(({ product }) => ({
+  const { productList, isListLoaded } = useSelector(({ product }) => ({
     productList: product.list.productList,
+    isListLoaded: product.list.isLoaded,
   }));
 
   useEffect(() => {
     console.log("Fetch by new options");
-    dispatch(getCategory());
-    dispatch(getMetadata("colors"));
-    dispatch(getBrandList());
-    dispatch(getPurchasePlaceList());
-    dispatch(listProduct({ filter, sort_by, order, elements, page }));
+    batch(() => {
+      dispatch(getCategory());
+      dispatch(getMetadata("colors"));
+      dispatch(getBrandList());
+      dispatch(getPurchasePlaceList());
+      dispatch(listProduct({ filter, sort_by, order, elements, page }));
+    });
   }, []);
 
   useEffect(() => {
@@ -147,7 +151,6 @@ const HomePage = () => {
     sort_by,
     order,
     elements,
-    page,
     scope_a_code,
     scope_b_code,
     scope_c_code,
@@ -159,7 +162,7 @@ const HomePage = () => {
   const onClickSort = (order) => {
     dispatch(
       changeOption({
-        name: "sorting",
+        name: "sort_by",
         value: order,
       })
     );
@@ -174,26 +177,24 @@ const HomePage = () => {
     );
   };
 
-  const { isListLoaded } = useSelector((state) => {
-    return {
-      isListLoaded: state.loading[`product/list`],
-    };
-  });
-
   const [_, setRef] = useIntersect(async (entry, observer) => {
-    const nextPageNumber = page + 1;
+    console.log("page: " + page);
+    const nextPageNumber = Number(page) + 1;
+    console.log("next page: " + nextPageNumber);
     observer.unobserve(entry.target);
-    await dispatch(
-      listNextProduct({
-        filter,
-        sort_by,
-        order,
-        elements,
-        page: nextPageNumber,
-      })
-    );
+    batch(() => {
+      dispatch(
+        listNextProduct({
+          filter,
+          sort_by,
+          order,
+          elements,
+          page: nextPageNumber,
+        })
+      );
+      dispatch(changeOption({ name: "page", value: nextPageNumber }));
+    });
     observer.observe(entry.target);
-    dispatch(changeFilter({ name: "page", value: nextPageNumber }));
   }, {});
 
   return (
@@ -227,7 +228,7 @@ const HomePage = () => {
             </NavBar>
             <SmallCardList itemDatas={productList}></SmallCardList>
             <hr></hr>
-            {/* {!isListLoaded && <p ref={setRef}> Loading ... </p>} */}
+            {isListLoaded && <p ref={setRef}> Loading ... </p>}
           </ContentContainer>
         </HomePageContainer>
       </Wrapper>

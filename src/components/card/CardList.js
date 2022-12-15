@@ -12,8 +12,6 @@ const Wrapper = styled.ul`
 export const SmallCardList = (props) => {
   const { itemDatas } = props;
 
-  console.log(`itemDatas : ${itemDatas}`);
-
   return (
     <Wrapper>
       {itemDatas &&
@@ -28,8 +26,6 @@ export const SmallCardList = (props) => {
 
 export const LargeCardList = (props) => {
   const { itemDatas } = props;
-
-  console.log(`itemDatas : ${itemDatas}`);
 
   return (
     <Wrapper>

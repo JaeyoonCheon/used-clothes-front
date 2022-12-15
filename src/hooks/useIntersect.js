@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 const defaultOption = {
   root: null,
-  threshold: 0.5,
+  threshold: 1,
   rootMargin: "0px",
 };
 

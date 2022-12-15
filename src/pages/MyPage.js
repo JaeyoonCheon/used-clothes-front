@@ -54,6 +54,10 @@ const UserProductContainer = styled.section`
 const UserProductHeader = styled.div`
   display: flex;
   width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid black;
 `;
 
 const UserProductCounter = styled.div`
@@ -113,7 +117,7 @@ const MyPage = () => {
                 name="email"
                 value={userdata.email}
                 isDisabled={true}
-                onChange={(e) => e.target.value}
+                onChange={() => {}}
                 errorMsg=""
               ></LabelInput>
               <LabelInput
@@ -121,7 +125,7 @@ const MyPage = () => {
                 name="username"
                 value={userdata.username}
                 isDisabled={true}
-                onChange={(e) => e.target.value}
+                onChange={() => {}}
                 errorMsg=""
               ></LabelInput>
               <LabelInput
@@ -129,7 +133,7 @@ const MyPage = () => {
                 name="phonenumber"
                 value={userdata.phonenumber}
                 isDisabled={true}
-                onChange={(e) => e.target.value}
+                onChange={() => {}}
                 errorMsg=""
               ></LabelInput>
             </InfoInputContainer>
@@ -190,7 +194,6 @@ const MyPage = () => {
               </SmallButton>
             </UserProductButtonContainer>
           </UserProductHeader>
-          <hr />
           <div className="item_list">
             <LargeCardList itemDatas={itemDatas} />
           </div>
