@@ -37,6 +37,8 @@ const initialState = {
     scope_c_code: null,
     listError: null,
     isLoaded: true,
+    isEnd: false,
+    isListSuccess: false,
     productList: [],
   },
   detail: {
@@ -99,14 +101,21 @@ export const productSlice = createSlice({
       state.list.options.filter[action.payload.name] = action.payload.value;
     },
     changeOption: (state, action) => {
+      console.log(
+        `Name: ${action.payload.name} / Value: ${action.payload.value}`
+      );
+      console.log(`before: ${state.list.options[action.payload.name]}`);
       state.list.options[action.payload.name] = action.payload.value;
+      console.log(`after: ${state.list.options[action.payload.name]}`);
     },
-    listProduct: (state) => {},
+    listProduct: () => {},
     listProduct_success: (state, action) => {
       state.list.listError = null;
+      state.list.isListSuccess = true;
       state.list.productList = action.payload;
     },
     listProduct_failure: (state, action) => {
+      state.list.isListSuccess = false;
       state.list.listError = action.error;
     },
     listNextProduct: (state) => {
@@ -117,6 +126,9 @@ export const productSlice = createSlice({
       state.list.listError = null;
       state.list.isLoaded = true;
       state.list.productList = [...state.list.productList, ...action.payload];
+      if (action.payload.length === 0) {
+        state.list.isEnd = true;
+      }
     },
     listNextProduct_failure: (state, action) => {
       state.list.listError = action.error;

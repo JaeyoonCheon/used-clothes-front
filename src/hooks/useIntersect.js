@@ -1,4 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { listNextProduct } from "../slices/productSlice";
 
 const defaultOption = {
   root: null,
@@ -8,11 +11,19 @@ const defaultOption = {
 
 const useIntersect = (onIntersect, option) => {
   const [ref, setRef] = useState(null);
-  const checkIntersect = useCallback(([entry], observer) => {
-    if (entry.isIntersecting) {
-      onIntersect(entry, observer);
-    }
-  }, []);
+
+  const { page } = useSelector((state) => {
+    return { page: state.product.list.options.page };
+  });
+
+  const checkIntersect = useCallback(
+    ([entry], observer) => {
+      if (entry.isIntersecting) {
+        onIntersect(entry, observer, page);
+      }
+    },
+    [page]
+  );
   useEffect(() => {
     let observer;
     if (ref) {

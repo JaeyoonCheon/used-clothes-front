@@ -21,8 +21,6 @@ import { toggleLocationModal } from "../slices/modalSlice";
 import LocationModal from "../components/modal/LocationModal";
 import useIntersect from "../hooks/useIntersect";
 
-const Wrapper = styled.div``;
-
 const HomePageContainer = styled.div`
   display: flex;
   margin: 0 auto;
@@ -41,6 +39,7 @@ const HeaderSpacer = styled.div`
 
 const ContentContainer = styled.div`
   width: 100%;
+  height: 100vh;
   min-height: 101vh;
   margin-right: auto;
 `;
@@ -91,9 +90,8 @@ const NavBar = styled.div`
 `;
 
 const sortOrders = ["최신 순", "이전 순", "가격 높은 순", "가격 낮은 순"];
-const HomePage = () => {
-  const [count, setCount] = useState(1);
 
+const HomePage = () => {
   const dispatch = useDispatch();
   const { isLoginModal, isLocationModal } = useSelector((state) => {
     return {
@@ -115,6 +113,8 @@ const HomePage = () => {
     const list = state.product.list;
     const options = state.product.list.options;
 
+    console.log("current store page: " + options.page);
+
     return {
       filter: options.filter,
       sort_by: options.sort_by,
@@ -127,10 +127,14 @@ const HomePage = () => {
       scope_c_code: list.scope_c_code,
     };
   });
-  const { productList, isListLoaded } = useSelector(({ product }) => ({
-    productList: product.list.productList,
-    isListLoaded: product.list.isLoaded,
-  }));
+  const { productList, isListSuccess, isListLoaded, isEnd } = useSelector(
+    ({ product }) => ({
+      productList: product.list.productList,
+      isListSuccess: product.list.isListSuccess,
+      isListLoaded: product.list.isLoaded,
+      isEnd: product.list.isEnd,
+    })
+  );
 
   useEffect(() => {
     console.log("Fetch by new options");
@@ -142,7 +146,6 @@ const HomePage = () => {
       dispatch(listProduct({ filter, sort_by, order, elements, page }));
     });
   }, []);
-
   useEffect(() => {
     dispatch(listProduct({ filter, sort_by, order, elements, page }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -155,6 +158,16 @@ const HomePage = () => {
     scope_b_code,
     scope_c_code,
   ]);
+  useEffect(() => {
+    return () => {
+      dispatch(
+        changeOption({
+          name: "isEnd",
+          value: false,
+        })
+      );
+    };
+  }, []);
 
   const onClickLocation = () => {
     dispatch(toggleLocationModal(true));
@@ -177,61 +190,64 @@ const HomePage = () => {
     );
   };
 
-  const [_, setRef] = useIntersect(async (entry, observer) => {
-    console.log("page: " + page);
-    const nextPageNumber = Number(page) + 1;
-    console.log("next page: " + nextPageNumber);
-    observer.unobserve(entry.target);
-    batch(() => {
+  const newPageRef = useRef(page);
+
+  function fetchNextPage(page) {
+    if (!isEnd) {
       dispatch(
         listNextProduct({
           filter,
           sort_by,
           order,
           elements,
-          page: nextPageNumber,
+          page: Number(page) + 1,
         })
       );
-      dispatch(changeOption({ name: "page", value: nextPageNumber }));
-    });
-    observer.observe(entry.target);
+      dispatch(changeOption({ name: "page", value: Number(page) + 1 }));
+    }
+  }
+
+  const [_, setRef] = useIntersect(async (entry, observer, page) => {
+    observer.unobserve(entry.target);
+    fetchNextPage(page);
+    // observer.observe(entry.target);
   }, {});
 
   return (
     <BaseLayout>
       <HeaderSpacer></HeaderSpacer>
-      <Wrapper>
-        <HomePageContainer>
-          <div className="aside_category_option">
-            <Aside options={filter} onClickOption={onClickOption}></Aside>
-          </div>
-          <ContentContainer>
-            <NavBar>
-              <div className="user_location" onClick={onClickLocation}>
-                <span className="location_name">{location}</span>
-                <img
-                  className="location_icon"
-                  src="location.svg"
-                  alt="location"
-                ></img>
-              </div>
-              {isLocationModal && <LocationModal></LocationModal>}
-              <div className="sort_orders">
-                {sortOrders.map((order, i) => (
-                  <span
-                    className={filter.sorting === order ? "active" : ""}
-                    key={i}
-                    onClick={() => onClickSort(order)}
-                  >{`${order}`}</span>
-                ))}
-              </div>
-            </NavBar>
-            <SmallCardList itemDatas={productList}></SmallCardList>
-            <hr></hr>
-            {isListLoaded && <p ref={setRef}> Loading ... </p>}
-          </ContentContainer>
-        </HomePageContainer>
-      </Wrapper>
+      <HomePageContainer>
+        <div className="aside_category_option">
+          <Aside options={filter} onClickOption={onClickOption}></Aside>
+        </div>
+        <ContentContainer>
+          <NavBar>
+            <div className="user_location" onClick={onClickLocation}>
+              <span className="location_name">{location}</span>
+              <img
+                className="location_icon"
+                src="location.svg"
+                alt="location"
+              ></img>
+            </div>
+            {isLocationModal && <LocationModal></LocationModal>}
+            <div className="sort_orders">
+              {sortOrders.map((order, i) => (
+                <span
+                  className={filter.sorting === order ? "active" : ""}
+                  key={i}
+                  onClick={() => onClickSort(order)}
+                >{`${order}`}</span>
+              ))}
+            </div>
+          </NavBar>
+          <SmallCardList itemDatas={productList}></SmallCardList>
+          <hr></hr>
+          {isListSuccess && isListLoaded && !isEnd && (
+            <p ref={setRef}> Loading ... </p>
+          )}
+        </ContentContainer>
+      </HomePageContainer>
     </BaseLayout>
   );
 };
