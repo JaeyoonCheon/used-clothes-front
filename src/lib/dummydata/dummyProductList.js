@@ -16,7 +16,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2047-06-05T23:17:50.345Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Voluptatem natus veniam rerum nulla deleniti nesciunt quia velit. Omnis amet nihil at error beatae quasi. Ut consequatur praesentium dolore non sed tempora. Inventore quaerat qui consequuntur reiciendis et et nisi aspernatur. Et quas aut dolorem et laudantium saepe quos. Voluptates error sequi est.\nSuscipit aspernatur dolor et debitis ducimus quaerat laudantium sunt. Omnis et ut eveniet sapiente quia et dolore. Ad enim iure velit voluptatem aut distinctio ducimus ullam sapiente. Aut ullam sit quisquam et numquam repellendus provident.\nFacere fugit esse magni. Qui modi non porro. Aliquid qui aut ut ipsam eveniet id non sit est. Itaque aut aut quod nobis. Molestiae sed quam qui odit autem dolorum. Culpa temporibus architecto.",
   },
@@ -37,7 +37,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2058-05-10T01:22:29.618Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Deserunt dicta consequatur. Non odit tenetur culpa laborum consequatur et eius. Consequuntur cum quisquam et et qui mollitia velit optio. Quae eaque eum vitae nihil repellat nesciunt et illum. Aut voluptas velit ut reiciendis.\nQuo asperiores dignissimos et qui. Alias eius velit. Necessitatibus cumque minus praesentium aut provident quas consequatur. Ex voluptatem sit fuga maiores vel velit vel. Alias consequuntur facere praesentium aspernatur temporibus dignissimos distinctio.\nEos in pariatur id fuga. Sed dolor maxime quo itaque. Quam magni ea debitis quod nostrum dignissimos vel. Quo eum dolores. Voluptas illo in voluptas dicta quia iste distinctio placeat. Quasi amet praesentium consequuntur.",
   },
@@ -58,7 +58,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1997-02-28T04:46:54.558Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Id excepturi facere. Cum et eum similique architecto architecto quia placeat. Ea qui itaque.\nIn earum nesciunt laborum id odio tenetur qui consequatur. Quia quae consequatur similique ut rerum nostrum. Dignissimos consequatur ut ullam. Ut occaecati ratione ipsa blanditiis ut omnis dolor. Aut placeat pariatur amet doloremque odit dicta. Similique iure nulla aut occaecati dolores corrupti est.\nOdit aliquam officia possimus nemo in est ratione tempora voluptatibus. Distinctio quia voluptas voluptas architecto est qui pariatur minus. Veritatis rerum nam quae rerum qui. Recusandae consequatur quidem asperiores totam sit non. Dolorum occaecati omnis sunt inventore distinctio voluptatibus non.",
   },
@@ -79,7 +79,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2056-01-05T05:46:11.380Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Rerum sit aut id cupiditate et et consequatur est. Repellendus quibusdam ducimus recusandae. Qui fugit qui.\nSoluta nulla error id enim qui eos ipsum. Ipsa fugiat impedit perspiciatis ut officia. Laboriosam vel totam molestiae deleniti veritatis aliquid voluptate aut enim. Et sapiente occaecati est molestias suscipit quam sit eveniet quasi. Quis magnam expedita excepturi similique amet exercitationem reiciendis id.\nEt ea vitae praesentium qui libero nulla. Deleniti atque inventore. Tempore delectus rerum assumenda dicta eum. Cumque nemo quia ut id in a. Excepturi deleniti dolor sed tempora repellendus eius. Facere minus ut a dignissimos et labore beatae.",
   },
@@ -100,7 +100,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2054-10-31T05:14:14.616Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Laborum in ipsam modi. Earum optio veniam placeat hic sint quasi voluptas. Ducimus asperiores quas ut.\nAccusamus adipisci beatae consequatur minus qui. Tempora architecto eius sit aut repudiandae facilis et. Cupiditate natus accusantium quas repudiandae ut.\nMollitia consequatur omnis. Et qui autem et aut rerum quo aspernatur molestiae. Nostrum ex dolorem corrupti odio iure autem et. Cum aut iusto qui reprehenderit delectus. Nihil aspernatur aperiam laboriosam dolorem magnam et distinctio reprehenderit minus. Porro reiciendis perspiciatis quidem consequatur voluptatem natus voluptatem.",
   },
@@ -121,7 +121,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2097-07-20T08:54:04.137Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Quo aliquid explicabo consectetur consequatur optio reprehenderit nemo nobis. Quia molestiae voluptatem vitae nemo. Necessitatibus assumenda et. Doloribus placeat ratione minima quae recusandae numquam.\nMaiores et quas facere quae et est quibusdam soluta quisquam. Aut quisquam deserunt possimus illum. Non molestiae ut. Eaque doloribus dignissimos dolore saepe. Ipsum aliquid voluptatem in aliquid aliquam.\nDolorem unde quia itaque sit et est omnis consequuntur unde. Laboriosam velit aperiam laboriosam sunt. Sequi aut fugit a iure vero molestiae consequatur atque.",
   },
@@ -142,7 +142,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2046-05-07T08:50:11.116Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Aperiam ab in perspiciatis quo eos. Sint repellat aut facere rem aut unde tempore. Sed in omnis aliquid voluptatum quia fuga. Accusamus ipsam excepturi aut minus corrupti sunt aut eaque. Eveniet laborum quas aliquam et accusantium rerum dolor ut doloribus. Sunt quas minima facere dolores veniam.\nConsectetur sunt laborum est ipsam. Laborum velit sunt quod ea sed quo quo sed. Laudantium quis magni illo laudantium.\nDistinctio sed distinctio ex qui nostrum iste delectus sunt. Quo mollitia quidem voluptates sit veritatis voluptatem esse doloremque. Qui qui harum nihil et consequatur dolor sed repudiandae labore. Dolores quo molestias est totam. Aperiam quaerat laboriosam dolore temporibus ea nam aperiam aperiam quaerat.",
   },
@@ -163,7 +163,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2018-03-24T14:11:59.241Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Sint voluptatem saepe rerum. Ratione consectetur est sunt voluptatum minima omnis repellendus voluptatibus. Dolores veniam in perspiciatis ut nobis expedita. Tempore qui error tenetur possimus.\nUt sunt pariatur et velit doloremque velit similique. Quas atque maxime quia. Debitis voluptatem et perspiciatis optio sit quis in iusto. Ut sed praesentium.\nNihil amet non ut. Hic nam qui consequuntur eos placeat. Esse quis est pariatur cumque et beatae dolorem quibusdam excepturi. Ex voluptatem illum nulla aliquam blanditiis. Quae molestiae iure nostrum corrupti.",
   },
@@ -184,7 +184,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2001-07-09T09:57:36.572Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Exercitationem eum minima sit sunt sed ipsam velit. Voluptas unde rerum dignissimos tempora. Est nesciunt facilis et nobis ipsam quam architecto. Molestias ipsa accusamus ut et delectus sed nihil voluptas quas. Sequi eum quia quibusdam voluptates.\nVoluptas doloribus commodi ratione nobis autem cumque quis ut nobis. Cum hic sed odio. Id adipisci ut dolor dolores aut. Consequatur et amet ut vel maxime veniam. Tenetur ipsum quibusdam voluptatibus totam rerum error possimus eos.\nSint quo consequuntur quisquam quam non itaque minus. Quia labore quia atque architecto excepturi voluptas. Molestias ut distinctio ullam reiciendis dignissimos qui vel. Amet aliquam ea reprehenderit quo. Necessitatibus qui omnis ullam. Quis maiores nulla provident.",
   },
@@ -205,7 +205,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-07-26T12:39:51.944Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Quas accusantium autem odio ipsum. Laudantium fugit facilis cum. Quia laborum qui. Et cumque esse pariatur vero.\nLaudantium qui incidunt voluptas quo et ullam consectetur. Omnis sed soluta harum voluptatem et. Nihil molestiae ut commodi provident dolores. Tempore aut possimus aperiam enim ut.\nEx adipisci et voluptas. Iste voluptas sint sit autem. Illum harum voluptas consequatur eius qui fugit sint.",
   },
@@ -226,7 +226,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2091-11-06T17:39:09.240Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Iste quibusdam expedita. Aut maiores iste ipsam quia ex. Quibusdam ducimus suscipit omnis saepe ut fuga deserunt et. In et ratione.\nIpsa est quia porro repellendus. Accusantium explicabo modi consequatur earum libero illo nihil necessitatibus est. Voluptas praesentium mollitia nam fuga minima ea consequatur. Laboriosam reiciendis nemo voluptas. Commodi sit ducimus.\nReiciendis architecto dolore repudiandae quas totam. Vero iure a et alias vel et officia. Ut molestias praesentium. Aut incidunt aliquid vitae et. Voluptate omnis alias ipsa repellendus accusamus omnis deserunt. Cumque unde sequi.",
   },
@@ -247,7 +247,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1999-02-17T16:49:37.246Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Omnis harum quasi minima architecto et iste cum quo. Animi mollitia nulla. Et aliquid laborum ut. Nihil quidem esse distinctio at.\nUt fugit qui rerum sit culpa. Aut et saepe possimus modi. Architecto sit nostrum voluptas minus enim expedita eveniet. Quidem ex qui qui dicta excepturi. Nam molestias labore.\nAutem ea non dolor odio quia labore non quasi itaque. Hic quos fuga. Assumenda optio error non rerum. Ut non similique esse recusandae doloremque dicta veniam vel.",
   },
@@ -268,7 +268,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2036-12-08T14:27:18.356Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Id eligendi quibusdam. Ut aut asperiores repudiandae ratione quos atque ut voluptatem eaque. Cumque error dolores.\nSuscipit et quia est ratione. Quis modi et fuga et. Aut ut odit velit iusto possimus. Sequi sapiente eaque nobis nam ratione qui sapiente. Iure maiores iusto. Non aut quisquam aut perferendis cum ex ab.\nMaiores est nostrum repellendus non. Similique ea quia. Praesentium est eos sunt quo nobis cupiditate et nam aliquam. Illo et quisquam nulla deserunt suscipit. Eum labore aliquid tenetur officia nobis. Eligendi voluptatem aspernatur consequuntur praesentium et voluptates.",
   },
@@ -289,7 +289,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2079-07-28T12:30:15.415Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Ut expedita sunt qui sequi et non pariatur provident et. Laborum occaecati est praesentium modi fugiat alias. Est necessitatibus in accusamus odio voluptatum molestiae cum autem. Occaecati ipsum architecto sit laudantium. Doloribus velit voluptas quis nihil ipsa cupiditate commodi consequatur.\nDeserunt rem natus dolores id. Quo magnam illum aut numquam cupiditate qui aut voluptas ut. Quia magnam officiis qui. Tempore ut et expedita ut in.\nNulla adipisci et maxime et fugiat eos voluptate. Quisquam cumque minus ullam. Sit unde voluptatem porro cum libero ducimus vel officiis. Rerum reprehenderit vel quasi omnis magni deleniti.",
   },
@@ -310,7 +310,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2075-12-06T22:36:57.495Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Sed cupiditate assumenda sequi ullam ipsam qui praesentium molestias aperiam. Omnis voluptatem iure. Maiores est amet ullam sunt et vero et. Culpa corrupti labore similique nesciunt nemo. Aspernatur deleniti possimus ea dignissimos qui.\nConsequatur animi totam omnis omnis id enim consequatur debitis ipsum. Molestiae voluptatem voluptas eveniet eius est in voluptates dicta. Voluptatum vero sit. Quis quo beatae velit. Veniam doloremque quidem sed quaerat.\nAut deleniti perspiciatis enim sed expedita distinctio. Consequatur voluptate et exercitationem sapiente iusto. Asperiores quo autem aliquam rerum ex. Cum et cumque iste nobis ut voluptate et tempore eius.",
   },
@@ -331,7 +331,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2051-10-19T11:19:20.278Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Autem est sequi veniam corrupti sit voluptates laboriosam quos eaque. Dignissimos qui provident repellat soluta eveniet aut expedita sequi. Non a delectus minima rerum a. Sed animi dolorem ut mollitia itaque facere.\nEt fuga et delectus. Molestiae nostrum rerum commodi quis aut ut ipsam. Autem suscipit maiores voluptate hic dolorem iusto modi. Corporis qui alias laboriosam ea explicabo id. Vel omnis dolor ut vel nam consequatur inventore dolorum.\nDolorem veritatis odio eveniet reprehenderit nihil et. Blanditiis omnis labore minus eum quae laboriosam cupiditate molestiae. Aliquid id velit totam qui in neque facilis. Molestias nesciunt eius minima quos.",
   },
@@ -352,7 +352,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2091-02-08T18:29:44.321Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "In magnam impedit sed sequi voluptate eaque minima aut voluptatibus. Labore blanditiis et. Numquam odit officiis eos nostrum rerum.\nUllam error provident unde non dignissimos praesentium ut vel. At ut harum ut quaerat fuga. Dolorum sunt sint molestiae recusandae corporis. Placeat dolorem esse nihil nisi recusandae magni. Quibusdam omnis aut et voluptatem. Hic adipisci perferendis cumque delectus quam aut nihil minima.\nLaboriosam voluptatem eius qui delectus minus sit. Hic vitae repellat. Et sed facere sunt quaerat reiciendis praesentium voluptatibus voluptate. Ab in eligendi nesciunt ut id necessitatibus omnis exercitationem itaque.",
   },
@@ -373,7 +373,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2065-02-12T11:43:04.677Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Nihil et id eos cum autem est. Magnam maxime qui quidem delectus adipisci. Ipsam eius est dicta deleniti dolor ad eum voluptatem.\nUllam veritatis quos sint est sed ut cumque vel et. Sunt fuga sed temporibus et autem nobis. Sed hic corporis.\nAssumenda voluptatem est doloribus. Vel ut esse. Aut aliquid quo dolorum et. Illum ut qui esse sit quibusdam autem et aut.",
   },
@@ -394,7 +394,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2048-07-16T01:06:24.785Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Fugiat nostrum maxime et sunt molestiae eos magni eaque consequuntur. Magnam molestias eos rerum ex ipsam. Aspernatur in doloremque sapiente quia cumque minus quam optio facilis. Rerum a eos tempore quis saepe.\nLabore non et nobis maiores eos mollitia exercitationem. Et magnam vero saepe quaerat saepe vel atque dolor. Modi culpa autem dolore. Placeat non impedit veniam similique rerum earum nisi dignissimos sunt. Modi iusto quo quasi in repudiandae quo qui quibusdam in.\nId voluptatem sint sint aspernatur qui deserunt magni. Ab doloribus magnam eum veritatis possimus rem. Blanditiis aut occaecati doloremque tenetur repellat dolorem labore. Corrupti inventore commodi optio officiis labore voluptatem aut iste. Ut iusto et a dolor sint et.",
   },
@@ -415,7 +415,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1998-10-19T13:19:24.537Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Earum ut a aut voluptatum. Dolorum iusto quod sed nam totam sit magni soluta dignissimos. At autem sint perferendis sed veniam. Voluptas temporibus doloribus quos dolore.\nVoluptas aut ipsum. Aut eius ut veritatis sunt ut consequuntur. Rerum repellendus tempora at inventore. Totam velit deleniti. Cupiditate porro alias ut fugiat necessitatibus. Illum maxime cupiditate exercitationem enim asperiores non fugiat.\nIpsum nemo exercitationem pariatur eum eveniet. Voluptate sed qui modi aut ea culpa porro. Velit laudantium delectus. Aliquid delectus ut. Voluptatibus corporis quo aliquam amet sunt. Facilis rerum laboriosam a sunt soluta expedita necessitatibus ipsam accusantium.",
   },
@@ -436,7 +436,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2057-01-09T13:22:16.538Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Eum dolores sequi quasi ullam vel eligendi quaerat. Deserunt et consequatur eius. Provident corrupti magni ab expedita eos ut tempora.\nVoluptatem ut est nesciunt aut incidunt. Aut totam omnis necessitatibus. Delectus similique harum quidem enim sint nihil similique et eaque.\nVitae et voluptas ducimus debitis. Aut earum laborum aut in dicta nisi ut ipsa. Incidunt molestiae qui voluptates qui iure nesciunt.",
   },
@@ -457,7 +457,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2036-05-24T09:41:54.267Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Quasi qui in fugit autem eaque nam soluta magnam ut. Cupiditate eum qui ea molestiae aut placeat eveniet ut. Fugiat unde enim sequi ad. Doloribus omnis ut maiores esse sunt.\nMolestiae quia commodi odit modi. Dolorum ea consequatur vel et quos modi et dolores veritatis. Adipisci porro qui et ut ab possimus. Voluptatem consequatur et reprehenderit architecto repudiandae optio minus ut. Omnis exercitationem repellat quod accusantium sed voluptatibus voluptatibus perspiciatis omnis.\nEos aut quia et nihil odit ut necessitatibus quas non. Culpa iusto eos. Minima reiciendis excepturi dolor esse repellat dolores. Omnis earum beatae est enim voluptas cum. Reprehenderit excepturi dolorum ea qui reiciendis laudantium sed. Dolores repudiandae qui cumque dolor.",
   },
@@ -478,7 +478,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2053-04-08T23:09:35.651Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Deleniti pariatur eveniet excepturi. Iste et natus quia nihil ullam et eos laboriosam ad. Nihil cupiditate in ratione impedit beatae et sapiente non nihil. Modi dolores laudantium et autem tempora. Temporibus asperiores consequuntur consequatur ab dicta sed molestiae eligendi aut.\nDolorem accusantium voluptas nisi aperiam. Quasi quia distinctio rerum voluptatum eum error facere ipsam aut. Consequatur eum praesentium voluptas quis reprehenderit. Ipsum vel quam incidunt incidunt aut ad soluta est quasi.\nFugit consequatur adipisci adipisci. Natus possimus natus. Vel et in non sint aut in rerum ut.",
   },
@@ -499,7 +499,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2094-01-21T23:39:53.557Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Occaecati enim accusantium aut nobis. Id facilis eaque suscipit officiis. In iusto vitae deserunt voluptatem reiciendis dolores et. Nemo perspiciatis ipsa inventore.\nPariatur temporibus nam rem consequatur facere qui sint quis. Accusantium qui dolorum quis. Sunt et sequi deserunt cumque. Praesentium atque beatae ipsam non autem ipsum rem. Occaecati pariatur dolorem consectetur quia laborum et voluptatibus et recusandae.\nDolorem est et. Quae molestias fuga. At nesciunt dolorum.",
   },
@@ -520,7 +520,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2047-06-29T18:08:44.468Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Est qui sint placeat quibusdam modi. Cum rem temporibus sequi delectus laborum alias provident. Odit et dolores id totam iure velit placeat alias. Architecto accusamus magni quod rem voluptate voluptates. Non rem nisi eos. Velit deserunt dolore debitis et ut.\nVeniam sit ab aperiam sed quia et. Voluptas nesciunt tempore totam fugit vel non. Et facilis molestiae aut molestias blanditiis. Debitis accusamus eligendi voluptatum dolor nulla et dolores et. Est blanditiis natus.\nAut consequuntur rerum. Amet nihil amet velit ea ad. Mollitia officiis a voluptatibus nostrum in quaerat. Esse quia quis eum voluptas ipsum optio ad.",
   },
@@ -541,7 +541,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2017-03-23T10:20:42.862Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Sed molestias error nulla neque officiis et commodi vitae voluptatum. Nemo odit fugiat. Laboriosam odit numquam dicta. Ut eum et optio modi quibusdam est sint. Illo aliquid atque iusto necessitatibus cupiditate adipisci vel qui sequi. Nisi est odio aut repellat impedit voluptas reprehenderit quo aut.\nTempora aliquam in aut ipsum eos. Corporis laboriosam aliquam et repellendus voluptas. Rerum quam molestiae repudiandae.\nAut eum consequatur omnis. Eum enim aspernatur cupiditate. Non non iste rerum voluptatem et unde. Sapiente voluptas facilis id rem. Dolores iure sint est. Minima non assumenda eaque illo consequatur.",
   },
@@ -562,7 +562,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1997-08-15T14:06:35.969Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Esse vitae architecto eligendi dolore nulla nam nobis est quidem. Et enim maxime cumque. Aspernatur tenetur fuga libero necessitatibus suscipit non quia eius et.\nRepudiandae deserunt rerum inventore ad. Consequatur enim vitae dolores quibusdam rerum debitis ea dolor voluptas. Dolores sit occaecati quas esse deserunt. Provident qui consequuntur modi facilis velit aperiam.\nAut ut at eius nemo atque magni itaque. Et pariatur incidunt. Temporibus voluptatem et minus dolores optio molestias rerum autem dicta.",
   },
@@ -583,7 +583,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2000-11-30T19:19:25.149Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Culpa dolorem sunt vitae ipsum suscipit nobis asperiores. Ducimus quia voluptatem. Non dolore dolor rerum. Qui perspiciatis ut veniam dolores. Qui voluptatem omnis ratione voluptates voluptatibus.\nSaepe ut dolor quia dolorem et labore aliquam adipisci explicabo. Necessitatibus et possimus voluptas vero labore deleniti praesentium ea. Non rerum animi.\nEt eveniet consequatur nemo omnis. Expedita qui in eius consectetur. Vitae autem enim maiores quo nisi nihil expedita aut. Aspernatur totam atque. Est exercitationem atque hic voluptatem. Itaque consequuntur quia omnis tenetur.",
   },
@@ -604,7 +604,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1998-12-02T04:55:43.149Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Sed fugiat vel ab. Rem amet eos in dolorem omnis. Soluta enim quia mollitia debitis et. Ut aut rerum fugit vitae atque magnam quis totam. Ab saepe libero voluptatem laborum harum debitis rerum voluptatem. Consequatur similique corporis ut et a architecto.\nAmet inventore incidunt. Minima et est atque ullam inventore reiciendis repellendus. Dolorem odio eius est repellat occaecati laudantium animi harum.\nIllum earum id est fuga doloribus corporis voluptas rerum. Illum in quaerat corrupti dicta ipsam. Ex consequatur libero. Sit eos fugiat quia ratione.",
   },
@@ -625,7 +625,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2033-07-03T02:36:28.913Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Adipisci fuga adipisci. Aut non voluptatibus tempore ut modi qui suscipit. Nostrum voluptate dolorum nihil alias qui repellendus voluptas. Minus eligendi dolor.\nEarum non dolorem magni voluptatem reprehenderit et eveniet mollitia soluta. Veritatis doloremque qui non. Nam consequatur qui dolores totam. Ducimus et qui enim cupiditate expedita similique sapiente eaque. Quos repudiandae qui iusto rerum. Commodi et dignissimos non aut possimus aut.\nVoluptatum facilis ducimus omnis magnam occaecati sequi quo tempore. Perferendis maiores sequi sed explicabo. Voluptatem commodi ullam deleniti nobis rerum dignissimos dolorem. Esse eaque esse. Accusantium sit eius enim.",
   },
@@ -646,7 +646,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2037-02-03T07:14:46.906Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Sit molestiae recusandae facere quaerat quis voluptatem qui. Pariatur autem aut cum qui. Totam reprehenderit totam cumque aut tempore ipsam maiores. Illum culpa qui. Ratione omnis voluptas voluptas nisi quia aut qui reiciendis. Occaecati in natus dolorum.\nLibero nihil consequatur sit ipsa non est aut minus non. Reiciendis beatae expedita. Earum quasi debitis sit. Illo amet quidem. Sed asperiores sunt temporibus non sunt modi possimus et dolor.\nVoluptas incidunt exercitationem laborum temporibus sunt placeat ducimus. Esse quis fugiat ullam doloremque consequuntur magni. Dolore animi eveniet aut ut ut blanditiis.",
   },
@@ -667,7 +667,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2010-09-22T17:59:45.364Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "In eum sapiente praesentium velit error culpa. Deleniti non corporis et sed. Ducimus officiis velit ipsa provident aut atque rem temporibus. Nesciunt maxime saepe. Officiis asperiores nihil.\nSapiente ea similique. Sit vitae qui placeat ipsam illo. Magni nihil voluptatem dolore quo earum adipisci. Unde molestiae nemo. Qui corporis voluptas nobis maxime.\nQuia nisi rem a. Vel natus qui molestiae et. Quod est aut officia culpa non porro accusantium aut. Nemo in possimus qui aut ipsa non. Eligendi occaecati beatae aspernatur pariatur eligendi dolor est commodi sequi.",
   },
@@ -688,7 +688,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2085-08-28T13:00:13.739Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Vel reprehenderit nemo. Ea maiores est. Ducimus velit tenetur quia voluptates dolor consequatur nemo in est. Natus consequatur necessitatibus possimus magnam aspernatur est. Impedit eum ut omnis et quasi officia aut voluptatem expedita. Eos similique nobis soluta aliquam.\nEos omnis fugiat odit perferendis facilis porro. Aut minus officiis ut. Saepe libero a nulla tenetur nulla.\nDeleniti et eveniet assumenda et quidem numquam aut qui dicta. Qui mollitia rerum alias dolor fugiat animi. Cum aperiam libero sit. Impedit iure nobis molestiae. Sunt et cumque fugiat mollitia. Voluptas dolore officiis omnis.",
   },
@@ -709,7 +709,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2098-09-30T08:36:05.731Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Qui dolore fugiat officiis et. Qui qui beatae nostrum quibusdam necessitatibus suscipit molestiae. Nisi sit voluptatem consequatur repellat eveniet dolorum dolores consectetur harum.\nEum autem aut sunt et. Consequatur vitae ratione eaque saepe ab eligendi optio. Aut dolorem in. Neque sint quo sint.\nSint nostrum dolorem. Et eaque tempora. Voluptas eum velit accusantium. Exercitationem illo debitis magnam. Nemo rerum odit.",
   },
@@ -730,7 +730,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2038-10-03T21:27:55.800Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Voluptatum cumque aperiam ratione incidunt quibusdam et. Quaerat quam modi iste itaque enim iure consequatur ratione. Qui unde eligendi quisquam. Nemo aut omnis.\nVoluptatum expedita distinctio quo quis. Ea eos ad officiis velit nihil sit ut deleniti. Vel quas voluptatem consequuntur similique laudantium aut esse ex blanditiis.\nSed enim ut autem hic. Voluptate at laborum impedit minima. Soluta sint non ullam soluta. Itaque cum at dolor et nesciunt distinctio rem. Quis vel qui.",
   },
@@ -751,7 +751,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2021-10-16T16:07:36.566Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Aut numquam nesciunt asperiores laudantium necessitatibus culpa ut enim. Aut itaque error et sunt sint. Ut sunt quis quas enim modi.\nSit et doloribus. Deleniti sapiente iste voluptatem sit enim corporis itaque. Quia asperiores quasi sint. Quo vero maiores illum possimus fugiat neque temporibus. Eligendi enim consequuntur omnis eos quae exercitationem. Nam quasi rerum minus libero omnis tempora quasi.\nEt et corrupti. Odio optio laudantium. Sunt maiores hic dolor ipsum. Rerum qui ad voluptatem nihil quaerat id quae dolorem aut. Praesentium aliquam eum animi ratione voluptatem illum alias repellendus quis. Saepe aut rerum soluta eum deleniti.",
   },
@@ -772,7 +772,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2003-01-25T23:04:37.965Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Nesciunt quas provident placeat omnis fugit voluptatem tenetur. Omnis voluptatibus ea modi libero exercitationem temporibus libero laborum laudantium. Nisi quasi et iste necessitatibus ex consequuntur. Magnam fugit doloremque alias quia officia reprehenderit esse soluta fuga. Dolorum esse aut voluptates velit natus. Ut quos quaerat vitae fugiat suscipit sed inventore et et.\nPariatur numquam sint ullam suscipit dolor voluptatem voluptates voluptas. Suscipit et molestias aspernatur voluptas cumque. Sit debitis rerum repudiandae et ea cupiditate earum. Voluptatem consequatur ratione ut sint. Quod itaque sed molestiae deleniti. Beatae voluptas non consequatur.\nOmnis quibusdam ut alias nesciunt hic expedita. Perferendis recusandae doloribus iste provident. Quo aut deleniti quos et voluptatem nisi.",
   },
@@ -793,7 +793,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2061-05-10T08:16:11.176Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Ad libero dolor fugit rem ea. Laborum nobis harum modi voluptas. Et qui sint dolor sit qui impedit sed.\nEveniet error repudiandae. Ut non quisquam rerum illo repudiandae fugit deleniti illo. Omnis dignissimos aut natus possimus eius ipsum aut et tempora.\nEius qui dolor iste. Quia ea dolor aut qui corporis blanditiis consequuntur sint porro. Consequatur eius doloribus quo dolorum nam laborum. Illo consequuntur et corporis iste possimus. Accusamus ut esse a. Quia labore fugit.",
   },
@@ -814,7 +814,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2025-08-12T18:36:38.597Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Facere molestiae nesciunt maiores aut voluptatum quas. Inventore architecto quos illo eos est. Qui temporibus maxime labore. Dolores numquam ut totam est asperiores non et quia. Incidunt et rem excepturi accusantium mollitia voluptatibus perspiciatis nam magni.\nQui inventore suscipit optio eveniet et placeat consequatur dolores. Accusantium numquam harum reiciendis voluptates exercitationem natus. Modi quia consequatur nulla sed dolorem quibusdam reiciendis ratione. Possimus laborum quae quo ut laboriosam et quia. Consequatur recusandae qui fugiat sunt. Reiciendis recusandae esse nobis et sapiente cumque.\nAt cupiditate in. Quos fuga saepe fugiat porro necessitatibus aut eos. Et voluptatem nulla enim. Temporibus dignissimos minus et vel culpa.",
   },
@@ -835,7 +835,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2002-07-01T15:04:11.973Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Dolores quam et veniam ratione ea. Non aut sed molestiae facere eos dolorem quis consectetur. Nostrum maxime asperiores. Occaecati possimus exercitationem accusantium modi sed autem.\nModi repellendus maiores quod. Qui nostrum libero quia minima ut et id labore temporibus. Quia delectus quaerat quia consequatur rem fugit illum quis culpa. Error et illum. Ducimus reiciendis quos quod non quis omnis. Eligendi laborum tempore et voluptates.\nVoluptate occaecati voluptatem delectus id illo. Ut pariatur qui dignissimos quia illo vel quia. Dolor illo quo quaerat laborum eveniet corrupti quae voluptas. Temporibus et aut maiores dolor dicta aut. Eaque sed sit nemo totam est nostrum sit.",
   },
@@ -856,7 +856,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2002-06-07T20:53:12.616Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Impedit natus tempora deserunt. Esse fuga aut neque odio eos ad iusto. Perferendis omnis sapiente autem ducimus labore. Alias nesciunt quasi culpa iure qui.\nAccusamus aut voluptates aut et dolorum. Iure et est sit asperiores. Quas dolorem voluptate eaque id tenetur. Velit labore ab iure repudiandae architecto maiores qui omnis veniam. Quia a veniam magni exercitationem nam deserunt maiores ut repellendus. Ipsum fugiat ratione laudantium excepturi eveniet consequuntur ea at.\nCupiditate quia nihil. Et quo error distinctio dolore id ad cumque dolorem repudiandae. Assumenda et quam necessitatibus nobis commodi minus. Inventore quia facilis sequi qui in. Dignissimos voluptates dolorem autem laboriosam ullam soluta pariatur consequatur consequatur.",
   },
@@ -877,7 +877,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2060-01-24T01:13:52.051Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Optio magni ipsum et esse maxime. Repellendus laborum commodi asperiores ea qui earum molestiae est tempora. Delectus consequatur et quos unde et quis error velit maxime. Possimus non dignissimos illo quibusdam qui enim similique quas. Labore quasi eos neque quod. Adipisci quae sit illo laboriosam quasi qui adipisci.\nAut vel perspiciatis velit et. Iure similique vel reiciendis cum voluptatem est. Excepturi accusamus aliquam corrupti deleniti at cupiditate dolore dolore. Est quaerat numquam.\nIllo nesciunt vitae excepturi aut et numquam quidem. Non itaque exercitationem aut. Quia fugit dolor assumenda illo dolorum aut sequi dolorem fugit. Consequatur optio illo ducimus.",
   },
@@ -898,7 +898,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1992-08-08T17:47:27.987Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Ducimus quae exercitationem distinctio in impedit doloribus veritatis aliquid ut. Deserunt eos impedit. Natus doloribus similique debitis quasi molestiae illum.\nIste enim quae eos assumenda eos. Nihil molestias minus voluptas reprehenderit. Distinctio et nihil veniam est ut distinctio voluptates. Ad omnis quo sit autem natus fugit. Sint veniam nobis rem accusamus cupiditate modi non est ut.\nQuae ea qui quis debitis sint nulla libero beatae quia. Maiores et at quod sit explicabo error. Corporis totam dolorem blanditiis aliquid nemo. Ut totam non voluptatem repellat ea perspiciatis. Vero quam suscipit laboriosam. Dolores nobis a ut placeat sed.",
   },
@@ -919,7 +919,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2072-09-21T03:04:56.084Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Sint ducimus provident occaecati et placeat ea. Facere eos eum explicabo eaque rerum voluptatem ipsa. Asperiores tempora et ipsum. Officia et mollitia nihil quibusdam voluptate. Delectus provident et delectus. Optio eos quas itaque nihil excepturi aut reprehenderit voluptas dolor.\nVoluptates culpa laborum dolor omnis expedita. Dolorum ipsa facilis nesciunt eius quisquam itaque. Et odit doloribus earum totam quasi. Quia voluptate nostrum. Molestias recusandae sequi molestiae magnam exercitationem eveniet quaerat.\nVoluptatem sit illo soluta ut excepturi possimus hic consequuntur dolore. Architecto dolorem impedit qui facere sit facere dolore. Quo similique molestias et. Voluptatem culpa voluptatem assumenda nulla animi ut impedit qui. Cum assumenda repellendus voluptatem reprehenderit alias ut. Ab iste aliquid quam eaque delectus.",
   },
@@ -940,7 +940,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2008-09-30T04:34:54.481Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Enim aperiam qui quis deleniti dolore ipsum. Atque voluptatem voluptatibus eaque assumenda et sapiente alias atque est. Quam ad debitis. Quod molestiae culpa provident explicabo ducimus sint omnis provident nihil. Impedit consequuntur culpa quis facere et.\nQuia iusto voluptates corrupti impedit voluptatem nulla qui. Dolorem molestiae non ut dignissimos voluptate molestias. Error quaerat sunt voluptatem. Placeat nobis odio dolorum. Eos et tempore dolor id impedit saepe pariatur. Officiis rerum qui eius inventore consequatur.\nDolorum sunt hic. Quo libero laboriosam eligendi sunt alias provident fuga id. Laborum amet quos laborum culpa magnam soluta dolorem eius. Harum rerum cum magni. Eius non qui animi qui harum consequatur culpa quis voluptatem.",
   },
@@ -961,7 +961,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-10-21T21:30:16.869Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Iusto temporibus rerum porro est. Explicabo deserunt sed. Id molestias nesciunt nam sit unde occaecati consequuntur ut. Architecto at soluta nisi.\nQuidem quis aliquid sit. Facilis laboriosam minima. Aut harum non debitis adipisci nobis omnis voluptatum eligendi sint. Beatae consectetur ipsum in reiciendis.\nUt nostrum enim voluptatem molestiae excepturi veniam. Iusto animi atque architecto dicta ad quia inventore aliquam. Aperiam odio dolorem accusamus quia suscipit quibusdam tempore molestias iusto.",
   },
@@ -982,7 +982,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2008-09-19T12:16:07.719Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Perferendis sed vitae dolores adipisci eligendi culpa perspiciatis nesciunt nihil. Fugit nemo sint consectetur reiciendis ut doloribus. Assumenda rerum voluptatum. Similique alias tenetur unde dolore sint non et eligendi.\nEt molestiae explicabo neque et autem libero magnam omnis. Veniam sit omnis qui accusantium eaque excepturi rem. Dolore sunt esse iusto ut eum eos nulla qui et. Neque labore ratione molestiae est. Maiores iure qui delectus quisquam numquam voluptatem.\nSimilique qui possimus odio voluptatum qui in. Dolorum ut sit nam ut ut odit ducimus voluptates. Velit veritatis et mollitia assumenda et aut est et. Facilis enim a ut enim molestiae provident nulla voluptatem.",
   },
@@ -1003,7 +1003,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2040-10-19T02:37:44.900Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Porro illum provident. Eligendi voluptas earum ad. Nihil ut minima hic cupiditate et dolorem et nobis debitis. Sed quasi est. Dolore quia rerum eos nam aspernatur enim inventore sint enim.\nEst inventore aperiam numquam praesentium. Tempore vero ipsam doloremque laborum veritatis facere consequatur qui voluptas. Sapiente perspiciatis dolorem molestias eos est non. Beatae laboriosam perspiciatis. Neque eius adipisci.\nConsequatur dignissimos occaecati ullam neque qui aut. Voluptas quasi alias distinctio corporis sed dignissimos quia officia. Consequuntur vel nulla. Consequatur natus ab laborum voluptate suscipit neque qui qui. Quidem aut maiores recusandae esse vitae aut eius earum soluta. Ut excepturi magni omnis voluptatibus quaerat quia.",
   },
@@ -1024,7 +1024,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2012-02-20T01:37:17.002Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Qui et harum reiciendis quis quo magnam culpa. Qui consequatur sed impedit. Quia labore illo soluta voluptas animi dolorem. Et quibusdam deleniti.\nMaxime dolore rerum modi nulla ut. Et quo rem in. Qui optio harum.\nQuis corporis eius explicabo placeat iusto suscipit qui iure voluptas. Dolore praesentium dolorum enim ea ad. Eum sit vero animi maiores voluptatem optio atque nihil eum. Blanditiis expedita itaque.",
   },
@@ -1045,7 +1045,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2095-12-06T08:27:30.921Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Voluptatum atque delectus consequuntur praesentium sit. Dolores odio nihil. Aut doloribus consequuntur ratione sit nostrum qui. Quam porro voluptatum laborum optio voluptas sit explicabo in aliquid. Alias non quaerat ut at corporis consequatur numquam minima quas. Est quam quod eveniet aliquid inventore id sunt.\nSoluta voluptatem quibusdam itaque omnis autem. Id possimus unde et eos non corrupti sint minus quo. Aperiam numquam repudiandae ullam expedita consectetur accusamus nisi commodi commodi. Rem ipsa quas.\nNemo enim minus reiciendis. Iure illo consequatur in veniam corporis consequatur fugiat consequatur. Et voluptatibus veniam. Eaque non et aspernatur. Praesentium rem fugiat neque quidem corporis.",
   },
@@ -1066,7 +1066,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2038-01-29T14:12:09.593Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Quasi dolores in voluptates harum tenetur tenetur. Quia assumenda unde dolore nemo iste aut deserunt earum consequatur. Et pariatur quis beatae atque. Voluptas cupiditate numquam aut fugiat fugiat consequuntur eum accusamus voluptatum. Eligendi omnis voluptatem molestias rerum provident ullam vel. Dolores distinctio dolores quo enim.\nVeniam et quisquam et sapiente dolores natus hic. Numquam quia ullam. Ducimus reprehenderit perspiciatis laboriosam et vel numquam iste.\nDolores placeat cum. Et explicabo odio voluptas vel autem natus praesentium qui. Iste et dolor omnis et et officiis est tempore autem. Voluptas asperiores aliquid omnis sunt molestias. Minima illum placeat eaque corporis tenetur quas tenetur. Molestiae in nulla.",
   },
@@ -1087,7 +1087,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2086-07-06T08:24:13.091Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Qui sit beatae quia blanditiis tenetur eligendi minima et. Qui aperiam ipsa accusamus. Omnis repellat est qui. Voluptates quis perferendis ipsam quasi in corporis. Et debitis atque nemo molestias eum sit sapiente omnis architecto.\nCulpa minima molestiae architecto et non officia recusandae officia. Sit sed animi et laborum. Repellendus est non non sit et consequatur eius. Voluptates est totam sapiente. Dolores ut dolorum magnam dolores ipsam numquam aliquam. Et doloremque voluptas vel harum dolor molestiae consequatur aliquam est.\nHic aperiam magnam expedita. Alias id error soluta porro possimus recusandae quia. Earum architecto sed rem blanditiis voluptas in. Et eveniet recusandae expedita ut dicta ipsa.",
   },
@@ -1108,7 +1108,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2011-06-23T12:45:38.659Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Dolores dicta neque dolorum aspernatur id sed. Eos expedita assumenda expedita ea ut cupiditate inventore nostrum omnis. Tempore dignissimos eum rerum nesciunt ipsum sit sit qui esse. Explicabo iure tempora tenetur. Autem odit aliquid odit ratione amet deleniti earum nihil neque.\nVeniam consequuntur et velit suscipit quam veritatis dolor. Placeat eum sed odio id. Dolor quaerat neque sit soluta a vel odio. Et et autem eos aliquid nulla tempore iste. Ea consequuntur ut nam tempore qui ut.\nDolores perspiciatis nisi est velit et quia minus. Eum doloribus exercitationem quia. Repellendus deleniti qui asperiores fuga delectus eius sed voluptas eius. Ratione sint repellendus omnis qui iusto excepturi exercitationem.",
   },
@@ -1129,7 +1129,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2086-01-17T02:24:35.647Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Quibusdam sit magnam debitis mollitia non eos. Non ab fugit corporis aspernatur assumenda fugiat minima sunt. Omnis nesciunt quia dolorem voluptas explicabo accusantium aperiam eligendi in. Sequi nemo hic unde possimus est deleniti numquam molestias.\nQui voluptas fugiat repudiandae reprehenderit eos vel. Rerum quo libero nobis ipsa voluptas molestias ut expedita. Qui enim nemo.\nEveniet labore ut aut iure mollitia. Perspiciatis voluptates laborum voluptas vel alias eum. Incidunt sint veritatis eum reprehenderit excepturi repudiandae quasi debitis. Enim cupiditate alias adipisci rerum. Non debitis vel sint in alias enim voluptatibus. Animi quisquam sed.",
   },
@@ -1150,7 +1150,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2073-06-29T17:04:22.382Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Natus et hic autem eaque. Saepe voluptas in saepe voluptas odit quam eveniet suscipit eius. Dolorem quas dolorem numquam vel nisi iste.\nEst iste tempora nobis qui maiores. Reprehenderit qui dolorem facilis ut tempora. Ipsum quibusdam alias aut aliquid nisi. Illum quo alias. Provident eius odio omnis quo. Eos et quidem.\nAut odit quia dolorem assumenda quia. Harum voluptatem beatae placeat sequi molestiae recusandae atque debitis. Rerum ipsa explicabo. Vitae iure culpa minus nam totam. Nostrum nihil voluptates nostrum aliquam est vero esse. Aut eveniet incidunt.",
   },
@@ -1171,7 +1171,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2075-10-31T12:28:11.630Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Nam voluptate accusamus et est praesentium similique vero quia. Tempore necessitatibus quibusdam sed beatae ut hic molestias. Non sed voluptatibus. Cumque ut ea pariatur aut.\nMaiores est ipsam dignissimos suscipit omnis quis qui aspernatur maiores. Voluptates et quia voluptas. Est culpa corporis quisquam reiciendis nisi voluptate. Neque dignissimos harum incidunt hic aut porro. Sint consequuntur eveniet sit voluptas sed dolorum qui corrupti. Explicabo nostrum laudantium labore id quasi temporibus officia.\nDolores officia recusandae omnis labore amet aspernatur ut sequi doloremque. In natus rerum quia eius aut temporibus cupiditate ad. Vero aperiam neque voluptas ut delectus incidunt exercitationem esse et. Voluptas et molestiae qui autem cupiditate corporis nam voluptas dignissimos.",
   },
@@ -1192,7 +1192,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2030-04-25T19:35:25.942Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Error at ut reiciendis eum. Autem porro fugit soluta omnis quo et. Iusto molestias repudiandae nam voluptatem omnis distinctio ex enim.\nRepellat sequi rem dolorem quis labore aut. Molestiae sint non. Voluptatem alias autem ab at aut sed aut. Aut consequatur totam impedit. Odit tenetur qui aut exercitationem.\nNon doloribus velit maxime ut. Et quis officia. Sed nulla possimus dolorem sit eos quo voluptatibus.",
   },
@@ -1213,7 +1213,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1998-07-14T22:42:26.696Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Omnis dolor debitis quisquam animi rerum sequi harum. Ipsa vero eos dolore quae vitae. Suscipit officia officiis dolor reprehenderit perferendis ut voluptatem eius.\nSapiente doloribus qui aperiam laboriosam. Deserunt eligendi ea. Sunt sint distinctio qui. Voluptatem voluptate molestiae autem. Quaerat sequi eligendi id fugit fugiat rem quasi ipsa. Repellat in suscipit id officia aut alias.\nFacilis voluptatem deleniti excepturi. Et dolorem rerum sapiente vitae. Tenetur autem non non consequuntur natus natus veritatis est.",
   },
@@ -1234,7 +1234,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2077-07-02T00:45:05.323Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Veritatis placeat aut et non. Inventore placeat quam ut ut. Aut assumenda unde iste nam reiciendis praesentium repellendus sunt. Consectetur asperiores reprehenderit beatae nihil.\nSunt sed omnis fugit quam accusamus assumenda asperiores ratione. Nulla voluptatem consequatur saepe nostrum dolorem. Sunt molestiae iusto ut exercitationem. Itaque magni molestiae aliquam est labore distinctio assumenda. Repellat expedita corrupti rerum harum ex optio iure qui natus.\nConsequatur voluptatibus est saepe sapiente excepturi sit labore quis. Corrupti iure iste optio minus. Et sequi rerum et est ducimus eos.",
   },
@@ -1255,7 +1255,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2099-03-25T04:07:11.580Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Reiciendis praesentium temporibus. Error odit asperiores excepturi molestiae rerum. Quod quia quasi enim. Doloremque corrupti et sint error corporis totam nihil. Ut necessitatibus et laboriosam doloremque et et nobis.\nNihil alias qui. Laboriosam quia mollitia sed quo odit possimus. Natus est sint accusantium fugit nostrum ullam sequi sit. Qui assumenda enim ea reiciendis eum ut.\nSimilique ipsum porro modi recusandae cupiditate. Unde repellat libero eius quas quia enim qui dolores. Doloremque facilis amet. Ab esse odit ut qui ea qui nemo.",
   },
@@ -1276,7 +1276,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2035-12-19T19:07:17.614Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Veniam nihil eius deleniti ad maxime porro est. Magni architecto at consequatur dolores dignissimos sunt quisquam dolores. Animi quia itaque accusamus dolor inventore numquam iusto. Ut aut dolores cumque iusto.\nDoloremque placeat voluptates. Nihil beatae incidunt fugiat deserunt repellat ullam itaque occaecati distinctio. Vel aut reprehenderit fugit sit quia. In perspiciatis eum nemo dolore dolorem dolor consequatur voluptas. Aliquam ad consequatur reiciendis qui qui deserunt consequatur. Eos quo fugit explicabo temporibus itaque aliquid minus iusto.\nVoluptatem in omnis quam et aliquid ut. Assumenda in quis nemo eaque. Hic labore sed labore incidunt exercitationem quo voluptatum et. Occaecati distinctio assumenda non cupiditate.",
   },
@@ -1297,7 +1297,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2085-05-13T17:50:52.368Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Qui repellendus officiis amet. Suscipit neque doloribus quae cumque tenetur repellendus perferendis et qui. Omnis sit consectetur molestiae minima libero repudiandae. Earum facilis quam dolorem iusto quis facere repudiandae. Atque possimus pariatur ipsam. Ipsam illo recusandae dolores sequi laudantium quo assumenda voluptas.\nMolestiae tempora ullam quisquam voluptatem neque quo id laudantium molestiae. Ipsa et expedita ipsa veniam natus quis aut. Sed aspernatur ut accusamus aut hic nemo eaque enim omnis.\nModi et et. Laboriosam aliquid qui explicabo incidunt et. Aut dolores consequatur quia ratione aut quo. Quis aut ut enim sit aut.",
   },
@@ -1318,7 +1318,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2081-05-17T10:04:52.709Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Magni delectus sunt et aliquam velit officia necessitatibus enim. Libero harum libero excepturi. Sit velit sed quia molestiae et esse.\nCulpa natus ea. Eum porro molestiae ut fugiat. Cumque et quia vitae nulla totam.\nEt optio iste et dolores qui quia maiores blanditiis aut. Dolor et sit. Rerum consectetur inventore. Minus consequatur alias dignissimos veniam aliquid facere nam amet.",
   },
@@ -1339,7 +1339,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1990-03-08T22:51:36.081Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Animi maxime placeat rerum. Distinctio suscipit omnis dicta. Facere perspiciatis provident aut delectus. Provident nostrum ut provident commodi eos earum inventore eum velit.\nDolore qui dolorum ea nesciunt. Modi sapiente quos dolorem dolorem sit qui quis. Sit quis cumque possimus eum aliquam. Porro eos sed.\nFugiat quia repudiandae veniam aliquid. Sint et voluptatem debitis nihil. Autem illum praesentium porro nemo ut earum commodi et voluptatem. Aut debitis quisquam. Voluptate sint nihil numquam et. Repudiandae modi eveniet odio neque qui quis.",
   },
@@ -1360,7 +1360,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2049-04-10T09:23:33.225Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Impedit dolor at libero reprehenderit aut. Illo voluptas est. Molestiae aut fuga pariatur dolorem. Aut in magni voluptatem.\nEt laborum ea. Non error magni fugiat. Quam dolore aliquid consectetur porro nihil odio quasi aliquid ea. Natus dolorem ut et voluptas. Non necessitatibus beatae dolorem sed dolore. Et autem qui aspernatur accusantium soluta rerum.\nEt dicta aut quas amet illo. Voluptatem aut impedit rerum impedit qui possimus voluptates. Sunt sed beatae dolores repellat porro quia repudiandae. Cumque vero delectus. Ex dolorum atque in.",
   },
@@ -1381,7 +1381,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2015-03-09T09:47:47.484Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Dolorem nesciunt non. Neque vel adipisci praesentium eos sint molestiae eum adipisci consequatur. Quas animi repudiandae. Dolor autem magnam non sapiente voluptas quo sed cum.\nAmet eligendi vel dolores non ducimus quod. Incidunt aut neque temporibus voluptas quis autem aut assumenda. Aliquam repellat et dolorum est aspernatur et in molestiae pariatur. Labore laboriosam dolores.\nDolor sequi est vel. Fugiat deleniti minima esse. Et nostrum blanditiis. Autem et qui praesentium qui quos aut voluptatem hic incidunt.",
   },
@@ -1402,7 +1402,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2081-01-31T00:40:58.340Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Aut quis numquam repellat fugit in eos occaecati quis nam. Voluptatum odio molestiae ex dolorum inventore totam quod. Labore reiciendis quia laudantium consectetur consequatur aut facilis blanditiis omnis.\nSuscipit at voluptates. Enim quisquam inventore totam quasi enim non ipsa laboriosam. Nulla consectetur dolorem asperiores et eligendi unde temporibus est ea. Dolores molestiae laudantium corrupti nulla sequi officia iste. Nisi facilis ut suscipit aperiam dignissimos animi laborum et.\nPorro enim architecto omnis pariatur atque repellendus. Quasi sit ab dolor earum quidem odit id earum rerum. Error qui vel ut aut animi nostrum. Iste quibusdam voluptatem et.",
   },
@@ -1423,7 +1423,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2046-10-12T03:55:03.845Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Voluptatem dolorum et tenetur. Beatae eos repellendus blanditiis voluptatem saepe non. Commodi deleniti et suscipit quis velit reiciendis et nesciunt. Et impedit aliquam debitis. Labore est illo minus neque voluptas est et. Possimus sed alias ad nulla et assumenda delectus voluptatem.\nSimilique vitae at alias. Molestiae non voluptates officia et laboriosam. Veritatis doloremque occaecati a dolores quaerat voluptatibus. Est occaecati quasi recusandae. Ea quibusdam quaerat culpa dignissimos quibusdam eos.\nQuia voluptatem consectetur velit quisquam dolore ut nihil. Odio quo fugiat officiis enim itaque. Qui atque earum ea molestiae amet saepe incidunt. Expedita iure ducimus expedita quis vel quas blanditiis ea. Voluptas ex eos consequatur. Ut facilis dolor eum ullam dolores explicabo nemo qui.",
   },
@@ -1444,7 +1444,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2022-01-28T14:30:33.266Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Aliquid placeat nulla est eveniet nemo qui ea illo et. Numquam veniam architecto eius est recusandae non voluptatem tempora. Et sit necessitatibus iste eos est nobis voluptatem. Vel illo quae soluta cupiditate a sed cumque ut. Quae necessitatibus maxime ipsum qui molestiae et amet.\nSoluta quidem aut voluptatem. Voluptates ipsum iste recusandae laboriosam eum ipsam. Ipsa culpa ipsa repellendus debitis tenetur maxime itaque.\nOmnis ut neque sint. Inventore magni quis quo. Excepturi quis id et. Nulla sunt autem architecto sit.",
   },
@@ -1465,7 +1465,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2094-10-04T12:13:27.242Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Eaque minus aspernatur amet suscipit sunt sit quo ipsam voluptas. Quo quae adipisci. Laudantium voluptate qui totam fuga ea corporis aut ut est.\nAut laborum rerum et quod harum. Perspiciatis cum hic autem. Rerum id aperiam aut non. Eligendi aut reiciendis sit et eos. Qui omnis omnis nisi vitae repudiandae voluptas occaecati.\nCupiditate amet quod. Perspiciatis consequatur ducimus at totam quam non velit aut. Delectus laboriosam minus et. Et aut voluptatem voluptas. Voluptatibus numquam dignissimos ipsa corrupti.",
   },
@@ -1486,7 +1486,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2049-11-23T20:30:05.023Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Incidunt quas non maxime nisi deleniti labore hic animi accusamus. Et exercitationem dicta cupiditate. Voluptates corporis magni. Perspiciatis deserunt fugiat dolorem sapiente quia corrupti veritatis molestiae. Fugiat voluptates voluptatum.\nEligendi exercitationem incidunt est unde velit. Consequatur expedita sed voluptas quo. Modi rem voluptatem veritatis cupiditate fugit doloremque autem aut. Minus nam saepe enim neque ea eaque nulla. Hic voluptatibus suscipit non placeat dolore sapiente qui ut. Inventore dolores iusto magni.\nQui iure dolores ipsam repellat officia fuga rerum accusantium. Quos facilis voluptate. Aut consequatur ut quasi accusamus itaque. Ut est nisi eveniet. Unde dolorum quidem atque reiciendis quos consequatur nobis asperiores doloremque.",
   },
@@ -1507,7 +1507,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-11-26T08:28:58.126Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Debitis quibusdam possimus sed sit eos magni reiciendis odio. Ea sed alias inventore similique sit. Ut exercitationem eveniet itaque sed.\nEius voluptatem qui. Perspiciatis illum voluptas et aut ut. Reiciendis molestiae sed nisi nihil corporis similique quisquam eaque. Temporibus et vel.\nSit asperiores occaecati eveniet non. Sequi illo non ipsa unde qui accusamus assumenda alias. Iusto doloribus necessitatibus eligendi qui et repellendus voluptatum sequi.",
   },
@@ -1528,7 +1528,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2098-07-06T04:21:54.925Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Enim laudantium commodi. Harum repellat rerum aperiam quia. Sit voluptate ducimus dolorem quia dignissimos autem soluta quia. Explicabo quo expedita reprehenderit non quo. Officia quibusdam qui fugiat amet.\nUt quis recusandae expedita qui harum minus laboriosam molestias. Aut in provident commodi est ullam. Odio magni qui est repudiandae sit vel vitae temporibus. Dolores inventore dolorem labore repellat tenetur accusantium. Voluptatem rerum maiores. Eum dolores blanditiis corrupti recusandae velit sit repellat est quibusdam.\nFugit rerum numquam. Ut temporibus voluptatem doloremque quis blanditiis accusantium est voluptatem. Nesciunt quis et. Omnis fugit consequuntur et praesentium neque nemo accusamus et. Velit et sint laudantium est nihil. Non excepturi explicabo quas vitae.",
   },
@@ -1549,7 +1549,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2063-05-04T02:33:49.485Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Officia temporibus sunt non. Porro optio unde placeat ipsum molestiae cum provident repellendus totam. Voluptatem aut unde maiores. Maiores consequuntur et aut quam autem deserunt aspernatur facilis. Quasi est dolores laudantium. Ad est et ipsam minima eos.\nNon ipsam necessitatibus omnis vel quos molestiae. Tempore alias laudantium et. Illo voluptatibus nobis.\nAut quia sed ut nostrum qui. Qui qui unde. Ut velit eos eius a non. Et omnis rerum labore quidem laudantium minima repellendus. Aut ratione consequuntur occaecati voluptatem fugiat.",
   },
@@ -1570,7 +1570,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2062-06-13T05:59:53.743Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Nisi nesciunt odio animi laborum placeat. Aut aspernatur nulla sunt dolores tempore. Numquam eos quia velit suscipit velit magni voluptas aut quibusdam. Omnis qui corrupti sit libero eos accusamus odit. Quasi rem fugit sint ad. Magnam perferendis veniam unde quas et consequatur soluta.\nModi omnis ipsa soluta laudantium cumque sed voluptas deleniti. Est voluptatem voluptates iste architecto nulla tempora quo vel maiores. Officiis eos quasi incidunt quasi enim. Eaque est natus eos quo itaque.\nMagnam saepe facilis vel quo qui quaerat eum fugit consequuntur. Doloribus veniam ipsa numquam aut voluptatem ea earum veniam. Autem repellat nihil non ullam eos et totam. Ducimus aut voluptatem aut.",
   },
@@ -1591,7 +1591,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2069-02-23T03:44:14.604Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Quo harum molestiae ut eligendi perferendis veritatis libero nobis. Incidunt minus earum cum. Sunt eveniet modi laborum et voluptatem id.\nRepellendus quia sunt tenetur. Eum quasi itaque quae aut quia dolorum. Fugit dolorem quia aliquid. Qui eligendi ut repellat voluptatem laborum voluptates placeat possimus ab.\nOfficia tenetur nihil saepe rerum molestiae quo quos. Blanditiis neque sit qui odit nostrum sed. Cupiditate magnam iure quia doloribus temporibus fugiat. Quidem accusamus sequi qui in dolor optio eveniet.",
   },
@@ -1612,7 +1612,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1998-01-07T02:47:11.608Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Animi placeat blanditiis sed dolores eum tempore et. Quaerat quisquam doloribus alias assumenda laudantium dolorem. Aut amet officia et sit. Qui nulla cum laborum sunt corrupti sequi. Ut non ut nesciunt accusantium officiis suscipit. Cum quasi et debitis non quidem necessitatibus laboriosam.\nQui voluptatibus vel. Dolorem rerum vitae commodi consectetur. Voluptatem nulla quod. Nisi consequuntur dolores porro facilis consequatur doloribus deleniti facere sunt. Eum aperiam molestiae minima doloremque id aliquid consectetur. Facilis recusandae porro vel rerum ut tenetur.\nDicta ut et eaque quia et praesentium molestiae et similique. Illum voluptas illo aperiam. Quia quis repellendus quia et vel asperiores tempora. Perferendis explicabo quod non exercitationem. Optio occaecati aut similique inventore laborum. Sed eos id.",
   },
@@ -1633,7 +1633,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2009-05-06T10:58:04.738Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Consectetur quis rem omnis numquam sit rem cumque reiciendis pariatur. Porro doloremque sed provident dolores minima. Quibusdam repellat aut vitae quae. Et voluptas est qui. Eum molestiae natus. Velit mollitia suscipit aut soluta aut.\nEt qui error a odio non temporibus placeat impedit. Sed molestiae nihil et. Eos est vel.\nImpedit reiciendis quos qui. Est sed eos eveniet veniam et ipsum fugit provident. Ut ut aut aut. Qui ut libero sit ea qui. Velit rerum et fugiat. Dolorem est cupiditate accusantium accusamus veritatis quia eius vero minus.",
   },
@@ -1654,7 +1654,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1992-03-02T15:56:26.634Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Magnam eos repellat sit vero voluptatem quia sint dolorem voluptatibus. Ab nulla facere totam molestias soluta non consectetur sed. Voluptatem officiis aut nostrum maxime.\nMinima quod corrupti. Sit voluptatem eveniet molestiae voluptas odio quos non veritatis. Repudiandae labore corporis ipsum fugit corrupti. Quia adipisci aperiam odio omnis est.\nSed labore quaerat et eum ut deserunt. Porro dolorem amet ipsum pariatur. Perspiciatis qui sit est et eum et id qui iste.",
   },
@@ -1675,7 +1675,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2029-03-22T17:41:14.462Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Ea ut sunt. Veritatis sed illum dolorem perspiciatis. Tenetur recusandae qui deserunt.\nFacilis quasi magnam a earum nobis incidunt. Illum debitis eum voluptatem expedita laborum. Ut est quaerat quo dicta repellat. Nisi quia incidunt vel sed omnis qui et ut.\nMolestiae omnis voluptate qui doloremque nihil qui accusamus. Incidunt quo id. Maxime cupiditate aliquam doloremque magni saepe. Non cum consequatur maxime quis quo distinctio temporibus. Neque nostrum nesciunt asperiores. Quae error ad perspiciatis quisquam ipsum accusamus.",
   },
@@ -1696,7 +1696,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2057-09-10T00:26:11.284Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Ut vero et officiis. Culpa voluptates qui qui commodi deserunt dolores doloremque id. Quo in et est velit ducimus quas exercitationem deleniti nihil. Aliquam velit qui similique beatae tempore veritatis ab et. Itaque dolorum neque. Sunt vero placeat dolores rerum nulla doloremque velit.\nAutem numquam qui laudantium possimus dolore. Sit tempore nemo ut qui. Quasi quis ipsum. Consequatur quia aut. Qui dignissimos molestiae. Rerum ut dolor omnis quis maiores explicabo quos in ducimus.\nNemo inventore sunt. Repellat sint consectetur dolores quae et ea officia tempora et. Nemo qui quia quia ut sed cumque odio. Distinctio molestiae vel. Ullam voluptas et ea.",
   },
@@ -1717,7 +1717,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2006-06-22T17:46:51.028Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Voluptate nostrum quis. Sunt vitae ipsum animi qui beatae. Possimus cum dolores similique hic laborum autem eaque eos. Qui quibusdam nesciunt. Eaque quasi error. Dolorem perferendis blanditiis itaque sint consequuntur.\nCulpa cum eius beatae illo eos sint veniam quam. Qui ea et autem voluptas aut velit corporis. Optio at nam. Est blanditiis voluptas et. Voluptas est labore voluptas qui dolores at aut nesciunt ipsam.\nEt placeat minus illum molestias harum. Animi asperiores eos aut. Aut itaque inventore illo. Laborum asperiores consequatur distinctio et odit officia sit totam quia. Tempora provident enim magni corporis esse dolores harum in necessitatibus.",
   },
@@ -1738,7 +1738,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2083-06-22T07:43:57.931Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Sequi numquam assumenda. Eligendi sint recusandae doloremque aut a voluptas culpa quia accusantium. Libero aliquid omnis. Iure et dolorem recusandae quasi at nisi assumenda porro enim. Quaerat asperiores doloremque in omnis repudiandae est culpa non.\nAut assumenda quia voluptatem odit tempora consequatur eligendi. Dignissimos dolores aliquid ut temporibus modi et. Fuga amet veniam placeat dolore nulla. Laborum aut laborum sint quas. Omnis sit labore culpa nam reprehenderit eius et.\nQuia quidem qui deserunt. Sapiente tenetur enim harum corrupti qui. Placeat occaecati quibusdam id reprehenderit cupiditate numquam est. Officia omnis non enim. Architecto qui fuga voluptatem magni sequi aliquid voluptates. Ducimus vero ea dolorem at omnis quibusdam.",
   },
@@ -1759,7 +1759,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2078-07-21T00:39:59.317Z",
-    material_code: [3],
+    material_code: [1, 2],
     description:
       "Alias voluptatibus esse aperiam non architecto. Architecto tempore et et tempora ut. Blanditiis perferendis est repellendus tenetur quidem exercitationem eos fugiat. Repudiandae tempora ea pariatur culpa sit accusantium. Autem id et incidunt possimus est debitis aut. Dolore non soluta aspernatur eius quasi.\nUt et qui aut a sit nemo consequatur. Non distinctio velit eum nesciunt nisi blanditiis. Aliquid vel veritatis sed sit cum illo dicta voluptas. Ea aut rerum libero dignissimos excepturi sed fugiat quas numquam.\nQuisquam ab non harum. Provident iusto omnis repellat quam maxime provident quisquam aut voluptatem. Sed sint in.",
   },
@@ -1780,7 +1780,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2081-03-07T05:33:24.004Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Non sit fugit vel ducimus et. Rem veritatis amet molestiae molestias aspernatur. Dolorem laborum autem eius corrupti deserunt hic.\nEa nulla eos ratione molestiae. Inventore ratione eos necessitatibus qui. Dolor nisi et corrupti dolor et molestias eveniet.\nExpedita nobis rerum id assumenda sapiente. Facere ab sit. Ut sint eum omnis tenetur. Quidem sint voluptatem. Sint provident qui quia quas reprehenderit reprehenderit sunt itaque perferendis. Quia sint repellendus.",
   },
@@ -1801,7 +1801,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-07-15T14:39:15.707Z",
-    material_code: [5],
+    material_code: [1, 2],
     description:
       "Commodi voluptate voluptates quidem. Est quia quia et corrupti rerum voluptates sed. Dolores soluta tempora atque qui qui. Ut deleniti modi repellendus.\nQuia et et eaque harum aut est rem et repellendus. Suscipit sequi quo ut omnis. Eaque in quia sunt amet rerum. Optio soluta illo excepturi ut sit sunt. Possimus iure tempora est dolores et asperiores. Voluptatem unde odio doloremque reprehenderit placeat sapiente natus libero.\nRepudiandae impedit voluptatem voluptatem provident quis placeat porro. In vitae non vel. Eius molestiae rerum pariatur nam perspiciatis in. Voluptatum impedit tenetur exercitationem. Non pariatur velit aut dicta et. Rerum voluptas voluptas qui cum aliquid nihil qui adipisci.",
   },
@@ -1822,7 +1822,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2092-01-12T18:47:39.295Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Dignissimos hic ut fugit in nam tempora minus placeat. Quae quis debitis praesentium voluptate et. Repudiandae aperiam fugiat. Quo sit officia et id facere modi dolor autem.\nVitae et maxime qui dolorum similique voluptatem. Voluptas aut consequatur omnis qui illum est totam dignissimos eligendi. Aperiam exercitationem assumenda veniam voluptas itaque similique commodi molestiae sed. Voluptas facilis amet.\nPorro quo sed quod voluptas. In dolor quidem doloremque. Incidunt eum optio. Velit eum possimus enim. Voluptatibus debitis error perferendis autem et eum excepturi.",
   },
@@ -1843,7 +1843,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-04-04T13:32:41.284Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Eos quod veniam explicabo qui nemo rem dolor. Voluptas dicta eum velit omnis aperiam. Aperiam quod accusantium in odit distinctio sunt natus cum. Corporis suscipit ullam architecto velit consectetur et est. Eius necessitatibus aut cupiditate rerum optio voluptatem harum. Explicabo qui et adipisci.\nModi debitis id. Suscipit velit at deserunt totam enim consectetur fugiat voluptas voluptate. Quia autem commodi eveniet laborum itaque voluptate.\nAut et consectetur voluptatibus sed quidem impedit vel. Molestiae ad fuga omnis modi dolores neque sequi dignissimos. Nostrum libero quo.",
   },
@@ -1864,7 +1864,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2059-05-05T09:09:20.909Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Tempora id sed omnis quo magni repellat suscipit perferendis. Blanditiis quis reiciendis ipsum dolorem eos dolorem architecto dolores necessitatibus. Aut consequuntur et veritatis. Voluptatibus id dicta aut ut ut nesciunt.\nMolestiae dolorum nulla qui maxime eaque facilis cum sint. Qui qui rem qui impedit harum. Nulla nisi est consequatur ut ea voluptatum veritatis.\nQuis est dolor quia. Perspiciatis expedita ea voluptas quia voluptatem. Temporibus maiores deserunt nisi in fugiat qui et in. Maiores rem quam voluptate nobis facilis iusto quisquam culpa.",
   },
@@ -1885,7 +1885,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2030-04-15T04:26:12.846Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Porro voluptatum beatae nobis voluptas cupiditate aut incidunt explicabo modi. Molestiae inventore at id odit consequuntur facilis. Illo ut deserunt. Sit optio repellat ad. Sequi aut veniam rerum minima quia.\nId quis fugiat similique et et officiis aut rerum ut. Rerum aliquam vero et temporibus. Neque assumenda tenetur assumenda officiis facilis. Nisi qui numquam libero autem provident autem ad animi atque.\nVoluptas soluta quis et omnis consequatur magnam corporis molestias sed. Qui neque aut aliquam tempore dignissimos. Fugit consequatur iste quia maxime distinctio ut neque quis. Corporis non nobis culpa ut. Quia qui saepe doloremque voluptates.",
   },
@@ -1906,7 +1906,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2008-09-03T10:15:30.336Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Voluptatem earum sed. Odio impedit ipsam non. Dolor et et et enim saepe sit cupiditate esse. Aperiam illum sunt nihil dolore et maxime quas. Et culpa laborum et voluptas veritatis non.\nPossimus et ab est saepe ab sunt qui culpa amet. Numquam unde nemo illum debitis quia rerum soluta. Dolores earum nihil id. Voluptas voluptatem dolor tempora ab qui reprehenderit labore sunt. Quis quod blanditiis voluptas optio earum beatae. Similique non quos cum voluptates.\nVoluptatem eum deserunt rerum quae necessitatibus et necessitatibus minus numquam. Sunt vel in eveniet accusamus molestiae eos debitis. Aut assumenda voluptatem iusto eaque error consequatur. Architecto rem dolorem. Perspiciatis repellat et esse eum dignissimos aut voluptatem. Nihil natus in praesentium aliquam eum omnis.",
   },
@@ -1927,7 +1927,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2038-01-14T10:22:52.155Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Et voluptatem sit alias nam quod. Aliquam facilis et molestiae aut quos et veritatis accusamus. Cumque nisi quisquam delectus commodi hic.\nEx minus dolor qui perferendis amet sed voluptatum et. A deleniti delectus voluptatem voluptatem voluptatem expedita et reiciendis. Doloribus qui accusantium reiciendis. Unde possimus tempore magnam odit a non hic dolorum quo. Inventore cumque qui mollitia quisquam dignissimos.\nAmet repellat totam et perspiciatis cum consectetur voluptatibus. Animi et quo aut qui natus facere cupiditate et et. Eveniet iusto ipsam ut qui quia ut at vero. Possimus nesciunt quod. Aut ullam officiis. Velit sit iure sed dolor non maiores dolores deserunt neque.",
   },
@@ -1948,7 +1948,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2089-06-09T03:05:27.433Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Perferendis aut placeat sint aut. Repudiandae vero assumenda a nisi recusandae. Ea et perspiciatis aliquid. Blanditiis perferendis perferendis et saepe vero quas rerum quod quia. Harum fugit quas ut. Aut totam eum quibusdam vitae et excepturi laboriosam.\nIllum provident ratione quo rerum vitae quisquam mollitia laboriosam. Quis temporibus amet vero aliquam pariatur similique iure. Sed quia dignissimos hic facilis qui amet praesentium iusto laudantium.\nQuas eligendi accusamus dolorem velit omnis consequuntur cumque. Praesentium est in est porro id eos. Soluta ea nesciunt autem.",
   },
@@ -1969,7 +1969,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2000-12-01T06:41:48.127Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Aut officiis sit esse. Quasi nemo ad harum nam sapiente quisquam ullam aut. Aspernatur praesentium magnam natus. Vel veritatis quae sit sint vel in sunt. Nihil optio atque fugit.\nSit in quos occaecati dolorum iusto ducimus quaerat voluptate. Eos soluta qui aut veritatis fugiat fugit facere totam tenetur. Quia quas laudantium a dolorem dolor quas cupiditate culpa.\nAtque qui deleniti iste recusandae. Quam doloremque et. Sit quia est. Quo recusandae accusantium ad et voluptas error.",
   },
@@ -1990,7 +1990,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2019-11-11T15:37:33.507Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Ea quibusdam ut delectus facilis. Quas ullam mollitia consequuntur. Quaerat aut laborum qui et nesciunt placeat quia accusantium at.\nVoluptatem voluptatem amet omnis dolorem nesciunt qui magnam quod. Praesentium placeat aliquam qui. Fugiat repellendus error quaerat minima. Eos sint molestias quia perspiciatis. Voluptatem sint mollitia fugiat quos debitis. Sed blanditiis consequatur provident qui quo dicta consequatur.\nEst sunt porro sed nihil omnis consectetur. Sequi ut minus dolorem sed dolores ipsam at ut. Quasi tempore dolor qui laboriosam voluptates dolorem esse illum beatae. Necessitatibus nam consectetur qui sint ut et aperiam ipsa. Est eaque optio. Aut similique dolores.",
   },
@@ -2011,7 +2011,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2011-11-16T06:25:30.479Z",
-    material_code: [1],
+    material_code: [1, 2],
     description:
       "Voluptas eligendi voluptas quis impedit et. Sed et itaque doloremque in quia molestias error et. Architecto qui ab mollitia excepturi eligendi.\nA non ea corporis et. Consectetur quaerat consectetur repellat cupiditate a occaecati. Ducimus vel aliquam dolores et perferendis.\nMolestiae tenetur similique quia et architecto ut fugit est eligendi. Laborum veritatis sequi ad sapiente quibusdam et et iusto. Omnis harum qui tenetur ut sit temporibus.",
   },
@@ -2032,7 +2032,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2071-11-29T15:52:52.101Z",
-    material_code: [2],
+    material_code: [1, 2],
     description:
       "Repellat aut possimus ut. Maiores et assumenda dolore a laborum sunt at. Nobis culpa optio sed est unde aut. Facilis delectus nesciunt.\nImpedit consequatur eaque facere eos quidem. Aut illo ut mollitia a. Aut vel aut. Rem occaecati delectus accusamus non quasi repellat eaque eos. Sit dolorem consequatur ut voluptatibus voluptatem optio fuga.\nEt doloribus ipsum repudiandae qui asperiores praesentium architecto rerum. Molestiae doloribus nostrum autem. In magnam vel incidunt facilis sequi. Cum facere molestias rem laborum dolores magni veritatis. Sint incidunt sit autem.",
   },
@@ -2053,7 +2053,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "1990-10-19T10:18:40.771Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Quaerat modi omnis aliquid ab nam aperiam excepturi dicta. Nihil a quae iure culpa dolorum ut qui accusamus eos. Et explicabo eos.\nDoloribus aut exercitationem ut ea. Qui necessitatibus deserunt quasi ea omnis. Voluptatem repudiandae accusamus delectus quibusdam qui qui voluptates odit. Eius eos occaecati sequi ea cumque assumenda porro perferendis nam.\nAut nemo nihil et expedita dicta et dolor. Dolorum consectetur blanditiis aliquam numquam molestias. Et aut laudantium fugiat error reprehenderit magni.",
   },
@@ -2074,7 +2074,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2052-08-09T10:06:53.875Z",
-    material_code: [4],
+    material_code: [1, 2],
     description:
       "Temporibus labore molestiae voluptate perferendis sint. Architecto omnis est eveniet dolore alias ipsa. Commodi illo blanditiis. Tempore cum magnam repellendus distinctio eos.\nTenetur ipsum ut libero dolores molestias quisquam ea voluptatem. In consequatur illum unde cum sapiente consectetur omnis dolorum. Enim a quia aut.\nQuae et ea quos veniam ipsum totam dolores a ut. Animi doloribus non laborum vero quia possimus et blanditiis autem. Aut fugit fuga corporis totam. Est quia sed adipisci doloremque consequuntur est. Architecto deserunt quis quam voluptas sed ut. Quam quia modi iste qui possimus consectetur qui quidem libero.",
   },
@@ -2095,7 +2095,7 @@ export const productList = [
     ex_price: null,
     color_code: ["#FFFFFF"],
     purchase_date: "2011-08-22T01:48:53.981Z",
-    material_code: [0],
+    material_code: [1, 2],
     description:
       "Totam nemo facilis in perspiciatis est consectetur beatae dolor. Et voluptatem aut rem saepe. Itaque voluptatem magnam voluptatibus. Cumque laudantium et consequatur praesentium quia sunt accusamus enim debitis. Quaerat architecto enim est voluptas.\nQuidem molestiae praesentium delectus dolores nulla omnis. Ea aut mollitia sunt occaecati neque. Ut reiciendis cum rerum.\nUt commodi culpa. Voluptatem dolores et amet quia mollitia porro. Eaque ducimus deleniti dolor eum. Dolore veniam maiores id. Consequatur rerum fuga error soluta numquam tempore. Qui est nihil recusandae qui officiis voluptas officiis dolores vel.",
   },

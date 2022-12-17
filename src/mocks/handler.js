@@ -50,7 +50,7 @@ export const handlers = [
     const sort_by = req.url.searchParams.get("sort_by");
     const order = req.url.searchParams.get("order");
     const elements = Number(req.url.searchParams.get("elements"));
-    const page = Number(req.url.searchParams.get("page"));
+    const page = Number(req.url.searchParams.get("page")) - 1;
 
     console.log("handler page " + page);
 

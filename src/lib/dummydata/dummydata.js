@@ -334,6 +334,46 @@ export const purchasePlaceListDatas = [
     purchase_place_id: 20,
     name: "구입처_20",
   },
+  {
+    purchase_place_id: 21,
+    name: "구입처_21",
+  },
+  {
+    purchase_place_id: 22,
+    name: "구입처_22",
+  },
+  {
+    purchase_place_id: 23,
+    name: "구입처_23",
+  },
+  {
+    purchase_place_id: 24,
+    name: "구입처_24",
+  },
+  {
+    purchase_place_id: 25,
+    name: "구입처_25",
+  },
+  {
+    purchase_place_id: 26,
+    name: "구입처_26",
+  },
+  {
+    purchase_place_id: 27,
+    name: "구입처_27",
+  },
+  {
+    purchase_place_id: 28,
+    name: "구입처_28",
+  },
+  {
+    purchase_place_id: 29,
+    name: "구입처_29",
+  },
+  {
+    purchase_place_id: 30,
+    name: "구입처_30",
+  },
 ];
 
 export const metaDatas = {
@@ -352,6 +392,11 @@ export const metaDatas = {
     { code: 3, name: "가죽" },
     { code: 4, name: "실크" },
     { code: 5, name: "폴리" },
+    { code: 6, name: "재질_6" },
+    { code: 7, name: "재질_7" },
+    { code: 8, name: "재질_8" },
+    { code: 9, name: "재질_9" },
+    { code: 10, name: "재질_10" },
   ],
   conditions: [
     { code: 1, name: "미사용" },

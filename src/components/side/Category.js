@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, batch } from "react-redux";
 
 import colors from "../../lib/styles/colors";
-import { changeOption } from "../../slices/productSlice";
+import { changeFilter } from "../../slices/productSlice";
 
 const CategoryContainer = styled.div`
   width: 100%;
@@ -69,19 +69,21 @@ const Category = () => {
   }, [mainSelected]);
 
   useEffect(() => {
-    dispatch(
-      changeOption({
-        name: "main_category_id",
-        value: mainSelected,
-      })
-    );
-    dispatch(
-      changeOption({
-        name: "sub_category_id",
-        value: subSelected,
-      })
-    );
-  }, [dispatch, mainSelected, subSelected]);
+    batch(() => {
+      dispatch(
+        changeFilter({
+          name: "main_category_id",
+          value: mainSelected,
+        })
+      );
+      dispatch(
+        changeFilter({
+          name: "sub_category_id",
+          value: subSelected,
+        })
+      );
+    });
+  }, [mainSelected, subSelected]);
 
   const onClickmain = (key) => {
     if (mainSelected === null) {

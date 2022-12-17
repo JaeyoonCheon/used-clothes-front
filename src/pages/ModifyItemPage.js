@@ -200,7 +200,7 @@ const ModifyItemPage = () => {
             isRequired={true}
             limit={2000}
             onChange={onChange}
-            initValue={product.descriptions}
+            initValue={product.description}
           ></LimitedTextarea>
         </ContentWrapper>
         <ContentWrapper>

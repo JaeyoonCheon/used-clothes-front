@@ -84,12 +84,18 @@ const NavBar = styled.div`
     }
     span:nth-child(n + 2)::before {
       content: "|";
+      color: ${colors.mono[0]};
       margin: 0 1px 0 1px;
     }
   }
 `;
 
-const sortOrders = ["최신 순", "이전 순", "가격 높은 순", "가격 낮은 순"];
+const sortOrders = [
+  { sort_by: "upload_date", order: "asc", name: "최신 순" },
+  { sort_by: "upload_date", order: "desc", name: "이전 순" },
+  { sort_by: "price", order: "asc", name: "가격 높은 순" },
+  { sort_by: "price", order: "desc", name: "가격 낮은 순" },
+];
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -112,8 +118,6 @@ const HomePage = () => {
   } = useSelector((state) => {
     const list = state.product.list;
     const options = state.product.list.options;
-
-    console.log("current store page: " + options.page);
 
     return {
       filter: options.filter,
@@ -143,7 +147,6 @@ const HomePage = () => {
       dispatch(getMetadata("colors"));
       dispatch(getBrandList());
       dispatch(getPurchasePlaceList());
-      dispatch(listProduct({ filter, sort_by, order, elements, page }));
     });
   }, []);
   useEffect(() => {
@@ -172,14 +175,21 @@ const HomePage = () => {
   const onClickLocation = () => {
     dispatch(toggleLocationModal(true));
   };
-  const onClickSort = (order) => {
-    dispatch(
-      changeOption({
-        name: "sort_by",
-        value: order,
-      })
-    );
-    dispatch(listProduct(filter));
+  const onClickSort = (sortOrder) => {
+    batch(() => {
+      dispatch(
+        changeOption({
+          name: "sort_by",
+          value: sortOrder.sort_by,
+        })
+      );
+      dispatch(
+        changeOption({
+          name: "order",
+          value: sortOrder.order,
+        })
+      );
+    });
   };
   const onClickOption = (typeCode, option) => {
     dispatch(
@@ -189,8 +199,6 @@ const HomePage = () => {
       })
     );
   };
-
-  const newPageRef = useRef(page);
 
   function fetchNextPage(page) {
     if (!isEnd) {
@@ -210,7 +218,6 @@ const HomePage = () => {
   const [_, setRef] = useIntersect(async (entry, observer, page) => {
     observer.unobserve(entry.target);
     fetchNextPage(page);
-    // observer.observe(entry.target);
   }, {});
 
   return (
@@ -232,13 +239,19 @@ const HomePage = () => {
             </div>
             {isLocationModal && <LocationModal></LocationModal>}
             <div className="sort_orders">
-              {sortOrders.map((order, i) => (
-                <span
-                  className={filter.sorting === order ? "active" : ""}
-                  key={i}
-                  onClick={() => onClickSort(order)}
-                >{`${order}`}</span>
-              ))}
+              {sortOrders.map((sortOrder) => {
+                return (
+                  <span
+                    className={
+                      sort_by === sortOrder.sort_by && order === sortOrder.order
+                        ? "active"
+                        : ""
+                    }
+                    key={`${sortOrder.sort_by} ${sortOrder.order}`}
+                    onClick={() => onClickSort(sortOrder)}
+                  >{`${sortOrder.name}`}</span>
+                );
+              })}
             </div>
           </NavBar>
           <SmallCardList itemDatas={productList}></SmallCardList>

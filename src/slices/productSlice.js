@@ -101,12 +101,7 @@ export const productSlice = createSlice({
       state.list.options.filter[action.payload.name] = action.payload.value;
     },
     changeOption: (state, action) => {
-      console.log(
-        `Name: ${action.payload.name} / Value: ${action.payload.value}`
-      );
-      console.log(`before: ${state.list.options[action.payload.name]}`);
       state.list.options[action.payload.name] = action.payload.value;
-      console.log(`after: ${state.list.options[action.payload.name]}`);
     },
     listProduct: () => {},
     listProduct_success: (state, action) => {
