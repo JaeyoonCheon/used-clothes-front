@@ -8,13 +8,13 @@ const initialState = {
   list: [],
   listSuccess: false,
   listError: null,
-  searchPurchasePlace: "",
+  search: "",
   addSuccess: false,
   addError: null,
 };
 
 export const purchasePlaceSlice = createSlice({
-  name: "purchasePlace",
+  name: "purchase_place",
   initialState,
   reducers: {
     getPurchasePlaceList: () => {},
@@ -26,7 +26,7 @@ export const purchasePlaceSlice = createSlice({
       state.listError = action.error;
     },
     searchPurchasePlace: (state, action) => {
-      state.searchPurchasePlace = action.payload;
+      state.search = action.payload;
     },
     addPurchasePlace: () => {},
     addPurchasePlace_success: (state, action) => {

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   login: false,
   brand: false,
-  purchasePlace: false,
+  purchase_place: false,
   location: false,
 };
 
@@ -15,7 +15,7 @@ export const modalSlice = createSlice({
       state.brand = action.payload;
     },
     togglePurchasePlaceModal: (state, action) => {
-      state.purchasePlace = action.payload;
+      state.purchase_place = action.payload;
     },
     toggleLoginModal: (state, action) => {
       state.login = action.payload;

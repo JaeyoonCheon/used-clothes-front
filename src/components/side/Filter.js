@@ -8,7 +8,7 @@ import Checkbox, { ColorCheckbox } from "../common/Checkbox";
 import { changeFilter } from "../../slices/productSlice";
 import useInput from "../../hooks/useInput";
 import { toggleBrandModal } from "../../slices/modalSlice";
-import BrandModal from "../modal/BrandModal";
+import ExpandModal from "../modal/ExpandModal";
 
 const FilterContainer = styled.div`
   width: 100%;
@@ -34,7 +34,7 @@ const FilterContainer = styled.div`
   div[class$="modelCheckbox"] {
     margin: 5px;
   }
-  .more_brands {
+  .more_items {
     display: inline-block;
     margin-top: 10px;
 
@@ -65,45 +65,47 @@ const PriceForm = styled.form`
 `;
 
 export const ModalCheckboxFilter = (props) => {
-  const { title, name, list } = props;
+  const { title, name, list, actions } = props;
   const dispatch = useDispatch();
 
+  const name_id = `${name}_id`;
+
   const [fold, setFold] = useState(false);
-  const [checkedTypes, setCheckedTypes] = useState(new Set());
   const { isModal } = useSelector((state) => {
-    return { isModal: state.modal.brand };
+    return { isModal: state.modal[name] };
   });
   const partialList = list.slice(0, 10);
 
-  const toggleCheckbox = (option) => {
-    const newCheckedTypes = new Set(checkedTypes);
+  const { checkedTypes } = useSelector(({ product }) => {
+    return { checkedTypes: product.list.options.filter[name_id] };
+  });
 
-    if (checkedTypes.has(option)) {
-      newCheckedTypes.delete(option);
+  const checkedTypesSet = new Set(checkedTypes);
+
+  const toggleCheckbox = (option) => {
+    if (checkedTypesSet.has(option)) {
+      checkedTypesSet.delete(option);
     } else {
-      newCheckedTypes.add(option);
+      checkedTypesSet.add(option);
     }
-    setCheckedTypes(newCheckedTypes);
+    dispatch(
+      changeFilter({
+        name: name_id,
+        value: Array.from(checkedTypesSet),
+      })
+    );
   };
+
   const isChecked = (option) => {
-    if (checkedTypes.has(option.brand_id)) {
+    if (checkedTypesSet.has(option[name_id])) {
       return true;
     } else {
       return false;
     }
   };
 
-  useEffect(() => {
-    dispatch(
-      changeFilter({
-        name: `brand_id`,
-        value: Array.from(checkedTypes),
-      })
-    );
-  }, [checkedTypes]);
-
   const onClickModal = () => {
-    dispatch(toggleBrandModal(true));
+    dispatch(actions.toggleModal(true));
   };
 
   return (
@@ -127,25 +129,19 @@ export const ModalCheckboxFilter = (props) => {
           <CheckboxList>
             {partialList.map((preOption) => (
               <Checkbox
-                key={preOption.brand_id}
+                key={preOption[name_id]}
                 data={preOption}
                 isChecked={isChecked(preOption)}
-                toggleCheckbox={() => toggleCheckbox(preOption.brand_id)}
+                toggleCheckbox={() => toggleCheckbox(preOption[name_id])}
               ></Checkbox>
             ))}
           </CheckboxList>
-          <span className="more_brands" onClick={onClickModal}>
+          <span className="more_items" onClick={onClickModal}>
             더보기
           </span>
         </>
       )}
-      {isModal && (
-        <BrandModal
-          list={list}
-          checkedTypes={checkedTypes}
-          setCheckedTypes={setCheckedTypes}
-        ></BrandModal>
-      )}
+      {isModal && <ExpandModal {...props}></ExpandModal>}
     </FilterContainer>
   );
 };
@@ -155,35 +151,33 @@ export const CheckboxFilter = (props) => {
   const dispatch = useDispatch();
 
   const [fold, setFold] = useState(false);
-  const [checkedTypes, setCheckedTypes] = useState(new Set());
+  const { checkedTypes } = useSelector(({ product }) => {
+    return { checkedTypes: product.list.options.filter[`${name}_code`] };
+  });
+
+  const checkedTypesSet = new Set(checkedTypes);
 
   const toggleCheckbox = (option) => {
-    const newCheckedTypes = new Set(checkedTypes);
-
-    if (checkedTypes.has(option)) {
-      newCheckedTypes.delete(option);
+    if (checkedTypesSet.has(option)) {
+      checkedTypesSet.delete(option);
     } else {
-      newCheckedTypes.add(option);
+      checkedTypesSet.add(option);
     }
-    setCheckedTypes(newCheckedTypes);
+    dispatch(
+      changeFilter({
+        name: `${name}_code`,
+        value: Array.from(checkedTypesSet),
+      })
+    );
   };
 
   const isChecked = (option) => {
-    if (checkedTypes.has(option.code)) {
+    if (checkedTypesSet.has(option.code)) {
       return true;
     } else {
       return false;
     }
   };
-
-  useEffect(() => {
-    dispatch(
-      changeFilter({
-        name: `${name}_code`,
-        value: Array.from(checkedTypes),
-      })
-    );
-  }, [checkedTypes]);
 
   return (
     <FilterContainer>
@@ -222,36 +216,33 @@ export const ColorCheckboxFilter = (props) => {
   const [fold, setFold] = useState(false);
 
   const dispatch = useDispatch();
+  const { checkedTypes } = useSelector(({ product }) => {
+    return { checkedTypes: product.list.options.filter.color_code };
+  });
 
-  const [checkedTypes, setCheckedTypes] = useState(new Set());
+  const checkedTypesSet = new Set(checkedTypes);
 
   const toggleCheckbox = (option) => {
-    const newCheckedTypes = new Set(checkedTypes);
-
-    if (checkedTypes.has(option)) {
-      newCheckedTypes.delete(option);
+    if (checkedTypesSet.has(option)) {
+      checkedTypesSet.delete(option);
     } else {
-      newCheckedTypes.add(option);
+      checkedTypesSet.add(option);
     }
-    setCheckedTypes(newCheckedTypes);
+    dispatch(
+      changeFilter({
+        name: `${name}_code`,
+        value: Array.from(checkedTypesSet),
+      })
+    );
   };
 
   const isChecked = (option) => {
-    if (checkedTypes.has(option.code)) {
+    if (checkedTypesSet.has(option.code)) {
       return true;
     } else {
       return false;
     }
   };
-
-  useEffect(() => {
-    dispatch(
-      changeFilter({
-        name: `${name}_code`,
-        value: Array.from(checkedTypes),
-      })
-    );
-  }, [checkedTypes]);
 
   return (
     <FilterContainer>

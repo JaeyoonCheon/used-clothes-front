@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   brand: brandSlice.reducer,
   modal: modalSlice.reducer,
   location: locationSlice.reducer,
-  purchasePlace: purchasePlaceSlice.reducer,
+  purchase_place: purchasePlaceSlice.reducer,
 });
 
 export function* rootSaga() {

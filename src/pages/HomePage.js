@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector, batch } from "react-redux";
@@ -20,6 +20,7 @@ import { getPurchasePlaceList } from "../slices/purchasePlaceSlice";
 import { toggleLocationModal } from "../slices/modalSlice";
 import LocationModal from "../components/modal/LocationModal";
 import useIntersect from "../hooks/useIntersect";
+import useDidMountEffect from "../hooks/useDidMoundEffect";
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -139,17 +140,30 @@ const HomePage = () => {
       isEnd: product.list.isEnd,
     })
   );
+  const { categoryLoad, metadataLoad, brandLoad, ppLoad } = useSelector(
+    (state) => {
+      return {
+        categoryLoad: state.category.isLoaded,
+        metadataLoad: state.metadata.isLoaded,
+        brandLoad: state.brand.listSuccess,
+        ppLoad: state.purchase_place.listSuccess,
+      };
+    }
+  );
 
   useEffect(() => {
-    console.log("Fetch by new options");
-    batch(() => {
-      dispatch(getCategory());
-      dispatch(getMetadata("colors"));
-      dispatch(getBrandList());
-      dispatch(getPurchasePlaceList());
-    });
+    if (!categoryLoad && !metadataLoad && !brandLoad && !ppLoad) {
+      batch(() => {
+        dispatch(getCategory());
+        dispatch(getMetadata("colors"));
+        dispatch(getBrandList());
+        dispatch(getPurchasePlaceList());
+        dispatch(listProduct({ filter, sort_by, order, elements, page }));
+      });
+    }
   }, []);
-  useEffect(() => {
+  useDidMountEffect(() => {
+    console.log("get new list");
     dispatch(listProduct({ filter, sort_by, order, elements, page }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [

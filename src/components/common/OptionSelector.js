@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeSelected } from "../../slices/productSlice";
 import { toggleBrandModal } from "../../slices/modalSlice";
 import useInput from "../../hooks/useInput";
-import BrandModal from "../modal/BrandModal";
+import ExpandModal from "../modal/ExpandModal";
 
 const SelectorWrapper = styled.div`
   width: fit-content;
@@ -308,14 +308,7 @@ export const BrandOption = (props) => {
         })}
       </CheckboxList>
       <span onClick={onClickModal}>더 보기</span>
-      {isModal && (
-        <BrandModal
-          list={list}
-          checkedTypes={checkedOptions}
-          setCheckedTypes={setCheckedOptions}
-          canEdit={canEdit}
-        ></BrandModal>
-      )}
+      {isModal && <ExpandModal list={list} canEdit={canEdit}></ExpandModal>}
     </CheckboxWrapper>
   );
 };

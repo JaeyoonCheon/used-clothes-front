@@ -8,12 +8,28 @@ import {
   ColorCheckboxFilter,
   PriceFilter,
 } from "./Filter";
-import { filterDatas } from "../../lib/dummydata/dummydata";
+import { searchBrand, addBrand } from "../../slices/brandSlice";
+import {
+  searchPurchasePlace,
+  addPurchasePlace,
+} from "../../slices/purchasePlaceSlice";
+import {
+  toggleBrandModal,
+  togglePurchasePlaceModal,
+} from "../../slices/modalSlice";
+
+const brandActions = {
+  search: searchBrand,
+  add: addBrand,
+  toggleModal: toggleBrandModal,
+};
+const purchasePlaceActions = {
+  search: searchPurchasePlace,
+  add: addPurchasePlace,
+  toggleModal: togglePurchasePlaceModal,
+};
 
 const FilterList = (props) => {
-  const { options, onClickOption } = props;
-  const [modalState, setModalState] = useState({ index: -1 });
-
   const { brands, colors, materials, conditions, purchasePlaces } = useSelector(
     (state) => {
       return {
@@ -21,7 +37,7 @@ const FilterList = (props) => {
         colors: state.metadata.colors,
         materials: state.metadata.materials,
         conditions: state.metadata.conditions,
-        purchasePlaces: state.purchasePlace.list,
+        purchasePlaces: state.purchase_place.list,
       };
     }
   );
@@ -32,35 +48,28 @@ const FilterList = (props) => {
         title="브랜드"
         name="brand"
         list={brands}
+        actions={brandActions}
       ></ModalCheckboxFilter>
       <ColorCheckboxFilter
         title="색상"
         name="color"
         list={colors}
-        onClickOption={onClickOption}
-        modalState={modalState}
-        setModalState={setModalState}
       ></ColorCheckboxFilter>
       <CheckboxFilter
         title="소재"
         name="material"
         list={materials}
-        onClickOption={onClickOption}
-        modalState={modalState}
-        setModalState={setModalState}
       ></CheckboxFilter>
       <CheckboxFilter
         title="상품 상태"
         name="condition"
         list={conditions}
-        onClickOption={onClickOption}
-        modalState={modalState}
-        setModalState={setModalState}
       ></CheckboxFilter>
       <ModalCheckboxFilter
         title="구입처"
-        name="purchasePlace"
+        name="purchase_place"
         list={purchasePlaces}
+        actions={purchasePlaceActions}
       ></ModalCheckboxFilter>
       <PriceFilter title="가격" name="price"></PriceFilter>
     </>

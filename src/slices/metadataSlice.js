@@ -8,6 +8,7 @@ const initialState = {
   colors: [],
   materials: [],
   conditions: [],
+  isLoaded: false,
   error: null,
 };
 
@@ -22,6 +23,7 @@ export const metadataSlice = createSlice({
       state.colors = metadatas.colors;
       state.materials = metadatas.materials;
       state.conditions = metadatas.conditions;
+      state.isLoaded = true;
     },
     getMetadata_failure: (state, action) => {
       state.error = action.error;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { faker } from "@faker-js/faker";
-import { useDispatch, useSelector } from "react-redux";
+import { batch, useDispatch, useSelector } from "react-redux";
 
 import colors from "../lib/styles/colors";
 import BaseLayout from "../components/layout/BaseLayout";
@@ -32,6 +32,17 @@ const ItemDetailContainer = styled.div`
     display: flex;
 
     justify-content: space-between;
+  }
+  .description_title {
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid ${colors.mono[1]};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000;
   }
 `;
 
@@ -111,7 +122,6 @@ const PriceStars = styled.div`
 const ItemClassContainer = styled.div`
   width: 100%;
   padding: 10px 0;
-  margin-bottom: 50px;
 
   .item_category {
     margin-bottom: 20px;
@@ -129,9 +139,9 @@ const ItemOptionList = styled.ul`
   padding: 0;
 
   .itemOption {
-    display: block;
+    display: flex;
     margin-left: 20px;
-    padding-bottom: 5px;
+    align-items: center;
 
     list-style: none;
     font-style: normal;
@@ -200,7 +210,7 @@ const NavButtonContainer = styled.div`
 `;
 
 const ItemDescription = styled.p`
-  margin: 60px 0 300px 0;
+  margin: 30px 0 300px 0;
 
   font-style: normal;
   font-weight: 300;
@@ -227,17 +237,25 @@ const ItemDetailPage = () => {
 
   const dispatch = useDispatch();
 
-  const { colorList, materialList, conditionList, brandList, placeList } =
-    useSelector((state) => {
-      return {
-        colorList: state.metadata.colors,
-        materialList: state.metadata.materials,
-        conditionList: state.metadata.conditions,
-        brandList: state.brand.list,
-        placeList: state.purchasePlace.list,
-      };
-    });
-
+  const {
+    colorList,
+    materialList,
+    conditionList,
+    brandList,
+    placeList,
+    mainCategory,
+    subCategory,
+  } = useSelector((state) => {
+    return {
+      colorList: state.metadata.colors,
+      materialList: state.metadata.materials,
+      conditionList: state.metadata.conditions,
+      brandList: state.brand.list,
+      placeList: state.purchase_place.list,
+      mainCategory: state.category.main_category,
+      subCategory: state.category.sub_category,
+    };
+  });
   const { product, getProductSuccess } = useSelector((state) => {
     return {
       getProductSuccess: state.product.detail.detailSuccess,
@@ -246,9 +264,11 @@ const ItemDetailPage = () => {
   });
 
   useEffect(() => {
-    dispatch(getMetadata("color"));
-    dispatch(getProduct(productId));
-    dispatch(getBrandList());
+    batch(() => {
+      dispatch(getMetadata("color"));
+      dispatch(getBrandList());
+      dispatch(getProduct(productId));
+    });
   }, [dispatch, productId]);
 
   const {
@@ -290,6 +310,15 @@ const ItemDetailPage = () => {
   );
 
   const uploadedTime = makeUnitTime(upload_date);
+  const mappedMainCategory = mainCategory.find(
+    (item) => item.main_category_id === main_category_id
+  );
+  const mappedSubCategory = subCategory.find(
+    (item) => item.sub_category_id === sub_category_id
+  );
+
+  const parsedUD = new Date(Date.parse(upload_date));
+  const parsedPD = new Date(Date.parse(purchase_date));
 
   return (
     <BaseLayout>
@@ -315,12 +344,19 @@ const ItemDetailPage = () => {
                         <span className="star_count">10</span>
                       </div>
                     </PriceStars>
-                    <div className="item_shipping_fee">배송비 포함</div>
+                    <div className="item_shipping_fee">
+                      {shipping_fee
+                        ? `배송비 : ${shipping_fee}원`
+                        : "배송비 포함"}
+                    </div>
                     <div className="item_enrolled_time">{uploadedTime}</div>
                   </div>
                 </ItemPurchaseInfo>
                 <ItemClassContainer>
-                  <div className="item_category">상의 / 티셔츠</div>
+                  <div className="item_category">
+                    {`${mappedMainCategory.main_category_name} /
+                    ${mappedSubCategory.sub_category_name}`}
+                  </div>
                   <ItemOptionList>
                     <li className="itemOption">
                       색상:{" "}
@@ -393,7 +429,12 @@ const ItemDetailPage = () => {
                         </li>
                       </ul>
                     </li>
-                    <li className="itemOption">구매일자: {purchase_date}</li>
+                    <li className="itemOption">{`구매일자: ${parsedPD.getFullYear()}년 ${
+                      parsedPD.getMonth() + 1
+                    }월 ${parsedPD.getDay()}일`}</li>
+                    <li className="itemOption">{`업로드 일시: ${parsedUD.getFullYear()}년 ${
+                      parsedUD.getMonth() + 1
+                    }월 ${parsedUD.getDay()}일 ${parsedUD.getHours()}시 ${parsedUD.getMinutes()}분`}</li>
                   </ItemOptionList>
                 </ItemClassContainer>
                 <SellerInfoContainer>
@@ -447,6 +488,9 @@ const ItemDetailPage = () => {
                   )}
                 </NavButtonContainer>
               </ItemInfoContainer>
+            </div>
+            <div className="description_title">
+              <span>상품 설명</span>
             </div>
             <ItemDescription>{description}</ItemDescription>
           </ItemDetailContainer>

@@ -50,14 +50,18 @@ const CategoryItem = styled.div`
 
 const Category = () => {
   const [fold, setFold] = useState(true);
-  const [mainSelected, setMainSelected] = useState(null);
-  const [subSelected, setSubSelected] = useState(null);
   const [subCategoryList, setSubCategoryList] = useState([]);
 
   const { mainCategory, subCategory } = useSelector((state) => ({
     mainCategory: state.category.main_category,
     subCategory: state.category.sub_category,
   }));
+  const { mainSelected, subSelected } = useSelector(({ product }) => {
+    return {
+      mainSelected: product.list.options.filter.main_category_id,
+      subSelected: product.list.options.filter.sub_category_id,
+    };
+  });
 
   const dispatch = useDispatch();
 
@@ -68,44 +72,67 @@ const Category = () => {
     setSubCategoryList(currentSub);
   }, [mainSelected]);
 
-  useEffect(() => {
-    batch(() => {
+  const onClickmain = (key) => {
+    if (mainSelected === null) {
       dispatch(
         changeFilter({
           name: "main_category_id",
-          value: mainSelected,
+          value: key,
+        })
+      );
+    }
+    if (mainSelected === key) {
+      dispatch(
+        changeFilter({
+          name: "main_category_id",
+          value: null,
         })
       );
       dispatch(
         changeFilter({
           name: "sub_category_id",
-          value: subSelected,
+          value: null,
         })
       );
-    });
-  }, [mainSelected, subSelected]);
-
-  const onClickmain = (key) => {
-    if (mainSelected === null) {
-      setMainSelected(key);
-    }
-    if (mainSelected === key) {
-      setMainSelected(null);
-      setSubSelected(null);
       setSubCategoryList([]);
     }
     if (mainSelected !== key && mainSelected !== null) {
-      setMainSelected(null);
-      setSubSelected(null);
-      setMainSelected(key);
+      dispatch(
+        changeFilter({
+          name: "main_category_id",
+          value: null,
+        })
+      );
+      dispatch(
+        changeFilter({
+          name: "sub_category_id",
+          value: null,
+        })
+      );
+      dispatch(
+        changeFilter({
+          name: "main_category_id",
+          value: key,
+        })
+      );
     }
   };
 
   const onClicksub = (key) => {
     if (subSelected === key) {
-      setSubSelected(null);
+      dispatch(
+        changeFilter({
+          name: "sub_category_id",
+          value: null,
+        })
+      );
     } else {
-      setSubSelected(key);
+      dispatch(
+        changeFilter({
+          name: "sub_category_id",
+          value: key,
+        })
+      );
     }
   };
 

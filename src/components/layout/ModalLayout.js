@@ -51,7 +51,7 @@ const DefaultWrapper = styled.div`
   }
 `;
 
-const BrandWrapper = styled.div`
+const ExpandModalWrapper = styled.div`
   width: 800px;
   height: 600px;
   position: fixed;
@@ -102,8 +102,8 @@ export const NonModalLayout = (props) => {
   );
 };
 
-export const BrandModalLayout = (props) => {
+export const ExpandModalLayout = (props) => {
   const { children } = props;
 
-  return <BrandWrapper>{children}</BrandWrapper>;
+  return <ExpandModalWrapper>{children}</ExpandModalWrapper>;
 };

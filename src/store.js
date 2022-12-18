@@ -1,4 +1,4 @@
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import createSagaMiddleware from "@redux-saga/core";
 
@@ -12,7 +12,7 @@ const initialState = {};
 const createStore = () => {
   const store = configureStore({
     reducer: rootReducer,
-    middleware: [logger, sagaMiddleware],
+    middleware: [sagaMiddleware, logger],
     preloadedState: initialState,
     devTools: process.env.NODE_ENV !== "production",
   });

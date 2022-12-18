@@ -86,7 +86,7 @@ const testOptions = [
     data: ["새 제품", "깨끗함", "사용감 있음"],
   },
   {
-    id: "purchaseplace",
+    id: "purchase_place",
     name: "구입처",
     data: ["구입처1", "구입처2", "구입처3", "구입처4"],
   },

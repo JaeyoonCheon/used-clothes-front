@@ -5,10 +5,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 
 import colors from "../../lib/styles/colors";
-import { BrandModalLayout } from "../layout/ModalLayout";
+import { ExpandModalLayout } from "../layout/ModalLayout";
 import { NonLabelInput } from "../common/Input";
-import { searchBrand, addBrand } from "../../slices/brandSlice";
-import { toggleBrandModal } from "../../slices/modalSlice";
+import { changeFilter } from "../../slices/productSlice";
 import Checkbox from "../common/Checkbox";
 import { SmallButton } from "../common/Button";
 
@@ -64,41 +63,55 @@ const ContentContainer = styled.div`
   }
 `;
 
-const BrandModal = (props) => {
-  const { list, checkedTypes, setCheckedTypes, canEdit = false } = props;
+const ExpandModal = (props) => {
+  const { list, title, name, actions } = props;
   const [searchList, setSearchList] = useState(list);
   const [isExist, setIsExist] = useState(true);
   const dispatch = useDispatch();
 
-  const { searchName } = useSelector((state) => {
-    return { searchName: state.brand.searchBrand };
+  const { search, add, toggleModal } = actions;
+
+  const name_id = `${name}_id`;
+  const { checkedTypes, searchName } = useSelector((state) => {
+    return {
+      checkedTypes: state.product.list.options.filter[name_id],
+      searchName: state[name].search,
+    };
   });
+  console.log(searchName);
+  const canEdit = false;
 
   const onChangeSearch = (name, value) => {
-    dispatch(searchBrand(value));
+    dispatch(search(value));
 
     if (value) {
-      const newList = searchList.filter((brand) => brand.name.includes(value));
+      const newList = searchList.filter((item) => item.name.includes(value));
       setSearchList(newList);
     } else {
       setSearchList(list);
     }
   };
   const onClickClose = () => {
-    dispatch(toggleBrandModal(false));
+    dispatch(toggleModal(false));
   };
-  const toggleCheckbox = (option) => {
-    const newCheckedTypes = new Set(checkedTypes);
 
-    if (checkedTypes.has(option)) {
-      newCheckedTypes.delete(option);
+  const checkedTypesSet = new Set(checkedTypes);
+
+  const toggleCheckbox = (option) => {
+    if (checkedTypesSet.has(option)) {
+      checkedTypesSet.delete(option);
     } else {
-      newCheckedTypes.add(option);
+      checkedTypesSet.add(option);
     }
-    setCheckedTypes(newCheckedTypes);
+    dispatch(
+      changeFilter({
+        name: name_id,
+        value: Array.from(checkedTypesSet),
+      })
+    );
   };
   const isChecked = (option) => {
-    if (checkedTypes.has(option.brand_id)) {
+    if (checkedTypesSet.has(option[name_id])) {
       return true;
     } else {
       return false;
@@ -106,7 +119,7 @@ const BrandModal = (props) => {
   };
   const onClickAdd = (e) => {
     e.preventDefault();
-    dispatch(addBrand(searchName));
+    dispatch(add(searchName));
   };
 
   useEffect(() => {
@@ -120,10 +133,10 @@ const BrandModal = (props) => {
   console.log(`canEdit:${canEdit} IsExist:${isExist}`);
 
   return (
-    <BrandModalLayout>
+    <ExpandModalLayout>
       <ModalBox>
         <TitleContainer>
-          <h2 className="title">브랜드</h2>
+          <h2 className="title">{title}</h2>
           <div className="clearButton">
             <AiOutlineClose size={25} onClick={onClickClose}></AiOutlineClose>
           </div>
@@ -132,8 +145,8 @@ const BrandModal = (props) => {
           <div className="content_nav">
             <div className="search_box">
               <NonLabelInput
-                placeholder="찾으려는 브랜드명을 입력해 주세요."
-                name="search_brand"
+                placeholder="찾으려는 이름을 입력해 주세요."
+                name="search_name"
                 onChange={onChangeSearch}
                 noUnderline={true}
               ></NonLabelInput>
@@ -146,12 +159,12 @@ const BrandModal = (props) => {
           </div>
           <div className="search_list">
             <ul>
-              {searchList.map((brand) => (
-                <li key={brand.brand_id}>
+              {searchList.map((name) => (
+                <li key={name[name_id]}>
                   <Checkbox
-                    data={brand}
-                    isChecked={isChecked(brand)}
-                    toggleCheckbox={() => toggleCheckbox(brand.brand_id)}
+                    data={name}
+                    isChecked={isChecked(name)}
+                    toggleCheckbox={() => toggleCheckbox(name[name_id])}
                   ></Checkbox>
                 </li>
               ))}
@@ -159,8 +172,8 @@ const BrandModal = (props) => {
           </div>
         </ContentContainer>
       </ModalBox>
-    </BrandModalLayout>
+    </ExpandModalLayout>
   );
 };
 
-export default BrandModal;
+export default ExpandModal;

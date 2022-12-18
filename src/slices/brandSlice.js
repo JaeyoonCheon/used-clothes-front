@@ -8,7 +8,7 @@ const initialState = {
   list: [],
   listSuccess: false,
   listError: null,
-  searchBrand: "",
+  search: "",
   addSuccess: false,
   addError: null,
 };
@@ -26,7 +26,7 @@ export const brandSlice = createSlice({
       state.listError = action.error;
     },
     searchBrand: (state, action) => {
-      state.searchBrand = action.payload;
+      state.search = action.payload;
     },
     addBrand: () => {},
     addBrand_success: (state, action) => {

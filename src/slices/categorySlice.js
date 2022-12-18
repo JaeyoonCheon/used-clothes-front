@@ -7,6 +7,7 @@ import { getMainCategoryAPI, getSubCategoryAPI } from "../lib/api/category";
 const initialState = {
   main_category: [],
   sub_category: [],
+  isLoaded: false,
   error: null,
 };
 
@@ -18,6 +19,7 @@ export const categorySlice = createSlice({
     getCategory_success: (state, action) => {
       state.main_category = action.payload.mainCategory;
       state.sub_category = action.payload.subCategory;
+      state.isLoaded = true;
     },
     getCategory_failure: (state, action) => {
       state.error = action.error;
