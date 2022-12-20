@@ -266,6 +266,8 @@ const ItemDetailPage = () => {
   useEffect(() => {
     batch(() => {
       dispatch(getMetadata("color"));
+      dispatch(getMetadata("materials"));
+      dispatch(getMetadata("conditions"));
       dispatch(getBrandList());
       dispatch(getProduct(productId));
     });
@@ -292,7 +294,6 @@ const ItemDetailPage = () => {
     description,
   } = product;
 
-  // 판매자 : 비동기로 구현해야하는 부분이나, 더미데이터로 우선 동작 구현
   const { seller } = itemDetailInfos;
   const { sellerId, name: sellerName, sellingItems, currentLocation } = seller;
 

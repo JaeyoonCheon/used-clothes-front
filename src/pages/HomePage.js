@@ -156,6 +156,8 @@ const HomePage = () => {
       batch(() => {
         dispatch(getCategory());
         dispatch(getMetadata("colors"));
+        dispatch(getMetadata("materials"));
+        dispatch(getMetadata("conditions"));
         dispatch(getBrandList());
         dispatch(getPurchasePlaceList());
         dispatch(listProduct({ filter, sort_by, order, elements, page }));

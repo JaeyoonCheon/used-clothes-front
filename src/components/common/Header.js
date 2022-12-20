@@ -155,7 +155,7 @@ const Header = () => {
         <HeaderBox>
           <Wrapper>
             <Logo>
-              <Link to="/">중고중고옷</Link>
+              <Link to="/">중고의류</Link>
             </Logo>
             <Searchbar></Searchbar>
             <NavMenu>
