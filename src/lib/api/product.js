@@ -46,7 +46,7 @@ export const addProductAPI = async (payload) => {
     )
   );
 
-  const newImageList = newImages.map((imageURL) => imageURL.split(",")[1]);
+  console.log(newImages);
 
   const newBlobImages = await Promise.all(
     Array.from(images).map(
@@ -58,6 +58,7 @@ export const addProductAPI = async (payload) => {
 
   console.log(newBlobImages);
   newBlobImages.forEach((file) => formdata.append("files", file, file.name));
+  newImages.forEach((file) => formdata.append("string_file", file));
 
   formdata.append("name", name);
   formdata.append("main_category_id", main_category_id);
@@ -69,10 +70,6 @@ export const addProductAPI = async (payload) => {
   formdata.append("purchase_place_id", purchase_place_id);
   formdata.append("purchase_date", purchase_date);
   formdata.append("ex_price", ex_price);
-
-  for (var pair of formdata.entries()) {
-    console.log(pair[0] + ", " + pair[1]);
-  }
 
   return await APIInstance.post(`/clothe/create`, formdata, {
     headers: { "Content-Type": "multipart/form-data" },
