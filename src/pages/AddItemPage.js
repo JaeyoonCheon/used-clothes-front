@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -65,9 +65,9 @@ const AddItemPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { product } = useSelector((state) => {
+  const { selected } = useSelector((state) => {
     return {
-      product: state.product.selected.product,
+      selected: state.product.selected,
     };
   });
 
@@ -86,7 +86,7 @@ const AddItemPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProduct(product));
+    dispatch(addProduct(selected));
     navigate("/mypage");
   };
 
@@ -120,9 +120,11 @@ const AddItemPage = () => {
             <div className="priceTitle">
               <ContentTitle>가격</ContentTitle>
             </div>
-            <NonLabelInput width={`300px`} name="price" onChange={onChange}>
-              원
-            </NonLabelInput>
+            <NonLabelInput
+              width={`300px`}
+              name="price"
+              onChange={onChange}
+            ></NonLabelInput>
           </ContentRowWrapper>
           <ContentRowWrapper>
             <div className="priceTitle">배송비</div>

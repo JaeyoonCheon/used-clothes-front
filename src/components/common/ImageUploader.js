@@ -101,7 +101,7 @@ const ImageUploader = () => {
   };
 
   useEffect(() => {
-    dispatch(changeSelected({ name: "itemimage", value: uploadedFiles }));
+    dispatch(changeSelected({ name: "images", value: uploadedFiles }));
   }, [uploadedFiles]);
 
   return (

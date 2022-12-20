@@ -44,7 +44,7 @@ const initialState = {
   detail: {
     currentProduct: {
       clothe_id: null,
-      itemimage: [],
+      images: [],
       user_email: "",
       name: "",
       main_category_id: null,
@@ -67,7 +67,7 @@ const initialState = {
   },
   selected: {
     clothe_id: null,
-    itemimage: [],
+    images: [],
     user_email: "",
     name: "",
     main_category_id: null,

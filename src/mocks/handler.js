@@ -37,10 +37,11 @@ export const handlers = [
     }
   }),
   rest.post(`/clothe/create`, (req, res, ctx) => {
-    const formData = req.json();
+    console.log(req);
+    const image = req.body.files;
 
-    if (formData) {
-      return res(ctx.json(formData));
+    if (image) {
+      return res(ctx.json(image));
     } else {
       return res(ctx.status(400));
     }

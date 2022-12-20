@@ -64,7 +64,7 @@ const ContentContainer = styled.div`
 `;
 
 const ExpandModal = (props) => {
-  const { list, title, name, actions } = props;
+  const { list, title, name, actions, canEdit = false } = props;
   const [searchList, setSearchList] = useState(list);
   const [isExist, setIsExist] = useState(true);
   const dispatch = useDispatch();
@@ -74,12 +74,13 @@ const ExpandModal = (props) => {
   const name_id = `${name}_id`;
   const { checkedTypes, searchName } = useSelector((state) => {
     return {
-      checkedTypes: state.product.list.options.filter[name_id],
+      checkedTypes: canEdit
+        ? state.product.selected[name_id]
+        : state.product.list.options.filter[name_id],
       searchName: state[name].search,
     };
   });
   console.log(searchName);
-  const canEdit = false;
 
   const onChangeSearch = (name, value) => {
     dispatch(search(value));

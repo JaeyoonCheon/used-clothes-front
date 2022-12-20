@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch, batch } from "react-redux";
 
 import useCategory from "../../hooks/useCategory";
 import colors from "../../lib/styles/colors";
 import { RadioOption } from "./RadioButton";
 import Checkbox, { ColorCheckbox } from "../common/Checkbox";
-import { useSelector, useDispatch } from "react-redux";
 import { changeSelected } from "../../slices/productSlice";
-import { toggleBrandModal } from "../../slices/modalSlice";
 import useInput from "../../hooks/useInput";
 import ExpandModal from "../modal/ExpandModal";
+import { searchBrand, addBrand } from "../../slices/brandSlice";
+import {
+  searchPurchasePlace,
+  addPurchasePlace,
+} from "../../slices/purchasePlaceSlice";
+import {
+  toggleBrandModal,
+  togglePurchasePlaceModal,
+} from "../../slices/modalSlice";
 
 const SelectorWrapper = styled.div`
   width: fit-content;
@@ -65,6 +73,13 @@ const CheckboxSelectorWrapper = styled.div`
 
 const CheckboxWrapper = styled.div`
   margin-bottom: 30px;
+
+  .more_items {
+    display: inline-block;
+    margin-top: 10px;
+
+    cursor: pointer;
+  }
 `;
 
 const CheckboxList = styled.div`
@@ -156,45 +171,69 @@ export const CategorySelector = ({
   );
 };
 
-export const CheckboxSelector = (props) => {
-  const { onChange, initValue = {} } = props;
+const brandActions = {
+  search: searchBrand,
+  add: addBrand,
+  toggleModal: toggleBrandModal,
+};
+const purchasePlaceActions = {
+  search: searchPurchasePlace,
+  add: addPurchasePlace,
+  toggleModal: togglePurchasePlaceModal,
+};
 
-  const { brands, colors, materials, conditions } = useSelector((state) => {
-    return {
-      brands: state.brand.list,
-      colors: state.metadata.colors,
-      materials: state.metadata.materials,
-      conditions: state.metadata.conditions,
-    };
+export const CheckboxSelector = (props) => {
+  const dispatch = useDispatch();
+  const { brands, colors, materials, conditions, purchase_places } =
+    useSelector((state) => {
+      return {
+        brands: state.brand.list,
+        colors: state.metadata.colors,
+        materials: state.metadata.materials,
+        conditions: state.metadata.conditions,
+        purchase_places: state.purchase_place.list,
+      };
+    });
+  const { isModalOpened } = useSelector((state) => {
+    return { isModalOpened: state.modal.brand || state.modal.purchase_place };
   });
+
+  useEffect(() => {
+    if (isModalOpened) {
+      return batch(() => {
+        dispatch(toggleBrandModal(false));
+        dispatch(togglePurchasePlaceModal(false));
+      });
+    }
+  }, []);
 
   return (
     <CheckboxSelectorWrapper>
-      <BrandOption
+      <ExpandOption
         title="브랜드"
         name="brand"
         list={brands}
-        initValue={initValue.brand_id}
+        actions={brandActions}
         canEdit={true}
-      ></BrandOption>
-      <ColorOption
-        title="색상"
-        name="color"
-        list={colors}
-        initValue={initValue.color_code}
-      ></ColorOption>
+      ></ExpandOption>
+      <ColorOption title="색상" name="color" list={colors}></ColorOption>
       <CheckboxOption
         title="소재"
         name="material"
         list={materials}
-        initValue={initValue.material_code}
       ></CheckboxOption>
       <CheckboxOption
         title="상품 상태"
         name="condition"
         list={conditions}
-        initValue={initValue.condition_code}
       ></CheckboxOption>
+      <ExpandOption
+        title="구입처"
+        name="purchase_place"
+        list={purchase_places}
+        actions={purchasePlaceActions}
+        canEdit={true}
+      ></ExpandOption>
     </CheckboxSelectorWrapper>
   );
 };
@@ -251,37 +290,38 @@ export const CheckboxOption = (props) => {
   );
 };
 
-export const BrandOption = (props) => {
-  const { title, name, list, initValue = [], canEdit } = props;
+export const ExpandOption = (props) => {
+  const { title, name, list, actions, canEdit } = props;
+  const { toggleModal } = actions;
   const dispatch = useDispatch();
-  const [value, setValue] = useInput("");
 
-  const [checkedOptions, setCheckedOptions] = useState(new Set(initValue));
+  const name_id = `${name}_id`;
+
   const { isModal } = useSelector((state) => {
-    return { isModal: state.modal.brand };
+    return { isModal: state.modal.purchase_place };
+  });
+  const { checkedOptions } = useSelector(({ product }) => {
+    return { checkedOptions: product.selected[name_id] };
   });
 
-  const toggleCheckbox = (option) => {
-    const newCheckedOptions = new Set(checkedOptions);
-    if (checkedOptions.has(option.brand_id)) {
-      newCheckedOptions.delete(option.brand_id);
-    } else {
-      newCheckedOptions.add(option.brand_id);
-    }
-    setCheckedOptions(newCheckedOptions);
-  };
+  const checkedOptionsSet = new Set(checkedOptions);
 
-  useEffect(() => {
+  const toggleCheckbox = (option) => {
+    if (checkedOptionsSet.has(option)) {
+      checkedOptionsSet.delete(option);
+    } else {
+      checkedOptionsSet.add(option);
+    }
     dispatch(
       changeSelected({
-        name: `brand_id`,
-        value: Array.from(checkedOptions),
+        name: name_id,
+        value: Array.from(checkedOptionsSet),
       })
     );
-  }, [checkedOptions]);
+  };
 
   const isChecked = (option) => {
-    if (checkedOptions.has(option.brand_id)) {
+    if (checkedOptionsSet.has(option[name_id])) {
       return true;
     } else {
       return false;
@@ -289,7 +329,7 @@ export const BrandOption = (props) => {
   };
 
   const onClickModal = () => {
-    dispatch(toggleBrandModal(true));
+    dispatch(toggleModal(true));
   };
 
   return (
@@ -299,16 +339,18 @@ export const BrandOption = (props) => {
         {list.map((option) => {
           return (
             <Checkbox
-              key={option.code}
+              key={option[name_id]}
               data={option}
               isChecked={isChecked(option)}
-              toggleCheckbox={() => toggleCheckbox(option)}
+              toggleCheckbox={() => toggleCheckbox(option[name_id])}
             ></Checkbox>
           );
         })}
       </CheckboxList>
-      <span onClick={onClickModal}>더 보기</span>
-      {isModal && <ExpandModal list={list} canEdit={canEdit}></ExpandModal>}
+      <span className="more_items" onClick={onClickModal}>
+        더 보기
+      </span>
+      {isModal && <ExpandModal {...props}></ExpandModal>}
     </CheckboxWrapper>
   );
 };

@@ -273,7 +273,7 @@ const ItemDetailPage = () => {
 
   const {
     clothe_id,
-    itemimage,
+    images,
     user_email,
     name,
     main_category_id,
