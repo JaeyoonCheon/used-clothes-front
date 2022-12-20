@@ -149,6 +149,10 @@ const ItemOptionList = styled.ul`
     font-size: 16px;
     line-height: 19px;
     color: ${colors.mono[0]};
+
+    .item_option_unit {
+      margin-left: 5px;
+    }
   }
 `;
 
@@ -321,6 +325,9 @@ const ItemDetailPage = () => {
   const parsedUD = new Date(Date.parse(upload_date));
   const parsedPD = new Date(Date.parse(purchase_date));
 
+  console.log(product);
+  console.log(typeof images);
+
   return (
     <BaseLayout>
       <Wrapper>
@@ -328,11 +335,23 @@ const ItemDetailPage = () => {
           <ItemDetailContainer>
             <div className="item_summary">
               <MainImageContainer>
-                <img
-                  src="https://loremflickr.com/580/580/abstract?21730"
-                  className="main_image"
-                  alt="itemDetail"
-                ></img>
+                {images === "undefined" ? (
+                  <img
+                    src="https://loremflickr.com/580/580/abstract?21730"
+                    className="main_image"
+                    alt="itemDetail"
+                  ></img>
+                ) : (
+                  images.map((image) => (
+                    <img
+                      src={image}
+                      key={image}
+                      className="main_image"
+                      alt="itemDetail"
+                    ></img>
+                  ))
+                )}
+                {/**/}
               </MainImageContainer>
               <ItemInfoContainer>
                 <ItemPurchaseInfo>
@@ -400,7 +419,10 @@ const ItemDetailPage = () => {
                             (listItem) => listItem.code === code
                           );
                           return (
-                            <li key={mappedMaterial.code}>
+                            <li
+                              key={mappedMaterial.code}
+                              className="item_option_unit"
+                            >
                               {mappedMaterial.name}
                             </li>
                           );
