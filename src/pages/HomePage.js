@@ -186,7 +186,7 @@ const HomePage = () => {
         })
       );
     };
-  }, []);
+  });
 
   const onClickLocation = () => {
     dispatch(toggleLocationModal(true));

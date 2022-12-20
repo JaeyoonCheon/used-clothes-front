@@ -46,7 +46,14 @@ const App = () => {
             </ProtectedRoute>
           }
         ></Route>
-        <Route path="myproduct" element={<MyProductPage />}></Route>
+        <Route
+          path="myproduct"
+          element={
+            <ProtectedRoute>
+              <MyProductPage />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
